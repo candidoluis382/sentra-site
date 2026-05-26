@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Design System & Pattern Library</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <!-- Google Fonts (Arimo for Titles, Manrope for Complementary, JetBrains Mono for Cards) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        // Custom Tailwind theme overrides mapping our new color system
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'off-white': '#FEFDED',
+                        'deep-green': '#003333',
+                        'teal-green': '#09645E',
+                        'vibrant-green': '#E4ED2C',
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        arimo: ['Arimo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #FEFDED; /* Off-White base */
+            background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, #FEFDED 100%);
+            color: #003333; /* Deep Green main text */
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .font-arimo {
+            font-family: 'Arimo', sans-serif;
+        }
+        
+        /* 3D Card Specific Styles (Cards retain dark base for contrast) */
+        .card-container {
+            perspective: 1200px;
+        }
+        .card-3d {
+            transform-style: preserve-3d;
+            transform: rotateX(10deg) rotateY(15deg) rotateZ(-2deg);
+        }
+        .layer-depth-1 { transform: translateZ(-1px); }
+        .layer-depth-2 { transform: translateZ(-2px); }
+        .layer-depth-3 { transform: translateZ(-3px); }
+        .layer-depth-4 { transform: translateZ(-4px); }
+        .layer-depth-5 { transform: translateZ(-5px); }
+        
+        .epic-gradient {
+            background:
+                radial-gradient(at 0% 0%, rgba(9, 100, 94, 0.7) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(228, 237, 44, 0.4) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 51, 51, 0.8) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(9, 100, 94, 0.5) 0px, transparent 50%),
+                linear-gradient(135deg, #003333, #09645E);
+            background-size: 200% 200%;
+            animation: shimmer 15s ease infinite alternate;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glass panel on dark card */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(2px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow:
+                inset 0 0 30px rgba(255,255,255,0.03),
+                0 20px 50px rgba(0, 51, 51, 0.35);
+        }
+        
+        /* Premium light-theme glassmorphism for design system docs */
+        .ds-glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(9, 100, 94, 0.08);
+            box-shadow:
+                0 4px 6px -1px rgba(9, 100, 94, 0.03),
+                0 20px 40px -4px rgba(9, 100, 94, 0.06);
+        }
+        
+        .chip {
+            background: linear-gradient(135deg, #E4ED2C 0%, #09645E 50%, #E4ED2C 100%);
+        }
+        .font-mono-card {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Initial Hero Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Scroll Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered delays for grid items */
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        
+        /* Button & Interactive Animations */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.25),
+                transparent
+            );
+            transform: skewX(-20deg);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+        .btn-shine:hover::after {
+            left: 150%;
+            transition: 0.7s ease-in-out;
+        }
+        
+        .btn-bounce {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .btn-bounce:active {
+            transform: scale(0.95);
+        }
+        
+        /* Subtle Grid Background (dark-green lines over light off-white) */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(9, 100, 94, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(9, 100, 94, 0.04) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+        
+        /* Pricing highlight */
+        .pricing-glow {
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(to bottom, rgba(9, 100, 94, 0.25), rgba(0,0,0,0));
+            border-radius: 1.5rem;
+            z-index: -1;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        .group:hover .pricing-glow {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-teal-green/20 text-teal-green">
+
+    <!-- Ambient Glows (Inverted light accents) -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-teal-green/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+    <div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-vibrant-green/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+    <!-- Navigation Header (Light Theme Aesthetic Layout) -->
+    <nav class="fixed top-0 w-full z-50 border-b border-teal-green/10 bg-off-white/85 backdrop-blur-md transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-deep-green cursor-pointer group">
+                <div class="w-6 h-6 rounded bg-gradient-to-tr from-teal-green to-vibrant-green flex items-center justify-center text-[10px] font-bold shadow-lg shadow-teal-green/20 group-hover:scale-110 transition-transform duration-300 text-deep-green">N</div>
+                <span class="font-semibold tracking-tight text-sm font-arimo group-hover:text-teal-green transition-colors">Nova Design System</span>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-6 text-[11px] uppercase tracking-wider font-semibold text-teal-green/80">
+                <a href="#hero" class="hover:text-deep-green transition-colors duration-200 relative group">
+                    0) Hero
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-teal-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#typography" class="hover:text-deep-green transition-colors duration-200 relative group">
+                    1) Typography
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-teal-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#colors" class="hover:text-deep-green transition-colors duration-200 relative group">
+                    2) Colors & Surfaces
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-teal-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#components" class="hover:text-deep-green transition-colors duration-200 relative group">
+                    3) Components
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-teal-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#layout" class="hover:text-deep-green transition-colors duration-200 relative group">
+                    4) Layout & Spacing
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-teal-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#motion" class="hover:text-deep-green transition-colors duration-200 relative group">
+                    5) Motion
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-teal-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#icons" class="hover:text-deep-green transition-colors duration-200 relative group">
+                    6) Icons
+                    <span class="absolute -bottom-1 left-0 w-0 h-px bg-teal-green transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="index.html" target="_blank" class="hidden sm:inline-block text-xs font-medium text-teal-green/80 hover:text-deep-green transition-colors">Live Template ↗</a>
+                <a href="#typography" class="btn-shine btn-bounce text-xs font-semibold bg-deep-green text-off-white px-4 py-2 rounded-full hover:bg-teal-green transition-colors">Showcase Spec</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <main class="flex-grow">
+
+        <!-- ==============================================
+             0) HERO SECTION (Exact Clone, Text Adapted)
+             ============================================== -->
+        <section id="hero" class="pt-32 pb-24 relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid -z-20 pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left Column: Adapted Text Copy -->
+                <div class="space-y-8 relative z-20">
+                    <div class="fade-in-up">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-green/20 bg-teal-green/5 text-[10px] uppercase tracking-wider font-semibold text-teal-green hover:bg-teal-green/10 transition-colors cursor-default">
+                            <span class="w-1.5 h-1.5 rounded-full bg-teal-green animate-pulse"></span>
+                            Design System v2.0
+                        </div>
+                    </div>
+
+                    <h1 class="fade-in-up delay-100 text-5xl sm:text-6xl font-semibold font-arimo tracking-tight text-deep-green leading-[1.1]">
+                        Design System for <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-green via-deep-green to-teal-green animate-gradient-x">modern builders.</span>
+                    </h1>
+                    
+                    <p class="fade-in-up delay-200 text-lg text-teal-green/90 max-w-lg leading-relaxed font-light">
+                        Explore the living pattern library built using the exact HTML layouts, CSS variables, interactive triggers, 3D transformations, and typography styles of the reference template.
+                    </p>
+
+                    <div class="fade-in-up delay-300 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <a href="#typography" class="btn-shine btn-bounce group relative px-6 py-3 bg-deep-green text-off-white rounded-full font-semibold text-sm overflow-hidden transition-all hover:bg-teal-green hover:shadow-[0_0_20px_rgba(9,100,94,0.25)] hover:pr-10">
+                            <span class="relative z-10">Explore Specs</span>
+                            <span class="iconify absolute right-3.5 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" data-icon="lucide:arrow-right"></span>
+                        </a>
+                        
+                        <a href="#components" class="btn-bounce px-6 py-3 text-teal-green hover:text-deep-green flex items-center gap-2 text-sm font-semibold transition-colors group">
+                            <span class="iconify group-hover:scale-110 transition-transform duration-300 text-teal-green" data-icon="lucide:play-circle" data-width="18"></span>
+                            Interactive Demos
+                        </a>
+                    </div>
+                    
+                    <div class="fade-in-up delay-300 pt-8 flex items-center gap-6 text-teal-green/60">
+                        <div class="flex items-center gap-2 hover:text-deep-green transition-colors cursor-default">
+                            <span class="iconify" data-icon="lucide:shield-check"></span>
+                            <span class="text-xs">Tailwind CSS</span>
+                        </div>
+                        <div class="flex items-center gap-2 hover:text-deep-green transition-colors cursor-default">
+                            <span class="iconify" data-icon="lucide:zap"></span>
+                            <span class="text-xs">Fluid Motion</span>
+                        </div>
+                        <div class="flex items-center gap-2 hover:text-deep-green transition-colors cursor-default">
+                            <span class="iconify" data-icon="lucide:globe"></span>
+                            <span class="text-xs">Pixel Perfect</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: 3D Credit Card (Exact Clone with Dark Emerald Base for Contrast) -->
+                <div class="relative h-[400px] sm:h-[500px] flex items-center justify-center fade-in-up delay-200 lg:justify-end">
+                    <div id="cardContainer" class="card-container group relative w-full max-w-sm sm:max-w-md aspect-[1.586/1] z-10 cursor-pointer">
+                        
+                        <div id="card3d" class="card-3d relative w-full h-full rounded-2xl will-change-transform">
+                            <!-- Depth Layers -->
+                            <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-1 border border-white/5 pointer-events-none"></div>
+                            <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-2 border border-white/5 pointer-events-none"></div>
+                            <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-3 border border-white/5 pointer-events-none"></div>
+                            <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-4 border border-white/5 pointer-events-none"></div>
+                            <div class="absolute inset-0 rounded-2xl bg-black/40 layer-depth-5 shadow-2xl pointer-events-none"></div>
+
+                            <!-- Card Content (Front Panel) -->
+                            <div class="absolute inset-0 rounded-2xl epic-gradient glass-panel overflow-hidden">
+                                <!-- Ambient Noise Texture -->
+                                <div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%221%22%2F%3E%3C%2Fsvg%3E');"></div>
+                                <!-- Linear overlay gradient -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 pointer-events-none"></div>
+                                <!-- Card Glare dynamic effect -->
+                                <div id="cardGlare" class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+                                <!-- Actual Text elements (Off-white for high legibility over dark card) -->
+                                <div class="relative h-full flex flex-col justify-between p-6 sm:p-8 z-10 pointer-events-none font-sans text-off-white">
+                                    <!-- Header: Logo and NFC icon -->
+                                    <div class="flex justify-between items-start">
+                                        <div class="flex items-center gap-2 text-off-white">
+                                            <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-sm">
+                                                <span class="font-semibold text-lg tracking-tighter font-arimo">N</span>
+                                            </div>
+                                            <span class="text-sm font-medium tracking-wide uppercase opacity-80 font-arimo">Nova</span>
+                                        </div>
+                                        <span class="iconify text-off-white/60" data-icon="lucide:nfc" data-width="28" style="stroke-width: 1.5;"></span>
+                                    </div>
+
+                                    <!-- Middle: Chip & Card number -->
+                                    <div class="flex flex-col gap-6 mt-2">
+                                        <!-- Chip SVG component -->
+                                        <div class="w-12 h-9 rounded-md chip relative border border-white/20 shadow-sm flex items-center justify-center overflow-hidden">
+                                            <div class="absolute inset-0 border border-black/10 rounded-md"></div>
+                                            <div class="absolute w-[1px] h-full bg-black/10 left-1/3"></div>
+                                            <div class="absolute w-[1px] h-full bg-black/10 right-1/3"></div>
+                                            <div class="absolute h-[1px] w-full bg-black/10 top-1/2"></div>
+                                            <div class="absolute w-6 h-4 border border-black/10 rounded-sm"></div>
+                                        </div>
+                                        <!-- Number code -->
+                                        <div class="flex justify-between items-center w-full max-w-[90%]">
+                                            <span class="text-lg sm:text-2xl font-mono-card text-off-white/90 tracking-widest drop-shadow-md">4242</span>
+                                            <span class="text-lg sm:text-2xl font-mono-card text-off-white/90 tracking-widest drop-shadow-md">9911</span>
+                                            <span class="text-lg sm:text-2xl font-mono-card text-off-white/90 tracking-widest drop-shadow-md">6224</span>
+                                            <span class="text-lg sm:text-2xl font-mono-card text-off-white/90 tracking-widest drop-shadow-md">1085</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom: Owner details & Brand indicator (Teal/Vibrant Inverted circles) -->
+                                    <div class="flex justify-between items-end">
+                                        <div class="flex flex-col text-off-white">
+                                            <span class="text-[10px] uppercase tracking-widest text-off-white/50 mb-1 font-medium">Cardholder</span>
+                                            <span class="text-sm sm:text-base font-medium tracking-wide uppercase">Jordan Rivers</span>
+                                        </div>
+                                        <div class="flex flex-col items-end text-off-white">
+                                            <span class="text-[10px] uppercase tracking-widest text-off-white/50 mb-1 font-medium">Expires</span>
+                                            <span class="text-sm sm:text-base font-mono-card tracking-wide">09/28</span>
+                                        </div>
+                                        <div class="relative flex items-center ml-4">
+                                            <div class="w-8 h-8 rounded-full bg-teal-green/80 backdrop-blur-sm mix-blend-screen z-10 animate-pulse"></div>
+                                            <div class="w-8 h-8 rounded-full bg-vibrant-green/80 backdrop-blur-sm -ml-4 z-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Card Shadow dynamic indicator -->
+                        <div id="cardShadow" class="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-deep-green/10 blur-xl rounded-[100%] transition-all duration-500 opacity-40"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==============================================
+             1) TYPOGRAPHY SECTION
+             ============================================== -->
+        <section id="typography" class="py-24 border-t border-teal-green/10 bg-white/30">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal-on-scroll flex flex-col mb-16">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-teal-green mb-2">01 / SPECIFICATIONS</span>
+                    <h2 class="text-3xl font-semibold font-arimo tracking-tight text-deep-green">Typography</h2>
+                    <p class="text-teal-green text-sm max-w-lg mt-2">Active fonts: <span class="text-deep-green font-bold font-arimo text-xs">Arimo</span> for content headings and titles, <span class="text-deep-green font-bold text-xs">Manrope</span> for subtitles, text descriptions, labels, and lists.</p>
+                </div>
+
+                <div class="reveal-on-scroll ds-glass-panel rounded-3xl overflow-hidden border border-teal-green/10">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse font-sans">
+                            <thead>
+                                <tr class="border-b border-teal-green/10 bg-[#09645E]/5 text-xs font-bold uppercase tracking-wider text-deep-green">
+                                    <th class="p-6">Style Name</th>
+                                    <th class="p-6">Live Preview</th>
+                                    <th class="p-6 text-right">Scale Details</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-teal-green/10 text-sm text-deep-green">
+                                <!-- Heading 1 -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Heading 1 (Arimo)</td>
+                                    <td class="p-6">
+                                        <h1 class="text-5xl sm:text-6xl font-semibold font-arimo tracking-tight text-deep-green leading-[1.1]">
+                                            Nova Banking built for <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-green via-deep-green to-teal-green animate-gradient-x">modern founders</span>
+                                        </h1>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">60px / 66px (1.1)</td>
+                                </tr>
+                                <!-- Heading 2 -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Heading 2 (Arimo)</td>
+                                    <td class="p-6">
+                                        <h2 class="text-3xl font-semibold font-arimo tracking-tight text-deep-green">Trusted by modern founders</h2>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">30px / 36px</td>
+                                </tr>
+                                <!-- Heading 3 -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Heading 3 (Arimo)</td>
+                                    <td class="p-6">
+                                        <h3 class="text-lg font-medium font-arimo text-deep-green">Real-time Analytics</h3>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">18px / 28px</td>
+                                </tr>
+                                <!-- Heading 4 -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Heading 4 (Arimo)</td>
+                                    <td class="p-6">
+                                        <h4 class="text-sm font-medium font-arimo text-deep-green">Alex Sarah</h4>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">14px / 20px</td>
+                                </tr>
+                                <!-- Bold M -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Bold M (Manrope)</td>
+                                    <td class="p-6">
+                                        <span class="text-sm font-bold text-deep-green uppercase tracking-wider">Get Started</span>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">14px / 20px (Bold)</td>
+                                </tr>
+                                <!-- Bold S -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Bold S (Manrope)</td>
+                                    <td class="p-6">
+                                        <span class="px-2 py-0.5 rounded-full bg-[#09645E]/10 text-[10px] font-semibold text-teal-green border border-teal-green/20 uppercase tracking-wide">Popular</span>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">10px / 14px (Semibold)</td>
+                                </tr>
+                                <!-- Paragraph -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Paragraph (Manrope)</td>
+                                    <td class="p-6">
+                                        <p class="text-lg text-teal-green font-light leading-relaxed max-w-xl">
+                                            Experience the future of financial management. Real-time insights, instant transfers, and zero hidden fees.
+                                        </p>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">18px / 29px (Light)</td>
+                                </tr>
+                                <!-- Regular L/M/S -->
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Regular M (Manrope)</td>
+                                    <td class="p-6">
+                                        <p class="text-sm text-teal-green/75 leading-relaxed max-w-md">
+                                            Track every transaction as it happens. Visualize spending patterns with zero latency.
+                                        </p>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">14px / 23px (Regular)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-6 font-mono text-xs text-teal-green/70">Regular S (Manrope)</td>
+                                    <td class="p-6">
+                                        <p class="text-xs text-teal-green/60 leading-relaxed max-w-xs">
+                                            Redefining the standard for modern banking. Built for high-growth startups.
+                                        </p>
+                                    </td>
+                                    <td class="p-6 text-right font-mono text-xs text-teal-green/80 whitespace-nowrap">12px / 18px (Regular)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             2) COLORS & SURFACES
+             ============================================== -->
+        <section id="colors" class="py-24 border-t border-teal-green/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal-on-scroll flex flex-col mb-16">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-teal-green mb-2">02 / INTERFACE DESIGN</span>
+                    <h2 class="text-3xl font-semibold font-arimo tracking-tight text-deep-green">Colors & Surfaces</h2>
+                    <p class="text-teal-green text-sm max-w-lg mt-2">Premium inverted off-white theme palette, dark green typography highlights, and vibrant lime glows.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-sans">
+                    
+                    <!-- Colors Column -->
+                    <div class="reveal-on-scroll space-y-6">
+                        <h3 class="text-lg font-medium font-arimo text-deep-green border-b border-teal-green/10 pb-2">Color Palette Swatches</h3>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Background Light -->
+                            <div class="p-4 rounded-xl border border-teal-green/10 bg-off-white flex flex-col justify-between h-28 shadow-sm">
+                                <div class="text-[10px] text-teal-green uppercase tracking-widest font-mono">Page background</div>
+                                <div>
+                                    <div class="text-xs font-bold text-deep-green">Off-white</div>
+                                    <div class="text-[10px] text-teal-green font-mono">#FEFDED</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Primary Accent -->
+                            <div class="p-4 rounded-xl border border-deep-green/20 bg-deep-green flex flex-col justify-between h-28 text-off-white shadow-md">
+                                <div class="text-[10px] text-off-white/70 uppercase tracking-widest font-mono">Primary Green</div>
+                                <div>
+                                    <div class="text-xs font-bold text-off-white flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded bg-deep-green border border-white/20"></span>
+                                        Deep Green
+                                    </div>
+                                    <div class="text-[10px] text-off-white/80 font-mono">#003333</div>
+                                </div>
+                            </div>
+
+                            <!-- Secondary Accent -->
+                            <div class="p-4 rounded-xl border border-teal-green/20 bg-teal-green flex flex-col justify-between h-28 text-off-white shadow-sm">
+                                <div class="text-[10px] text-off-white/70 uppercase tracking-widest font-mono">Secondary Accent</div>
+                                <div>
+                                    <div class="text-xs font-bold text-off-white flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded bg-teal-green border border-white/20"></span>
+                                        Teal Green
+                                    </div>
+                                    <div class="text-[10px] text-off-white/80 font-mono">#09645E</div>
+                                </div>
+                            </div>
+
+                            <!-- Tertiary Accent -->
+                            <div class="p-4 rounded-xl border border-vibrant-green/30 bg-vibrant-green flex flex-col justify-between h-28 text-deep-green shadow-sm">
+                                <div class="text-[10px] text-deep-green/70 uppercase tracking-widest font-mono">Tertiary Accent</div>
+                                <div>
+                                    <div class="text-xs font-bold text-deep-green flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded bg-vibrant-green border border-deep-green/10"></span>
+                                        Vibrant Green
+                                    </div>
+                                    <div class="text-[10px] text-deep-green/80 font-mono">#E4ED2C</div>
+                                </div>
+                            </div>
+
+                            <!-- Solid white for contrast blocks -->
+                            <div class="p-4 rounded-xl border border-teal-green/10 bg-white flex flex-col justify-between h-28 shadow-sm">
+                                <div class="text-[10px] text-teal-green uppercase tracking-widest font-mono">Clean Surface</div>
+                                <div>
+                                    <div class="text-xs font-bold text-deep-green">Solid White</div>
+                                    <div class="text-[10px] text-teal-green font-mono">#FFFFFF</div>
+                                </div>
+                            </div>
+
+                            <!-- Border divider gray-teal -->
+                            <div class="p-4 rounded-xl border border-teal-green/15 bg-white/50 flex flex-col justify-between h-28 shadow-sm">
+                                <div class="text-[10px] text-teal-green uppercase tracking-widest font-mono">Border Outline</div>
+                                <div>
+                                    <div class="text-xs font-bold text-deep-green">Teal opacity 10%</div>
+                                    <div class="text-[10px] text-teal-green font-mono">rgba(9,100,94,0.1)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Surfaces Column -->
+                    <div class="reveal-on-scroll space-y-6">
+                        <h3 class="text-lg font-medium font-arimo text-deep-green border-b border-teal-green/10 pb-2">Surface Patterns</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Glass Panel Component (Light variant) -->
+                            <div class="p-6 rounded-2xl ds-glass-panel relative overflow-hidden">
+                                <span class="absolute top-4 right-4 font-mono text-[9px] uppercase tracking-wider text-teal-green/50">.ds-glass-panel</span>
+                                <h4 class="text-sm font-bold text-deep-green mb-1">Frosted Glass Surface</h4>
+                                <p class="text-xs text-teal-green">A modern glass surface styled with light-mode blur, light border reflections, and delicate drop-shadows.</p>
+                            </div>
+
+                            <!-- Background Grid Component (Light variant) -->
+                            <div class="p-6 rounded-2xl border border-teal-green/10 bg-white relative overflow-hidden min-h-[90px] flex flex-col justify-center shadow-sm">
+                                <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+                                <span class="absolute top-4 right-4 font-mono text-[9px] uppercase tracking-wider text-teal-green/50">.bg-grid</span>
+                                <h4 class="text-sm font-bold text-deep-green mb-1 z-10">Radial Grid Mask</h4>
+                                <p class="text-xs text-teal-green z-10">Dark green geometric alignment lines faded out progressively from the viewport center.</p>
+                            </div>
+
+                            <!-- Epic Gradient and Shimmer (Remains dark for card contrast highlight) -->
+                            <div class="p-6 rounded-2xl epic-gradient relative overflow-hidden min-h-[90px] flex flex-col justify-center shadow-md">
+                                <span class="absolute top-4 right-4 font-mono text-[9px] uppercase tracking-wider text-white/50">.epic-gradient</span>
+                                <h4 class="text-sm font-semibold text-white mb-1 drop-shadow-md">Epic Card Shimmer</h4>
+                                <p class="text-xs text-off-white/90 drop-shadow-md">Active emerald-to-teal linear gradient highlighted with vibrant yellow shine.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             3) UI COMPONENTS
+             ============================================== -->
+        <section id="components" class="py-24 border-t border-teal-green/10 bg-white/30">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal-on-scroll flex flex-col mb-16">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-teal-green mb-2">03 / FUNCTIONAL BLOCKS</span>
+                    <h2 class="text-3xl font-semibold font-arimo tracking-tight text-deep-green">UI Components</h2>
+                    <p class="text-teal-green text-sm max-w-lg mt-2">Functional interactive elements, inverted dark green states, and cycle switches.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-sans">
+                    
+                    <!-- Buttons Catalog -->
+                    <div class="reveal-on-scroll space-y-6">
+                        <h3 class="text-lg font-medium font-arimo text-deep-green border-b border-teal-green/10 pb-2">Button States</h3>
+                        
+                        <div class="grid grid-cols-2 gap-6 bg-white/70 border border-teal-green/10 p-6 rounded-2xl shadow-sm">
+                            <!-- Deep Green Primary Button -->
+                            <div class="flex flex-col gap-2">
+                                <span class="font-mono text-[9px] text-teal-green/60 uppercase">Primary Default</span>
+                                <button class="btn-bounce bg-deep-green text-off-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-teal-green transition-colors duration-200">
+                                    Get Started
+                                </button>
+                            </div>
+                            
+                            <!-- Primary Shimmer Button -->
+                            <div class="flex flex-col gap-2">
+                                <span class="font-mono text-[9px] text-teal-green/60 uppercase">Primary Shimmer</span>
+                                <button class="btn-shine btn-bounce bg-deep-green text-off-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-teal-green">
+                                    Start for Free
+                                </button>
+                            </div>
+
+                            <!-- Bordered Secondary Button -->
+                            <div class="flex flex-col gap-2">
+                                <span class="font-mono text-[9px] text-teal-green/60 uppercase">Secondary Outline</span>
+                                <button class="btn-bounce border border-deep-green/30 text-deep-green text-xs font-semibold px-4 py-2 rounded-full hover:bg-deep-green hover:text-off-white transition-colors duration-300">
+                                    Get Started
+                                </button>
+                            </div>
+
+                            <!-- Inline link / Hover -->
+                            <div class="flex flex-col gap-2">
+                                <span class="font-mono text-[9px] text-teal-green/60 uppercase">Inline Link / Hover</span>
+                                <button class="btn-bounce text-teal-green hover:text-deep-green flex items-center gap-1 text-xs font-bold">
+                                    Watch Showreel
+                                    <span class="iconify text-teal-green" data-icon="lucide:play-circle" data-width="16"></span>
+                                </button>
+                            </div>
+
+                            <!-- Disabled Button State -->
+                            <div class="flex flex-col gap-2 col-span-2">
+                                <span class="font-mono text-[9px] text-teal-green/60 uppercase">Disabled State</span>
+                                <button class="bg-[#09645E]/10 text-teal-green/35 border border-teal-green/5 text-xs font-semibold px-4 py-2.5 rounded-full cursor-not-allowed" disabled>
+                                    Limit Reached
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Micro Components (Card and Toggles) -->
+                    <div class="reveal-on-scroll space-y-6">
+                        <h3 class="text-lg font-medium font-arimo text-deep-green border-b border-teal-green/10 pb-2">Micro Components</h3>
+                        
+                        <div class="space-y-6 bg-white/70 border border-teal-green/10 p-6 rounded-2xl shadow-sm">
+                            <!-- Pricing Custom Toggle Selector -->
+                            <div class="flex flex-col gap-3">
+                                <span class="font-mono text-[9px] text-teal-green/60 uppercase">Pricing Cycle Toggle</span>
+                                <div class="flex items-center gap-3 bg-white border border-teal-green/15 p-1 rounded-full relative w-fit">
+                                    <div class="w-[1px] h-4 bg-teal-green/20 mx-auto absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-0"></div>
+                                    <button class="relative z-10 px-4 py-1.5 rounded-full text-[10px] font-bold text-off-white bg-deep-green shadow-sm transition-all duration-300 hover:scale-105 active:scale-95" id="uiMonthlyBtn">Monthly</button>
+                                    <button class="relative z-10 px-4 py-1.5 rounded-full text-[10px] font-bold text-teal-green hover:text-deep-green transition-all duration-300 hover:scale-105 active:scale-95" id="uiYearlyBtn">Yearly</button>
+                                </div>
+                                <span class="text-[10px] text-teal-green">Live toggle switcher (Click to toggle styling states).</span>
+                            </div>
+
+                            <!-- Card Chip -->
+                            <div class="flex flex-col gap-3">
+                                <span class="font-mono text-[9px] text-teal-green/60 uppercase">Credit Card Sim Chip</span>
+                                <div class="flex items-center gap-6">
+                                    <div class="w-12 h-9 rounded-md chip relative border border-white/20 shadow-sm flex items-center justify-center overflow-hidden">
+                                        <div class="absolute inset-0 border border-black/10 rounded-md"></div>
+                                        <div class="absolute w-[1px] h-full bg-black/10 left-1/3"></div>
+                                        <div class="absolute w-[1px] h-full bg-black/10 right-1/3"></div>
+                                        <div class="absolute h-[1px] w-full bg-black/10 top-1/2"></div>
+                                        <div class="absolute w-6 h-4 border border-black/10 rounded-sm"></div>
+                                    </div>
+                                    <div class="text-xs text-teal-green leading-relaxed">
+                                        Inverted chip styling incorporating vibrant Lime `#E4ED2C` & Teal `#09645E` metallic hues.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             4) LAYOUT & SPACING
+             ============================================== -->
+        <section id="layout" class="py-24 border-t border-teal-green/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal-on-scroll flex flex-col mb-16">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-teal-green mb-2">04 / ARCHITECTURE</span>
+                    <h2 class="text-3xl font-semibold font-arimo tracking-tight text-deep-green">Layout & Spacing</h2>
+                    <p class="text-teal-green text-sm max-w-lg mt-2">Grid layouts visual blueprints and padding configurations mapping active content templates.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-sans">
+                    
+                    <!-- 3-Column Features Wireframe Layout -->
+                    <div class="reveal-on-scroll space-y-4">
+                        <h3 class="text-sm font-semibold text-deep-green tracking-wide uppercase">Pattern A: 3-Column Grid (Features)</h3>
+                        <div class="p-6 bg-white border border-teal-green/10 rounded-2xl space-y-4 shadow-sm">
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="p-4 border border-dashed border-teal-green/30 bg-teal-green/5 rounded-lg text-center font-mono text-[10px] text-teal-green">
+                                    Col 1
+                                </div>
+                                <div class="p-4 border border-dashed border-teal-green/30 bg-teal-green/5 rounded-lg text-center font-mono text-[10px] text-teal-green">
+                                    Col 2
+                                </div>
+                                <div class="p-4 border border-dashed border-teal-green/30 bg-teal-green/5 rounded-lg text-center font-mono text-[10px] text-teal-green">
+                                    Col 3
+                                </div>
+                            </div>
+                            <div class="text-xs text-teal-green/60 font-mono">
+                                CSS: grid grid-cols-1 md:grid-cols-3 gap-6
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Split Columns Wireframe Layout -->
+                    <div class="reveal-on-scroll space-y-4">
+                        <h3 class="text-sm font-semibold text-deep-green tracking-wide uppercase">Pattern B: Split Layout (Hero & Sections)</h3>
+                        <div class="p-6 bg-white border border-teal-green/10 rounded-2xl space-y-4 shadow-sm">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                                <div class="md:col-span-7 p-4 border border-dashed border-teal-green/30 bg-teal-green/5 rounded-lg text-center font-mono text-[10px] text-teal-green">
+                                    Left Content Column (7 cols / text info)
+                                </div>
+                                <div class="md:col-span-5 p-4 border border-dashed border-teal-green/30 bg-teal-green/5 rounded-lg text-center font-mono text-[10px] text-teal-green">
+                                    Right Visual Area (5 cols / cards)
+                                </div>
+                            </div>
+                            <div class="text-xs text-teal-green/60 font-mono">
+                                CSS: grid grid-cols-1 lg:grid-cols-12 gap-16 items-center
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             5) MOTION & INTERACTION
+             ============================================== -->
+        <section id="motion" class="py-24 border-t border-teal-green/10 bg-white/30">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal-on-scroll flex flex-col mb-16">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-teal-green mb-2">05 / DYNAMIC EXPERIENCE</span>
+                    <h2 class="text-3xl font-semibold font-arimo tracking-tight text-deep-green">Motion & Interaction</h2>
+                    <p class="text-teal-green text-sm max-w-lg mt-2">Test bench of live interactive components. Hover and trigger animations below.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 font-sans">
+                    
+                    <!-- Trigger animations -->
+                    <div class="reveal-on-scroll space-y-6">
+                        <h3 class="text-lg font-medium font-arimo text-deep-green border-b border-teal-green/10 pb-2">Entrance Animations Test Bench</h3>
+                        <p class="text-xs text-teal-green">Trigger custom classes: fadeInUp with respective cascade delay structures.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <button id="playAnimBtn" class="btn-bounce text-xs font-semibold px-4 py-2.5 bg-deep-green text-off-white rounded-full hover:bg-teal-green transition-colors">
+                                    Replay Entrance Sequence
+                                </button>
+                            </div>
+                            
+                            <!-- Test target container -->
+                            <div id="animSandbox" class="p-6 bg-white border border-teal-green/10 rounded-2xl space-y-4 shadow-sm">
+                                <div class="demo-box p-3 bg-off-white border border-teal-green/5 rounded-xl font-mono text-xs text-deep-green">
+                                    Element A (.fade-in-up)
+                                </div>
+                                <div class="demo-box p-3 bg-off-white border border-teal-green/5 rounded-xl font-mono text-xs text-deep-green">
+                                    Element B (.fade-in-up .delay-100)
+                                </div>
+                                <div class="demo-box p-3 bg-off-white border border-teal-green/5 rounded-xl font-mono text-xs text-deep-green">
+                                    Element C (.fade-in-up .delay-200)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Isolated 3D tilt Card -->
+                    <div class="reveal-on-scroll space-y-6">
+                        <h3 class="text-lg font-medium font-arimo text-deep-green border-b border-teal-green/10 pb-2">Isolated 3D Card Hover</h3>
+                        <p class="text-xs text-teal-green">Interact with the card below to test custom 3D rotation, dynamic glare translation, and shadow blur triggers.</p>
+                        
+                        <div class="flex justify-center p-6 bg-white border border-teal-green/10 rounded-2xl relative shadow-sm">
+                            <div id="motionCardContainer" class="card-container group relative w-full max-w-xs aspect-[1.586/1] z-10 cursor-pointer">
+                                
+                                <div id="motionCard3d" class="card-3d relative w-full h-full rounded-2xl will-change-transform">
+                                    <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-1 border border-white/5 pointer-events-none"></div>
+                                    <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-2 border border-white/5 pointer-events-none"></div>
+                                    <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-3 border border-white/5 pointer-events-none"></div>
+                                    <div class="absolute inset-0 rounded-2xl bg-deep-green/95 layer-depth-4 border border-white/5 pointer-events-none"></div>
+                                    <div class="absolute inset-0 rounded-2xl bg-black/40 layer-depth-5 shadow-2xl pointer-events-none"></div>
+
+                                    <div class="absolute inset-0 rounded-2xl epic-gradient glass-panel overflow-hidden">
+                                        <div class="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%221%22%2F%3E%3C%2Fsvg%3E');"></div>
+                                        <div class="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 pointer-events-none"></div>
+                                        <div id="motionCardGlare" class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+                                        <div class="relative h-full flex flex-col justify-between p-6 z-10 pointer-events-none text-off-white font-sans">
+                                            <div class="flex justify-between items-start">
+                                                <div class="flex items-center gap-1.5 text-off-white">
+                                                    <div class="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-sm">
+                                                        <span class="font-semibold text-sm tracking-tighter font-arimo">N</span>
+                                                    </div>
+                                                    <span class="text-xs font-medium tracking-wide uppercase opacity-80 font-arimo">Nova</span>
+                                                </div>
+                                                <span class="iconify text-off-white/60" data-icon="lucide:nfc" data-width="22"></span>
+                                            </div>
+
+                                            <div class="flex flex-col gap-4">
+                                                <div class="w-10 h-7 rounded-sm chip relative border border-white/20 shadow-sm overflow-hidden"></div>
+                                                <div class="flex justify-between items-center w-full">
+                                                    <span class="text-base font-mono-card text-off-white/90 tracking-widest drop-shadow-md">•••• •••• •••• 1085</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex justify-between items-end text-[10px] text-off-white">
+                                                <div class="flex flex-col">
+                                                    <span class="text-[8px] uppercase tracking-widest text-off-white/50 mb-0.5 font-medium">Cardholder</span>
+                                                    <span class="font-medium tracking-wide uppercase">Jordan Rivers</span>
+                                                </div>
+                                                <div class="relative flex items-center">
+                                                    <div class="w-6 h-6 rounded-full bg-teal-green/80 backdrop-blur-sm mix-blend-screen z-10 animate-pulse"></div>
+                                                    <div class="w-6 h-6 rounded-full bg-vibrant-green/80 backdrop-blur-sm -ml-3 z-0"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="motionCardShadow" class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-6 bg-deep-green/10 blur-xl rounded-[100%] transition-all duration-500 opacity-40"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             6) ICONS
+             ============================================== -->
+        <section id="icons" class="py-24 border-t border-teal-green/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal-on-scroll flex flex-col mb-16">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-teal-green mb-2">06 / ICONOGRAPHY</span>
+                    <h2 class="text-3xl font-semibold font-arimo tracking-tight text-deep-green">Icons Reference</h2>
+                    <p class="text-teal-green text-sm max-w-lg mt-2">Gallery of Iconify widgets referenced in components across the landing template.</p>
+                </div>
+
+                <div class="reveal-on-scroll grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 font-sans">
+                    <!-- NFC Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:nfc" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:nfc</span>
+                    </div>
+
+                    <!-- Activity Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:activity" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:activity</span>
+                    </div>
+
+                    <!-- Credit Card Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:credit-card" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:credit-card</span>
+                    </div>
+
+                    <!-- Lock Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:lock" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:lock</span>
+                    </div>
+
+                    <!-- Shield Check Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:shield-check" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:shield-check</span>
+                    </div>
+
+                    <!-- Zap Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:zap" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:zap</span>
+                    </div>
+
+                    <!-- Globe Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:globe" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:globe</span>
+                    </div>
+
+                    <!-- Play Circle Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:play-circle" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:play-circle</span>
+                    </div>
+
+                    <!-- Check Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:check" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:check</span>
+                    </div>
+
+                    <!-- Twitter Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:twitter" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:twitter</span>
+                    </div>
+
+                    <!-- Github Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:github" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:github</span>
+                    </div>
+
+                    <!-- Linkedin Icon -->
+                    <div class="p-6 bg-white border border-teal-green/10 rounded-2xl flex flex-col items-center justify-center gap-3 shadow-sm group hover:border-teal-green/30 transition-colors">
+                        <span class="iconify text-teal-green group-hover:text-deep-green transition-colors" data-icon="lucide:linkedin" data-width="32"></span>
+                        <span class="font-mono text-[10px] text-teal-green/60">lucide:linkedin</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer of Showcase -->
+    <footer class="border-t border-teal-green/10 bg-white/40 py-8 text-center text-xs text-teal-green/80 font-sans">
+        <div class="max-w-7xl mx-auto px-6">
+            Nova Banking Showcase Design System. Rebuilt with Arimo & Manrope light inversion.
+        </div>
+    </footer>
+
+    <!-- Interactive script triggers and behaviors -->
+    <script>
+        // Scroll Animation Logic using Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.05
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'shadow-teal-green/5', 'bg-off-white/95');
+                navbar.classList.remove('bg-off-white/85', 'border-b');
+                navbar.style.borderBottom = '1px solid rgba(9,100,94,0.15)';
+            } else {
+                navbar.classList.remove('shadow-md', 'shadow-teal-green/5', 'bg-off-white/95');
+                navbar.classList.add('bg-off-white/85', 'border-b');
+                navbar.style.borderBottom = '1px solid rgba(9,100,94,0.1)';
+            }
+        });
+
+        // Interactive Card logic: reusable tilt function
+        function applyTiltLogic(containerId, cardId, glareId, shadowId) {
+            const container = document.getElementById(containerId);
+            const card = document.getElementById(cardId);
+            const glare = document.getElementById(glareId);
+            const shadow = document.getElementById(shadowId);
+            const rotationLimit = 20;
+            
+            if (!container || !card) return;
+
+            container.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.1s ease-out';
+                if (shadow) shadow.style.transition = 'all 0.1s ease-out';
+                if (glare) glare.style.opacity = '1';
+                if (shadow) {
+                    shadow.style.width = '80%';
+                    shadow.style.opacity = '0.6';
+                    shadow.style.filter = 'blur(24px)';
+                }
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const rotateY = (x / (rect.width / 2)) * rotationLimit;
+                const rotateX = (y / (rect.height / 2)) * -rotationLimit;
+
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                if (glare) {
+                    glare.style.background = `linear-gradient(${135 + rotateY}deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)`;
+                }
+            });
+
+            container.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+                if (shadow) shadow.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+                
+                // Return to static angle
+                card.style.transform = 'rotateX(10deg) rotateY(15deg) rotateZ(-2deg)';
+                if (glare) glare.style.opacity = '0';
+                if (shadow) {
+                    shadow.style.width = '90%';
+                    shadow.style.opacity = '0.4';
+                    shadow.style.filter = 'blur(16px)';
+                }
+            });
+        }
+
+        // Apply 3D card tilt script triggers
+        applyTiltLogic('cardContainer', 'card3d', 'cardGlare', 'cardShadow');
+        applyTiltLogic('motionCardContainer', 'motionCard3d', 'motionCardGlare', 'motionCardShadow');
+
+        // Play animations sequences logic
+        const playBtn = document.getElementById('playAnimBtn');
+        const sandbox = document.getElementById('animSandbox');
+        if (playBtn && sandbox) {
+            playBtn.addEventListener('click', () => {
+                const boxes = sandbox.querySelectorAll('.demo-box');
+                boxes.forEach((box, index) => {
+                    box.classList.remove('fade-in-up');
+                    box.classList.remove('delay-100', 'delay-200', 'delay-300');
+                    // Force DOM reflow
+                    void box.offsetWidth;
+                    
+                    // Re-apply classes
+                    box.classList.add('fade-in-up');
+                    if (index === 1) box.classList.add('delay-100');
+                    if (index === 2) box.classList.add('delay-200');
+                });
+            });
+        }
+
+        // Toggle monthly/yearly logic for components UI preview
+        const uiMonthly = document.getElementById('uiMonthlyBtn');
+        const uiYearly = document.getElementById('uiYearlyBtn');
+        if (uiMonthly && uiYearly) {
+            uiYearly.addEventListener('click', () => {
+                uiMonthly.classList.remove('bg-deep-green', 'text-off-white', 'shadow-sm');
+                uiMonthly.classList.add('text-teal-green');
+                uiYearly.classList.remove('text-teal-green');
+                uiYearly.classList.add('bg-deep-green', 'text-off-white', 'shadow-sm');
+            });
+            uiMonthly.addEventListener('click', () => {
+                uiYearly.classList.remove('bg-deep-green', 'text-off-white', 'shadow-sm');
+                uiYearly.classList.add('text-teal-green');
+                uiMonthly.classList.remove('text-teal-green');
+                uiMonthly.classList.add('bg-deep-green', 'text-off-white', 'shadow-sm');
+            });
+        }
+    </script>
+</body>
+</html>
