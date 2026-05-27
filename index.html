@@ -1618,6 +1618,233 @@
             outline: 2px solid var(--teal-green);
             outline-offset: 4px;
         }
+
+        /* ==========================================================================
+           7. TARGET AUDIENCE CAROUSEL SECTION
+           ========================================================================== */
+        .audience-section {
+            background-color: var(--deep-green);
+            color: var(--off-white);
+            padding: 100px 0;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .audience-header {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            padding: 0 24px;
+        }
+
+        .audience-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--off-white);
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .audience-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* Carousel Area */
+        .carousel-viewport {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            height: 380px;
+            margin: 0 auto 50px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Carousel Cards */
+        .carousel-card {
+            position: absolute;
+            width: 320px;
+            height: 300px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(254, 253, 237, 0.08);
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.6s ease,
+                        filter 0.6s ease,
+                        border-color 0.6s ease,
+                        background-color 0.6s ease,
+                        box-shadow 0.6s ease;
+            cursor: pointer;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .card-icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(254, 253, 237, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vibrant-green);
+            margin-bottom: 24px;
+            transition: var(--transition-smooth);
+        }
+
+        .carousel-card:hover .card-icon-circle {
+            transform: scale(1.1);
+            background-color: var(--vibrant-green);
+            color: var(--deep-green);
+            box-shadow: 0 4px 15px rgba(228, 237, 44, 0.4);
+        }
+
+        .carousel-card-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--off-white);
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .carousel-card-desc {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 300;
+            color: rgba(254, 253, 237, 0.7);
+        }
+
+        /* 3D Positions responsive configurations */
+        .carousel-card.pos-active {
+            transform: translateX(0) scale(1.05);
+            opacity: 1;
+            z-index: 20;
+            box-shadow: 
+                0 15px 35px -10px rgba(0, 0, 0, 0.5),
+                0 0 25px rgba(228, 237, 44, 0.08);
+            border-color: rgba(228, 237, 44, 0.35);
+            background-color: rgba(0, 51, 51, 0.95);
+        }
+
+        /* Desktop Translations */
+        .carousel-card.pos-prev {
+            transform: translateX(-260px) scale(0.85);
+            opacity: 0.3;
+            z-index: 10;
+            filter: blur(1.5px);
+            pointer-events: none;
+        }
+
+        .carousel-card.pos-next {
+            transform: translateX(260px) scale(0.85);
+            opacity: 0.3;
+            z-index: 10;
+            filter: blur(1.5px);
+            pointer-events: none;
+        }
+
+        /* Tablet Translations (640px to 1023px) */
+        @media (max-width: 1023px) {
+            .carousel-card.pos-prev {
+                transform: translateX(-180px) scale(0.85);
+            }
+            .carousel-card.pos-next {
+                transform: translateX(180px) scale(0.85);
+            }
+        }
+
+        /* Mobile Translations (<640px) */
+        @media (max-width: 640px) {
+            .carousel-viewport {
+                height: 340px;
+            }
+            .carousel-card {
+                width: 280px;
+                height: 270px;
+                padding: 30px 24px;
+            }
+            .carousel-card.pos-prev {
+                transform: translateX(-90px) scale(0.75);
+                opacity: 0.15;
+                filter: blur(2px);
+            }
+            .carousel-card.pos-next {
+                transform: translateX(90px) scale(0.75);
+                opacity: 0.15;
+                filter: blur(2px);
+            }
+        }
+
+        /* Nav Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(254, 253, 237, 0.12);
+            color: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+            transition: var(--transition-smooth);
+            outline: none;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--vibrant-green);
+            border-color: var(--vibrant-green);
+            color: var(--deep-green);
+            box-shadow: 0 4px 15px rgba(228, 237, 44, 0.25);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .btn-prev {
+            left: 20px;
+        }
+
+        .btn-next {
+            right: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .btn-prev {
+                left: 120px;
+            }
+            .btn-next {
+                right: 120px;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -2108,6 +2335,68 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Target Audience Carousel -->
+        <section id="para-quem" class="audience-section">
+            <!-- Dark Ambient Grid Pattern -->
+            <div class="bg-grid bg-grid-dark"></div>
+            
+            <div class="container">
+                <div class="audience-header">
+                    <h2 class="audience-title">A Sentra é para quem vende e não pode esperar</h2>
+                </div>
+                
+                <!-- 3D Card Carousel Viewport -->
+                <div class="carousel-viewport">
+                    <!-- Left Arrow Button -->
+                    <button class="carousel-btn btn-prev" id="prevBtn" aria-label="Slide anterior">
+                        <span class="iconify" data-icon="lucide:chevron-left" data-width="24"></span>
+                    </button>
+                    
+                    <!-- Carousel Track containing cards -->
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Card 0: Comércio Varejista -->
+                        <div class="carousel-card pos-prev" data-index="0">
+                            <div class="card-icon-circle">
+                                <span class="iconify" data-icon="lucide:store" data-width="32"></span>
+                            </div>
+                            <h3 class="carousel-card-title">Comércio Varejista</h3>
+                            <p class="carousel-card-desc">lojas que precisam de capital de giro para estoque</p>
+                        </div>
+                        
+                        <!-- Card 1: Prestadores de Serviço -->
+                        <div class="carousel-card pos-active" data-index="1">
+                            <div class="card-icon-circle">
+                                <span class="iconify" data-icon="lucide:users" data-width="32"></span>
+                            </div>
+                            <h3 class="carousel-card-title">Prestadores de Serviço</h3>
+                            <p class="carousel-card-desc">clínicas, salões, academias</p>
+                        </div>
+                        
+                        <!-- Card 2: PMEs -->
+                        <div class="carousel-card pos-next" data-index="2">
+                            <div class="card-icon-circle">
+                                <span class="iconify" data-icon="lucide:briefcase" data-width="32"></span>
+                            </div>
+                            <h3 class="carousel-card-title">PMEs</h3>
+                            <p class="carousel-card-desc">empresas que querem capital sem empréstimo caro</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Arrow Button -->
+                    <button class="carousel-btn btn-next" id="nextBtn" aria-label="Próximo slide">
+                        <span class="iconify" data-icon="lucide:chevron-right" data-width="24"></span>
+                    </button>
+                </div>
+                
+                <!-- Final CTA Button -->
+                <div class="cta-wrapper" style="margin-top: 30px;">
+                    <a href="#antecipar" class="btn-shine btn-bounce btn-vibrant" style="display: inline-block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
+                        Quero Antecipar Agora
+                    </a>
                 </div>
             </div>
         </section>
@@ -2619,6 +2908,127 @@
                 });
                 processObserver.observe(processSection);
             }
+
+            // ==========================================================================
+            // H.7 TARGET AUDIENCE CAROUSEL LOGIC
+            // ==========================================================================
+            const carouselCards = document.querySelectorAll('.carousel-card');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            let activeIdx = 1;
+            
+            function getTranslateX(positionName) {
+                const width = window.innerWidth;
+                if (width <= 640) {
+                    if (positionName === 'prev') return -90;
+                    if (positionName === 'next') return 90;
+                    return 0;
+                } else if (width <= 1023) {
+                    if (positionName === 'prev') return -180;
+                    if (positionName === 'next') return 180;
+                    return 0;
+                } else {
+                    if (positionName === 'prev') return -260;
+                    if (positionName === 'next') return 260;
+                    return 0;
+                }
+            }
+
+            function getScale(positionName) {
+                if (positionName === 'active') return 1.05;
+                if (window.innerWidth <= 640) return 0.75;
+                return 0.85;
+            }
+
+            function getOpacity(positionName) {
+                if (positionName === 'active') return 1;
+                if (window.innerWidth <= 640) return 0.15;
+                return 0.3;
+            }
+
+            function getBlur(positionName) {
+                if (positionName === 'active') return 0;
+                return 2;
+            }
+
+            function updateCarousel(newActiveIdx) {
+                activeIdx = (newActiveIdx + 3) % 3;
+                const prevIdx = (activeIdx - 1 + 3) % 3;
+                const nextIdx = (activeIdx + 1) % 3;
+                
+                carouselCards.forEach((card, idx) => {
+                    let pos = 'active';
+                    let zIndex = 20;
+                    let pointerEvents = 'auto';
+                    
+                    if (idx === prevIdx) {
+                        pos = 'prev';
+                        zIndex = 10;
+                        pointerEvents = 'none';
+                    } else if (idx === nextIdx) {
+                        pos = 'next';
+                        zIndex = 10;
+                        pointerEvents = 'none';
+                    }
+                    
+                    card.style.pointerEvents = pointerEvents;
+                    
+                    const xVal = getTranslateX(pos);
+                    const scaleVal = getScale(pos);
+                    const opacityVal = getOpacity(pos);
+                    const blurVal = getBlur(pos);
+                    
+                    if (prefersReducedMotion) {
+                        gsap.set(card, {
+                            x: xVal,
+                            scale: scaleVal,
+                            opacity: opacityVal,
+                            filter: `blur(${blurVal}px)`,
+                            zIndex: zIndex
+                        });
+                    } else {
+                        gsap.to(card, {
+                            x: xVal,
+                            scale: scaleVal,
+                            opacity: opacityVal,
+                            filter: `blur(${blurVal}px)`,
+                            zIndex: zIndex,
+                            duration: 0.65,
+                            ease: "power2.out"
+                        });
+                    }
+                    
+                    // Card border glow highlight logic
+                    if (pos === 'active') {
+                        card.style.borderColor = 'rgba(228, 237, 44, 0.35)';
+                        card.style.backgroundColor = 'rgba(0, 51, 51, 0.95)';
+                        card.setAttribute('aria-hidden', 'false');
+                    } else {
+                        card.style.borderColor = 'rgba(254, 253, 237, 0.08)';
+                        card.style.backgroundColor = 'rgba(255, 255, 255, 0.03)';
+                        card.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            }
+            
+            prevBtn.addEventListener('click', () => updateCarousel(activeIdx - 1));
+            nextBtn.addEventListener('click', () => updateCarousel(activeIdx + 1));
+            
+            carouselCards.forEach((card, idx) => {
+                card.addEventListener('click', () => {
+                    if (idx !== activeIdx) {
+                        updateCarousel(idx);
+                    }
+                });
+            });
+            
+            window.addEventListener('resize', () => {
+                updateCarousel(activeIdx);
+            });
+
+            // Initialize
+            updateCarousel(activeIdx);
         });
     </script>
 </body>
