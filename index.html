@@ -1950,40 +1950,6 @@
             border-top: 1px solid rgba(254, 253, 237, 0.05);
         }
 
-        .cta-bg-texture {
-            position: absolute;
-            right: -100px;
-            bottom: -100px;
-            width: 500px;
-            height: auto;
-            opacity: 0.035;
-            pointer-events: none;
-            z-index: 1;
-            transform: rotate(-15deg);
-        }
-
-        .cta-bg-texture svg {
-            width: 100%;
-            height: auto;
-        }
-
-        .cta-bg-texture-left {
-            position: absolute;
-            left: -150px;
-            top: -150px;
-            width: 600px;
-            height: auto;
-            opacity: 0.025;
-            pointer-events: none;
-            z-index: 1;
-            transform: rotate(25deg) scaleX(-1);
-        }
-
-        .cta-bg-texture-left svg {
-            width: 100%;
-            height: auto;
-        }
-
         .cta-glow {
             position: absolute;
             top: 50%;
@@ -2105,6 +2071,196 @@
             .final-cta-actions a {
                 width: 100%;
                 text-align: center;
+            }
+        }
+
+        /* ==========================================================================
+           7. SITE FOOTER
+           ========================================================================== */
+        .site-footer {
+            background-color: var(--deep-green);
+            color: rgba(254, 253, 237, 0.7);
+            padding: 80px 0 40px 0;
+            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.8fr 1fr 1.1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            height: 38px;
+            width: auto;
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        .footer-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(254, 253, 237, 0.75);
+            max-width: 280px;
+        }
+
+        .footer-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--off-white);
+            font-weight: 700;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background-color: var(--teal-green);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(254, 253, 237, 0.75);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--vibrant-green);
+            transform: translateX(4px);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: rgba(254, 253, 237, 0.05);
+            color: var(--off-white);
+            border: 1px solid rgba(254, 253, 237, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--vibrant-green);
+            color: var(--deep-green);
+            border-color: var(--vibrant-green);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .footer-contact-info {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.875rem;
+            color: rgba(254, 253, 237, 0.75);
+        }
+
+        .footer-contact-info li .iconify {
+            color: var(--teal-green);
+            flex-shrink: 0;
+        }
+
+        .footer-legal {
+            margin-top: 16px;
+            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            padding-top: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: rgba(254, 253, 237, 0.55);
+            line-height: 1.6;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: rgba(254, 253, 237, 0.4);
+            margin-top: 4px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 48px;
+            }
+            .footer-col-identity {
+                grid-column: span 2;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-footer {
+                padding: 60px 0 30px 0;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
+            .footer-col-identity {
+                grid-column: span 1;
+            }
+            .footer-bottom {
+                padding-top: 30px;
             }
         }
     </style>
@@ -2680,55 +2836,6 @@
 
         <!-- Section 6: Final CTA Section -->
         <section id="pronto" class="final-cta-section">
-            <!-- Background Texture Elements -->
-            <div class="cta-bg-texture-left">
-                <svg width="625" height="527" viewBox="0 0 625 527" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M76.2297 238.84H0.00976562V191.23H76.2297C98.9497 191.23 120.7 180.14 134.14 161.83C146.8 144.59 145.62 123.91 148.71 103.89C151.42 86.2801 157.74 69.0301 167.53 54.1001C186.72 24.8401 218.48 4.98009 253.26 0.840088C257.97 0.280088 262.72 0 267.46 0H624.2V47.6101H267.46C246.62 47.6101 226.49 56.92 212.93 72.74C202.54 84.86 198.08 100.93 196.38 116.53C194.17 136.85 191.06 158.23 181.16 176.4C164.85 206.32 135.83 228.4 102.57 235.91C93.9397 237.86 85.0897 238.84 76.2397 238.84H76.2297Z" fill="url(#paint0_linear_21_1452)"/>
-                    <path d="M220.1 382.7H0.00976562V335.09H220.1C242.82 335.09 264.57 324 278.01 305.69C290.67 288.45 289.49 267.77 292.58 247.75C295.29 230.14 301.61 212.89 311.4 197.96C330.59 168.7 362.35 148.84 397.13 144.7C401.84 144.14 406.59 143.86 411.33 143.86H624.2V191.47H411.33C390.49 191.47 370.36 200.78 356.8 216.6C346.41 228.72 341.95 244.79 340.25 260.39C338.04 280.71 334.93 302.09 325.03 320.26C308.72 350.18 279.7 372.26 246.44 379.77C237.81 381.72 228.96 382.7 220.11 382.7H220.1Z" fill="url(#paint1_linear_21_1452)"/>
-                    <path d="M363.96 526.57H0V478.96H363.96C386.68 478.96 408.43 467.87 421.87 449.56C434.53 432.32 433.35 411.64 436.44 391.62C439.15 374.01 445.47 356.76 455.26 341.83C474.45 312.57 506.21 292.71 540.99 288.57C545.7 288.01 550.45 287.73 555.19 287.73H624.19V335.34H555.19C534.35 335.34 514.22 344.65 500.66 360.47C490.27 372.59 485.81 388.66 484.11 404.26C481.9 424.58 478.79 445.96 468.89 464.13C452.58 494.05 423.56 516.13 390.3 523.64C381.67 525.59 372.82 526.57 363.97 526.57H363.96Z" fill="url(#paint2_linear_21_1452)"/>
-                    <defs>
-                        <linearGradient id="paint0_linear_21_1452" x1="0.00976562" y1="119.42" x2="624.19" y2="119.42" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#0B342B"/>
-                            <stop offset="0.32" stop-color="#076553"/>
-                            <stop offset="1" stop-color="#E1F11C"/>
-                        </linearGradient>
-                        <linearGradient id="paint1_linear_21_1452" x1="0.00976562" y1="263.29" x2="624.19" y2="263.29" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#0B342B"/>
-                            <stop offset="0.32" stop-color="#076553"/>
-                            <stop offset="1" stop-color="#E1F11C"/>
-                        </linearGradient>
-                        <linearGradient id="paint2_linear_21_1452" x1="0.01" y1="407.16" x2="624.19" y2="407.16" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#0B342B"/>
-                            <stop offset="0.32" stop-color="#076553"/>
-                            <stop offset="1" stop-color="#E1F11C"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-            <div class="cta-bg-texture">
-                <svg width="625" height="527" viewBox="0 0 625 527" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M76.2297 238.84H0.00976562V191.23H76.2297C98.9497 191.23 120.7 180.14 134.14 161.83C146.8 144.59 145.62 123.91 148.71 103.89C151.42 86.2801 157.74 69.0301 167.53 54.1001C186.72 24.8401 218.48 4.98009 253.26 0.840088C257.97 0.280088 262.72 0 267.46 0H624.2V47.6101H267.46C246.62 47.6101 226.49 56.92 212.93 72.74C202.54 84.86 198.08 100.93 196.38 116.53C194.17 136.85 191.06 158.23 181.16 176.4C164.85 206.32 135.83 228.4 102.57 235.91C93.9397 237.86 85.0897 238.84 76.2397 238.84H76.2297Z" fill="url(#paint0_linear_21_1452_b)"/>
-                    <path d="M220.1 382.7H0.00976562V335.09H220.1C242.82 335.09 264.57 324 278.01 305.69C290.67 288.45 289.49 267.77 292.58 247.75C295.29 230.14 301.61 212.89 311.4 197.96C330.59 168.7 362.35 148.84 397.13 144.7C401.84 144.14 406.59 143.86 411.33 143.86H624.2V191.47H411.33C390.49 191.47 370.36 200.78 356.8 216.6C346.41 228.72 341.95 244.79 340.25 260.39C338.04 280.71 334.93 302.09 325.03 320.26C308.72 350.18 279.7 372.26 246.44 379.77C237.81 381.72 228.96 382.7 220.11 382.7H220.1Z" fill="url(#paint1_linear_21_1452_b)"/>
-                    <path d="M363.96 526.57H0V478.96H363.96C386.68 478.96 408.43 467.87 421.87 449.56C434.53 432.32 433.35 411.64 436.44 391.62C439.15 374.01 445.47 356.76 455.26 341.83C474.45 312.57 506.21 292.71 540.99 288.57C545.7 288.01 550.45 287.73 555.19 287.73H624.19V335.34H555.19C534.35 335.34 514.22 344.65 500.66 360.47C490.27 372.59 485.81 388.66 484.11 404.26C481.9 424.58 478.79 445.96 468.89 464.13C452.58 494.05 423.56 516.13 390.3 523.64C381.67 525.59 372.82 526.57 363.97 526.57H363.96Z" fill="url(#paint2_linear_21_1452_b)"/>
-                    <defs>
-                        <linearGradient id="paint0_linear_21_1452_b" x1="0.00976562" y1="119.42" x2="624.19" y2="119.42" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#0B342B"/>
-                            <stop offset="0.32" stop-color="#076553"/>
-                            <stop offset="1" stop-color="#E1F11C"/>
-                        </linearGradient>
-                        <linearGradient id="paint1_linear_21_1452_b" x1="0.00976562" y1="263.29" x2="624.19" y2="263.29" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#0B342B"/>
-                            <stop offset="0.32" stop-color="#076553"/>
-                            <stop offset="1" stop-color="#E1F11C"/>
-                        </linearGradient>
-                        <linearGradient id="paint2_linear_21_1452_b" x1="0.01" y1="407.16" x2="624.19" y2="407.16" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#0B342B"/>
-                            <stop offset="0.32" stop-color="#076553"/>
-                            <stop offset="1" stop-color="#E1F11C"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
             <div class="cta-glow"></div>
             <div class="cta-grid"></div>
 
@@ -2770,6 +2877,93 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Coluna 1 — Identidade -->
+                <div class="footer-col footer-col-identity">
+                    <a href="#hero" class="footer-logo-link">
+                        <img src="./logo+tag.svg" alt="Sentra Securitizadora" class="footer-logo">
+                    </a>
+                    <p class="footer-desc">
+                        A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as menores taxas.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <span class="iconify" data-icon="mdi:instagram" data-width="20"></span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <span class="iconify" data-icon="mdi:linkedin" data-width="20"></span>
+                        </a>
+                        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 — Navegação -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Navegação</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Início</a></li>
+                        <li><a href="#how-it-works">Como Funciona</a></li>
+                        <li><a href="#features">Vantagens</a></li>
+                        <li><a href="#para-quem">Para Quem É</a></li>
+                        <li><a href="#simular">Calculadora</a></li>
+                        <li><a href="#sobre">Quem Somos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 — Soluções -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Soluções</h3>
+                    <ul class="footer-links">
+                        <li><a href="#antecipacao-recebiveis">Antecipação de Recebíveis</a></li>
+                        <li><a href="#antecipacao-pontual">Antecipação Pontual</a></li>
+                        <li><a href="#antecipacao-recorrente">Antecipação Recorrente</a></li>
+                        <li><a href="#stone">Stone</a></li>
+                        <li><a href="#cielo">Cielo</a></li>
+                        <li><a href="#rede">Rede</a></li>
+                        <li><a href="#getnet">Getnet</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4 — Contato e Legal -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Contato e Legal</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <span class="iconify" data-icon="lucide:phone" data-width="16"></span>
+                            <span><strong>WhatsApp:</strong> (11) 99999-9999</span>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
+                            <span><strong>E-mail:</strong> contato@sentra.com.br</span>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="lucide:clock" data-width="16"></span>
+                            <span>Seg–Sex 9h–18h</span>
+                        </li>
+                    </ul>
+                    <ul class="footer-links footer-legal">
+                        <li><a href="#politica-privacidade">Política de Privacidade</a></li>
+                        <li><a href="#termos-uso">Termos de Uso</a></li>
+                        <li><a href="#politica-cookies">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="footerYear">2026</span> Sentra Securitizadora S/A. Todos os direitos reservados.</p>
+                    <p class="footer-disclaimer">As simulações são estimativas e podem variar conforme a operação.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- External Script Integrations (GSAP, SplitType, Lenis) -->
     <!-- GSAP Core -->
@@ -3456,28 +3650,16 @@
                     glowY(y);
                 });
 
-                // Watermark continuous floating animations
-                gsap.to(".cta-bg-texture", {
-                    y: -15,
-                    rotation: -18,
-                    duration: 6,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
-                
-                gsap.to(".cta-bg-texture-left", {
-                    y: 15,
-                    rotation: 28,
-                    duration: 7,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
             }
 
             // Initialize
             updateCarousel(activeIdx);
+
+            // Dynamic year logic
+            const footerYear = document.getElementById('footerYear');
+            if (footerYear) {
+                footerYear.textContent = new Date().getFullYear();
+            }
         });
     </script>
 </body>
