@@ -261,7 +261,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            padding: 100px 0 60px 0;
+            padding: 100px 0 30px 0;
             overflow: hidden;
         }
 
@@ -474,8 +474,8 @@
 
         /* Trust Seals */
         .seals-container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, max-content);
             align-items: center;
             gap: 16px 28px;
             padding-top: 36px;
@@ -555,7 +555,6 @@
             width: 100%;
             max-width: 290px;
             aspect-ratio: 0.82;
-            perspective: 1200px;
             z-index: 10;
         }
 
@@ -575,10 +574,15 @@
             position: relative;
             width: 100%;
             height: 100%;
-            transform-style: preserve-3d;
             will-change: transform;
-            /* default starting tilt angles matching design-system */
-            transform: rotateX(10deg) rotateY(15deg) rotateZ(-2deg);
+            z-index: 10;
+        }
+
+        .maquininha-float-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            will-change: transform;
         }
 
         .maquininha-img {
@@ -588,55 +592,1020 @@
             object-fit: contain;
             pointer-events: none;
             user-select: none;
-            /* subtle base filter overlay for depth */
             filter: drop-shadow(0 10px 20px rgba(0, 51, 51, 0.08));
         }
 
-        /* Premium Separated Ambience Shadow */
-        .maquininha-shadow {
+        /* Screen overlay */
+        .maquininha-screen {
+            position: absolute;
+            top: 15%;
+            left: 17%;
+            width: 66%;
+            height: 28%;
+            border-radius: 6px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        .screen-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(9, 100, 94, 0.35) 0%, rgba(228, 237, 44, 0.15) 60%, transparent 100%);
+            mix-blend-mode: screen;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .nfc-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .nfc-wave {
+            position: absolute;
+            inset: 0;
+            border: none;
+            box-shadow: none;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transform-origin: center;
+        }
+
+        /* Background Aurora / Halo */
+        .maquininha-halo {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at center, rgba(9, 100, 94, 0.45) 0%, rgba(228, 237, 44, 0.15) 50%, transparent 70%);
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+            transform-origin: center;
+            will-change: transform, opacity;
+        }
+
+        /* Premium Separated Ambience Shadow Container */
+        .maquininha-shadow-container {
             position: absolute;
             bottom: -32px;
             left: 10%;
             width: 80%;
             height: 24px;
-            background: radial-gradient(ellipse at center, rgba(0, 51, 51, 0.35) 0%, rgba(9, 100, 94, 0.15) 45%, transparent 70%);
-            filter: blur(14px);
-            border-radius: 50%;
             pointer-events: none;
-            z-index: 5;
+            z-index: 2;
             will-change: transform, opacity;
             transform-origin: center;
         }
 
-        /* Mobile Floating Animation Callbacks (gentle ambient movements) */
-        .mobile-floating {
-            animation: floatAmbient 5s ease-in-out infinite alternate;
+        /* Premium Separated Ambience Shadow */
+        .maquininha-shadow {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 51, 51, 0.35) 0%, rgba(9, 100, 94, 0.15) 45%, transparent 70%);
+            filter: blur(14px);
+            border-radius: 50%;
+            pointer-events: none;
+            will-change: transform, opacity, filter;
+            transform-origin: center;
         }
 
-        .mobile-shadow-floating {
-            animation: floatShadowAmbient 5s ease-in-out infinite alternate;
+        /* ==========================================================================
+           4. FEATURES SECTION (4 FLOATING CARDS)
+           ========================================================================== */
+        .features-section {
+            padding: 20px 0 80px 0;
+            position: relative;
+            z-index: 10;
         }
 
-        @keyframes floatAmbient {
-            0% {
-                transform: rotateX(8deg) rotateY(12deg) rotateZ(-2deg) translateY(0px);
-            }
-            100% {
-                transform: rotateX(12deg) rotateY(18deg) rotateZ(-1deg) translateY(-14px);
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @keyframes floatShadowAmbient {
-            0% {
-                transform: scale(1.05) translate(0px, 0px);
-                opacity: 0.45;
-                filter: blur(12px);
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
-            100% {
-                transform: scale(0.92) translate(-6px, 4px);
-                opacity: 0.25;
-                filter: blur(18px);
+        }
+
+        /* Glass panel following ds-glass-panel specs */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(9, 100, 94, 0.08);
+            border-radius: 24px;
+            padding: 36px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow:
+                0 4px 6px -1px rgba(9, 100, 94, 0.02),
+                0 20px 40px -4px rgba(9, 100, 94, 0.04);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background-color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(9, 100, 94, 0.25);
+            box-shadow:
+                0 12px 24px -2px rgba(9, 100, 94, 0.06),
+                0 32px 64px -8px rgba(9, 100, 94, 0.1);
+        }
+
+        .card-icon-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background-color: rgba(9, 100, 94, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal-green);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        color 0.3s ease,
+                        background-color 0.3s ease;
+        }
+
+        .feature-card:hover .card-icon-wrapper {
+            transform: scale(1.1);
+            color: var(--deep-green);
+            background-color: rgba(228, 237, 44, 0.45);
+            box-shadow: 0 4px 10px rgba(228, 237, 44, 0.25);
+        }
+
+        .card-number {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.85rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .card-label {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(9, 100, 94, 0.8);
+            line-height: 1.5;
+        }
+
+        .card-label strong {
+            color: var(--deep-green);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           5. WHY WAIT SECTION (DARK THEME)
+           ========================================================================== */
+        .waiting-section {
+            background-color: var(--deep-green);
+            color: var(--off-white);
+            padding: 100px 0;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .bg-grid-dark {
+            background-image: 
+                linear-gradient(to right, rgba(254, 253, 237, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(254, 253, 237, 0.02) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+        }
+
+        .waiting-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--off-white);
+            max-width: 960px;
+            margin: 0 auto 40px auto;
+        }
+
+        @media (min-width: 768px) {
+            .waiting-title {
+                font-size: 3rem;
             }
+        }
+
+        .text-vibrant {
+            color: var(--vibrant-green);
+        }
+
+        .phones-visual-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phones-glow {
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            background: radial-gradient(circle, rgba(228, 237, 44, 0.12) 0%, rgba(9, 100, 94, 0.35) 50%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .phones-img {
+            width: 100%;
+            max-width: 860px;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .waiting-content-bottom {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .waiting-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            font-weight: 300;
+            color: rgba(254, 253, 237, 0.85);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .waiting-text {
+                font-size: 1.125rem;
+            }
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        @media (min-width: 768px) {
+            .highlights-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .highlight-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(254, 253, 237, 0.05);
+            border-radius: 18px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease,
+                        background-color 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(228, 237, 44, 0.25);
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .highlight-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(254, 253, 237, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vibrant-green);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        background-color 0.3s ease,
+                        color 0.3s ease;
+        }
+
+        .highlight-item:hover .highlight-icon-wrapper {
+            transform: scale(1.1);
+            background-color: var(--vibrant-green);
+            color: var(--deep-green);
+            box-shadow: 0 4px 15px rgba(228, 237, 44, 0.4);
+        }
+
+        .highlight-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--off-white);
+        }
+
+        .btn-vibrant {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            background-color: var(--vibrant-green);
+            color: var(--deep-green);
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(228, 237, 44, 0.2);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-vibrant:hover {
+            background-color: #f2fa41;
+            box-shadow: 0 8px 25px rgba(228, 237, 44, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           5.5 CALCULATOR SECTION (INTERACTIVE SAVINGS CALCULATOR)
+           ========================================================================== */
+        .calculator-section {
+            background-color: var(--off-white);
+            padding: 100px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .calculator-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .calculator-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--deep-green);
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .calculator-title {
+                font-size: 3rem;
+            }
+        }
+
+        .calculator-subtitle {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 400;
+            color: var(--teal-green);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (min-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1.1fr 0.9fr; /* ~55% and ~45% */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .calculator-grid {
+                gap: 60px;
+            }
+        }
+
+        /* Form elements styling */
+        .calculator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(9, 100, 94, 0.08);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 
+                0 4px 20px -2px rgba(9, 100, 94, 0.02),
+                0 20px 40px -10px rgba(9, 100, 94, 0.04);
+        }
+
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .form-group-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+            position: relative;
+        }
+
+        .form-label {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .form-input, .form-select {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--deep-green);
+            background-color: var(--solid-white);
+            border: 1px solid rgba(9, 100, 94, 0.15);
+            border-radius: 12px;
+            padding: 14px 18px;
+            width: 100%;
+            transition: var(--transition-smooth);
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus, .form-select:focus {
+            border-color: var(--teal-green);
+            box-shadow: 0 0 0 3px rgba(9, 100, 94, 0.08);
+        }
+
+        /* Error state */
+        .form-input.input-error, .form-select.input-error {
+            border-color: #d32f2f;
+            background-color: rgba(211, 47, 47, 0.02);
+        }
+
+        .form-input.input-error:focus, .form-select.input-error:focus {
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+        }
+
+        .error-message {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #d32f2f;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .form-tip {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: rgba(9, 100, 94, 0.65);
+            line-height: 1.4;
+            margin-top: 2px;
+        }
+
+        /* Result Card styling */
+        .calculator-result-card {
+            background-color: var(--deep-green);
+            border: 1px solid rgba(254, 253, 237, 0.08);
+            border-radius: 28px;
+            padding: 40px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 30px -10px rgba(0, 51, 51, 0.2),
+                0 30px 60px -15px rgba(0, 51, 51, 0.3);
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .calculator-result-card {
+                position: sticky;
+                top: 100px; /* offset for nav header */
+            }
+        }
+
+        .result-card-header {
+            border-bottom: 1px solid rgba(254, 253, 237, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .result-card-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--off-white);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Placeholder State */
+        .result-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            text-align: center;
+            padding: 40px 20px;
+            gap: 20px;
+        }
+
+        .placeholder-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: rgba(254, 253, 237, 0.05);
+            border: 1px solid rgba(254, 253, 237, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vibrant-green);
+        }
+
+        .placeholder-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 400;
+            color: rgba(254, 253, 237, 0.65);
+            max-width: 280px;
+        }
+
+        /* Active Results State */
+        .result-active-content {
+            display: none; /* revealed via script */
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(254, 253, 237, 0.06);
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(254, 253, 237, 0.7);
+        }
+
+        .result-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--off-white);
+        }
+
+        .result-highlight-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(254, 253, 237, 0.06);
+        }
+
+        .highlight-label {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--vibrant-green);
+        }
+
+        .highlight-value {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--vibrant-green);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        /* Visual Box of Impact */
+        .impact-box {
+            background-color: var(--vibrant-green);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(228, 237, 44, 0.15);
+        }
+
+        .impact-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 500;
+            color: var(--deep-green);
+        }
+
+        .impact-amount {
+            font-family: 'Arimo', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--deep-green);
+            display: inline-block;
+            margin-top: 2px;
+        }
+
+        .result-cta-wrapper {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .result-cta-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           6. JORNADA SECTION (HOW IT WORKS - 2 COLUMNS)
+           ========================================================================== */
+        .process-section {
+            background-color: var(--off-white);
+            padding: 80px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .process-box {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(9, 100, 94, 0.08);
+            border-radius: 32px;
+            padding: 40px 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 20px -2px rgba(9, 100, 94, 0.03),
+                0 30px 60px -10px rgba(9, 100, 94, 0.06);
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .process-box {
+                padding: 72px 60px;
+            }
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (min-width: 1024px) {
+            .process-grid {
+                grid-template-columns: 1.15fr 0.85fr;
+                gap: 80px;
+            }
+        }
+
+        .process-left-col {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .process-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            border: 1px solid rgba(9, 100, 94, 0.2);
+            background-color: rgba(9, 100, 94, 0.05);
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            color: var(--teal-green);
+            width: fit-content;
+            margin-bottom: 24px;
+            cursor: default;
+            transition: background-color 0.3s ease;
+        }
+
+        .process-eyebrow:hover {
+            background-color: rgba(9, 100, 94, 0.1);
+        }
+
+        .process-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--deep-green);
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .process-title {
+                font-size: 3.25rem;
+            }
+        }
+
+        .process-desc {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 300;
+            color: var(--teal-green);
+            margin-bottom: 40px;
+        }
+
+        /* Timeline styles */
+        .process-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            position: relative;
+            padding-left: 36px;
+            margin-bottom: 40px;
+        }
+
+        .process-timeline::before {
+            content: "";
+            position: absolute;
+            left: 11px;
+            top: 10px;
+            bottom: 10px;
+            width: 1.5px;
+            background-color: rgba(9, 100, 94, 0.25);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -36px;
+            top: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--teal-green);
+            background-color: var(--solid-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .timeline-dot::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--teal-green);
+            opacity: 1;
+        }
+
+        .timeline-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--deep-green);
+            margin-bottom: 6px;
+        }
+
+        .timeline-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--teal-green);
+            line-height: 1.5;
+        }
+
+        .process-link-wrapper {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .process-link {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--teal-green);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-smooth);
+            border-bottom: 1.5px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .process-link:hover {
+            color: var(--deep-green);
+            border-bottom-color: var(--deep-green);
+        }
+
+        .process-link .icon-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .process-link:hover .icon-arrow {
+            transform: translateX(4px);
+        }
+
+        /* 2x2 Grid of Cards */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .process-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 1.15;
+            border: 1px solid rgba(9, 100, 94, 0.08);
+            background-color: rgba(255, 255, 255, 0.4);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s ease,
+                        box-shadow 0.4s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(9, 100, 94, 0.25);
+            box-shadow: 
+                0 12px 24px -4px rgba(9, 100, 94, 0.08), 
+                0 24px 48px -8px rgba(9, 100, 94, 0.12);
+        }
+
+        .card-bg-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            mix-blend-mode: luminosity;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+        }
+
+        .process-card:hover .card-bg-img {
+            transform: scale(1.06);
+            opacity: 0.9;
+            mix-blend-mode: normal;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: rgba(0, 51, 51, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 5px 12px;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--off-white);
+            z-index: 5;
+        }
+
+        .card-icon-pill {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(0, 51, 51, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vibrant-green);
+            z-index: 5;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .process-card:hover .card-icon-pill {
+            transform: scale(1.1);
+            color: var(--off-white);
+            background-color: var(--teal-green);
+            border-color: var(--teal-green);
+        }
+
+        .card-footer-glass {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 24px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(9, 100, 94, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 5;
+        }
+
+        .card-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            letter-spacing: -0.01em;
         }
 
         /* Accessibility utilities */
@@ -740,19 +1709,405 @@
                         </div>
                     </div>
                     
-                    <!-- Right Side: 3D-Tilt Maquininha Visual -->
+                    <!-- Right Side: Loop Image & Ambience Visuals -->
                     <div class="visual-col">
                         <div class="maquininha-container" id="maquininhaContainer">
-                            <!-- Ambience Shadow placed below wrapper -->
-                            <div class="maquininha-shadow" id="maquininhaShadow"></div>
+                            <!-- Aurora / Halo Background -->
+                            <div class="maquininha-halo" id="maquininhaHalo"></div>
                             
-                            <!-- Image Wrapper that rotates in 3D space -->
+                            <!-- Ambience Shadow Container & Element -->
+                            <div class="maquininha-shadow-container" id="maquininhaShadowContainer">
+                                <div class="maquininha-shadow" id="maquininhaShadow"></div>
+                            </div>
+                            
+                            <!-- Wrapper for Mouse Parallax -->
                             <div class="maquininha-wrapper" id="maquininhaWrapper">
-                                <img src="./maquininha.webp" alt="Maquininha de cartão Sentra em 3D de alta definição" class="maquininha-img" id="maquininhaImg">
+                                <!-- Float Wrapper for autonomous levitation -->
+                                <div class="maquininha-float-wrapper" id="maquininhaFloatWrapper">
+                                    <img src="./maquininha.webp" alt="Maquininha de cartão Sentra em 3D de alta definição" class="maquininha-img" id="maquininhaImg">
+                                    
+                                    <!-- Screen Overlay -->
+                                    <div class="maquininha-screen" id="maquininhaScreen">
+                                        <div class="screen-glow" id="screenGlow"></div>
+                                        <div class="nfc-waves" id="nfcWaves">
+                                            <div class="nfc-wave" id="nfcWave1"></div>
+                                            <div class="nfc-wave" id="nfcWave2"></div>
+                                            <div class="nfc-wave" id="nfcWave3"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Cards Grid Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="features-grid" id="featuresGrid">
+                    <!-- Card 1 -->
+                    <div class="feature-card invisible">
+                        <div class="card-icon-wrapper">
+                            <span class="iconify" data-icon="lucide:percent" data-width="20"></span>
+                        </div>
+                        <div class="card-number">2,10%</div>
+                        <div class="card-label">Taxa ao mês a partir de</div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="feature-card invisible">
+                        <div class="card-icon-wrapper">
+                            <span class="iconify" data-icon="lucide:calendar-check" data-width="20"></span>
+                        </div>
+                        <div class="card-number">D+1</div>
+                        <div class="card-label">Receba no dia útil seguinte</div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="feature-card invisible">
+                        <div class="card-icon-wrapper">
+                            <span class="iconify" data-icon="lucide:badge-percent" data-width="20"></span>
+                        </div>
+                        <div class="card-number">R$ 0</div>
+                        <div class="card-label">Zero IOF. Zero taxa de contratação.</div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="feature-card invisible">
+                        <div class="card-icon-wrapper">
+                            <span class="iconify" data-icon="lucide:credit-card" data-width="20"></span>
+                        </div>
+                        <div class="card-number">4</div>
+                        <div class="card-label">Maquininhas compatíveis: <br><strong>Stone · Cielo · Rede · Getnet</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Why Wait (Celulares Section) -->
+        <section id="why-wait" class="waiting-section">
+            <!-- Subtle Grid Background for Dark Theme -->
+            <div class="bg-grid bg-grid-dark"></div>
+            
+            <div class="container">
+                <!-- Title Top -->
+                <h2 class="waiting-title invisible" id="waitingTitle">
+                    Você já vendeu. O dinheiro é seu. <span class="text-vibrant">Por que esperar?</span>
+                </h2>
+
+                <!-- Visual Mid (Phones) -->
+                <div class="phones-visual-container invisible" id="phonesContainer">
+                    <div class="phones-glow" id="phonesGlow"></div>
+                    <img src="./celulares.webp" alt="Visualização do aplicativo Sentra em smartphones de última geração" class="phones-img" id="phonesImg">
+                </div>
+
+                <!-- Text, Highlights Grid and CTA Bottom -->
+                <div class="waiting-content-bottom">
+                    <p class="waiting-text invisible" id="waitingText">
+                        Quando você vende parcelado no cartão, as parcelas caem na sua conta ao longo de 30, 60 ou 90 dias. Com a Sentra, você antecipa esse valor hoje e recebe tudo no próximo dia útil — pagando apenas uma taxa justa.
+                    </p>
+
+                    <!-- Highlights Grid (3 Columns) -->
+                    <div class="highlights-grid" id="highlightsGrid">
+                        <!-- Highlight 1 -->
+                        <div class="highlight-item invisible">
+                            <div class="highlight-icon-wrapper">
+                                <span class="iconify" data-icon="lucide:ban" data-width="24" style="stroke-width: 2.5;"></span>
+                            </div>
+                            <span class="highlight-text">Não é empréstimo.</span>
+                        </div>
+
+                        <!-- Highlight 2 -->
+                        <div class="highlight-item invisible">
+                            <div class="highlight-icon-wrapper">
+                                <span class="iconify" data-icon="lucide:shield-check" data-width="24" style="stroke-width: 2.5;"></span>
+                            </div>
+                            <span class="highlight-text">Não vira dívida.</span>
+                        </div>
+
+                        <!-- Highlight 3 -->
+                        <div class="highlight-item invisible">
+                            <div class="highlight-icon-wrapper">
+                                <span class="iconify" data-icon="lucide:trending-up" data-width="24" style="stroke-width: 2.5;"></span>
+                            </div>
+                            <span class="highlight-text">Não afeta seu score.</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="cta-wrapper-dark invisible" id="ctaWrapperDark">
+                        <a href="#simular" class="btn-shine btn-bounce btn-vibrant">
+                            Simule sua economia
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.5: Interactive Savings Calculator -->
+        <section id="simular" class="calculator-section">
+            <!-- Background pattern grid lines -->
+            <div class="bg-grid"></div>
+            
+            <div class="container">
+                <div class="calculator-header">
+                    <h2 class="calculator-title">Veja quanto você está deixando na mesa todo mês</h2>
+                    <p class="calculator-subtitle">Insira o faturamento e os dados de uma venda recente. Nossa calculadora mostra sua economia real em segundos.</p>
+                </div>
+                
+                <div class="calculator-grid">
+                    <!-- Left Column: Inputs Form -->
+                    <div class="calculator-inputs-col">
+                        <form id="calcForm" class="calculator-form" novalidate>
+                            <!-- Row 1: Bandeira & Faturamento -->
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="bandeira">
+                                        Bandeira do cartão
+                                    </label>
+                                    <select id="bandeira" class="form-select">
+                                        <option value="Visa">Visa</option>
+                                        <option value="Mastercard">Mastercard</option>
+                                        <option value="Elo">Elo</option>
+                                        <option value="Amex">Amex</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="faturamentoMensal">
+                                        Faturamento mensal no cartão
+                                    </label>
+                                    <input type="text" id="faturamentoMensal" class="form-input" placeholder="R$ 0,00" value="R$ 20.000,00">
+                                </div>
+                            </div>
+                            
+                            <!-- Row 2: Maquininha & Valor Venda -->
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="maquininha">
+                                        Qual maquininha é?
+                                    </label>
+                                    <select id="maquininha" class="form-select">
+                                        <option value="Stone">Stone</option>
+                                        <option value="Cielo">Cielo</option>
+                                        <option value="Rede">Rede</option>
+                                        <option value="GetNet">GetNet</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="valorVenda">
+                                        Valor desta venda (Líquido)
+                                    </label>
+                                    <input type="text" id="valorVenda" class="form-input" placeholder="R$ 0,00" value="R$ 4.094,58">
+                                    <span class="form-tip">Valor que a concorrência informa como total bruto da venda</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Row 3: Parcelas & Recebimento Concorrência -->
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="parcelas">
+                                        Número de parcelas
+                                    </label>
+                                    <select id="parcelas" class="form-select">
+                                        <option value="1">1x</option>
+                                        <option value="2">2x</option>
+                                        <option value="3" selected>3x</option>
+                                        <option value="4">4x</option>
+                                        <option value="5">5x</option>
+                                        <option value="6">6x</option>
+                                        <option value="7">7x</option>
+                                        <option value="8">8x</option>
+                                        <option value="9">9x</option>
+                                        <option value="10">10x</option>
+                                        <option value="11">11x</option>
+                                        <option value="12">12x</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="valorConcorrencia">
+                                        Quanto a concorrência te paga
+                                    </label>
+                                    <input type="text" id="valorConcorrencia" class="form-input" placeholder="R$ 0,00" value="R$ 3.840,00">
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Button -->
+                            <button type="submit" class="btn-shine btn-bounce btn-primary" style="margin-top: 10px; padding: 16px 32px;">
+                                Calcular minha economia
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Right Column: Result Card -->
+                    <div class="calculator-results-col">
+                        <div class="calculator-result-card" id="resultCard">
+                            <div class="result-card-header">
+                                <h3 class="result-card-title">
+                                    <span class="iconify" data-icon="lucide:calculator" data-width="20" style="color: var(--vibrant-green);"></span>
+                                    Resultado na Sentra
+                                </h3>
+                            </div>
+                            
+                            <!-- State 1: Placeholder (Before click) -->
+                            <div class="result-placeholder" id="resultPlaceholder">
+                                <div class="placeholder-icon-wrapper">
+                                    <span class="iconify" data-icon="lucide:calculator" data-width="32"></span>
+                                </div>
+                                <p class="placeholder-text">Preencha os dados ao lado e veja sua economia real em segundos.</p>
+                            </div>
+                            
+                            <!-- State 2: Active results (After calculation) -->
+                            <div class="result-active-content" id="resultActiveContent">
+                                <div class="result-row">
+                                    <span class="result-label">Valor desta venda:</span>
+                                    <span class="result-value" id="resValorVenda">R$ 0,00</span>
+                                </div>
+                                <div class="result-row">
+                                    <span class="result-label">Taxa estimada na Sentra:</span>
+                                    <span class="result-value" id="resTaxaSentra">0,00% a.m.</span>
+                                </div>
+                                
+                                <div class="result-highlight-row">
+                                    <span class="highlight-label">Você receberá com a Sentra</span>
+                                    <span class="highlight-value" id="resValorSentra">R$ 0,00</span>
+                                </div>
+                                
+                                <div class="result-row">
+                                    <span class="result-label">Economia mensal estimada:</span>
+                                    <span class="result-value" id="resEconomiaMensal">R$ 0,00</span>
+                                </div>
+                                
+                                <!-- Impact Box -->
+                                <div class="impact-box">
+                                    <p class="impact-text">
+                                        Você pode estar deixando mais de <strong class="impact-amount" id="resEconomiaAnual">R$ 0,00</strong> por ano com taxa cara.
+                                    </p>
+                                </div>
+                                
+                                <!-- Final CTA -->
+                                <div class="result-cta-wrapper">
+                                    <a href="#" class="btn-shine btn-bounce btn-vibrant result-cta-btn" style="display: block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
+                                        Quero reduzir minhas taxas
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Jornada (How it works - 2 Columns) -->
+        <section id="how-it-works" class="process-section">
+            <div class="container">
+                <div class="process-box invisible" id="processBox">
+                    <!-- Subtle Grid Background inside the box -->
+                    <div class="bg-grid"></div>
+
+                    <div class="process-grid">
+                        <!-- Left Column: Copy & Timeline -->
+                        <div class="process-left-col">
+                            <div class="process-eyebrow invisible" id="processEyebrow">
+                                <span class="eyebrow-dot"></span>Como Funciona
+                            </div>
+                            <h2 class="process-title invisible" id="processTitle">
+                                Em 3 passos simples, o dinheiro está na sua conta
+                            </h2>
+                            <p class="process-desc invisible" id="processDesc">
+                                Com a Sentra, você antecipa os recebíveis da sua maquininha de forma rápida, segura e sem complicações. Acompanhe a jornada:
+                            </p>
+
+                            <!-- Timeline steps -->
+                            <div class="process-timeline">
+                                <!-- Step 1 -->
+                                <div class="timeline-item invisible">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-title">Passo 01 · Crie sua conta Sentra</div>
+                                    <p class="timeline-text">Cadastro digital, menos de 5 minutos. Sem papelada.</p>
+                                </div>
+
+                                <!-- Step 2 -->
+                                <div class="timeline-item invisible">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-title">Passo 02 · Conecte a maquininha que você já usa</div>
+                                    <p class="timeline-text">Stone, Cielo, Rede ou Getnet — sem precisar trocar nada.</p>
+                                </div>
+
+                                <!-- Step 3 -->
+                                <div class="timeline-item invisible">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-title">Passo 03 · Antecipe e receba em D+1</div>
+                                    <p class="timeline-text">Escolha o valor, confirme, e o dinheiro cai no próximo dia útil.</p>
+                                </div>
+                            </div>
+
+                            <!-- Link explanation -->
+                            <div class="process-link-wrapper invisible" id="processLinkWrapper">
+                                <a href="#explicacao" class="process-link">
+                                    Ver explicação completa 
+                                    <span class="iconify icon-arrow" data-icon="lucide:arrow-right" data-width="16"></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: 2x2 Grid of visual cards -->
+                        <div class="grid-2x2" id="grid2x2">
+                            <!-- Card 1 -->
+                            <div class="process-card invisible">
+                                <img src="./feature_signup.png" alt="Cadastro Digital" class="card-bg-img">
+                                <div class="card-icon-pill">
+                                    <span class="iconify" data-icon="lucide:user-plus" data-width="18"></span>
+                                </div>
+                                <span class="card-tag">Menos de 5 min</span>
+                                <div class="card-footer-glass">
+                                    <span class="card-title">Cadastro Digital</span>
+                                    <span class="iconify" data-icon="lucide:check-circle" data-width="16" style="color: var(--teal-green);"></span>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="process-card invisible">
+                                <img src="./feature_connect.png" alt="Conexão de Maquininhas" class="card-bg-img">
+                                <div class="card-icon-pill">
+                                    <span class="iconify" data-icon="lucide:credit-card" data-width="18"></span>
+                                </div>
+                                <span class="card-tag">Integração</span>
+                                <div class="card-footer-glass">
+                                    <span class="card-title">Conexão de Maquininha</span>
+                                    <span class="iconify" data-icon="lucide:link-2" data-width="16" style="color: var(--teal-green);"></span>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="process-card invisible">
+                                <img src="./feature_dashboard.png" alt="Painel Sentra" class="card-bg-img">
+                                <div class="card-icon-pill">
+                                    <span class="iconify" data-icon="lucide:bar-chart-3" data-width="18"></span>
+                                </div>
+                                <span class="card-tag">Área do Cliente</span>
+                                <div class="card-footer-glass">
+                                    <span class="card-title">Painel de Vendas</span>
+                                    <span class="iconify" data-icon="lucide:eye" data-width="16" style="color: var(--teal-green);"></span>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="process-card invisible">
+                                <img src="./feature_payment.png" alt="Recebimento D+1" class="card-bg-img">
+                                <div class="card-icon-pill">
+                                    <span class="iconify" data-icon="lucide:zap" data-width="18"></span>
+                                </div>
+                                <span class="card-tag">Recebimento</span>
+                                <div class="card-footer-glass">
+                                    <span class="card-title">Liquidação D+1</span>
+                                    <span class="iconify" data-icon="lucide:shield-check" data-width="16" style="color: var(--teal-green);"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -807,13 +2162,17 @@
             titleEl.classList.remove('invisible');
 
             if (prefersReducedMotion) {
-                // Simplified instant reveals when reduced motion is preferred
+                // Simplified reveals when reduced motion is preferred
                 gsap.from(".eyebrow", { opacity: 0, duration: 0.6 });
                 gsap.from("#hero-title", { opacity: 0, duration: 0.6 });
                 gsap.from(".subtitle", { opacity: 0, duration: 0.6 });
                 gsap.from(".cta-container", { opacity: 0, duration: 0.6 });
                 gsap.from(".seals-container", { opacity: 0, duration: 0.6 });
                 gsap.from("#maquininhaWrapper", { opacity: 0, duration: 0.6 });
+                
+                // Hide halo, screen glow, and waves in reduced motion
+                gsap.set("#maquininhaHalo", { display: "none" });
+                gsap.set("#maquininhaScreen", { display: "none" });
                 return; // bypass custom animations & tilts
             }
 
@@ -836,16 +2195,13 @@
             gsap.set(".btn-secondary", { opacity: 0, scale: 0.94 });
             gsap.set(".seal-item", { opacity: 0, y: 8 });
             
-            // Maquininha starts with a soft rotate tilt and landing slide-up
+            // Maquininha wrapper starts with a soft landing slide-up and scale-up (no 3D rotation)
             gsap.set("#maquininhaWrapper", {
                 opacity: 0,
                 y: 35,
-                scale: 0.96,
-                rotateX: 18,
-                rotateY: -22,
-                rotateZ: -6
+                scale: 0.96
             });
-            gsap.set("#maquininhaShadow", {
+            gsap.set("#maquininhaShadowContainer", {
                 opacity: 0,
                 scale: 0.8
             });
@@ -862,115 +2218,406 @@
                   opacity: 1,
                   y: 0,
                   scale: 1,
-                  rotateX: 10,
-                  rotateY: 15,
-                  rotateZ: -2,
                   duration: 1.0,
                   ease: "back.out(1.15)"
               }, "0.15")
-              .to("#maquininhaShadow", {
+              .to("#maquininhaShadowContainer", {
                   opacity: 1,
                   scale: 1,
                   duration: 1.0
               }, "0.15");
 
             // ==========================================================================
-            // F. INTERACTIVE 3D PARALLAX TILT LOGIC (WITH GSAP quickTo)
+            // F. AMBIENT CONTINUOUS ANIMATIONS (GSAP loop triggers)
             // ==========================================================================
-            const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-            const container = document.getElementById('maquininhaContainer');
-            const wrapper = document.getElementById('maquininhaWrapper');
-            const shadow = document.getElementById('maquininhaShadow');
 
-            if (isTouchDevice) {
-                // Apply subtle float animations on mobile/tablet interfaces
-                wrapper.classList.add('mobile-floating');
-                shadow.classList.add('mobile-shadow-floating');
+            // 2. NFC concentric waves propagation pulses (with immediateRender: false to avoid static borders)
+            gsap.fromTo("#nfcWave1", 
+                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
+                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out" }
+            );
+            gsap.fromTo("#nfcWave2", 
+                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
+                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out", delay: 0.83, immediateRender: false }
+            );
+            gsap.fromTo("#nfcWave3", 
+                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
+                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out", delay: 1.66, immediateRender: false }
+            );
 
-                // Optional: Progressive DeviceOrientation tilt hooks
-                if (window.DeviceOrientationEvent) {
-                    let hasAcknowledgeOrientation = false;
-                    
-                    window.addEventListener('deviceorientation', (e) => {
-                        const gamma = e.gamma; // Left/Right tilt (-90 to 90)
-                        const beta = e.beta;   // Front/Back tilt (-180 to 180)
+            // 3. Screen pulsating glowing overlay
+            gsap.fromTo("#screenGlow",
+                { opacity: 0.15 },
+                { opacity: 0.45, duration: 2.2, repeat: -1, yoyo: true, ease: "sine.inOut" }
+            );
 
-                        if (gamma !== null && beta !== null) {
-                            if (!hasAcknowledgeOrientation) {
-                                hasAcknowledgeOrientation = true;
-                                // Disable plain CSS floats to avoid transform override conflicts
-                                wrapper.classList.remove('mobile-floating');
-                                shadow.classList.remove('mobile-shadow-floating');
-                            }
+            // 4. Background Halo/Aurora rotation and scaling pulses
+            gsap.to("#maquininhaHalo", {
+                rotation: 360,
+                duration: 35,
+                repeat: -1,
+                ease: "none"
+            });
+            // 2. NFC concentric waves propagation pulses (using box-shadow to prevent outline ghosts)
+            gsap.fromTo("#nfcWave1", 
+                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
+                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out" }
+            );
+            gsap.fromTo("#nfcWave2", 
+                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
+                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out", delay: 0.83, immediateRender: false }
+            );
+            gsap.fromTo("#nfcWave3", 
+                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
+                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out", delay: 1.66, immediateRender: false }
+            );
 
-                            // Calculate orientation rotations assuming basic holding angle (beta: 45)
-                            const maxDev = 25;
-                            const normX = Math.max(-1, Math.min(1, gamma / maxDev));
-                            const normY = Math.max(-1, Math.min(1, (beta - 45) / maxDev));
+            // 3. Screen pulsating glowing overlay
+            gsap.fromTo("#screenGlow",
+                { opacity: 0.15 },
+                { opacity: 0.45, duration: 2.2, repeat: -1, yoyo: true, ease: "sine.inOut" }
+            );
 
-                            const targetRotX = 10 + (normY * -10);
-                            const targetRotY = 15 + (normX * 10);
-                            const targetShX = -normX * 12;
-                            const targetShY = -normY * 8;
+            // 4. Background Halo/Aurora rotation and scaling pulses
+            gsap.to("#maquininhaHalo", {
+                rotation: 360,
+                duration: 35,
+                repeat: -1,
+                ease: "none"
+            });
+            gsap.fromTo("#maquininhaHalo",
+                { scale: 0.95 },
+                { scale: 1.1, duration: 7, repeat: -1, yoyo: true, ease: "sine.inOut" }
+            );
 
-                            gsap.to(wrapper, { rotateX: targetRotX, rotateY: targetRotY, duration: 0.4, overwrite: "auto" });
-                            gsap.to(shadow, { x: targetShX, y: targetShY, duration: 0.4, overwrite: "auto" });
+            // ==========================================================================
+            // G. SCROLL REVEAL ANIMATIONS FOR FEATURES GRID
+            // ==========================================================================
+            const featuresSection = document.getElementById('features');
+            const featureCards = document.querySelectorAll('.feature-card');
+
+            if (prefersReducedMotion) {
+                featureCards.forEach(card => card.classList.remove('invisible'));
+            } else {
+                const featuresObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            featureCards.forEach(card => card.classList.remove('invisible'));
+                            gsap.fromTo(featureCards, 
+                                { opacity: 0, y: 30 },
+                                { opacity: 1, y: 0, stagger: 0.12, duration: 0.8, ease: "power3.out" }
+                            );
+                            observer.unobserve(entry.target);
                         }
                     });
-                }
+                }, {
+                    threshold: 0.15
+                });
+                featuresObserver.observe(featuresSection);
+            }
+
+            // ==========================================================================
+            // H. SCROLL REVEAL & AMBIENT ANIMATIONS FOR SECTION 3 (WHY WAIT)
+            // ==========================================================================
+            const waitingSection = document.getElementById('why-wait');
+            const waitingTitle = document.getElementById('waitingTitle');
+            const phonesContainer = document.getElementById('phonesContainer');
+            const waitingText = document.getElementById('waitingText');
+            const highlightItems = document.querySelectorAll('.highlight-item');
+            const ctaWrapperDark = document.getElementById('ctaWrapperDark');
+            const phonesImg = document.getElementById('phonesImg');
+            const phonesGlow = document.getElementById('phonesGlow');
+
+            if (prefersReducedMotion) {
+                // Show immediately
+                waitingTitle.classList.remove('invisible');
+                phonesContainer.classList.remove('invisible');
+                waitingText.classList.remove('invisible');
+                highlightItems.forEach(item => item.classList.remove('invisible'));
+                ctaWrapperDark.classList.remove('invisible');
             } else {
-                // Desktop Mouse Tracker hooks
-                const hero = document.getElementById('hero');
-                const maxRotation = 14; 
-                const maxShadowX = 22;  
-                const maxShadowY = 12;  
+                // Staggered reveal timeline
+                const waitingObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Unhide components
+                            waitingTitle.classList.remove('invisible');
+                            phonesContainer.classList.remove('invisible');
+                            waitingText.classList.remove('invisible');
+                            highlightItems.forEach(item => item.classList.remove('invisible'));
+                            ctaWrapperDark.classList.remove('invisible');
 
-                // Set up smooth GSAP quickTo anchors
-                const rotateXTo = gsap.quickTo(wrapper, "rotateX", { duration: 0.45, ease: "power2.out" });
-                const rotateYTo = gsap.quickTo(wrapper, "rotateY", { duration: 0.45, ease: "power2.out" });
-                const shadowXTo = gsap.quickTo(shadow, "x", { duration: 0.45, ease: "power2.out" });
-                const shadowYTo = gsap.quickTo(shadow, "y", { duration: 0.45, ease: "power2.out" });
-                const shadowScaleTo = gsap.quickTo(shadow, "scale", { duration: 0.45, ease: "power2.out" });
-                const shadowOpacityTo = gsap.quickTo(shadow, "opacity", { duration: 0.45, ease: "power2.out" });
+                            const waitingTl = gsap.timeline({
+                                defaults: { ease: "power3.out", duration: 0.8 }
+                            });
 
-                hero.addEventListener('mousemove', (e) => {
-                    const rect = hero.getBoundingClientRect();
+                            waitingTl.fromTo(waitingTitle, { opacity: 0, y: 25 }, { opacity: 1, y: 0 })
+                                     .fromTo(phonesContainer, { opacity: 0, scale: 0.94, y: 35 }, { opacity: 1, scale: 1, y: 0, duration: 1 }, "-=0.5")
+                                     .fromTo(waitingText, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.6")
+                                     .fromTo(highlightItems, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.12 }, "-=0.5")
+                                     .fromTo(ctaWrapperDark, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1 }, "-=0.4");
+
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.12
+                });
+                waitingObserver.observe(waitingSection);
+
+                // Autonomous continuous floating parallax on the phones and ambient glow
+                gsap.to(phonesImg, {
+                    y: -12,
+                    duration: 4.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+                
+                gsap.fromTo(phonesGlow,
+                    { scale: 0.95, opacity: 0.7 },
+                    { scale: 1.1, opacity: 1.0, duration: 4.5, repeat: -1, yoyo: true, ease: "sine.inOut" }
+                );
+            }
+
+            // ==========================================================================
+            // H.5 INTERACTIVE SAVINGS CALCULATOR LOGIC
+            // ==========================================================================
+            const calcForm = document.getElementById('calcForm');
+            const faturamentoInput = document.getElementById('faturamentoMensal');
+            const valorVendaInput = document.getElementById('valorVenda');
+            const parcelasSelect = document.getElementById('parcelas');
+            const valorConcorrenciaInput = document.getElementById('valorConcorrencia');
+            
+            const resultCard = document.getElementById('resultCard');
+            const resultPlaceholder = document.getElementById('resultPlaceholder');
+            const resultActiveContent = document.getElementById('resultActiveContent');
+            
+            const resValorVenda = document.getElementById('resValorVenda');
+            const resTaxaSentra = document.getElementById('resTaxaSentra');
+            const resValorSentra = document.getElementById('resValorSentra');
+            const resEconomiaMensal = document.getElementById('resEconomiaMensal');
+            const resEconomiaAnual = document.getElementById('resEconomiaAnual');
+
+            // Helper to parse BRL string to number
+            function parseCurrencyValue(valueString) {
+                if (!valueString) return 0;
+                let cleanString = valueString.replace(/[^\d]/g, '');
+                return parseFloat(cleanString) / 100 || 0;
+            }
+
+            // Helper to format number to BRL currency string
+            function formatBRL(number) {
+                return new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(number);
+            }
+
+            // Format initial values on load
+            [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(input => {
+                if (input && input.value) {
+                    let numericVal = parseCurrencyValue(input.value);
+                    if (numericVal > 0) {
+                        input.value = formatBRL(numericVal);
+                    }
+                }
+            });
+
+            // Input masking logic in real-time as user types
+            function attachCurrencyMask(inputElement) {
+                inputElement.addEventListener('input', (e) => {
+                    let cursorPosition = e.target.selectionStart;
+                    let oldLen = e.target.value.length;
                     
-                    // Normalized mouse coordinates from center of the hero section (-1 to 1)
-                    const normX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-                    const normY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
-
-                    // Add relative offset rotation to default start values (rotateX: 10, rotateY: 15)
-                    const targetRotX = 10 + (normY * -maxRotation); 
-                    const targetRotY = 15 + (normX * maxRotation);
-
-                    // Opposite displacement for projected background shadow
-                    const targetShX = normX * -maxShadowX;
-                    const targetShY = normY * -maxShadowY;
-
-                    // Shadow scale alters slightly based on tilt extremity to simulate height differences
-                    const distFromCenter = Math.sqrt(normX * normX + normY * normY);
-                    const targetScale = 1 - (distFromCenter * 0.08);
-                    const targetOpacity = 1 - (distFromCenter * 0.15);
-
-                    // Execute quickTo updates
-                    rotateXTo(targetRotX);
-                    rotateYTo(targetRotY);
-                    shadowXTo(targetShX);
-                    shadowYTo(targetShY);
-                    shadowScaleTo(targetScale);
-                    shadowOpacityTo(targetOpacity);
+                    let digits = e.target.value.replace(/\D/g, '');
+                    if (!digits) {
+                        e.target.value = '';
+                        return;
+                    }
+                    
+                    let numeric = parseFloat(digits) / 100;
+                    e.target.value = formatBRL(numeric);
+                    
+                    let newLen = e.target.value.length;
+                    e.target.setSelectionRange(cursorPosition + (newLen - oldLen), cursorPosition + (newLen - oldLen));
                 });
+            }
 
-                hero.addEventListener('mouseleave', () => {
-                    // Smoothly transition terminal elements back to their initial resting state
-                    rotateXTo(10);
-                    rotateYTo(15);
-                    shadowXTo(0);
-                    shadowYTo(0);
-                    shadowScaleTo(1);
-                    shadowOpacityTo(1);
+            [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(attachCurrencyMask);
+
+            // Mathematical calculation function
+            function calcularEconomia({ faturamentoMensal, valorVenda, parcelas, valorConcorrencia }) {
+                let somaMesesParcelas = 0;
+                for (let i = 1; i <= parcelas; i++) {
+                    somaMesesParcelas += (valorVenda / parcelas) * i;
+                }
+                
+                const taxaConcorrencia = ((valorVenda - valorConcorrencia) / somaMesesParcelas) * 100;
+                const taxaSentra = taxaConcorrencia - 1;
+                
+                let descontoTotal = 0;
+                for (let i = 1; i <= parcelas; i++) {
+                    descontoTotal += (valorVenda / parcelas) * ((taxaConcorrencia - 1) * 1.0055) / 100 * i;
+                }
+                
+                const valorSentra = Math.round((valorVenda - descontoTotal) * 100) / 100;
+                const economiaMensal = (faturamentoMensal / valorVenda) * (valorSentra - valorConcorrencia);
+                const economiaAnual = economiaMensal * 12;
+                
+                return {
+                    valorVenda,
+                    taxaSentra,
+                    valorSentra,
+                    economiaMensal,
+                    economiaAnual
+                };
+            }
+
+            // Error display helpers
+            function showError(inputElement, message) {
+                removeError(inputElement);
+                inputElement.classList.add('input-error');
+                
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.id = `${inputElement.id}-error`;
+                errorDiv.innerHTML = `<span class="iconify" data-icon="lucide:alert-circle" data-width="14"></span> ${message}`;
+                
+                inputElement.parentNode.appendChild(errorDiv);
+                
+                inputElement.setAttribute('aria-invalid', 'true');
+                inputElement.setAttribute('aria-describedby', errorDiv.id);
+            }
+
+            function removeError(inputElement) {
+                inputElement.classList.remove('input-error');
+                const existingError = document.getElementById(`${inputElement.id}-error`);
+                if (existingError) {
+                    existingError.remove();
+                }
+                inputElement.removeAttribute('aria-invalid');
+                inputElement.removeAttribute('aria-describedby');
+            }
+
+            // Real-time error removal on interaction
+            [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(input => {
+                input.addEventListener('focus', () => removeError(input));
+            });
+
+            // Form Submit Listener
+            calcForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(removeError);
+                
+                const faturamentoMensal = parseCurrencyValue(faturamentoInput.value);
+                const valorVenda = parseCurrencyValue(valorVendaInput.value);
+                const valorConcorrencia = parseCurrencyValue(valorConcorrenciaInput.value);
+                const parcelas = parseInt(parcelasSelect.value);
+                
+                let hasErrors = false;
+                
+                if (faturamentoMensal <= 0) {
+                    showError(faturamentoInput, 'Digite um faturamento válido maior que zero.');
+                    hasErrors = true;
+                }
+                if (valorVenda <= 0) {
+                    showError(valorVendaInput, 'Digite um valor de venda válido maior que zero.');
+                    hasErrors = true;
+                }
+                if (valorConcorrencia <= 0) {
+                    showError(valorConcorrenciaInput, 'Digite o valor pago pela concorrência.');
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) return;
+                
+                if (valorConcorrencia >= valorVenda) {
+                    showError(valorConcorrenciaInput, 'O valor pago pela concorrência deve ser menor que o valor da venda.');
+                    return;
+                }
+                
+                const results = calcularEconomia({
+                    faturamentoMensal,
+                    valorVenda,
+                    parcelas,
+                    valorConcorrencia
                 });
+                
+                resValorVenda.textContent = formatBRL(results.valorVenda);
+                resTaxaSentra.textContent = results.taxaSentra.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '% a.m.';
+                resValorSentra.textContent = formatBRL(results.valorSentra);
+                resEconomiaMensal.textContent = formatBRL(results.economiaMensal);
+                resEconomiaAnual.textContent = formatBRL(results.economiaAnual);
+                
+                resultPlaceholder.style.display = 'none';
+                resultActiveContent.style.display = 'flex';
+                
+                if (prefersReducedMotion) {
+                    gsap.set(resultActiveContent, { opacity: 1, y: 0 });
+                } else {
+                    gsap.fromTo(resultActiveContent,
+                        { opacity: 0, y: 15 },
+                        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+                    );
+                }
+            });
+
+            // ==========================================================================
+            // I. SCROLL REVEAL ANIMATIONS FOR SECTION 4 (HOW IT WORKS)
+            // ==========================================================================
+            const processSection = document.getElementById('how-it-works');
+            const processBox = document.getElementById('processBox');
+            const processEyebrow = document.getElementById('processEyebrow');
+            const processTitle = document.getElementById('processTitle');
+            const processDesc = document.getElementById('processDesc');
+            const timelineItems = document.querySelectorAll('.process-timeline .timeline-item');
+            const processLinkWrapper = document.getElementById('processLinkWrapper');
+            const processCards = document.querySelectorAll('.grid-2x2 .process-card');
+
+            if (prefersReducedMotion) {
+                // Show immediately
+                processBox.classList.remove('invisible');
+                processEyebrow.classList.remove('invisible');
+                processTitle.classList.remove('invisible');
+                processDesc.classList.remove('invisible');
+                timelineItems.forEach(item => item.classList.remove('invisible'));
+                processLinkWrapper.classList.remove('invisible');
+                processCards.forEach(card => card.classList.remove('invisible'));
+            } else {
+                const processObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Unhide components
+                            processBox.classList.remove('invisible');
+                            processEyebrow.classList.remove('invisible');
+                            processTitle.classList.remove('invisible');
+                            processDesc.classList.remove('invisible');
+                            timelineItems.forEach(item => item.classList.remove('invisible'));
+                            processLinkWrapper.classList.remove('invisible');
+                            processCards.forEach(card => card.classList.remove('invisible'));
+
+                            const processTl = gsap.timeline({
+                                defaults: { ease: "power3.out", duration: 0.8 }
+                            });
+
+                            // Animate container box first, then stagger elements inside
+                            processTl.fromTo(processBox, { opacity: 0, y: 40, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 1.0 })
+                                     .fromTo(processEyebrow, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.65")
+                                     .fromTo(processTitle, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, "-=0.6")
+                                     .fromTo(processDesc, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.6")
+                                     .fromTo(timelineItems, { opacity: 0, x: -15 }, { opacity: 1, x: 0, stagger: 0.15 }, "-=0.5")
+                                     .fromTo(processLinkWrapper, { opacity: 0, y: 10 }, { opacity: 1, y: 0 }, "-=0.4")
+                                     .fromTo(processCards, { opacity: 0, scale: 0.94, y: 25 }, { opacity: 1, scale: 1, y: 0, stagger: 0.12, duration: 0.9 }, "-=0.8");
+
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.12
+                });
+                processObserver.observe(processSection);
             }
         });
     </script>
