@@ -407,10 +407,54 @@
             }
         }
 
-        /* Split Type word wrapper */
+        /* Split Type word wrapper & interactions */
         .word {
             display: inline-block;
             will-change: transform, opacity;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+            cursor: default;
+        }
+        .word:hover {
+            transform: translateY(-4px) scale(1.08) rotate(-1deg);
+            color: var(--teal-green);
+            text-shadow: 0 4px 12px rgba(9, 100, 94, 0.1);
+        }
+
+        .highlight-text-gradient {
+            background: linear-gradient(90deg, var(--teal-green) 0%, var(--deep-green) 35%, var(--teal-green) 50%, var(--deep-green) 65%, var(--teal-green) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            animation: textSheen 6s linear infinite;
+        }
+        .highlight-text-gradient .word {
+            background: inherit;
+            background-size: inherit;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: inherit;
+            display: inline-block;
+        }
+        .highlight-text-gradient::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--vibrant-green);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 2px;
+            z-index: -1;
+        }
+        
+        .para-quem-hero-section.revealed .highlight-text-gradient::after {
+            transform: scaleX(1);
+            transition-delay: 0.2s;
         }
 
         .subtitle {
@@ -434,11 +478,13 @@
             position: absolute;
             inset: 0;
             background-size: 32px 32px;
-            background-image: radial-gradient(rgba(9, 100, 94, 0.08) 1.5px, transparent 1.5px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            background-image: radial-gradient(rgba(9, 100, 94, 0.12) 1.5px, transparent 1.5px);
+            /* Mask que responde à posição do cursor */
+            mask-image: radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
             z-index: -1;
             pointer-events: none;
+            transition: mask-image 0.15s ease, -webkit-mask-image 0.15s ease;
         }
 
         .glow-blob-1 {
@@ -519,32 +565,113 @@
         /* Estilos comuns para círculos e tipografia dos segmentos */
         .segment-circle-icon {
             border-radius: 50%;
-            background: var(--solid-white);
-            border: 2px solid rgba(9, 100, 94, 0.15);
+            background: linear-gradient(135deg, var(--solid-white) 0%, #FAFBF6 100%);
+            border: 2px solid rgba(9, 100, 94, 0.12);
             color: var(--teal-green);
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 
-                0 4px 6px -1px rgba(9, 100, 94, 0.02),
-                0 10px 20px -4px rgba(9, 100, 94, 0.04);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                0 6px 15px -3px rgba(9, 100, 94, 0.03),
+                0 10px 20px -5px rgba(9, 100, 94, 0.05),
+                inset 0 -3px 6px rgba(9, 100, 94, 0.02);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 2;
             position: relative;
+        }
+
+        /* Pulsing active background glow behind circle icon */
+        .segment-circle-icon::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(9, 100, 94, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transform: scale(0.85);
+            transition: all 0.5s ease;
+            z-index: -1;
+            pointer-events: none;
         }
 
         .segment-title {
             font-family: 'Arimo', sans-serif;
             font-weight: 700;
             color: var(--deep-green);
-            transition: color 0.3s ease;
+            transition: color 0.4s ease;
         }
 
         .segment-description {
             font-family: 'Manrope', sans-serif;
             line-height: 1.55;
-            color: rgba(9, 100, 94, 0.75);
+            color: rgba(9, 100, 94, 0.72);
             font-weight: 400;
+            transition: color 0.4s ease;
+        }
+
+        /* Mouse Spotlight Follower */
+        .mouse-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(228, 237, 44, 0.12) 0%, rgba(9, 100, 94, 0.05) 50%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            will-change: transform;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .segment-number {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            color: rgba(9, 100, 94, 0.22);
+            transition: color 0.4s ease, text-shadow 0.4s ease;
+            letter-spacing: -0.05em;
+            z-index: 4;
+        }
+
+        .carousel-item.active .segment-number {
+            color: var(--teal-green);
+            font-weight: 700;
+        }
+
+        .active-ring-spinner {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            color: rgba(228, 237, 44, 0.85);
+            z-index: 1;
+        }
+
+        .carousel-item.active .active-ring-spinner {
+            opacity: 1;
+            animation: activeRingSpin 16s linear infinite;
+        }
+
+        .card-shine {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes activeRingSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Metallic text sheen animation */
+        @keyframes textSheen {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
         /* DESKTOP STYLES (1024px e acima) */
@@ -559,41 +686,67 @@
                 position: relative;
                 width: 100%;
                 overflow: hidden;
-                margin-top: 40px;
-                padding: 40px 0;
+                margin-top: 50px;
+                padding: 50px 0;
             }
 
             .carousel-track {
                 display: flex;
                 gap: 120px;
-                padding-left: calc(50vw - 160px); /* Centraliza o primeiro card inicialmente */
-                padding-right: calc(50vw - 160px); /* Permite que o último chegue ao centro */
+                padding-left: calc(50vw - 170px); /* Centraliza o card de 340px */
+                padding-right: calc(50vw - 170px);
                 width: max-content;
                 position: relative;
                 z-index: 2;
                 will-change: transform;
             }
 
+            /* Trilho Horizontal Laser/Neon */
             .carousel-track-line {
                 position: absolute;
-                top: 50px; /* Alinhado exatamente ao centro do círculo de 100px */
-                left: calc(50vw - 110px); /* padding (50vw - 160px) + 50px (metade do círculo) */
-                width: calc(100% - (100vw - 220px)); /* Distância do centro do primeiro ao centro do último */
-                height: 2px;
-                background: rgba(9, 100, 94, 0.12);
+                top: 80px; /* Alinhado exatamente ao centro do círculo (30px card padding + 50px metade do círculo) */
+                left: calc(50vw - 120px); /* padding (50vw - 170px) + 50px (metade do círculo) */
+                width: calc(100% - (100vw - 240px));
+                height: 3px;
+                background: rgba(9, 100, 94, 0.08);
                 z-index: 1;
                 pointer-events: none;
+                border-radius: 9999px;
             }
 
             .carousel-track-line-progress {
                 height: 100%;
                 width: 0%;
-                background: var(--teal-green);
+                background: linear-gradient(to right, var(--teal-green), var(--vibrant-green));
+                box-shadow: 
+                    0 0 8px rgba(9, 100, 94, 0.4), 
+                    0 0 16px rgba(228, 237, 44, 0.2);
                 transform-origin: left center;
+                border-radius: 9999px;
+                position: relative;
             }
 
+            /* Partícula brilhante na ponta do trilho progressivo */
+            .carousel-track-line-progress::after {
+                content: '';
+                position: absolute;
+                right: -6px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 12px;
+                height: 12px;
+                background: var(--vibrant-green);
+                border: 2px solid var(--teal-green);
+                border-radius: 50%;
+                box-shadow: 
+                    0 0 8px var(--vibrant-green), 
+                    0 0 15px var(--vibrant-green);
+                z-index: 3;
+            }
+
+            /* Glassmorphism premium card */
             .carousel-item {
-                width: 320px;
+                width: 340px;
                 flex-shrink: 0;
                 display: flex;
                 flex-direction: column;
@@ -601,16 +754,77 @@
                 text-align: center;
                 position: relative;
                 z-index: 2;
-                transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, opacity 0.4s ease;
+                padding: 30px 24px;
+                border-radius: 24px;
+                background: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border: 1px solid rgba(9, 100, 94, 0.05);
+                box-shadow: 0 10px 30px -10px rgba(9, 100, 94, 0.02);
+                transition: 
+                    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                    background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                    filter 0.4s ease, 
+                    opacity 0.4s ease;
                 opacity: 0.35;
                 filter: grayscale(40%);
+                transform: translateY(15px);
+                transform-style: preserve-3d;
+                perspective: 1000px;
             }
 
-            /* Item ativo */
+            /* Card Ativo e Destacado */
             .carousel-item.active {
                 opacity: 1;
                 filter: grayscale(0%);
-                transform: scale(1.06);
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-color: rgba(9, 100, 94, 0.18);
+                box-shadow: 
+                    0 20px 40px -10px rgba(9, 100, 94, 0.08),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+                transform: scale(1.05) translateY(0);
+            }
+
+            /* Parallax depths for card content on desktop hover */
+            .carousel-item .segment-circle-icon {
+                transform: translateZ(30px);
+                transform-style: preserve-3d;
+            }
+
+            .carousel-item .segment-info {
+                transform: translateZ(15px);
+            }
+
+            .segment-number {
+                top: 20px;
+                right: 24px;
+                font-size: 0.85rem;
+                transform: translateZ(20px);
+            }
+
+            .active-ring-spinner {
+                inset: -6px;
+                width: calc(100% + 12px);
+                height: calc(100% + 12px);
+                transform: scale(0.85);
+            }
+
+            .carousel-item.active .active-ring-spinner {
+                transform: scale(1);
+            }
+
+            .card-shine {
+                border-radius: 24px;
+                background: radial-gradient(circle 200px at var(--shine-x, 50%) var(--shine-y, 50%), rgba(255, 255, 255, 0.45) 0%, transparent 100%);
+                transform: translateZ(25px);
+            }
+
+            .carousel-item:hover .card-shine {
+                opacity: 1;
             }
 
             .segment-circle-icon {
@@ -620,13 +834,25 @@
             }
 
             .carousel-item.active .segment-circle-icon {
-                background-color: var(--deep-green);
+                background: var(--deep-green);
                 color: var(--vibrant-green);
                 border-color: var(--deep-green);
+                transform: scale(1.1) rotate(5deg) translateZ(30px);
                 box-shadow: 
-                    0 10px 25px -5px rgba(0, 51, 51, 0.25),
-                    0 0 15px rgba(228, 237, 44, 0.15);
-                transform: scale(1.1);
+                    0 12px 25px rgba(0, 51, 51, 0.2),
+                    0 0 15px rgba(228, 237, 44, 0.2);
+            }
+
+            /* Ativa halo pulsante */
+            .carousel-item.active .segment-circle-icon::before {
+                opacity: 1;
+                transform: scale(1.25);
+                animation: iconHaloPulse 2s infinite ease-in-out;
+            }
+
+            /* Micro animação de flutuação no ícone ativo */
+            .carousel-item.active .segment-circle-icon .iconify {
+                animation: iconFloatMicro 2.5s infinite ease-in-out;
             }
 
             .segment-title {
@@ -641,6 +867,17 @@
             .segment-description {
                 font-size: 0.9rem;
                 max-width: 280px;
+            }
+
+            /* Animações de capricho */
+            @keyframes iconHaloPulse {
+                0%, 100% { transform: scale(1.15); opacity: 0.6; }
+                50% { transform: scale(1.35); opacity: 0.9; filter: drop-shadow(0 0 4px rgba(228, 237, 44, 0.3)); }
+            }
+
+            @keyframes iconFloatMicro {
+                0%, 100% { transform: translateY(0) scale(1); }
+                50% { transform: translateY(-4px) scale(1.05); }
             }
         }
 
@@ -661,33 +898,56 @@
             .carousel-track {
                 display: flex;
                 flex-direction: column;
-                gap: 48px;
+                gap: 36px;
                 position: relative;
-                padding-left: 48px; /* Espaço para o trilho vertical à esquerda */
+                padding-left: 44px; /* Espaço para o trilho vertical à esquerda */
                 padding-right: 8px;
-                max-width: 600px;
+                max-width: 580px;
                 margin: 0 auto;
             }
 
-            /* Trilho Vertical */
+            /* Trilho Vertical Laser/Neon */
             .carousel-track-line {
                 position: absolute;
-                top: 30px; /* Alinhado ao centro do primeiro círculo */
-                bottom: 30px; /* Alinhado ao centro do último círculo */
-                left: 78px; /* Alinhado perfeitamente com os círculos (padding-left 48px + 30px do meio do círculo) */
+                top: 45px; /* Alinhado ao centro do primeiro círculo (20px padding + 25px metade do círculo) */
+                bottom: 45px; /* Alinhado ao centro do último círculo */
+                left: 74px; /* Alinhado perfeitamente com os círculos (padding-left 44px + 30px do meio do círculo) */
                 width: 2px;
                 background: rgba(9, 100, 94, 0.12);
                 z-index: 1;
                 pointer-events: none;
+                border-radius: 9999px;
             }
 
             .carousel-track-line-progress {
                 width: 100%;
                 height: 0%;
-                background: var(--teal-green);
+                background: linear-gradient(to bottom, var(--teal-green), var(--vibrant-green));
+                box-shadow: 
+                    0 0 6px rgba(9, 100, 94, 0.4), 
+                    0 0 12px rgba(228, 237, 44, 0.2);
                 transform-origin: top center;
+                border-radius: 9999px;
+                position: relative;
             }
 
+            /* Partícula de trilho vertical */
+            .carousel-track-line-progress::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -5px;
+                transform: translateX(-50%);
+                width: 10px;
+                height: 10px;
+                background: var(--vibrant-green);
+                border: 1.5px solid var(--teal-green);
+                border-radius: 50%;
+                box-shadow: 0 0 8px var(--vibrant-green);
+                z-index: 3;
+            }
+
+            /* Glassmorphic Cards para celular */
             .carousel-item {
                 display: flex;
                 flex-direction: row;
@@ -697,11 +957,31 @@
                 position: relative;
                 z-index: 2;
                 width: 100%;
+                padding: 20px;
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border: 1px solid rgba(9, 100, 94, 0.05);
+                transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                opacity: 0.55;
+            }
+
+            .carousel-item.active {
+                opacity: 1;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-color: rgba(9, 100, 94, 0.15);
+                box-shadow: 
+                    0 10px 25px rgba(9, 100, 94, 0.06),
+                    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+                transform: translateX(6px);
             }
 
             .segment-circle-icon {
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
                 flex-shrink: 0;
             }
 
@@ -710,29 +990,48 @@
                 color: var(--vibrant-green);
                 border-color: var(--deep-green);
                 box-shadow: 0 6px 15px rgba(0, 51, 51, 0.2);
+                transform: scale(1.08);
             }
 
             .segment-circle-icon .iconify {
-                width: 22px !important;
-                height: 22px !important;
+                width: 20px !important;
+                height: 20px !important;
             }
 
             .segment-info {
                 display: flex;
                 flex-direction: column;
                 gap: 6px;
-                padding-top: 8px; /* Alinha visualmente o título ao centro do círculo */
+                padding-top: 4px;
             }
 
             .segment-title {
-                font-size: 1.15rem;
+                font-size: 1.1rem;
             }
 
             .segment-description {
-                font-size: 0.875rem;
+                font-size: 0.85rem;
                 max-width: 100%;
             }
+
+            .segment-number {
+                top: 14px;
+                right: 18px;
+                font-size: 0.75rem;
+            }
+
+            .active-ring-spinner {
+                inset: -4px;
+                width: calc(100% + 8px);
+                height: calc(100% + 8px);
+                transform: scale(0.85);
+            }
+
+            .carousel-item.active .active-ring-spinner {
+                transform: scale(1);
+            }
         }
+
 
         /* ==========================================================================
            5. SITE FOOTER (Exato rodapé da home)
@@ -1005,7 +1304,7 @@
                     </div>
                     
                     <h1 id="hero-title" class="invisible">
-                        A Sentra foi feita para quem não pode esperar
+                        A Sentra foi feita para quem <span class="highlight-text-gradient">não pode esperar</span>
                     </h1>
                     
                     <p class="subtitle">
@@ -1023,7 +1322,12 @@
                     </div>
                     <!-- Segment 1: Comércio Varejista -->
                     <div class="carousel-item">
+                        <div class="card-shine"></div>
+                        <span class="segment-number">01</span>
                         <div class="segment-circle-icon">
+                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                            </svg>
                             <span class="iconify" data-icon="lucide:store" data-width="28"></span>
                         </div>
                         <div class="segment-info">
@@ -1034,7 +1338,12 @@
 
                     <!-- Segment 2: Prestadores de Serviço -->
                     <div class="carousel-item">
+                        <div class="card-shine"></div>
+                        <span class="segment-number">02</span>
                         <div class="segment-circle-icon">
+                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                            </svg>
                             <span class="iconify" data-icon="lucide:wrench" data-width="28"></span>
                         </div>
                         <div class="segment-info">
@@ -1045,7 +1354,12 @@
 
                     <!-- Segment 3: Restaurantes e Alimentação -->
                     <div class="carousel-item">
+                        <div class="card-shine"></div>
+                        <span class="segment-number">03</span>
                         <div class="segment-circle-icon">
+                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                            </svg>
                             <span class="iconify" data-icon="lucide:utensils" data-width="28"></span>
                         </div>
                         <div class="segment-info">
@@ -1056,7 +1370,12 @@
 
                     <!-- Segment 4: Pequenas e Médias Empresas -->
                     <div class="carousel-item">
+                        <div class="card-shine"></div>
+                        <span class="segment-number">04</span>
                         <div class="segment-circle-icon">
+                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                            </svg>
                             <span class="iconify" data-icon="lucide:building-2" data-width="28"></span>
                         </div>
                         <div class="segment-info">
@@ -1067,7 +1386,12 @@
 
                     <!-- Segment 5: MEI e Autônomos -->
                     <div class="carousel-item">
+                        <div class="card-shine"></div>
+                        <span class="segment-number">05</span>
                         <div class="segment-circle-icon">
+                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                            </svg>
                             <span class="iconify" data-icon="lucide:user" data-width="28"></span>
                         </div>
                         <div class="segment-info">
@@ -1078,7 +1402,12 @@
 
                     <!-- Segment 6: E-commerce -->
                     <div class="carousel-item">
+                        <div class="card-shine"></div>
+                        <span class="segment-number">06</span>
                         <div class="segment-circle-icon">
+                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
+                            </svg>
                             <span class="iconify" data-icon="lucide:shopping-cart" data-width="28"></span>
                         </div>
                         <div class="segment-info">
@@ -1245,6 +1574,32 @@
             gsap.registerPlugin(ScrollTrigger);
 
             // ==========================================================================
+            // C2. MOUSE SPOTLIGHT FOLLOWER & BG DOT-GRID TRACKING
+            // ==========================================================================
+            const heroSection = document.getElementById('para-quem-hero');
+            const cursorGlow = document.createElement('div');
+            cursorGlow.className = 'mouse-glow';
+            heroSection.appendChild(cursorGlow);
+
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Atualiza variáveis CSS para a máscara do grid de pontos
+                heroSection.style.setProperty('--mouse-x', `${x}px`);
+                heroSection.style.setProperty('--mouse-y', `${y}px`);
+
+                // Move suavemente o spotlight radial com lag físico
+                gsap.to(cursorGlow, {
+                    x: x,
+                    y: y,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            });
+
+            // ==========================================================================
             // D. SPLIT TYPE WORD SPLITTING FOR H1 STAGGER
             // ==========================================================================
             const splitTitle = new SplitType(titleEl, { types: 'words' });
@@ -1265,7 +1620,10 @@
             tl.to(".eyebrow", { opacity: 1, y: 0, duration: 0.5 })
               .from(splitTitle.words, { opacity: 0, y: 18, stagger: 0.04, duration: 0.65 }, "-=0.4")
               .to(".subtitle", { opacity: 1, y: 0, duration: 0.55 }, "-=0.45")
-              .to(".carousel-scroll-wrapper", { opacity: 1, y: 0, duration: 0.75 }, "-=0.35");
+              .to(".carousel-scroll-wrapper", { opacity: 1, y: 0, duration: 0.75 }, "-=0.35")
+              .add(() => {
+                  document.querySelector('.para-quem-hero-section').classList.add('revealed');
+              }, "-=0.2");
 
             // ==========================================================================
             // F. SCROLL-DRIVEN CAROUSEL ANIMATIONS USING GSAP MATCHMEDIA
@@ -1279,6 +1637,40 @@
                 // Definir estados iniciais específicos do desktop
                 gsap.set(items, { opacity: 0.35, scale: 0.95 });
                 
+                // Center Focus Ripple effect function
+                function triggerCardActiveEffect(item) {
+                    const iconWrapper = item.querySelector('.segment-circle-icon');
+                    if (!iconWrapper) return;
+
+                    // Create ripple element
+                    const ripple = document.createElement('div');
+                    ripple.className = 'active-ripple';
+                    iconWrapper.appendChild(ripple);
+
+                    // Style ripple
+                    gsap.set(ripple, {
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: '50%',
+                        border: '2px solid var(--vibrant-green)',
+                        opacity: 0.8,
+                        scale: 1,
+                        pointerEvents: 'none',
+                        zIndex: 0
+                    });
+
+                    // Animate ripple
+                    gsap.to(ripple, {
+                        scale: 1.8,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        onComplete: () => {
+                            ripple.remove();
+                        }
+                    });
+                }
+
                 // Timeline do scroll-driven horizontal
                 const horizontalTl = gsap.timeline({
                     scrollTrigger: {
@@ -1309,7 +1701,10 @@
                             items.forEach((item) => {
                                 // Adiciona classe active apenas se estiver bem perto do centro (margem confortável)
                                 if (item === closestItem && minDistance < 220) {
-                                    item.classList.add('active');
+                                    if (!item.classList.contains('active')) {
+                                        item.classList.add('active');
+                                        triggerCardActiveEffect(item);
+                                    }
                                 } else {
                                     item.classList.remove('active');
                                 }
@@ -1349,12 +1744,77 @@
                     }
                 });
 
+                // Efeito 3D Tilt e Shine nos cards (Desktop)
+                const cardListeners = [];
+                items.forEach(item => {
+                    const onCardMouseMove = (e) => {
+                        const rect = item.getBoundingClientRect();
+                        const cardX = e.clientX - rect.left;
+                        const cardY = e.clientY - rect.top;
+                        
+                        const xPercent = (cardX / rect.width) - 0.5;
+                        const yPercent = (cardY / rect.height) - 0.5;
+                        
+                        item.style.setProperty('--shine-x', `${(cardX / rect.width) * 100}%`);
+                        item.style.setProperty('--shine-y', `${(cardY / rect.height) * 100}%`);
+                        
+                        // Rotaciona até 24 graus para efeito bem sensível
+                        const rotateY = xPercent * 24;
+                        const rotateX = -yPercent * 24;
+                        
+                        const isCardActive = item.classList.contains('active');
+                        const targetScale = isCardActive ? 1.07 : 1.02;
+                        const targetY = isCardActive ? 0 : 15;
+                        
+                        gsap.to(item, {
+                            rotateX: rotateX,
+                            rotateY: rotateY,
+                            scale: targetScale,
+                            y: targetY,
+                            duration: 0.4,
+                            ease: "power2.out",
+                            overwrite: "auto"
+                        });
+                    };
+
+                    const onCardMouseLeave = () => {
+                        const isCardActive = item.classList.contains('active');
+                        const targetScale = isCardActive ? 1.05 : 1;
+                        const targetY = isCardActive ? 0 : 15;
+                        
+                        gsap.to(item, {
+                            rotateX: 0,
+                            rotateY: 0,
+                            scale: targetScale,
+                            y: targetY,
+                            duration: 0.7,
+                            ease: "power3.out",
+                            overwrite: "auto",
+                            onComplete: () => {
+                                // Devolve o controle 100% ao CSS após a animação
+                                gsap.set(item, { clearProps: "rotateX,rotateY,scale,y" });
+                            }
+                        });
+                    };
+
+                    item.addEventListener('mousemove', onCardMouseMove);
+                    item.addEventListener('mouseleave', onCardMouseLeave);
+                    
+                    cardListeners.push({ item, onCardMouseMove, onCardMouseLeave });
+                });
+
                 return () => {
                     // Limpar propriedades modificadas pelo GSAP ao redimensionar
                     gsap.set(track, { clearProps: "all" });
                     gsap.set(items, { clearProps: "all" });
                     gsap.set('.carousel-track-line-progress', { clearProps: "all" });
                     items.forEach(item => item.classList.remove('active'));
+                    
+                    // Remover listeners de 3D tilt
+                    cardListeners.forEach(({ item, onCardMouseMove, onCardMouseLeave }) => {
+                        item.removeEventListener('mousemove', onCardMouseMove);
+                        item.removeEventListener('mouseleave', onCardMouseLeave);
+                    });
                 };
             });
 
