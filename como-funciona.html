@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentra - Antecipação de Recebíveis</title>
+    <title>Como Funciona - Sentra</title>
     
     <!-- Meta Tags para SEO -->
-    <meta name="description" content="A Sentra adianta o dinheiro das suas vendas no cartão em D+1. Sem banco, sem burocracia, com as menores taxas do mercado. Peça hoje, receba amanhã.">
-    <meta name="keywords" content="antecipação de recebíveis, maquininha de cartão, sentra securitizadora, taxas baixas, antecipar vendas">
+    <meta name="description" content="Entenda em 5 passos simples como funciona a antecipação de recebíveis com a Sentra. Tudo digital, tudo rápido. Veja como o dinheiro das suas vendas chega à sua conta.">
+    <meta name="keywords" content="antecipação de recebíveis, como funciona antecipação, sentra securitizadora, taxas baixas, antecipar vendas">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Sentra - Antecipação de Recebíveis | Peça Hoje, Receba Amanhã">
-    <meta property="og:description" content="Adiante suas vendas de cartão em D+1 sem complicação.">
+    <meta property="og:title" content="Como Funciona - Sentra | Antecipação de Recebíveis">
+    <meta property="og:description" content="Entenda em 5 passos simples como funciona a antecipação de recebíveis com a Sentra.">
     <meta property="og:image" content="./maquininha.webp">
     
     <!-- Preload da Maquininha -->
@@ -2620,6 +2620,884 @@
                 text-align: center;
             }
         }
+
+        /* ==========================================================================
+           9. COMO FUNCIONA - INTERNAL HERO STYLES
+           ========================================================================== */
+        .como-funciona-hero-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 160px 0 100px 0;
+            overflow: hidden;
+        }
+        
+        .como-funciona-hero-content {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .como-funciona-hero-content h1 {
+            margin-bottom: 24px;
+        }
+        
+        .como-funciona-hero-content .subtitle {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================================================
+           10. COMO FUNCIONA - STEPS TIMELINE STYLES
+           ========================================================================== */
+        .steps-section {
+            position: relative;
+            padding: 120px 0;
+            overflow: hidden;
+            background-color: var(--off-white);
+        }
+
+        .steps-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(228, 237, 44, 0.15) 0%, rgba(9, 100, 94, 0) 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .steps-glow.glow-1 {
+            top: 10%;
+            left: -150px;
+        }
+        .steps-glow.glow-2 {
+            bottom: 10%;
+            right: -150px;
+            background: radial-gradient(circle, rgba(9, 100, 94, 0.08) 0%, rgba(9, 100, 94, 0) 70%);
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            bottom: 40px;
+            width: 4px;
+            background: rgba(9, 100, 94, 0.08);
+            transform: translateX(-50%);
+            z-index: 2;
+            border-radius: 2px;
+        }
+
+        .timeline-line-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(to bottom, var(--teal-green) 0%, var(--vibrant-green) 100%);
+            border-radius: 2px;
+            transition: height 0.1s linear;
+        }
+
+        .step-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            position: relative;
+            margin-bottom: 120px;
+            z-index: 3;
+            align-items: center;
+        }
+
+        .step-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-col {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .step-row.odd .step-content-col {
+            grid-column: 1;
+            justify-content: flex-end;
+        }
+
+        .step-row.odd .step-visual-col {
+            grid-column: 2;
+            justify-content: flex-start;
+        }
+
+        .step-row.even .step-content-col {
+            grid-column: 2;
+            justify-content: flex-start;
+        }
+
+        .step-row.even .step-visual-col {
+            grid-column: 1;
+            justify-content: flex-end;
+        }
+
+        .timeline-dot-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--off-white);
+            border: 4px solid rgba(9, 100, 94, 0.2);
+            transition: var(--transition-smooth);
+            box-shadow: 0 0 0 rgba(9, 100, 94, 0);
+        }
+
+        .step-row.active .timeline-dot {
+            background: var(--vibrant-green);
+            border-color: var(--teal-green);
+            box-shadow: 0 0 15px var(--vibrant-green), 0 0 30px rgba(228, 237, 44, 0.5);
+        }
+
+        .step-card-wrapper {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(9, 100, 94, 0.08);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow:
+                0 4px 6px -1px rgba(9, 100, 94, 0.02),
+                0 20px 40px -4px rgba(9, 100, 94, 0.04);
+            transition: var(--transition-smooth);
+        }
+
+        .step-card-wrapper:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(9, 100, 94, 0.2);
+            box-shadow:
+                0 12px 24px -2px rgba(9, 100, 94, 0.06),
+                0 32px 64px -8px rgba(9, 100, 94, 0.1);
+        }
+
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            background: rgba(9, 100, 94, 0.06);
+            border: 1px solid rgba(9, 100, 94, 0.1);
+            border-radius: 100px;
+            color: var(--teal-green);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .step-row.active .step-badge {
+            background: var(--deep-green);
+            color: var(--vibrant-green);
+            border-color: var(--deep-green);
+        }
+
+        .step-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--deep-green);
+            margin-bottom: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .step-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            color: rgba(0, 51, 51, 0.75);
+        }
+
+        /* 3D Mockup Container */
+        .step-mockup-wrapper {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .mockup-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--deep-green);
+            border-radius: 20px;
+            box-shadow:
+                0 20px 40px -10px rgba(0, 51, 51, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: rotateY(-10deg) rotateX(8deg);
+            transform-style: preserve-3d;
+        }
+
+        .step-row.even .mockup-card {
+            transform: rotateY(10deg) rotateX(8deg);
+        }
+
+        .step-row.active .mockup-card {
+            transform: rotateY(0) rotateX(0);
+            box-shadow:
+                0 30px 60px -15px rgba(0, 51, 51, 0.4),
+                0 0 40px rgba(9, 100, 94, 0.2);
+        }
+
+        /* Mockup Header Navigation simulation */
+        .mockup-header {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .mockup-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .mockup-dots .dot-red { background: #FF5F56; }
+        .mockup-dots .dot-yellow { background: #FFBD2E; }
+        .mockup-dots .dot-green { background: #27C93F; }
+
+        .mockup-tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: monospace;
+            letter-spacing: 0.02em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mockup-body {
+            padding: 24px;
+        }
+
+        /* Mockup 1 - Signup form simulation styles */
+        .mockup-form-group {
+            margin-bottom: 20px;
+        }
+
+        .mockup-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .mockup-input-wrapper {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px 16px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .mockup-input-text {
+            font-size: 0.9rem;
+            color: var(--solid-white);
+            font-family: monospace;
+            font-weight: 500;
+        }
+
+        .mockup-input-cursor {
+            width: 2px;
+            height: 16px;
+            background: var(--vibrant-green);
+            margin-left: 2px;
+            display: inline-block;
+            animation: cursor-blink 1s infinite alternate;
+        }
+
+        @keyframes cursor-blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .mockup-feedback-box {
+            background: rgba(39, 201, 63, 0.1);
+            border: 1px solid rgba(39, 201, 63, 0.2);
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mockup-feedback-box.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feedback-icon-wrapper {
+            background: #27C93F;
+            color: var(--deep-green);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feedback-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .feedback-company {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--solid-white);
+        }
+
+        .feedback-status {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .mockup-btn {
+            width: 100%;
+            background: var(--teal-green);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--solid-white);
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .mockup-btn:hover {
+            background: #0d837b;
+            box-shadow: 0 0 15px rgba(9, 100, 94, 0.4);
+        }
+
+        /* Mockup 2 - Connect satellite nodes style */
+        .mockup-connect-body {
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding-top: 10px;
+        }
+
+        .connect-grid-wrapper {
+            position: relative;
+            width: 300px;
+            height: 200px;
+        }
+
+        .connect-lines {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .node {
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .node-sentra {
+            top: 100px;
+            left: 150px;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--deep-green);
+            border: 2px solid var(--vibrant-green);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(228, 237, 44, 0.4);
+        }
+
+        .sentra-node-logo {
+            width: 32px;
+            height: 32px;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid rgba(228, 237, 44, 0.4);
+            animation: ring-pulse 2s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes ring-pulse {
+            0% { transform: scale(0.9); opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .node-satellite {
+            width: 50px;
+            height: 50px;
+        }
+
+        .brand-logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--solid-white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: var(--transition-smooth);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .brand-logo-text {
+            font-family: 'Manrope', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .connect-badge {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            background: #27C93F;
+            color: var(--deep-green);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .connect-badge.connected {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .connection-status-text {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 10px;
+            font-family: 'Manrope', sans-serif;
+            transition: var(--transition-smooth);
+        }
+
+        .connection-status-text.connected {
+            color: var(--vibrant-green);
+        }
+
+        /* Mockup 3 - Balance Display & Slider styles */
+        .mockup-balance-header {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .mockup-balance-lbl {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 4px;
+        }
+
+        .mockup-balance-val {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--vibrant-green);
+            font-family: 'Arimo', sans-serif;
+        }
+
+        .mockup-slider-container {
+            margin-bottom: 20px;
+        }
+
+        .mockup-slider-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+
+        .slider-info-lbl {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .slider-info-val {
+            color: var(--solid-white);
+            font-weight: 700;
+        }
+
+        .mockup-slider-track-wrapper {
+            position: relative;
+            height: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .mockup-slider-track {
+            height: 6px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mockup-slider-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--teal-green), var(--vibrant-green));
+            border-radius: 3px;
+            width: 0%;
+        }
+
+        .mockup-slider-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--solid-white);
+            border: 3px solid var(--teal-green);
+            position: absolute;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+
+        .mockup-slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 6px;
+        }
+
+        .mockup-balance-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 16px;
+        }
+
+        .balance-footer-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+        }
+
+        .footer-lbl {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-val {
+            color: rgba(255, 255, 255, 0.8);
+            font-family: monospace;
+        }
+
+        /* Mockup 4 - Simulation Details styles */
+        .simulation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .sim-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            align-items: center;
+        }
+
+        .sim-lbl {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .sim-val {
+            font-weight: 600;
+            font-family: monospace;
+        }
+
+        .sim-val.val-white {
+            color: var(--solid-white);
+        }
+
+        .sim-val.val-green {
+            color: var(--vibrant-green);
+        }
+
+        .sim-val.val-red {
+            color: #ff5f56;
+        }
+
+        .sim-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 4px 0;
+        }
+
+        .sim-total-row {
+            font-size: 0.95rem;
+            padding: 4px 0;
+        }
+
+        .sim-val.val-total {
+            color: var(--vibrant-green);
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Arimo', sans-serif;
+        }
+
+        .sim-date-row {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 6px;
+            padding: 6px 10px;
+        }
+
+        .val-date {
+            color: rgba(255, 255, 255, 0.85);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .confirm-btn {
+            background: var(--vibrant-green);
+            color: var(--deep-green);
+        }
+
+        .confirm-btn:hover {
+            background: #f1fc2e;
+            box-shadow: 0 0 15px rgba(228, 237, 44, 0.4);
+        }
+
+        /* Mockup 5 - D+1 Success styles */
+        .mockup-success-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 24px;
+            text-align: center;
+        }
+
+        .success-icon-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .success-icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #27c93f;
+            color: var(--deep-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(39, 201, 63, 0.4);
+        }
+
+        .success-glow-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px dashed rgba(39, 201, 63, 0.4);
+            animation: success-rotate 10s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes success-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--solid-white);
+            margin-bottom: 6px;
+            font-family: 'Arimo', sans-serif;
+        }
+
+        .success-info .success-desc {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.4;
+            max-width: 250px;
+            margin: 0 auto 16px auto;
+        }
+
+        .success-receipt-card {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+        }
+
+        .receipt-lbl {
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .receipt-val {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+        }
+
+        .receipt-val.text-green {
+            color: var(--vibrant-green);
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        /* Responsive timeline layout for mobile/tablet */
+        @media (max-width: 1023px) {
+            .steps-section {
+                padding: 80px 0;
+            }
+            .timeline-line {
+                left: 16px;
+                transform: none;
+            }
+            .timeline-dot-wrapper {
+                left: 16px;
+                top: 30px;
+                transform: translate(-50%, -50%);
+            }
+            .step-row {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                margin-bottom: 80px;
+                padding-left: 48px;
+            }
+            .step-row.odd .step-content-col,
+            .step-row.even .step-content-col {
+                grid-column: 1;
+                justify-content: flex-start;
+                order: 1;
+            }
+            .step-row.odd .step-visual-col,
+            .step-row.even .step-visual-col {
+                grid-column: 1;
+                justify-content: flex-start;
+                order: 2;
+            }
+            .step-card-wrapper {
+                max-width: 100%;
+                padding: 30px 24px;
+            }
+            .mockup-card {
+                max-width: 100%;
+                transform: none !important;
+            }
+            .step-row.even .mockup-card {
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -2633,627 +3511,384 @@
     <!-- Navigation Header -->
     <nav id="navbar">
         <div class="nav-container">
-            <a class="nav-logo" href="#hero">
+            <a class="nav-logo" href="index.html">
                 <img src="./logo-principal.svg" alt="Sentra Securitizadora" class="header-logo-img">
             </a>
             
             <div class="nav-links">
-                <a href="#solucoes">Soluções</a>
+                <a href="index.html#solucoes">Soluções</a>
                 <a href="como-funciona.html">Como Funciona</a>
-                <a href="#tarifas">Tarifas</a>
-                <a href="#sobre">Sobre Nós</a>
+                <a href="index.html#tarifas">Tarifas</a>
+                <a href="index.html#sobre">Sobre Nós</a>
             </div>
 
             <div class="nav-actions">
-                <a href="#login" class="link-client">Área do Cliente</a>
-                <a href="#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
+                <a href="index.html#login" class="link-client">Área do Cliente</a>
+                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content Area -->
     <main>
-        <!-- Hero Dobra Section -->
-        <section id="hero" class="hero-section">
+        <!-- Hero Como Funciona Section -->
+        <section id="como-funciona-hero" class="como-funciona-hero-section">
             <!-- Background pattern grid lines -->
             <div class="bg-grid"></div>
             
             <div class="container">
-                <div class="hero-grid">
-                    
-                    <!-- Left Side: Copy and CTAs -->
-                    <div class="content-col">
-                        <div class="eyebrow">
-                            <span class="eyebrow-dot"></span>
-                            Antecipação de Recebíveis · Menor Taxa do Mercado
-                        </div>
-                        
-                        <h1 id="hero-title" class="invisible">
-                            Peça hoje. Receba amanhã. Sem banco, sem burocracia.
-                        </h1>
-                        
-                        <p class="subtitle">
-                            A Sentra adianta o dinheiro das suas vendas no cartão em D+1. Você mantém sua maquininha, escolhe o valor e antecipa.
-                        </p>
-                        
-                        <div class="cta-container">
-                            <a href="#antecipar" class="btn-shine btn-bounce btn-primary">
-                                Quero Antecipar Agora
-                            </a>
-                            <a href="como-funciona.html" class="btn-bounce btn-secondary">
-                                Ver Como Funciona
-                            </a>
-                        </div>
-                        
-                        <!-- Trust Seals -->
-                        <div class="seals-container">
-                            <div class="seals-wrapper">
-                                <!-- First set of seals -->
-                                <div class="seal-item">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Recebimento em D+1</span>
-                                </div>
-                                <div class="seal-item">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Taxa a partir de 2,10% a.m.</span>
-                                </div>
-                                <div class="seal-item">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Sem IOF</span>
-                                </div>
-                                <div class="seal-item">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Sem troca de maquininha</span>
-                                </div>
-                                <div class="seal-item">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Sem abertura de conta</span>
-                                </div>
-                                
-                                <!-- Second set of seals (duplicate for infinite loop) -->
-                                <div class="seal-item seal-duplicate">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Recebimento em D+1</span>
-                                </div>
-                                <div class="seal-item seal-duplicate">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Taxa a partir de 2,10% a.m.</span>
-                                </div>
-                                <div class="seal-item seal-duplicate">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Sem IOF</span>
-                                </div>
-                                <div class="seal-item seal-duplicate">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Sem troca de maquininha</span>
-                                </div>
-                                <div class="seal-item seal-duplicate">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16" style="stroke-width: 3;"></span>
-                                    <span>Sem abertura de conta</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="como-funciona-hero-content">
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        Como Funciona
                     </div>
                     
-                    <!-- Right Side: Loop Image & Ambience Visuals -->
-                    <div class="visual-col">
-                        <div class="maquininha-container" id="maquininhaContainer">
-                            <!-- Aurora / Halo Background -->
-                            <div class="maquininha-halo" id="maquininhaHalo"></div>
-                            
-                            <!-- Ambience Shadow Container & Element -->
-                            <div class="maquininha-shadow-container" id="maquininhaShadowContainer">
-                                <div class="maquininha-shadow" id="maquininhaShadow"></div>
+                    <h1 id="hero-title" class="invisible">
+                        Em 5 passos, o dinheiro que você vendeu chega à sua conta
+                    </h1>
+                    
+                    <p class="subtitle">
+                        Tudo digital, tudo rápido. Veja como funciona a antecipação na Sentra.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steps Timeline Section -->
+        <section id="como-funciona-steps" class="steps-section">
+            <div class="steps-glow glow-1"></div>
+            <div class="steps-glow glow-2"></div>
+            
+            <div class="container">
+                <div class="timeline-container">
+                    <!-- Central Vertical Progress Line -->
+                    <div class="timeline-line">
+                        <div class="timeline-line-progress"></div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div class="step-row odd" id="step-1">
+                        <div class="step-col step-content-col">
+                            <div class="step-card-wrapper">
+                                <div class="step-badge">Passo 01</div>
+                                <h2 class="step-title">Cadastro rápido e 100% digital</h2>
+                                <p class="step-text">Crie sua conta na Sentra em menos de 5 minutos pelo site ou app. Basta informar os dados da empresa (CNPJ ou CPF MEI). Sem papelada, sem visita presencial.</p>
                             </div>
-                            
-                            <!-- Wrapper for Mouse Parallax -->
-                            <div class="maquininha-wrapper" id="maquininhaWrapper">
-                                <!-- Float Wrapper for autonomous levitation -->
-                                <div class="maquininha-float-wrapper" id="maquininhaFloatWrapper">
-                                    <img src="./maquininha.webp" alt="Maquininha de cartão Sentra em 3D de alta definição" class="maquininha-img" id="maquininhaImg">
-                                    
-                                    <!-- Screen Overlay -->
-                                    <div class="maquininha-screen" id="maquininhaScreen">
-                                        <div class="screen-glow" id="screenGlow"></div>
-                                        <div class="nfc-waves" id="nfcWaves">
-                                            <div class="nfc-wave" id="nfcWave1"></div>
-                                            <div class="nfc-wave" id="nfcWave2"></div>
-                                            <div class="nfc-wave" id="nfcWave3"></div>
+                        </div>
+                        <div class="step-col step-visual-col">
+                            <div class="step-mockup-wrapper">
+                                <div class="mockup-card mockup-signup">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <div class="mockup-tab">app.sentra.com.br/cadastro</div>
+                                    </div>
+                                    <div class="mockup-body">
+                                        <div class="mockup-form-group">
+                                            <label class="mockup-label">CNPJ ou CPF MEI da Empresa</label>
+                                            <div class="mockup-input-wrapper">
+                                                <span class="mockup-input-text" id="mockup-cnpj-text"></span>
+                                                <span class="mockup-input-cursor"></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mockup-feedback-box" id="signup-feedback">
+                                            <div class="feedback-icon-wrapper">
+                                                <span class="iconify" data-icon="lucide:check" data-width="12"></span>
+                                            </div>
+                                            <div class="feedback-content">
+                                                <div class="feedback-company">Sentra Tech Ltda</div>
+                                                <div class="feedback-status">Empresa Ativa • Recebíveis Disponíveis</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="mockup-btn" id="signup-btn">
+                                            <span>Criar Minha Conta</span>
+                                            <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-dot-wrapper">
+                            <div class="timeline-dot"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-row even" id="step-2">
+                        <div class="step-col step-visual-col">
+                            <div class="step-mockup-wrapper">
+                                <div class="mockup-card mockup-connect">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <div class="mockup-tab">Conectar Maquininhas</div>
+                                    </div>
+                                    <div class="mockup-body mockup-connect-body">
+                                        <div class="connect-grid-wrapper">
+                                            <!-- Center Node (Sentra) -->
+                                            <div class="node node-sentra">
+                                                <img src="./logo-simbolo-sentra.svg" alt="Sentra" class="sentra-node-logo">
+                                                <div class="pulse-ring"></div>
+                                            </div>
+                                            
+                                            <!-- Connection Lines -->
+                                            <svg class="connect-lines" viewBox="0 0 300 200">
+                                                <path id="line-stone" d="M 60,40 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+                                                <path id="line-cielo" d="M 240,40 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+                                                <path id="line-rede" d="M 60,160 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+                                                <path id="line-getnet" d="M 240,160 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+                                            </svg>
+
+                                            <!-- Stone Node -->
+                                            <div class="node node-satellite node-stone" style="top: 15px; left: 35px;">
+                                                <div class="brand-logo-circle" style="background: #1f9e38;">
+                                                    <span class="brand-logo-text">Stone</span>
+                                                </div>
+                                                <div class="connect-badge connect-badge-stone">
+                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Cielo Node -->
+                                            <div class="node node-satellite node-cielo" style="top: 15px; right: 35px;">
+                                                <div class="brand-logo-circle" style="background: #0066cc;">
+                                                    <span class="brand-logo-text">Cielo</span>
+                                                </div>
+                                                <div class="connect-badge connect-badge-cielo">
+                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Rede Node -->
+                                            <div class="node node-satellite node-rede" style="bottom: 15px; left: 35px;">
+                                                <div class="brand-logo-circle" style="background: #e65c00;">
+                                                    <span class="brand-logo-text">Rede</span>
+                                                </div>
+                                                <div class="connect-badge connect-badge-rede">
+                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Getnet Node -->
+                                            <div class="node node-satellite node-getnet" style="bottom: 15px; right: 35px;">
+                                                <div class="brand-logo-circle" style="background: #cc0000;">
+                                                    <span class="brand-logo-text">Getnet</span>
+                                                </div>
+                                                <div class="connect-badge connect-badge-getnet">
+                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="connection-status-text" id="connection-status-label">Autorização Pendente...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-col step-content-col">
+                            <div class="step-card-wrapper">
+                                <div class="step-badge">Passo 02</div>
+                                <h2 class="step-title">Conecte a maquininha que você já usa</h2>
+                                <p class="step-text">Compatível com Stone, Cielo, Rede e Getnet. Você mantém sua operação atual. Apenas autoriza a Sentra a visualizar seus recebíveis.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-dot-wrapper">
+                            <div class="timeline-dot"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-row odd" id="step-3">
+                        <div class="step-col step-content-col">
+                            <div class="step-card-wrapper">
+                                <div class="step-badge">Passo 03</div>
+                                <h2 class="step-title">Consulte o saldo disponível para antecipação</h2>
+                                <p class="step-text">Dentro da conta Sentra, você vê em tempo real quanto tem disponível para antecipar, baseado nas vendas já feitas no crédito. Antecipe tudo ou só uma parte.</p>
+                            </div>
+                        </div>
+                        <div class="step-col step-visual-col">
+                            <div class="step-mockup-wrapper">
+                                <div class="mockup-card mockup-balance">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <div class="mockup-tab">Consultar Saldo</div>
+                                    </div>
+                                    <div class="mockup-body">
+                                        <div class="mockup-balance-header">
+                                            <div class="mockup-balance-lbl">Saldo Total para Antecipar</div>
+                                            <div class="mockup-balance-val">R$ 48.500,00</div>
+                                        </div>
+                                        
+                                        <div class="mockup-slider-container">
+                                            <div class="mockup-slider-info">
+                                                <span class="slider-info-lbl">Valor Selecionado</span>
+                                                <span class="slider-info-val" id="slider-val-text">R$ 0,00</span>
+                                            </div>
+                                            
+                                            <div class="mockup-slider-track-wrapper">
+                                                <div class="mockup-slider-track">
+                                                    <div class="mockup-slider-fill" id="slider-track-fill" style="width: 0%;"></div>
+                                                </div>
+                                                <div class="mockup-slider-thumb" id="slider-thumb-handle" style="left: 0%;"></div>
+                                            </div>
+                                            
+                                            <div class="mockup-slider-labels">
+                                                <span>R$ 0</span>
+                                                <span>R$ 48.500</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mockup-balance-footer">
+                                            <div class="balance-footer-row">
+                                                <span class="footer-lbl">Saldo Restante</span>
+                                                <span class="footer-val" id="balance-rest-text">R$ 48.500,00</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Cards Grid Section -->
-        <section id="features" class="features-section">
-            <div class="container">
-                <div class="features-grid" id="featuresGrid">
-                    <!-- Card 1 -->
-                    <div class="feature-card invisible">
-                        <div class="card-icon-wrapper">
-                            <span class="iconify" data-icon="lucide:percent" data-width="20"></span>
-                        </div>
-                        <div class="card-number">2,10%</div>
-                        <div class="card-label">Taxa ao mês a partir de</div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="feature-card invisible">
-                        <div class="card-icon-wrapper">
-                            <span class="iconify" data-icon="lucide:calendar-check" data-width="20"></span>
-                        </div>
-                        <div class="card-number">D+1</div>
-                        <div class="card-label">Receba no dia útil seguinte</div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="feature-card invisible">
-                        <div class="card-icon-wrapper">
-                            <span class="iconify" data-icon="lucide:badge-percent" data-width="20"></span>
-                        </div>
-                        <div class="card-number">R$ 0</div>
-                        <div class="card-label">Zero IOF. Zero taxa de contratação.</div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="feature-card invisible">
-                        <div class="card-icon-wrapper">
-                            <span class="iconify" data-icon="lucide:credit-card" data-width="20"></span>
-                        </div>
-                        <div class="card-number">4</div>
-                        <div class="card-label">Maquininhas compatíveis: <br><strong>Stone · Cielo · Rede · Getnet</strong></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Why Wait (Celulares Section) -->
-        <section id="why-wait" class="waiting-section">
-            <!-- Subtle Grid Background for Dark Theme -->
-            <div class="bg-grid bg-grid-dark"></div>
-            
-            <div class="container">
-                <!-- Title Top -->
-                <h2 class="waiting-title invisible" id="waitingTitle">
-                    Você já vendeu. O dinheiro é seu. <span class="text-vibrant">Por que esperar?</span>
-                </h2>
-
-                <!-- Visual Mid (Phones) -->
-                <div class="phones-visual-container invisible" id="phonesContainer">
-                    <div class="phones-glow" id="phonesGlow"></div>
-                    <img src="./celulares2.webp" alt="Visualização do aplicativo Sentra em smartphones de última geração" class="phones-img" id="phonesImg">
-                </div>
-
-                <!-- Text, Highlights Grid and CTA Bottom -->
-                <div class="waiting-content-bottom">
-                    <p class="waiting-text invisible" id="waitingText">
-                        Quando você vende parcelado no cartão, as parcelas caem na sua conta ao longo de 30, 60 ou 90 dias. Com a Sentra, você antecipa esse valor hoje e recebe tudo no próximo dia útil — pagando apenas uma taxa justa.
-                    </p>
-
-                    <!-- Highlights Grid (3 Columns) -->
-                    <div class="highlights-grid" id="highlightsGrid">
-                        <!-- Highlight 1 -->
-                        <div class="highlight-item invisible">
-                            <div class="highlight-icon-wrapper">
-                                <span class="iconify" data-icon="lucide:ban" data-width="24" style="stroke-width: 2.5;"></span>
-                            </div>
-                            <span class="highlight-text">Não é empréstimo.</span>
-                        </div>
-
-                        <!-- Highlight 2 -->
-                        <div class="highlight-item invisible">
-                            <div class="highlight-icon-wrapper">
-                                <span class="iconify" data-icon="lucide:shield-check" data-width="24" style="stroke-width: 2.5;"></span>
-                            </div>
-                            <span class="highlight-text">Não vira dívida.</span>
-                        </div>
-
-                        <!-- Highlight 3 -->
-                        <div class="highlight-item invisible">
-                            <div class="highlight-icon-wrapper">
-                                <span class="iconify" data-icon="lucide:trending-up" data-width="24" style="stroke-width: 2.5;"></span>
-                            </div>
-                            <span class="highlight-text">Não afeta seu score.</span>
+                        <div class="timeline-dot-wrapper">
+                            <div class="timeline-dot"></div>
                         </div>
                     </div>
 
-                    <!-- CTA Button -->
-                    <div class="cta-wrapper-dark invisible" id="ctaWrapperDark">
-                        <a href="#simular" class="btn-shine btn-bounce btn-vibrant">
-                            Simule sua economia
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <!-- Step 4 -->
+                    <div class="step-row even" id="step-4">
+                        <div class="step-col step-visual-col">
+                            <div class="step-mockup-wrapper">
+                                <div class="mockup-card mockup-simulate">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <div class="mockup-tab">Resumo da Simulação</div>
+                                    </div>
+                                    <div class="mockup-body">
+                                        <div class="simulation-list">
+                                            <div class="sim-row">
+                                                <span class="sim-lbl">Valor Bruto</span>
+                                                <span class="sim-val val-white" id="sim-bruto-val">R$ 35.000,00</span>
+                                            </div>
+                                            
+                                            <div class="sim-row">
+                                                <span class="sim-lbl">Taxa Aplicada</span>
+                                                <span class="sim-val val-green">1,65% a.m.</span>
+                                            </div>
 
-        <!-- Section 3.5: Interactive Savings Calculator -->
-        <section id="simular" class="calculator-section">
-            <!-- Background pattern grid lines -->
-            <div class="bg-grid"></div>
-            
-            <div class="container">
-                <div class="calculator-header">
-                    <h2 class="calculator-title">Veja quanto você está deixando na mesa todo mês</h2>
-                    <p class="calculator-subtitle">Insira o faturamento e os dados de uma venda recente. Nossa calculadora mostra sua economia real em segundos.</p>
-                </div>
-                
-                <div class="calculator-grid">
-                    <!-- Left Column: Inputs Form -->
-                    <div class="calculator-inputs-col">
-                        <form id="calcForm" class="calculator-form" novalidate>
-                            <!-- Row 1: Bandeira & Faturamento -->
-                            <div class="form-group-row">
-                                <div class="form-group">
-                                    <label class="form-label" for="bandeira">
-                                        Bandeira do cartão
-                                    </label>
-                                    <select id="bandeira" class="form-select">
-                                        <option value="Visa">Visa</option>
-                                        <option value="Mastercard">Mastercard</option>
-                                        <option value="Elo">Elo</option>
-                                        <option value="Amex">Amex</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="faturamentoMensal">
-                                        Faturamento mensal no cartão
-                                    </label>
-                                    <input type="text" id="faturamentoMensal" class="form-input" placeholder="R$ 0,00" value="R$ 20.000,00">
+                                            <div class="sim-row">
+                                                <span class="sim-lbl">Tarifa Sentra</span>
+                                                <span class="sim-val val-red" id="sim-tarifa-val">- R$ 577,50</span>
+                                            </div>
+                                            
+                                            <div class="sim-divider"></div>
+                                            
+                                            <div class="sim-row sim-total-row">
+                                                <span class="sim-lbl">Valor Líquido</span>
+                                                <span class="sim-val val-total" id="sim-liquido-val">R$ 34.422,50</span>
+                                            </div>
+
+                                            <div class="sim-row sim-date-row">
+                                                <span class="sim-lbl">Previsão de Crédito</span>
+                                                <span class="sim-val val-date">
+                                                    <span class="iconify" data-icon="lucide:calendar-check" data-width="14"></span>
+                                                    Amanhã (D+1)
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="mockup-btn confirm-btn" id="simulate-btn">
+                                            <span>Confirmar e Receber</span>
+                                            <span class="iconify" data-icon="lucide:check-circle" data-width="14"></span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <!-- Row 2: Maquininha & Valor Venda -->
-                            <div class="form-group-row">
-                                <div class="form-group">
-                                    <label class="form-label" for="maquininha">
-                                        Qual maquininha é?
-                                    </label>
-                                    <select id="maquininha" class="form-select">
-                                        <option value="Stone">Stone</option>
-                                        <option value="Cielo">Cielo</option>
-                                        <option value="Rede">Rede</option>
-                                        <option value="GetNet">GetNet</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="valorVenda">
-                                        Valor desta venda (Líquido)
-                                    </label>
-                                    <input type="text" id="valorVenda" class="form-input" placeholder="R$ 0,00" value="R$ 4.094,58">
-                                    <span class="form-tip">Valor que a concorrência informa como total bruto da venda</span>
-                                </div>
+                        </div>
+                        <div class="step-col step-content-col">
+                            <div class="step-card-wrapper">
+                                <div class="step-badge">Passo 04</div>
+                                <h2 class="step-title">Simule e confirme sem surpresas</h2>
+                                <p class="step-text">Antes de confirmar, você vê: valor bruto, taxa aplicada, valor líquido e data de crédito. A taxa é calculada com base no prazo dos seus recebíveis.</p>
                             </div>
-                            
-                            <!-- Row 3: Parcelas & Recebimento Concorrência -->
-                            <div class="form-group-row">
-                                <div class="form-group">
-                                    <label class="form-label" for="parcelas">
-                                        Número de parcelas
-                                    </label>
-                                    <select id="parcelas" class="form-select">
-                                        <option value="1">1x</option>
-                                        <option value="2">2x</option>
-                                        <option value="3" selected>3x</option>
-                                        <option value="4">4x</option>
-                                        <option value="5">5x</option>
-                                        <option value="6">6x</option>
-                                        <option value="7">7x</option>
-                                        <option value="8">8x</option>
-                                        <option value="9">9x</option>
-                                        <option value="10">10x</option>
-                                        <option value="11">11x</option>
-                                        <option value="12">12x</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="valorConcorrencia">
-                                        Quanto a concorrência te paga
-                                    </label>
-                                    <input type="text" id="valorConcorrencia" class="form-input" placeholder="R$ 0,00" value="R$ 3.840,00">
-                                </div>
-                            </div>
-                            
-                            <!-- CTA Button -->
-                            <button type="submit" class="btn-shine btn-bounce btn-primary" style="margin-top: 10px; padding: 16px 32px;">
-                                Calcular minha economia
-                            </button>
-                        </form>
-                    </div>
-                    
-                    <!-- Right Column: Result Card -->
-                    <div class="calculator-results-col">
-                        <div class="calculator-result-card" id="resultCard">
-                            <div class="result-card-header">
-                                <h3 class="result-card-title">
-                                    <span class="iconify" data-icon="lucide:calculator" data-width="20" style="color: var(--vibrant-green);"></span>
-                                    Resultado na Sentra
-                                </h3>
-                            </div>
-                            
-                            <!-- State 1: Placeholder (Before click) -->
-                            <div class="result-placeholder" id="resultPlaceholder">
-                                <div class="placeholder-icon-wrapper">
-                                    <span class="iconify" data-icon="lucide:calculator" data-width="32"></span>
-                                </div>
-                                <p class="placeholder-text">Preencha os dados ao lado e veja sua economia real em segundos.</p>
-                            </div>
-                            
-                            <!-- State 2: Active results (After calculation) -->
-                            <div class="result-active-content" id="resultActiveContent">
-                                <div class="result-row">
-                                    <span class="result-label">Valor desta venda:</span>
-                                    <span class="result-value" id="resValorVenda">R$ 0,00</span>
-                                </div>
-                                <div class="result-row">
-                                    <span class="result-label">Taxa estimada na Sentra:</span>
-                                    <span class="result-value" id="resTaxaSentra">0,00% a.m.</span>
-                                </div>
-                                
-                                <div class="result-highlight-row">
-                                    <span class="highlight-label">Você receberá com a Sentra</span>
-                                    <span class="highlight-value" id="resValorSentra">R$ 0,00</span>
-                                </div>
-                                
-                                <div class="result-row">
-                                    <span class="result-label">Economia mensal estimada:</span>
-                                    <span class="result-value" id="resEconomiaMensal">R$ 0,00</span>
-                                </div>
-                                
-                                <!-- Impact Box -->
-                                <div class="impact-box">
-                                    <p class="impact-text">
-                                        Você pode estar deixando mais de <strong class="impact-amount" id="resEconomiaAnual">R$ 0,00</strong> por ano com taxa cara.
-                                    </p>
-                                </div>
-                                
-                                <!-- Final CTA -->
-                                <div class="result-cta-wrapper">
-                                    <a href="#" class="btn-shine btn-bounce btn-vibrant result-cta-btn" style="display: block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
-                                        Quero reduzir minhas taxas
-                                    </a>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="timeline-dot-wrapper">
+                            <div class="timeline-dot"></div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 4: Jornada (How it works - 2 Columns) -->
-        <section id="how-it-works" class="process-section">
-            <div class="container">
-                <div class="process-box invisible" id="processBox">
-                    <!-- Subtle Grid Background inside the box -->
-                    <div class="bg-grid"></div>
-
-                    <div class="process-grid">
-                        <!-- Left Column: Copy & Timeline -->
-                        <div class="process-left-col">
-                            <div class="process-eyebrow invisible" id="processEyebrow">
-                                <span class="eyebrow-dot"></span>Como Funciona
-                            </div>
-                            <h2 class="process-title invisible" id="processTitle">
-                                Em 3 passos simples, o dinheiro está na sua conta
-                            </h2>
-                            <p class="process-desc invisible" id="processDesc">
-                                Com a Sentra, você antecipa os recebíveis da sua maquininha de forma rápida, segura e sem complicações. Acompanhe a jornada:
-                            </p>
-
-                            <!-- Timeline steps -->
-                            <div class="process-timeline">
-                                <!-- Step 1 -->
-                                <div class="timeline-item invisible">
-                                    <div class="timeline-dot"></div>
-                                    <div class="timeline-title">Passo 01 · Crie sua conta Sentra</div>
-                                    <p class="timeline-text">Cadastro digital, menos de 5 minutos. Sem papelada.</p>
-                                </div>
-
-                                <!-- Step 2 -->
-                                <div class="timeline-item invisible">
-                                    <div class="timeline-dot"></div>
-                                    <div class="timeline-title">Passo 02 · Conecte a maquininha que você já usa</div>
-                                    <p class="timeline-text">Stone, Cielo, Rede ou Getnet — sem precisar trocar nada.</p>
-                                </div>
-
-                                <!-- Step 3 -->
-                                <div class="timeline-item invisible">
-                                    <div class="timeline-dot"></div>
-                                    <div class="timeline-title">Passo 03 · Antecipe e receba em D+1</div>
-                                    <p class="timeline-text">Escolha o valor, confirme, e o dinheiro cai no próximo dia útil.</p>
-                                </div>
-                            </div>
-
-                            <!-- Link explanation -->
-                            <div class="process-link-wrapper invisible" id="processLinkWrapper">
-                                <a href="#explicacao" class="process-link">
-                                    Ver explicação completa 
-                                    <span class="iconify icon-arrow" data-icon="lucide:arrow-right" data-width="16"></span>
-                                </a>
+                    <!-- Step 5 -->
+                    <div class="step-row odd" id="step-5">
+                        <div class="step-col step-content-col">
+                            <div class="step-card-wrapper">
+                                <div class="step-badge">Passo 05</div>
+                                <h2 class="step-title">Dinheiro disponível em D+1</h2>
+                                <p class="step-text">O valor é creditado no próximo dia útil na sua conta Sentra.</p>
                             </div>
                         </div>
-
-                        <!-- Right Column: 2x2 Grid of visual cards -->
-                        <div class="grid-2x2" id="grid2x2">
-                            <!-- Card 1 -->
-                            <div class="process-card invisible">
-                                <img src="./feature_signup.png" alt="Cadastro Digital" class="card-bg-img">
-                                <div class="card-icon-pill">
-                                    <span class="iconify" data-icon="lucide:user-plus" data-width="18"></span>
-                                </div>
-                                <span class="card-tag">Menos de 5 min</span>
-                                <div class="card-footer-glass">
-                                    <span class="card-title">Cadastro Digital</span>
-                                    <span class="iconify" data-icon="lucide:check-circle" data-width="16" style="color: var(--teal-green);"></span>
-                                </div>
-                            </div>
-
-                            <!-- Card 2 -->
-                            <div class="process-card invisible">
-                                <img src="./feature_connect.png" alt="Conexão de Maquininhas" class="card-bg-img">
-                                <div class="card-icon-pill">
-                                    <span class="iconify" data-icon="lucide:credit-card" data-width="18"></span>
-                                </div>
-                                <span class="card-tag">Integração</span>
-                                <div class="card-footer-glass">
-                                    <span class="card-title">Conexão de Maquininha</span>
-                                    <span class="iconify" data-icon="lucide:link-2" data-width="16" style="color: var(--teal-green);"></span>
-                                </div>
-                            </div>
-
-                            <!-- Card 3 -->
-                            <div class="process-card invisible">
-                                <img src="./feature_dashboard.png" alt="Painel Sentra" class="card-bg-img">
-                                <div class="card-icon-pill">
-                                    <span class="iconify" data-icon="lucide:bar-chart-3" data-width="18"></span>
-                                </div>
-                                <span class="card-tag">Área do Cliente</span>
-                                <div class="card-footer-glass">
-                                    <span class="card-title">Painel de Vendas</span>
-                                    <span class="iconify" data-icon="lucide:eye" data-width="16" style="color: var(--teal-green);"></span>
-                                </div>
-                            </div>
-
-                            <!-- Card 4 -->
-                            <div class="process-card invisible">
-                                <img src="./feature_payment.png" alt="Recebimento D+1" class="card-bg-img">
-                                <div class="card-icon-pill">
-                                    <span class="iconify" data-icon="lucide:zap" data-width="18"></span>
-                                </div>
-                                <span class="card-tag">Recebimento</span>
-                                <div class="card-footer-glass">
-                                    <span class="card-title">Liquidação D+1</span>
-                                    <span class="iconify" data-icon="lucide:shield-check" data-width="16" style="color: var(--teal-green);"></span>
+                        <div class="step-col step-visual-col">
+                            <div class="step-mockup-wrapper">
+                                <div class="mockup-card mockup-settlement">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span class="dot dot-red"></span>
+                                            <span class="dot dot-yellow"></span>
+                                            <span class="dot dot-green"></span>
+                                        </div>
+                                        <div class="mockup-tab">Transferência Concluída</div>
+                                    </div>
+                                    <div class="mockup-body mockup-success-body">
+                                        <div class="success-icon-container">
+                                            <div class="success-glow-ring"></div>
+                                            <div class="success-icon-circle">
+                                                <span class="iconify" data-icon="lucide:check-circle-2" data-width="36"></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="success-info">
+                                            <h3 class="success-title">Dinheiro na Conta!</h3>
+                                            <p class="success-desc">O valor líquido da sua antecipação foi creditado na conta cadastrada.</p>
+                                        </div>
+                                        
+                                        <div class="success-receipt-card">
+                                            <div class="receipt-row">
+                                                <span class="receipt-lbl">Valor Pago</span>
+                                                <span class="receipt-val">R$ 34.422,50</span>
+                                            </div>
+                                            <div class="receipt-row">
+                                                <span class="receipt-lbl">Banco de Destino</span>
+                                                <span class="receipt-val">Banco do Brasil (001)</span>
+                                            </div>
+                                            <div class="receipt-row">
+                                                <span class="receipt-lbl">Status</span>
+                                                <span class="receipt-val text-green">
+                                                    <span class="iconify" data-icon="lucide:arrow-down-left" data-width="12"></span>
+                                                    Liquidado D+1
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="timeline-dot-wrapper">
+                            <div class="timeline-dot"></div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 5: Target Audience Carousel -->
-        <section id="para-quem" class="audience-section">
-            <!-- Light Ambient Grid Pattern -->
-            <div class="bg-grid"></div>
-            
-            <div class="container">
-                <div class="audience-header">
-                    <h2 class="audience-title">A Sentra é para quem vende e não pode esperar</h2>
-                </div>
-                
-                <!-- 3D Card Carousel Viewport -->
-                <div class="carousel-viewport">
-                    <!-- Left Arrow Button -->
-                    <button class="carousel-btn btn-prev" id="prevBtn" aria-label="Slide anterior">
-                        <span class="iconify" data-icon="lucide:chevron-left" data-width="24"></span>
-                    </button>
-                    
-                    <!-- Carousel Track containing cards -->
-                    <div class="carousel-track" id="carouselTrack">
-                        <!-- Card 0: Comércio Varejista -->
-                        <div class="carousel-card pos-prev" data-index="0">
-                            <div class="card-noise"></div>
-                            <div class="card-grid"></div>
-                            <div class="card-glow"></div>
-                            <div class="carousel-card-content">
-                                <div class="card-icon-circle">
-                                    <span class="iconify" data-icon="lucide:store" data-width="32"></span>
-                                </div>
-                                <h3 class="carousel-card-title">Comércio Varejista</h3>
-                                <p class="carousel-card-desc">lojas que precisam de capital de giro para estoque</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Card 1: Prestadores de Serviço -->
-                        <div class="carousel-card pos-active" data-index="1">
-                            <div class="card-noise"></div>
-                            <div class="card-grid"></div>
-                            <div class="card-glow"></div>
-                            <div class="carousel-card-content">
-                                <div class="card-icon-circle">
-                                    <span class="iconify" data-icon="lucide:users" data-width="32"></span>
-                                </div>
-                                <h3 class="carousel-card-title">Prestadores de Serviço</h3>
-                                <p class="carousel-card-desc">clínicas, salões, academias</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Card 2: PMEs -->
-                        <div class="carousel-card pos-next" data-index="2">
-                            <div class="card-noise"></div>
-                            <div class="card-grid"></div>
-                            <div class="card-glow"></div>
-                            <div class="carousel-card-content">
-                                <div class="card-icon-circle">
-                                    <span class="iconify" data-icon="lucide:briefcase" data-width="32"></span>
-                                </div>
-                                <h3 class="carousel-card-title">PMEs</h3>
-                                <p class="carousel-card-desc">empresas que querem capital sem empréstimo caro</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Arrow Button -->
-                    <button class="carousel-btn btn-next" id="nextBtn" aria-label="Próximo slide">
-                        <span class="iconify" data-icon="lucide:chevron-right" data-width="24"></span>
-                    </button>
-                </div>
-                
-                <!-- Final CTA Button -->
-                <div class="cta-wrapper" style="margin-top: 30px;">
-                    <a href="#antecipar" class="btn-shine btn-bounce btn-vibrant" style="display: inline-block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
-                        Quero Antecipar Agora
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 6: Final CTA Section -->
-        <section id="pronto" class="final-cta-section">
-            <div class="cta-glow"></div>
-            <div class="cta-grid"></div>
-
-            <div class="container relative-z">
-                <div class="final-cta-logo invisible" id="prontoLogo">
-                    <svg width="64" height="54" viewBox="0 0 625 527" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M76.2297 238.84H0.00976562V191.23H76.2297C98.9497 191.23 120.7 180.14 134.14 161.83C146.8 144.59 145.62 123.91 148.71 103.89C151.42 86.2801 157.74 69.0301 167.53 54.1001C186.72 24.8401 218.48 4.98009 253.26 0.840088C257.97 0.280088 262.72 0 267.46 0H624.2V47.6101H267.46C246.62 47.6101 226.49 56.92 212.93 72.74C202.54 84.86 198.08 100.93 196.38 116.53C194.17 136.85 191.06 158.23 181.16 176.4C164.85 206.32 135.83 228.4 102.57 235.91C93.9397 237.86 85.0897 238.84 76.2397 238.84H76.2297Z" fill="url(#paint0_linear_21_1452_logo)"/>
-                        <path d="M220.1 382.7H0.00976562V335.09H220.1C242.82 335.09 264.57 324 278.01 305.69C290.67 288.45 289.49 267.77 292.58 247.75C295.29 230.14 301.61 212.89 311.4 197.96C330.59 168.7 362.35 148.84 397.13 144.7C401.84 144.14 406.59 143.86 411.33 143.86H624.2V191.47H411.33C390.49 191.47 370.36 200.78 356.8 216.6C346.41 228.72 341.95 244.79 340.25 260.39C338.04 280.71 334.93 302.09 325.03 320.26C308.72 350.18 279.7 372.26 246.44 379.77C237.81 381.72 228.96 382.7 220.11 382.7H220.1Z" fill="url(#paint1_linear_21_1452_logo)"/>
-                        <path d="M363.96 526.57H0V478.96H363.96C386.68 478.96 408.43 467.87 421.87 449.56C434.53 432.32 433.35 411.64 436.44 391.62C439.15 374.01 445.47 356.76 455.26 341.83C474.45 312.57 506.21 292.71 540.99 288.57C545.7 288.01 550.45 287.73 555.19 287.73H624.19V335.34H555.19C534.35 335.34 514.22 344.65 500.66 360.47C490.27 372.59 485.81 388.66 484.11 404.26C481.9 424.58 478.79 445.96 468.89 464.13C452.58 494.05 423.56 516.13 390.3 523.64C381.67 525.59 372.82 526.57 363.97 526.57H363.96Z" fill="url(#paint2_linear_21_1452_logo)"/>
-                        <defs>
-                            <linearGradient id="paint0_linear_21_1452_logo" x1="0.00976562" y1="119.42" x2="624.19" y2="119.42" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#0B342B"/>
-                                <stop offset="0.32" stop-color="#076553"/>
-                                <stop offset="1" stop-color="#E1F11C"/>
-                            </linearGradient>
-                            <linearGradient id="paint1_linear_21_1452_logo" x1="0.00976562" y1="263.29" x2="624.19" y2="263.29" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#0B342B"/>
-                                <stop offset="0.32" stop-color="#076553"/>
-                                <stop offset="1" stop-color="#E1F11C"/>
-                            </linearGradient>
-                            <linearGradient id="paint2_linear_21_1452_logo" x1="0.01" y1="407.16" x2="624.19" y2="407.16" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#0B342B"/>
-                                <stop offset="0.32" stop-color="#076553"/>
-                                <stop offset="1" stop-color="#E1F11C"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <h2 class="final-cta-title invisible" id="prontoTitle">Pronto para receber hoje o que você já vendeu?</h2>
-                <p class="final-cta-subtitle invisible" id="prontoSubtitle">Crie sua conta em minutos e faça sua primeira antecipação.</p>
-                <div class="final-cta-actions invisible" id="prontoActions">
-                    <a href="#antecipar" class="btn-shine btn-bounce btn-vibrant">
-                        Quero Antecipar Agora
-                    </a>
-                    <a href="#falar-especialista" class="btn-bounce btn-outline-glass">
-                        Falar com um Especialista
-                    </a>
                 </div>
             </div>
         </section>
@@ -3264,8 +3899,9 @@
         <div class="container">
             <div class="footer-grid">
                 <!-- Coluna 1 — Identidade -->
+                <!-- Coluna 1 — Identidade -->
                 <div class="footer-col footer-col-identity">
-                    <a href="#hero" class="footer-logo-link">
+                    <a href="index.html" class="footer-logo-link">
                         <img src="./logo+tag.svg" alt="Sentra Securitizadora" class="footer-logo">
                     </a>
                     <p class="footer-desc">
@@ -3288,13 +3924,13 @@
                 <div class="footer-col">
                     <h3 class="footer-title">Navegação</h3>
                     <ul class="footer-links">
-                        <li><a href="#hero">Início</a></li>
+                        <li><a href="index.html">Início</a></li>
                         <li><a href="como-funciona.html">Como Funciona</a></li>
-                        <li><a href="#features">Vantagens</a></li>
-                        <li><a href="#para-quem">Para Quem É</a></li>
-                        <li><a href="#simular">Calculadora</a></li>
-                        <li><a href="#sobre">Quem Somos</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="index.html#features">Vantagens</a></li>
+                        <li><a href="index.html#para-quem">Para Quem É</a></li>
+                        <li><a href="index.html#simular">Calculadora</a></li>
+                        <li><a href="index.html#sobre">Quem Somos</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
                     </ul>
                 </div>
 
@@ -3302,13 +3938,13 @@
                 <div class="footer-col">
                     <h3 class="footer-title">Soluções</h3>
                     <ul class="footer-links">
-                        <li><a href="#antecipacao-recebiveis">Antecipação de Recebíveis</a></li>
-                        <li><a href="#antecipacao-pontual">Antecipação Pontual</a></li>
-                        <li><a href="#antecipacao-recorrente">Antecipação Recorrente</a></li>
-                        <li><a href="#stone">Stone</a></li>
-                        <li><a href="#cielo">Cielo</a></li>
-                        <li><a href="#rede">Rede</a></li>
-                        <li><a href="#getnet">Getnet</a></li>
+                        <li><a href="index.html#antecipacao-recebiveis">Antecipação de Recebíveis</a></li>
+                        <li><a href="index.html#antecipacao-pontual">Antecipação Pontual</a></li>
+                        <li><a href="index.html#antecipacao-recorrente">Antecipação Recorrente</a></li>
+                        <li><a href="index.html#stone">Stone</a></li>
+                        <li><a href="index.html#cielo">Cielo</a></li>
+                        <li><a href="index.html#rede">Rede</a></li>
+                        <li><a href="index.html#getnet">Getnet</a></li>
                     </ul>
                 </div>
 
@@ -3330,9 +3966,9 @@
                         </li>
                     </ul>
                     <ul class="footer-links footer-legal">
-                        <li><a href="#politica-privacidade">Política de Privacidade</a></li>
-                        <li><a href="#termos-uso">Termos de Uso</a></li>
-                        <li><a href="#politica-cookies">Política de Cookies</a></li>
+                        <li><a href="index.html#politica-privacidade">Política de Privacidade</a></li>
+                        <li><a href="index.html#termos-uso">Termos de Uso</a></li>
+                        <li><a href="index.html#politica-cookies">Política de Cookies</a></li>
                     </ul>
                 </div>
             </div>
@@ -3349,6 +3985,8 @@
     <!-- External Script Integrations (GSAP, SplitType, Lenis) -->
     <!-- GSAP Core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- GSAP ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- SplitType -->
     <script src="https://unpkg.com/split-type"></script>
     <!-- Lenis Smooth Scroll -->
@@ -3399,15 +4037,51 @@
                 gsap.from(".eyebrow", { opacity: 0, duration: 0.6 });
                 gsap.from("#hero-title", { opacity: 0, duration: 0.6 });
                 gsap.from(".subtitle", { opacity: 0, duration: 0.6 });
-                gsap.from(".cta-container", { opacity: 0, duration: 0.6 });
-                gsap.from(".seals-container", { opacity: 0, duration: 0.6 });
-                gsap.from("#maquininhaWrapper", { opacity: 0, duration: 0.6 });
                 
-                // Hide halo, screen glow, and waves in reduced motion
-                gsap.set("#maquininhaHalo", { display: "none" });
-                gsap.set("#maquininhaScreen", { display: "none" });
-                return; // bypass custom animations & tilts
+                // Show steps and timeline immediately without transitions
+                document.querySelectorAll(".step-row").forEach(row => {
+                    row.classList.add("active");
+                    const card = row.querySelector(".step-card-wrapper");
+                    const mockup = row.querySelector(".mockup-card");
+                    gsap.set([card, mockup], { opacity: 1, x: 0, y: 0 });
+                });
+                const progressLine = document.querySelector(".timeline-line-progress");
+                if (progressLine) progressLine.style.height = "100%";
+                
+                // Initialize static mockup content
+                const signupText = document.getElementById("mockup-cnpj-text");
+                if (signupText) signupText.textContent = "45.678.901/0001-23";
+                
+                const signupFeedback = document.getElementById("signup-feedback");
+                if (signupFeedback) signupFeedback.classList.add("active");
+                
+                document.querySelectorAll(".connect-badge").forEach(b => b.classList.add("connected"));
+                
+                const connLabel = document.getElementById("connection-status-label");
+                if (connLabel) {
+                    connLabel.textContent = "Conexão Estabelecida!";
+                    connLabel.classList.add("connected");
+                }
+                
+                document.querySelectorAll(".connect-lines path").forEach(p => {
+                    p.setAttribute("stroke", "rgba(228, 237, 44, 0.6)");
+                    p.setAttribute("stroke-width", "3");
+                });
+                
+                const sliderFill = document.getElementById("slider-track-fill");
+                const sliderThumb = document.getElementById("slider-thumb-handle");
+                const sliderVal = document.getElementById("slider-val-text");
+                const balanceRest = document.getElementById("balance-rest-text");
+                
+                if (sliderFill) sliderFill.style.width = "72.16%";
+                if (sliderThumb) sliderThumb.style.left = "72.16%";
+                if (sliderVal) sliderVal.textContent = "R$ 35.000,00";
+                if (balanceRest) balanceRest.textContent = "R$ 13.500,00";
+                return; // bypass custom animations
             }
+
+            // Register GSAP ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
 
             // ==========================================================================
             // D. SPLIT TYPE WORD SPLITTING FOR H1 STAGGER
@@ -3423,618 +4097,156 @@
 
             // Set precise initial coordinate layouts
             gsap.set(".eyebrow", { opacity: 0, y: 12 });
-            gsap.set(".subtitle", { opacity: 0 });
-            gsap.set(".btn-primary", { opacity: 0, scale: 0.94 });
-            gsap.set(".btn-secondary", { opacity: 0, scale: 0.94 });
-            gsap.set(".seal-item", { opacity: 0, y: 8 });
-            
-            // Maquininha wrapper starts with a soft landing slide-up and scale-up (no 3D rotation)
-            gsap.set("#maquininhaWrapper", {
-                opacity: 0,
-                y: 35,
-                scale: 0.96
-            });
-            gsap.set("#maquininhaShadowContainer", {
-                opacity: 0,
-                scale: 0.8
-            });
+            gsap.set(".subtitle", { opacity: 0, y: 12 });
 
             // Entrance orchestrations
             tl.to(".eyebrow", { opacity: 1, y: 0, duration: 0.5 })
               .from(splitTitle.words, { opacity: 0, y: 18, stagger: 0.04, duration: 0.65 }, "-=0.4")
-              .to(".subtitle", { opacity: 1, duration: 0.55 }, "-=0.45")
-              .to(".btn-primary", { opacity: 1, scale: 1, duration: 0.45 }, "-=0.45")
-              .to(".btn-secondary", { opacity: 1, scale: 1, duration: 0.45 }, "-=0.4")
-              .to(".seal-item", { opacity: 1, y: 0, stagger: 0.04, duration: 0.45 }, "-=0.4")
-              // Terminal landing animation in parallel
-              .to("#maquininhaWrapper", {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  duration: 1.0,
-                  ease: "back.out(1.15)"
-              }, "0.15")
-              .to("#maquininhaShadowContainer", {
-                  opacity: 1,
-                  scale: 1,
-                  duration: 1.0
-              }, "0.15");
+              .to(".subtitle", { opacity: 1, y: 0, duration: 0.55 }, "-=0.45");
 
             // ==========================================================================
-            // F. AMBIENT CONTINUOUS ANIMATIONS (GSAP loop triggers)
+            // F. TIMELINE & CARD ANIMATIONS USING SCROLLTRIGGER
             // ==========================================================================
-
-            // 2. NFC concentric waves propagation pulses (with immediateRender: false to avoid static borders)
-            gsap.fromTo("#nfcWave1", 
-                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out" }
-            );
-            gsap.fromTo("#nfcWave2", 
-                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out", delay: 0.83, immediateRender: false }
-            );
-            gsap.fromTo("#nfcWave3", 
-                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out", delay: 1.66, immediateRender: false }
-            );
-
-            // 3. Screen pulsating glowing overlay
-            gsap.fromTo("#screenGlow",
-                { opacity: 0.15 },
-                { opacity: 0.45, duration: 2.2, repeat: -1, yoyo: true, ease: "sine.inOut" }
-            );
-
-            // 4. Background Halo/Aurora rotation and scaling pulses
-            gsap.to("#maquininhaHalo", {
-                rotation: 360,
-                duration: 35,
-                repeat: -1,
-                ease: "none"
+            
+            // Draw central timeline progress line
+            gsap.to(".timeline-line-progress", {
+                height: "100%",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".timeline-container",
+                    start: "top 40%",
+                    end: "bottom 70%",
+                    scrub: true
+                }
             });
-            // 2. NFC concentric waves propagation pulses (using box-shadow to prevent outline ghosts)
-            gsap.fromTo("#nfcWave1", 
-                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out" }
-            );
-            gsap.fromTo("#nfcWave2", 
-                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out", delay: 0.83, immediateRender: false }
-            );
-            gsap.fromTo("#nfcWave3", 
-                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out", delay: 1.66, immediateRender: false }
-            );
 
-            // 3. Screen pulsating glowing overlay
-            gsap.fromTo("#screenGlow",
-                { opacity: 0.15 },
-                { opacity: 0.45, duration: 2.2, repeat: -1, yoyo: true, ease: "sine.inOut" }
-            );
+            // Animate each row's entrance and internal micro-mockups
+            gsap.utils.toArray(".step-row").forEach((row) => {
+                const isOdd = row.classList.contains("odd");
+                const card = row.querySelector(".step-card-wrapper");
+                const mockup = row.querySelector(".mockup-card");
+                
+                const rowTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: row,
+                        start: "top 75%",
+                        toggleActions: "play none none reverse",
+                        onEnter: () => row.classList.add("active"),
+                        onLeaveBack: () => row.classList.remove("active"),
+                        onEnterBack: () => row.classList.add("active"),
+                        onLeave: () => {}
+                    }
+                });
 
-            // 4. Background Halo/Aurora rotation and scaling pulses
-            gsap.to("#maquininhaHalo", {
-                rotation: 360,
-                duration: 35,
-                repeat: -1,
-                ease: "none"
-            });
-            gsap.fromTo("#maquininhaHalo",
-                { scale: 0.95 },
-                { scale: 1.1, duration: 7, repeat: -1, yoyo: true, ease: "sine.inOut" }
-            );
+                // Reset positions before animation
+                gsap.set(card, { opacity: 0, x: isOdd ? -40 : 40 });
+                gsap.set(mockup, { opacity: 0, x: isOdd ? 40 : -40 });
 
-            // ==========================================================================
-            // G. SCROLL REVEAL ANIMATIONS FOR FEATURES GRID
-            // ==========================================================================
-            const featuresSection = document.getElementById('features');
-            const featureCards = document.querySelectorAll('.feature-card');
+                rowTl.to(card, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.7,
+                    ease: "power2.out"
+                })
+                .to(mockup, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.7,
+                    ease: "power2.out"
+                }, "-=0.55");
 
-            if (prefersReducedMotion) {
-                featureCards.forEach(card => card.classList.remove('invisible'));
-            } else {
-                const featuresObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            featureCards.forEach(card => card.classList.remove('invisible'));
-                            gsap.fromTo(featureCards, 
-                                { opacity: 0, y: 30 },
-                                { opacity: 1, y: 0, stagger: 0.12, duration: 0.8, ease: "power3.out" }
-                            );
-                            observer.unobserve(entry.target);
+                // Micro-animations inside mockups
+                if (row.id === "step-1") {
+                    const textTarget = document.getElementById("mockup-cnpj-text");
+                    const feedback = document.getElementById("signup-feedback");
+                    const cnpjStr = "45.678.901/0001-23";
+                    
+                    rowTl.to({}, {
+                        duration: 1.0,
+                        onStart: () => {
+                            if (!textTarget) return;
+                            textTarget.textContent = "";
+                            let idx = 0;
+                            const timer = setInterval(() => {
+                                if (idx < cnpjStr.length) {
+                                    textTarget.textContent += cnpjStr[idx];
+                                    idx++;
+                                } else {
+                                    clearInterval(timer);
+                                    if (feedback) feedback.classList.add("active");
+                                }
+                            }, 50);
                         }
-                    });
-                }, {
-                    threshold: 0.15
-                });
-                featuresObserver.observe(featuresSection);
-            }
-
-            // ==========================================================================
-            // H. SCROLL REVEAL & AMBIENT ANIMATIONS FOR SECTION 3 (WHY WAIT)
-            // ==========================================================================
-            const waitingSection = document.getElementById('why-wait');
-            const waitingTitle = document.getElementById('waitingTitle');
-            const phonesContainer = document.getElementById('phonesContainer');
-            const waitingText = document.getElementById('waitingText');
-            const highlightItems = document.querySelectorAll('.highlight-item');
-            const ctaWrapperDark = document.getElementById('ctaWrapperDark');
-            const phonesImg = document.getElementById('phonesImg');
-            const phonesGlow = document.getElementById('phonesGlow');
-
-            if (prefersReducedMotion) {
-                // Show immediately
-                waitingTitle.classList.remove('invisible');
-                phonesContainer.classList.remove('invisible');
-                waitingText.classList.remove('invisible');
-                highlightItems.forEach(item => item.classList.remove('invisible'));
-                ctaWrapperDark.classList.remove('invisible');
-            } else {
-                // Staggered reveal timeline
-                const waitingObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Unhide components
-                            waitingTitle.classList.remove('invisible');
-                            phonesContainer.classList.remove('invisible');
-                            waitingText.classList.remove('invisible');
-                            highlightItems.forEach(item => item.classList.remove('invisible'));
-                            ctaWrapperDark.classList.remove('invisible');
-
-                            const waitingTl = gsap.timeline({
-                                defaults: { ease: "power3.out", duration: 0.8 }
-                            });
-
-                            waitingTl.fromTo(waitingTitle, { opacity: 0, y: 25 }, { opacity: 1, y: 0 })
-                                     .fromTo(phonesContainer, { opacity: 0, scale: 0.94, y: 35 }, { opacity: 1, scale: 1, y: 0, duration: 1 }, "-=0.5")
-                                     .fromTo(waitingText, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.6")
-                                     .fromTo(highlightItems, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.12 }, "-=0.5")
-                                     .fromTo(ctaWrapperDark, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1 }, "-=0.4");
-
-                            observer.unobserve(entry.target);
+                    }, "-=0.1");
+                } 
+                else if (row.id === "step-2") {
+                    rowTl.to(".connect-badge", {
+                        opacity: 1,
+                        scale: 1,
+                        stagger: 0.1,
+                        duration: 0.3,
+                        ease: "back.out(1.5)",
+                        onStart: () => {
+                            document.querySelectorAll(".connect-badge").forEach(b => b.classList.add("connected"));
+                            const label = document.getElementById("connection-status-label");
+                            if (label) {
+                                label.textContent = "Conexão Estabelecida!";
+                                label.classList.add("connected");
+                            }
                         }
-                    });
-                }, {
-                    threshold: 0.12
-                });
-                waitingObserver.observe(waitingSection);
-
-                // Autonomous continuous floating parallax on the phones and ambient glow
-                gsap.to(phonesImg, {
-                    y: -12,
-                    duration: 4.5,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
-                
-                gsap.fromTo(phonesGlow,
-                    { scale: 0.95, opacity: 0.7 },
-                    { scale: 1.1, opacity: 1.0, duration: 4.5, repeat: -1, yoyo: true, ease: "sine.inOut" }
-                );
-            }
-
-            // ==========================================================================
-            // H.5 INTERACTIVE SAVINGS CALCULATOR LOGIC
-            // ==========================================================================
-            const calcForm = document.getElementById('calcForm');
-            const faturamentoInput = document.getElementById('faturamentoMensal');
-            const valorVendaInput = document.getElementById('valorVenda');
-            const parcelasSelect = document.getElementById('parcelas');
-            const valorConcorrenciaInput = document.getElementById('valorConcorrencia');
-            
-            const resultCard = document.getElementById('resultCard');
-            const resultPlaceholder = document.getElementById('resultPlaceholder');
-            const resultActiveContent = document.getElementById('resultActiveContent');
-            
-            const resValorVenda = document.getElementById('resValorVenda');
-            const resTaxaSentra = document.getElementById('resTaxaSentra');
-            const resValorSentra = document.getElementById('resValorSentra');
-            const resEconomiaMensal = document.getElementById('resEconomiaMensal');
-            const resEconomiaAnual = document.getElementById('resEconomiaAnual');
-
-            // Helper to parse BRL string to number
-            function parseCurrencyValue(valueString) {
-                if (!valueString) return 0;
-                let cleanString = valueString.replace(/[^\d]/g, '');
-                return parseFloat(cleanString) / 100 || 0;
-            }
-
-            // Helper to format number to BRL currency string
-            function formatBRL(number) {
-                return new Intl.NumberFormat('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL'
-                }).format(number);
-            }
-
-            // Format initial values on load
-            [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(input => {
-                if (input && input.value) {
-                    let numericVal = parseCurrencyValue(input.value);
-                    if (numericVal > 0) {
-                        input.value = formatBRL(numericVal);
-                    }
-                }
-            });
-
-            // Input masking logic in real-time as user types
-            function attachCurrencyMask(inputElement) {
-                inputElement.addEventListener('input', (e) => {
-                    let cursorPosition = e.target.selectionStart;
-                    let oldLen = e.target.value.length;
+                    }, "-=0.1")
+                    .to(".connect-lines path", {
+                        stroke: "rgba(228, 237, 44, 0.6)",
+                        strokeWidth: 3,
+                        stagger: 0.08,
+                        duration: 0.4
+                    }, "-=0.2");
+                } 
+                else if (row.id === "step-3") {
+                    const fill = document.getElementById("slider-track-fill");
+                    const thumb = document.getElementById("slider-thumb-handle");
+                    const valText = document.getElementById("slider-val-text");
+                    const restText = document.getElementById("balance-rest-text");
                     
-                    let digits = e.target.value.replace(/\D/g, '');
-                    if (!digits) {
-                        e.target.value = '';
-                        return;
-                    }
-                    
-                    let numeric = parseFloat(digits) / 100;
-                    e.target.value = formatBRL(numeric);
-                    
-                    let newLen = e.target.value.length;
-                    e.target.setSelectionRange(cursorPosition + (newLen - oldLen), cursorPosition + (newLen - oldLen));
-                });
-            }
-
-            [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(attachCurrencyMask);
-
-            // Mathematical calculation function
-            function calcularEconomia({ faturamentoMensal, valorVenda, parcelas, valorConcorrencia }) {
-                let somaMesesParcelas = 0;
-                for (let i = 1; i <= parcelas; i++) {
-                    somaMesesParcelas += (valorVenda / parcelas) * i;
-                }
-                
-                const taxaConcorrencia = ((valorVenda - valorConcorrencia) / somaMesesParcelas) * 100;
-                const taxaSentra = taxaConcorrencia - 1;
-                
-                let descontoTotal = 0;
-                for (let i = 1; i <= parcelas; i++) {
-                    descontoTotal += (valorVenda / parcelas) * ((taxaConcorrencia - 1) * 1.0055) / 100 * i;
-                }
-                
-                const valorSentra = Math.round((valorVenda - descontoTotal) * 100) / 100;
-                const economiaMensal = (faturamentoMensal / valorVenda) * (valorSentra - valorConcorrencia);
-                const economiaAnual = economiaMensal * 12;
-                
-                return {
-                    valorVenda,
-                    taxaSentra,
-                    valorSentra,
-                    economiaMensal,
-                    economiaAnual
-                };
-            }
-
-            // Error display helpers
-            function showError(inputElement, message) {
-                removeError(inputElement);
-                inputElement.classList.add('input-error');
-                
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.id = `${inputElement.id}-error`;
-                errorDiv.innerHTML = `<span class="iconify" data-icon="lucide:alert-circle" data-width="14"></span> ${message}`;
-                
-                inputElement.parentNode.appendChild(errorDiv);
-                
-                inputElement.setAttribute('aria-invalid', 'true');
-                inputElement.setAttribute('aria-describedby', errorDiv.id);
-            }
-
-            function removeError(inputElement) {
-                inputElement.classList.remove('input-error');
-                const existingError = document.getElementById(`${inputElement.id}-error`);
-                if (existingError) {
-                    existingError.remove();
-                }
-                inputElement.removeAttribute('aria-invalid');
-                inputElement.removeAttribute('aria-describedby');
-            }
-
-            // Real-time error removal on interaction
-            [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(input => {
-                input.addEventListener('focus', () => removeError(input));
-            });
-
-            // Form Submit Listener
-            calcForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                [faturamentoInput, valorVendaInput, valorConcorrenciaInput].forEach(removeError);
-                
-                const faturamentoMensal = parseCurrencyValue(faturamentoInput.value);
-                const valorVenda = parseCurrencyValue(valorVendaInput.value);
-                const valorConcorrencia = parseCurrencyValue(valorConcorrenciaInput.value);
-                const parcelas = parseInt(parcelasSelect.value);
-                
-                let hasErrors = false;
-                
-                if (faturamentoMensal <= 0) {
-                    showError(faturamentoInput, 'Digite um faturamento válido maior que zero.');
-                    hasErrors = true;
-                }
-                if (valorVenda <= 0) {
-                    showError(valorVendaInput, 'Digite um valor de venda válido maior que zero.');
-                    hasErrors = true;
-                }
-                if (valorConcorrencia <= 0) {
-                    showError(valorConcorrenciaInput, 'Digite o valor pago pela concorrência.');
-                    hasErrors = true;
-                }
-                
-                if (hasErrors) return;
-                
-                if (valorConcorrencia >= valorVenda) {
-                    showError(valorConcorrenciaInput, 'O valor pago pela concorrência deve ser menor que o valor da venda.');
-                    return;
-                }
-                
-                const results = calcularEconomia({
-                    faturamentoMensal,
-                    valorVenda,
-                    parcelas,
-                    valorConcorrencia
-                });
-                
-                resValorVenda.textContent = formatBRL(results.valorVenda);
-                resTaxaSentra.textContent = results.taxaSentra.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '% a.m.';
-                resValorSentra.textContent = formatBRL(results.valorSentra);
-                resEconomiaMensal.textContent = formatBRL(results.economiaMensal);
-                resEconomiaAnual.textContent = formatBRL(results.economiaAnual);
-                
-                resultPlaceholder.style.display = 'none';
-                resultActiveContent.style.display = 'flex';
-                
-                if (prefersReducedMotion) {
-                    gsap.set(resultActiveContent, { opacity: 1, y: 0 });
-                } else {
-                    gsap.fromTo(resultActiveContent,
-                        { opacity: 0, y: 15 },
-                        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
-                    );
-                }
-            });
-
-            // ==========================================================================
-            // I. SCROLL REVEAL ANIMATIONS FOR SECTION 4 (HOW IT WORKS)
-            // ==========================================================================
-            const processSection = document.getElementById('how-it-works');
-            const processBox = document.getElementById('processBox');
-            const processEyebrow = document.getElementById('processEyebrow');
-            const processTitle = document.getElementById('processTitle');
-            const processDesc = document.getElementById('processDesc');
-            const timelineItems = document.querySelectorAll('.process-timeline .timeline-item');
-            const processLinkWrapper = document.getElementById('processLinkWrapper');
-            const processCards = document.querySelectorAll('.grid-2x2 .process-card');
-
-            if (prefersReducedMotion) {
-                // Show immediately
-                processBox.classList.remove('invisible');
-                processEyebrow.classList.remove('invisible');
-                processTitle.classList.remove('invisible');
-                processDesc.classList.remove('invisible');
-                timelineItems.forEach(item => item.classList.remove('invisible'));
-                processLinkWrapper.classList.remove('invisible');
-                processCards.forEach(card => card.classList.remove('invisible'));
-            } else {
-                const processObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Unhide components
-                            processBox.classList.remove('invisible');
-                            processEyebrow.classList.remove('invisible');
-                            processTitle.classList.remove('invisible');
-                            processDesc.classList.remove('invisible');
-                            timelineItems.forEach(item => item.classList.remove('invisible'));
-                            processLinkWrapper.classList.remove('invisible');
-                            processCards.forEach(card => card.classList.remove('invisible'));
-
-                            const processTl = gsap.timeline({
-                                defaults: { ease: "power3.out", duration: 0.8 }
-                            });
-
-                            // Animate container box first, then stagger elements inside
-                            processTl.fromTo(processBox, { opacity: 0, y: 40, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 1.0 })
-                                     .fromTo(processEyebrow, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.65")
-                                     .fromTo(processTitle, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, "-=0.6")
-                                     .fromTo(processDesc, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.6")
-                                     .fromTo(timelineItems, { opacity: 0, x: -15 }, { opacity: 1, x: 0, stagger: 0.15 }, "-=0.5")
-                                     .fromTo(processLinkWrapper, { opacity: 0, y: 10 }, { opacity: 1, y: 0 }, "-=0.4")
-                                     .fromTo(processCards, { opacity: 0, scale: 0.94, y: 25 }, { opacity: 1, scale: 1, y: 0, stagger: 0.12, duration: 0.9 }, "-=0.8");
-
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.12
-                });
-                processObserver.observe(processSection);
-            }
-
-            // ==========================================================================
-            // H.7 TARGET AUDIENCE CAROUSEL LOGIC
-            // ==========================================================================
-            const carouselCards = document.querySelectorAll('.carousel-card');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            let activeIdx = 1;
-            
-            function getTranslateX(positionName) {
-                const width = window.innerWidth;
-                if (width <= 640) {
-                    if (positionName === 'prev') return -90;
-                    if (positionName === 'next') return 90;
-                    return 0;
-                } else if (width <= 1023) {
-                    if (positionName === 'prev') return -180;
-                    if (positionName === 'next') return 180;
-                    return 0;
-                } else {
-                    if (positionName === 'prev') return -260;
-                    if (positionName === 'next') return 260;
-                    return 0;
-                }
-            }
-
-            function getScale(positionName) {
-                if (positionName === 'active') return 1.05;
-                if (window.innerWidth <= 640) return 0.75;
-                return 0.85;
-            }
-
-            function getOpacity(positionName) {
-                if (positionName === 'active') return 1;
-                if (window.innerWidth <= 640) return 0.15;
-                return 0.3;
-            }
-
-            function getBlur(positionName) {
-                if (positionName === 'active') return 0;
-                return 2;
-            }
-
-            function updateCarousel(newActiveIdx) {
-                activeIdx = (newActiveIdx + 3) % 3;
-                const prevIdx = (activeIdx - 1 + 3) % 3;
-                const nextIdx = (activeIdx + 1) % 3;
-                
-                carouselCards.forEach((card, idx) => {
-                    let pos = 'active';
-                    let zIndex = 20;
-                    let pointerEvents = 'auto';
-                    
-                    if (idx === prevIdx) {
-                        pos = 'prev';
-                        zIndex = 10;
-                        pointerEvents = 'none';
-                    } else if (idx === nextIdx) {
-                        pos = 'next';
-                        zIndex = 10;
-                        pointerEvents = 'none';
-                    }
-                    
-                    card.style.pointerEvents = pointerEvents;
-                    
-                    const xVal = getTranslateX(pos);
-                    const scaleVal = getScale(pos);
-                    const opacityVal = getOpacity(pos);
-                    const blurVal = getBlur(pos);
-                    
-                    if (prefersReducedMotion) {
-                        gsap.set(card, {
-                            x: xVal,
-                            scale: scaleVal,
-                            opacity: opacityVal,
-                            filter: `blur(${blurVal}px)`,
-                            zIndex: zIndex
-                        });
-                    } else {
-                        gsap.to(card, {
-                            x: xVal,
-                            scale: scaleVal,
-                            opacity: opacityVal,
-                            filter: `blur(${blurVal}px)`,
-                            zIndex: zIndex,
-                            duration: 0.65,
-                            ease: "power2.out"
-                        });
-                    }
-                    
-                    // Toggle position classes so CSS transitions/rules can apply
-                    card.classList.remove('pos-active', 'pos-prev', 'pos-next');
-                    card.classList.add(`pos-${pos}`);
-                    
-                    // Reset inline styles so they don't override rich CSS background/border styles
-                    card.style.borderColor = '';
-                    card.style.backgroundColor = '';
-                    
-                    if (pos === 'active') {
-                        card.setAttribute('aria-hidden', 'false');
-                    } else {
-                        card.setAttribute('aria-hidden', 'true');
-                    }
-                });
-            }
-            
-            prevBtn.addEventListener('click', () => updateCarousel(activeIdx - 1));
-            nextBtn.addEventListener('click', () => updateCarousel(activeIdx + 1));
-            
-            carouselCards.forEach((card, idx) => {
-                card.addEventListener('click', () => {
-                    if (idx !== activeIdx) {
-                        updateCarousel(idx);
-                    }
-                });
-            });
-            
-            window.addEventListener('resize', () => {
-                updateCarousel(activeIdx);
-            });
-
-            // ==========================================================================
-            // J. SCROLL REVEAL FOR SECTION 6 (FINAL CTA)
-            // ==========================================================================
-            const prontoSection = document.getElementById('pronto');
-            const prontoLogo = document.getElementById('prontoLogo');
-            const prontoTitle = document.getElementById('prontoTitle');
-            const prontoSubtitle = document.getElementById('prontoSubtitle');
-            const prontoActions = document.getElementById('prontoActions');
-            
-            if (prefersReducedMotion) {
-                // Show instantly
-                prontoLogo.classList.remove('invisible');
-                prontoTitle.classList.remove('invisible');
-                prontoSubtitle.classList.remove('invisible');
-                prontoActions.classList.remove('invisible');
-            } else {
-                // GSAP Entrance reveals
-                const prontoObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Unhide components
-                            prontoLogo.classList.remove('invisible');
-                            prontoTitle.classList.remove('invisible');
-                            prontoSubtitle.classList.remove('invisible');
-                            prontoActions.classList.remove('invisible');
-
-                            const prontoTl = gsap.timeline({
-                                defaults: { ease: "power3.out", duration: 0.8 }
-                            });
+                    rowTl.to({ val: 0 }, {
+                        val: 35000,
+                        duration: 1.2,
+                        ease: "power2.out",
+                        onUpdate: function() {
+                            const progress = this.targets()[0].val / 48500;
+                            if (fill) fill.style.width = `${progress * 100}%`;
+                            if (thumb) thumb.style.left = `${progress * 100}%`;
                             
-                            prontoTl.fromTo(prontoLogo, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, ease: "back.out(1.7)" })
-                                    .fromTo(prontoTitle, { opacity: 0, y: 25 }, { opacity: 1, y: 0 }, "-=0.6")
-                                    .fromTo(prontoSubtitle, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, "-=0.6")
-                                    .fromTo(prontoActions, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.5");
+                            const currentVal = Math.round(this.targets()[0].val);
+                            if (valText) valText.textContent = `R$ ${currentVal.toLocaleString('pt-BR')},00`;
                             
-                            observer.unobserve(entry.target);
+                            const rest = 48500 - currentVal;
+                            if (restText) restText.textContent = `R$ ${rest.toLocaleString('pt-BR')},00`;
                         }
-                    });
-                }, {
-                    threshold: 0.15
-                });
-                
-                prontoObserver.observe(prontoSection);
-
-                // Mouse tracking spotlight glow
-                const prontoGlow = prontoSection.querySelector('.cta-glow');
-                const glowX = gsap.quickTo(prontoGlow, "left", { duration: 0.8, ease: "power3.out" });
-                const glowY = gsap.quickTo(prontoGlow, "top", { duration: 0.8, ease: "power3.out" });
-                
-                prontoSection.addEventListener('mousemove', (e) => {
-                    const rect = prontoSection.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    glowX(x);
-                    glowY(y);
-                });
-
-            }
-
-            // Initialize
-            updateCarousel(activeIdx);
+                    }, "-=0.2");
+                } 
+                else if (row.id === "step-4") {
+                    rowTl.from(".sim-row", {
+                        opacity: 0,
+                        y: 8,
+                        stagger: 0.08,
+                        duration: 0.4,
+                        ease: "power1.out"
+                    }, "-=0.2");
+                } 
+                else if (row.id === "step-5") {
+                    rowTl.from(".success-icon-circle", {
+                        scale: 0,
+                        duration: 0.5,
+                        ease: "back.out(1.5)"
+                    }, "-=0.2")
+                    .from(".success-receipt-card", {
+                        opacity: 0,
+                        y: 10,
+                        duration: 0.4
+                    }, "-=0.15");
+                }
+            });
 
             // Dynamic year logic
             const footerYear = document.getElementById('footerYear');
