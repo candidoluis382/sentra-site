@@ -3056,8 +3056,9 @@
 
         .connect-grid-wrapper {
             position: relative;
-            width: 300px;
-            height: 200px;
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1.5;
         }
 
         .connect-lines {
@@ -3078,8 +3079,8 @@
         }
 
         .node-sentra {
-            top: 100px;
-            left: 150px;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             width: 64px;
             height: 64px;
@@ -3745,6 +3746,55 @@
                 margin-left: 12px;
             }
         }
+
+        /* Ajustes finos de responsividade para telas pequenas (mobile estreito) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px !important;
+            }
+            .timeline-line {
+                left: 12px;
+            }
+            .timeline-dot-wrapper {
+                left: 12px;
+            }
+            .step-row {
+                padding-left: 28px;
+                gap: 24px;
+                margin-bottom: 60px;
+            }
+            .step-card-wrapper {
+                padding: 24px 16px;
+                border-radius: 16px;
+            }
+            .step-title {
+                font-size: 1.45rem;
+                margin-bottom: 12px;
+            }
+            .step-text {
+                font-size: 0.925rem;
+            }
+            .mockup-body {
+                padding: 16px;
+            }
+            .faq-header {
+                padding: 18px 16px 18px 48px;
+            }
+            .faq-content {
+                padding: 0 16px 18px 48px;
+            }
+            .faq-badge {
+                left: 12px;
+                top: -12px;
+                width: 24px;
+                height: 24px;
+                border-radius: 6px;
+            }
+            .faq-badge-img {
+                width: 12px;
+                height: 12px;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -3895,7 +3945,7 @@
                                             </svg>
 
                                             <!-- Stone Node -->
-                                            <div class="node node-satellite node-stone" style="top: 15px; left: 35px;">
+                                            <div class="node node-satellite node-stone" style="top: 7.5%; left: 11.67%;">
                                                 <div class="brand-logo-circle" style="background: #1f9e38;">
                                                     <span class="brand-logo-text">Stone</span>
                                                 </div>
@@ -3905,7 +3955,7 @@
                                             </div>
                                             
                                             <!-- Cielo Node -->
-                                            <div class="node node-satellite node-cielo" style="top: 15px; right: 35px;">
+                                            <div class="node node-satellite node-cielo" style="top: 7.5%; right: 11.67%;">
                                                 <div class="brand-logo-circle" style="background: #0066cc;">
                                                     <span class="brand-logo-text">Cielo</span>
                                                 </div>
@@ -3915,7 +3965,7 @@
                                             </div>
 
                                             <!-- Rede Node -->
-                                            <div class="node node-satellite node-rede" style="bottom: 15px; left: 35px;">
+                                            <div class="node node-satellite node-rede" style="bottom: 7.5%; left: 11.67%;">
                                                 <div class="brand-logo-circle" style="background: #e65c00;">
                                                     <span class="brand-logo-text">Rede</span>
                                                 </div>
@@ -3925,7 +3975,7 @@
                                             </div>
 
                                             <!-- Getnet Node -->
-                                            <div class="node node-satellite node-getnet" style="bottom: 15px; right: 35px;">
+                                            <div class="node node-satellite node-getnet" style="bottom: 7.5%; right: 11.67%;">
                                                 <div class="brand-logo-circle" style="background: #cc0000;">
                                                     <span class="brand-logo-text">Getnet</span>
                                                 </div>
