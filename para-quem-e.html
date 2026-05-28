@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Quem É - Sentra</title>
+    
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Descubra se a Sentra é a solução ideal para o seu negócio. Se você vende parcelado no cartão de crédito e precisa antecipar seus recebíveis com as menores taxas, nós fomos feitos para você.">
+    <meta name="keywords" content="antecipação de recebíveis, para quem é, comércio varejista, prestadores de serviço, MEI autônomo, e-commerce, sentra securitizadora">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Para Quem É - Sentra | Feito para Quem Não Pode Esperar">
+    <meta property="og:description" content="Se você vende no cartão e precisa de caixa agora, a Sentra é para você. Conheça nossos segmentos atendidos.">
+    <meta property="og:image" content="./maquininha.webp">
+    
+    <!-- Preload da Maquininha -->
+    <link rel="preload" href="./maquininha.webp" as="image">
+    
+    <!-- Google Fonts: Arimo (Titles) & Manrope (Body/Details) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Iconify CDN -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <style>
+        /* ==========================================================================
+           1. DESIGN SYSTEM VARIABLES & RESET (Fiel ao design-system.html e index.html)
+           ========================================================================== */
+        :root {
+            --off-white: #FEFDED;
+            --deep-green: #003333;
+            --teal-green: #09645E;
+            --vibrant-green: #E4ED2C;
+            --solid-white: #FFFFFF;
+            --border-color: rgba(9, 100, 94, 0.1);
+            --border-hover: rgba(9, 100, 94, 0.2);
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--off-white);
+            background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, var(--off-white) 100%);
+            color: var(--teal-green);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, .font-arimo {
+            font-family: 'Arimo', sans-serif;
+        }
+
+        /* Ambient Glows */
+        .glow-container {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .glow-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background-color: rgba(9, 100, 94, 0.08);
+            border-radius: 50%;
+            filter: blur(120px);
+        }
+
+        .glow-bottom {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background-color: rgba(228, 237, 44, 0.04);
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        /* Selection styling */
+        ::selection {
+            background-color: rgba(9, 100, 94, 0.15);
+            color: var(--deep-green);
+        }
+
+        .invisible {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION HEADER (Exato cabeçalho da home)
+           ========================================================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(254, 253, 237, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(9, 100, 94, 0.05);
+            background-color: rgba(254, 253, 237, 0.95);
+            border-bottom: 1px solid rgba(9, 100, 94, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--deep-green);
+            cursor: pointer;
+        }
+
+        .header-logo-img {
+            height: 34px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .nav-logo:hover .header-logo-img {
+            transform: scale(1.03);
+            opacity: 0.95;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 28px;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(9, 100, 94, 0.85);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-green);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: var(--teal-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-actions .link-client {
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(9, 100, 94, 0.85);
+            transition: color 0.3s ease;
+        }
+
+        .nav-actions .link-client:hover {
+            color: var(--deep-green);
+        }
+
+        /* Buttons Styling */
+        .btn-bounce {
+            transition: var(--transition-bounce);
+        }
+
+        .btn-bounce:active {
+            transform: scale(0.96) !important;
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.25),
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .btn-shine:hover::after {
+            left: 150%;
+            transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 32px;
+            background-color: var(--deep-green);
+            color: var(--off-white);
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 51, 51, 0.12);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--teal-green);
+            box-shadow: 0 8px 24px rgba(9, 100, 94, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 32px;
+            background-color: transparent;
+            color: var(--deep-green);
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            border: 1px solid rgba(0, 51, 51, 0.25);
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--deep-green);
+            color: var(--off-white);
+            border-color: var(--deep-green);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           3. HERO SECTIONS & LAYOUT (Centralizado com Carrossel de Segmentos)
+           ========================================================================== */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .para-quem-hero-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            padding: 140px 0 100px 0;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .hero-fade-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, var(--off-white));
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .hero-text-center {
+            width: 100%;
+            margin: 0 auto 30px auto;
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            border: 1px solid rgba(9, 100, 94, 0.2);
+            background-color: rgba(9, 100, 94, 0.05);
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            color: var(--teal-green);
+            width: fit-content;
+            margin-bottom: 20px;
+            cursor: default;
+            transition: background-color 0.3s ease;
+        }
+
+        .eyebrow:hover {
+            background-color: rgba(9, 100, 94, 0.1);
+        }
+
+        .eyebrow-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--teal-green);
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--deep-green);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 640px) {
+            h1 {
+                font-size: 3.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 3.5rem;
+                line-height: 1.1;
+            }
+        }
+
+        /* Split Type word wrapper */
+        .word {
+            display: inline-block;
+            will-change: transform, opacity;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: rgba(9, 100, 94, 0.95);
+            font-weight: 300;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .subtitle {
+                font-size: 1.125rem;
+                line-height: 1.65;
+            }
+        }
+
+        /* Background elements */
+        .bg-dot-grid {
+            position: absolute;
+            inset: 0;
+            background-size: 32px 32px;
+            background-image: radial-gradient(rgba(9, 100, 94, 0.08) 1.5px, transparent 1.5px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-blob-1 {
+            position: absolute;
+            top: -10%;
+            left: 5%;
+            width: 450px;
+            height: 450px;
+            background-color: rgba(9, 100, 94, 0.05);
+            border-radius: 43% 57% 41% 59% / 57% 45% 55% 43%;
+            filter: blur(90px);
+            pointer-events: none;
+            z-index: -2;
+            animation: organicFloat 18s ease-in-out infinite alternate;
+        }
+
+        .glow-blob-2 {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            background-color: rgba(228, 237, 44, 0.06);
+            border-radius: 59% 41% 57% 43% / 45% 57% 43% 55%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: -2;
+            animation: organicFloatInverse 22s ease-in-out infinite alternate;
+        }
+
+        .hero-radial-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(228, 237, 44, 0.08) 0%, rgba(9, 100, 94, 0.03) 50%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: -3;
+        }
+
+        @keyframes organicFloat {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                border-radius: 43% 57% 41% 59% / 57% 45% 55% 43%;
+            }
+            50% {
+                transform: translate(30px, -20px) scale(1.05) rotate(45deg);
+                border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+            }
+            100% {
+                transform: translate(-10px, 30px) scale(0.95) rotate(90deg);
+                border-radius: 35% 65% 55% 45% / 45% 35% 65% 55%;
+            }
+        }
+
+        @keyframes organicFloatInverse {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                border-radius: 59% 41% 57% 43% / 45% 57% 43% 55%;
+            }
+            50% {
+                transform: translate(-40px, 15px) scale(0.95) rotate(-60deg);
+                border-radius: 40% 60% 45% 55% / 55% 40% 60% 45%;
+            }
+            100% {
+                transform: translate(20px, -30px) scale(1.03) rotate(-120deg);
+                border-radius: 55% 45% 60% 40% / 40% 55% 45% 60%;
+            }
+        }
+
+        /* ==========================================================================
+           4. CARROSSEL HORIZONTAL DE SEGMENTOS & MOBILE TIMELINE
+           ========================================================================== */
+        
+        /* Estilos comuns para círculos e tipografia dos segmentos */
+        .segment-circle-icon {
+            border-radius: 50%;
+            background: var(--solid-white);
+            border: 2px solid rgba(9, 100, 94, 0.15);
+            color: var(--teal-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 4px 6px -1px rgba(9, 100, 94, 0.02),
+                0 10px 20px -4px rgba(9, 100, 94, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2;
+            position: relative;
+        }
+
+        .segment-title {
+            font-family: 'Arimo', sans-serif;
+            font-weight: 700;
+            color: var(--deep-green);
+            transition: color 0.3s ease;
+        }
+
+        .segment-description {
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.55;
+            color: rgba(9, 100, 94, 0.75);
+            font-weight: 400;
+        }
+
+        /* DESKTOP STYLES (1024px e acima) */
+        @media (min-width: 1024px) {
+            .para-quem-hero-section {
+                height: 100vh;
+                padding-top: 120px;
+                justify-content: center;
+            }
+
+            .carousel-scroll-wrapper {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+                margin-top: 40px;
+                padding: 40px 0;
+            }
+
+            .carousel-track {
+                display: flex;
+                gap: 120px;
+                padding-left: calc(50vw - 160px); /* Centraliza o primeiro card inicialmente */
+                padding-right: calc(50vw - 160px); /* Permite que o último chegue ao centro */
+                width: max-content;
+                position: relative;
+                z-index: 2;
+                will-change: transform;
+            }
+
+            .carousel-track-line {
+                position: absolute;
+                top: 50px; /* Alinhado exatamente ao centro do círculo de 100px */
+                left: calc(50vw - 110px); /* padding (50vw - 160px) + 50px (metade do círculo) */
+                width: calc(100% - (100vw - 220px)); /* Distância do centro do primeiro ao centro do último */
+                height: 2px;
+                background: rgba(9, 100, 94, 0.12);
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .carousel-track-line-progress {
+                height: 100%;
+                width: 0%;
+                background: var(--teal-green);
+                transform-origin: left center;
+            }
+
+            .carousel-item {
+                width: 320px;
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                position: relative;
+                z-index: 2;
+                transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, opacity 0.4s ease;
+                opacity: 0.35;
+                filter: grayscale(40%);
+            }
+
+            /* Item ativo */
+            .carousel-item.active {
+                opacity: 1;
+                filter: grayscale(0%);
+                transform: scale(1.06);
+            }
+
+            .segment-circle-icon {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 24px;
+            }
+
+            .carousel-item.active .segment-circle-icon {
+                background-color: var(--deep-green);
+                color: var(--vibrant-green);
+                border-color: var(--deep-green);
+                box-shadow: 
+                    0 10px 25px -5px rgba(0, 51, 51, 0.25),
+                    0 0 15px rgba(228, 237, 44, 0.15);
+                transform: scale(1.1);
+            }
+
+            .segment-title {
+                font-size: 1.25rem;
+                margin-bottom: 12px;
+            }
+
+            .carousel-item.active .segment-title {
+                color: var(--teal-green);
+            }
+
+            .segment-description {
+                font-size: 0.9rem;
+                max-width: 280px;
+            }
+        }
+
+        /* MOBILE STYLES (Abaixo de 1024px - Timeline Vertical) */
+        @media (max-width: 1023px) {
+            .para-quem-hero-section {
+                padding: 120px 0 60px 0;
+                min-height: auto;
+            }
+
+            .carousel-scroll-wrapper {
+                position: relative;
+                width: 100%;
+                margin-top: 40px;
+                padding: 10px 0;
+            }
+
+            .carousel-track {
+                display: flex;
+                flex-direction: column;
+                gap: 48px;
+                position: relative;
+                padding-left: 48px; /* Espaço para o trilho vertical à esquerda */
+                padding-right: 8px;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            /* Trilho Vertical */
+            .carousel-track-line {
+                position: absolute;
+                top: 30px; /* Alinhado ao centro do primeiro círculo */
+                bottom: 30px; /* Alinhado ao centro do último círculo */
+                left: 78px; /* Alinhado perfeitamente com os círculos (padding-left 48px + 30px do meio do círculo) */
+                width: 2px;
+                background: rgba(9, 100, 94, 0.12);
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .carousel-track-line-progress {
+                width: 100%;
+                height: 0%;
+                background: var(--teal-green);
+                transform-origin: top center;
+            }
+
+            .carousel-item {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 20px;
+                text-align: left;
+                position: relative;
+                z-index: 2;
+                width: 100%;
+            }
+
+            .segment-circle-icon {
+                width: 60px;
+                height: 60px;
+                flex-shrink: 0;
+            }
+
+            .carousel-item.active .segment-circle-icon {
+                background-color: var(--deep-green);
+                color: var(--vibrant-green);
+                border-color: var(--deep-green);
+                box-shadow: 0 6px 15px rgba(0, 51, 51, 0.2);
+            }
+
+            .segment-circle-icon .iconify {
+                width: 22px !important;
+                height: 22px !important;
+            }
+
+            .segment-info {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                padding-top: 8px; /* Alinha visualmente o título ao centro do círculo */
+            }
+
+            .segment-title {
+                font-size: 1.15rem;
+            }
+
+            .segment-description {
+                font-size: 0.875rem;
+                max-width: 100%;
+            }
+        }
+
+        /* ==========================================================================
+           5. SITE FOOTER (Exato rodapé da home)
+           ========================================================================== */
+        .site-footer {
+            background-color: var(--deep-green);
+            color: rgba(254, 253, 237, 0.7);
+            padding: 80px 0 40px 0;
+            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.8fr 1fr 1.1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            height: 38px;
+            width: auto;
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        .footer-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(254, 253, 237, 0.75);
+            max-width: 280px;
+        }
+
+        .footer-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--off-white);
+            font-weight: 700;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background-color: var(--teal-green);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(254, 253, 237, 0.75);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--vibrant-green);
+            transform: translateX(4px);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: rgba(254, 253, 237, 0.05);
+            color: var(--off-white);
+            border: 1px solid rgba(254, 253, 237, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--vibrant-green);
+            color: var(--deep-green);
+            border-color: var(--vibrant-green);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .footer-contact-info {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.875rem;
+            color: rgba(254, 253, 237, 0.75);
+        }
+
+        .footer-contact-info li .iconify {
+            color: var(--teal-green);
+            flex-shrink: 0;
+        }
+
+        .footer-legal {
+            margin-top: 16px;
+            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            padding-top: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: rgba(254, 253, 237, 0.55);
+            line-height: 1.6;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: rgba(254, 253, 237, 0.4);
+            margin-top: 4px;
+        }
+
+        /* Responsive Breakpoints & Refinements */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 48px;
+            }
+            .footer-col-identity {
+                grid-column: span 2;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-footer {
+                padding: 60px 0 30px 0;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
+            .footer-col-identity {
+                grid-column: span 1;
+            }
+            .footer-bottom {
+                padding-top: 30px;
+            }
+        }
+
+        /* ==========================================================================
+           6. RESPONSIVE UTILITIES & HELPER CLASSES
+           ========================================================================== */
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
+            }
+            .nav-container {
+                padding: 0 16px;
+            }
+            .header-logo-img {
+                height: 26px;
+            }
+            .nav-actions {
+                gap: 12px;
+            }
+            .nav-actions .link-client {
+                display: none;
+            }
+            .nav-actions .btn-primary {
+                padding: 8px 14px !important;
+                font-size: 0.7rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.15rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Ambient Glow Blobs -->
+    <div class="glow-container">
+        <div class="glow-top"></div>
+        <div class="glow-bottom"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a class="nav-logo" href="index.html">
+                <img src="./logo-principal.svg" alt="Sentra Securitizadora" class="header-logo-img">
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html#solucoes">Soluções</a>
+                <a href="como-funciona.html">Como Funciona</a>
+                <a href="index.html#tarifas">Tarifas</a>
+                <a href="index.html#sobre">Sobre Nós</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="index.html#login" class="link-client">Área do Cliente</a>
+                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Section -->
+        <section id="para-quem-hero" class="para-quem-hero-section">
+            <!-- Background dot grid and ambient glows -->
+            <div class="bg-dot-grid"></div>
+            <div class="glow-blob-1"></div>
+            <div class="glow-blob-2"></div>
+            <div class="hero-radial-glow"></div>
+            <div class="hero-fade-overlay"></div>
+            
+            <div class="container">
+                <!-- Center Top Title/Content -->
+                <div class="hero-text-center">
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        Para Quem É
+                    </div>
+                    
+                    <h1 id="hero-title" class="invisible">
+                        A Sentra foi feita para quem não pode esperar
+                    </h1>
+                    
+                    <p class="subtitle">
+                        Se você vende no cartão e precisa de caixa agora, a Sentra é para você.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Horizontal / Vertical Segment Carousel -->
+            <div class="carousel-scroll-wrapper">
+                <div class="carousel-track">
+                    <!-- Trilho horizontal (desktop) / vertical (mobile) -->
+                    <div class="carousel-track-line">
+                        <div class="carousel-track-line-progress"></div>
+                    </div>
+                    <!-- Segment 1: Comércio Varejista -->
+                    <div class="carousel-item">
+                        <div class="segment-circle-icon">
+                            <span class="iconify" data-icon="lucide:store" data-width="28"></span>
+                        </div>
+                        <div class="segment-info">
+                            <h3 class="segment-title">Comércio Varejista</h3>
+                            <p class="segment-description">Lojas que vendem parcelado e precisam de capital para repor estoque sem esperar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Segment 2: Prestadores de Serviço -->
+                    <div class="carousel-item">
+                        <div class="segment-circle-icon">
+                            <span class="iconify" data-icon="lucide:wrench" data-width="28"></span>
+                        </div>
+                        <div class="segment-info">
+                            <h3 class="segment-title">Prestadores de Serviço</h3>
+                            <p class="segment-description">Clínicas, salões, academias, oficinas — quem cobra no cartão e quer caixa disponível.</p>
+                        </div>
+                    </div>
+
+                    <!-- Segment 3: Restaurantes e Alimentação -->
+                    <div class="carousel-item">
+                        <div class="segment-circle-icon">
+                            <span class="iconify" data-icon="lucide:utensils" data-width="28"></span>
+                        </div>
+                        <div class="segment-info">
+                            <h3 class="segment-title">Restaurantes e Alimentação</h3>
+                            <p class="segment-description">Operação acelerada exige caixa constante. Antecipe e mantenha o negócio rodando.</p>
+                        </div>
+                    </div>
+
+                    <!-- Segment 4: Pequenas e Médias Empresas -->
+                    <div class="carousel-item">
+                        <div class="segment-circle-icon">
+                            <span class="iconify" data-icon="lucide:building-2" data-width="28"></span>
+                        </div>
+                        <div class="segment-info">
+                            <h3 class="segment-title">Pequenas e Médias Empresas</h3>
+                            <p class="segment-description">Capital de giro rápido sem comprometer a saúde financeira da empresa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Segment 5: MEI e Autônomos -->
+                    <div class="carousel-item">
+                        <div class="segment-circle-icon">
+                            <span class="iconify" data-icon="lucide:user" data-width="28"></span>
+                        </div>
+                        <div class="segment-info">
+                            <h3 class="segment-title">MEI e Autônomos</h3>
+                            <p class="segment-description">Profissionais com CNPJ MEI que vendem via maquininha e precisam de fluxo entre pagamentos.</p>
+                        </div>
+                    </div>
+
+                    <!-- Segment 6: E-commerce -->
+                    <div class="carousel-item">
+                        <div class="segment-circle-icon">
+                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="28"></span>
+                        </div>
+                        <div class="segment-info">
+                            <h3 class="segment-title">E-commerce</h3>
+                            <p class="segment-description">Negócios digitais que enfrentam prazo longo de recebimento das operadoras.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Coluna 1 — Identidade -->
+                <div class="footer-col footer-col-identity">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="./logo+tag.svg" alt="Sentra Securitizadora" class="footer-logo">
+                    </a>
+                    <p class="footer-desc">
+                        A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as menores taxas.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <span class="iconify" data-icon="mdi:instagram" data-width="20"></span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <span class="iconify" data-icon="mdi:linkedin" data-width="20"></span>
+                        </a>
+                        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 — Navegação -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Navegação</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="como-funciona.html">Como Funciona</a></li>
+                        <li><a href="vantagens.html">Vantagens</a></li>
+                        <li><a href="para-quem-e.html">Para Quem É</a></li>
+                        <li><a href="index.html#simular">Calculadora</a></li>
+                        <li><a href="index.html#sobre">Quem Somos</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 — Soluções -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Soluções</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#antecipacao-recebiveis">Antecipação de Recebíveis</a></li>
+                        <li><a href="index.html#antecipacao-pontual">Antecipação Pontual</a></li>
+                        <li><a href="index.html#antecipacao-recorrente">Antecipação Recorrente</a></li>
+                        <li><a href="index.html#stone">Stone</a></li>
+                        <li><a href="index.html#cielo">Cielo</a></li>
+                        <li><a href="index.html#rede">Rede</a></li>
+                        <li><a href="index.html#getnet">Getnet</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4 — Contato e Legal -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Contato e Legal</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <span class="iconify" data-icon="lucide:phone" data-width="16"></span>
+                            <span><strong>WhatsApp:</strong> (11) 99999-9999</span>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
+                            <span><strong>E-mail:</strong> contato@sentra.com.br</span>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="lucide:clock" data-width="16"></span>
+                            <span>Seg–Sex 9h–18h</span>
+                        </li>
+                    </ul>
+                    <ul class="footer-links footer-legal">
+                        <li><a href="index.html#politica-privacidade">Política de Privacidade</a></li>
+                        <li><a href="index.html#termos-uso">Termos de Uso</a></li>
+                        <li><a href="index.html#politica-cookies">Política de Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="footerYear">2026</span> Sentra Securitizadora S/A. Todos os direitos reservados.</p>
+                    <p class="footer-disclaimer">As simulações são estimativas e podem variar conforme a operação.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External Script Integrations (GSAP, SplitType, Lenis) -->
+    <!-- GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- GSAP ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- SplitType -->
+    <script src="https://unpkg.com/split-type"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ==========================================================================
+            // A. SCROLL DETECTOR FOR NAVIGATION HEADER
+            // ==========================================================================
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // ==========================================================================
+            // B. LENIS SMOOTH MOMENTUM SCROLL INITIALIZATION
+            // ==========================================================================
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                gestureOrientation: 'vertical',
+                normalizeWheel: true,
+                smoothWheel: true
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // Sincronizar Lenis com GSAP ScrollTrigger
+            lenis.on('scroll', ScrollTrigger.update);
+
+            // ==========================================================================
+            // C. ACCESS ACCESSIBILITY & PREFERS-REDUCED-MOTION CHECK
+            // ==========================================================================
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            
+            // Remove a classe invisible do título para iniciar processamento
+            const titleEl = document.getElementById('hero-title');
+            titleEl.classList.remove('invisible');
+
+            if (prefersReducedMotion) {
+                // Revelações simplificadas quando o usuário prefere movimento reduzido
+                gsap.from(".eyebrow", { opacity: 0, duration: 0.6 });
+                gsap.from("#hero-title", { opacity: 0, duration: 0.6 });
+                gsap.from(".subtitle", { opacity: 0, duration: 0.6 });
+                gsap.set(".carousel-item", { opacity: 1 });
+                gsap.set(".carousel-track-line-progress", { width: "100%", height: "100%" });
+                return;
+            }
+
+            // Registrar GSAP ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // ==========================================================================
+            // D. SPLIT TYPE WORD SPLITTING FOR H1 STAGGER
+            // ==========================================================================
+            const splitTitle = new SplitType(titleEl, { types: 'words' });
+
+            // ==========================================================================
+            // E. ENTRANCE ANIMATION SEQUENCE (Execução rápida e fluida)
+            // ==========================================================================
+            const tl = gsap.timeline({
+                defaults: { ease: "power3.out", duration: 0.8 }
+            });
+
+            // Definir estados iniciais
+            gsap.set(".eyebrow", { opacity: 0, y: 12 });
+            gsap.set(".subtitle", { opacity: 0, y: 12 });
+            gsap.set(".carousel-scroll-wrapper", { opacity: 0, y: 25 });
+
+            // Sequência de entrada
+            tl.to(".eyebrow", { opacity: 1, y: 0, duration: 0.5 })
+              .from(splitTitle.words, { opacity: 0, y: 18, stagger: 0.04, duration: 0.65 }, "-=0.4")
+              .to(".subtitle", { opacity: 1, y: 0, duration: 0.55 }, "-=0.45")
+              .to(".carousel-scroll-wrapper", { opacity: 1, y: 0, duration: 0.75 }, "-=0.35");
+
+            // ==========================================================================
+            // F. SCROLL-DRIVEN CAROUSEL ANIMATIONS USING GSAP MATCHMEDIA
+            // ==========================================================================
+            const mm = gsap.matchMedia();
+            const track = document.querySelector('.carousel-track');
+            const items = gsap.utils.toArray('.carousel-item');
+
+            // 1. DESKTOP LAYOUT (Pinning e Tradução Horizontal)
+            mm.add("(min-width: 1024px)", () => {
+                // Definir estados iniciais específicos do desktop
+                gsap.set(items, { opacity: 0.35, scale: 0.95 });
+                
+                // Timeline do scroll-driven horizontal
+                const horizontalTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.para-quem-hero-section',
+                        start: 'top top',
+                        end: () => `+=${track.scrollWidth - window.innerWidth}`,
+                        scrub: 1.2,
+                        pin: true,
+                        pinSpacing: true,
+                        invalidateOnRefresh: true,
+                        onUpdate: (self) => {
+                            // Encontrar o item mais próximo do centro do viewport
+                            const viewportCenter = window.innerWidth / 2;
+                            let closestItem = null;
+                            let minDistance = Infinity;
+
+                            items.forEach((item) => {
+                                const rect = item.getBoundingClientRect();
+                                const itemCenter = rect.left + rect.width / 2;
+                                const distance = Math.abs(itemCenter - viewportCenter);
+
+                                if (distance < minDistance) {
+                                    minDistance = distance;
+                                    closestItem = item;
+                                }
+                            });
+
+                            items.forEach((item) => {
+                                // Adiciona classe active apenas se estiver bem perto do centro (margem confortável)
+                                if (item === closestItem && minDistance < 220) {
+                                    item.classList.add('active');
+                                } else {
+                                    item.classList.remove('active');
+                                }
+                            });
+                        }
+                    }
+                });
+
+                // Traduz o track horizontalmente
+                horizontalTl.to(track, {
+                    x: () => -(track.scrollWidth - window.innerWidth),
+                    ease: "none",
+                    duration: 1
+                });
+
+                // Preenche o trilho horizontal de progresso
+                horizontalTl.to('.carousel-track-line-progress', {
+                    width: '100%',
+                    ease: "none",
+                    duration: 1
+                }, 0);
+
+                // O primeiro item já inicia destacado e ativo
+                items[0].classList.add('active');
+
+                // Animação de entrada stagger única no carregamento (executa uma vez)
+                gsap.from(items, {
+                    opacity: 0,
+                    y: 25,
+                    stagger: 0.08,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    delay: 0.5,
+                    onComplete: () => {
+                        // Limpa os estilos inline para que a classe CSS .active e suas transições funcionem perfeitamente
+                        gsap.set(items, { clearProps: "opacity,transform" });
+                    }
+                });
+
+                return () => {
+                    // Limpar propriedades modificadas pelo GSAP ao redimensionar
+                    gsap.set(track, { clearProps: "all" });
+                    gsap.set(items, { clearProps: "all" });
+                    gsap.set('.carousel-track-line-progress', { clearProps: "all" });
+                    items.forEach(item => item.classList.remove('active'));
+                };
+            });
+
+            // 2. MOBILE TIMELINE LAYOUT (Trilho e Revelações Verticais)
+            mm.add("(max-width: 1023px)", () => {
+                // Revelações no scroll para os itens (fade-in + leve subida)
+                items.forEach((item) => {
+                    gsap.from(item, {
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 88%",
+                            toggleActions: "play none none none"
+                        },
+                        opacity: 0,
+                        y: 25,
+                        duration: 0.7,
+                        ease: "power2.out"
+                    });
+
+                    // Ativa o item conforme ele passa pela área central do viewport no mobile
+                    ScrollTrigger.create({
+                        trigger: item,
+                        start: "top 62%",
+                        end: "bottom 48%",
+                        onEnter: () => item.classList.add('active'),
+                        onLeave: () => item.classList.remove('active'),
+                        onEnterBack: () => item.classList.add('active'),
+                        onLeaveBack: () => item.classList.remove('active')
+                    });
+                });
+
+                // Preencher o trilho vertical do progresso no mobile
+                gsap.to('.carousel-track-line-progress', {
+                    height: '100%',
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: '.carousel-track',
+                        start: "top 62%",
+                        end: "bottom 52%",
+                        scrub: true
+                    }
+                });
+
+                return () => {
+                    gsap.set(items, { clearProps: "all" });
+                    gsap.set('.carousel-track-line-progress', { clearProps: "all" });
+                    items.forEach(item => item.classList.remove('active'));
+                };
+            });
+
+            // ==========================================================================
+            // G. DYNAMIC YEAR LOGIC
+            // ==========================================================================
+            const footerYear = document.getElementById('footerYear');
+            if (footerYear) {
+                footerYear.textContent = new Date().getFullYear();
+            }
+
+            // Recalcular posições do ScrollTrigger após a página carregar por completo
+            window.addEventListener('load', () => {
+                ScrollTrigger.refresh();
+            });
+        });
+    </script>
+</body>
+</html>
