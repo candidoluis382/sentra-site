@@ -29,7 +29,7 @@
            1. DESIGN SYSTEM VARIABLES & RESET (Fiel ao design-system.html e index.html)
            ========================================================================== */
         :root {
-            --off-white: #FEFDED;
+            --off-white: #FAF9F2;
             --deep-green: #003333;
             --teal-green: #09645E;
             --vibrant-green: #E4ED2C;
@@ -110,7 +110,7 @@
             width: 100%;
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
-            background-color: rgba(254, 253, 237, 0.85);
+            background-color: rgba(250, 249, 242, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             transition: var(--transition-smooth);
@@ -118,7 +118,7 @@
 
         nav.scrolled {
             box-shadow: 0 4px 20px rgba(9, 100, 94, 0.05);
-            background-color: rgba(254, 253, 237, 0.95);
+            background-color: rgba(250, 249, 242, 0.95);
             border-bottom: 1px solid rgba(9, 100, 94, 0.15);
         }
 
@@ -747,45 +747,64 @@
         /* Responsividade */
         @media (max-width: 768px) {
             .table-header-row {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1.15fr 1.05fr 0.8fr;
+                padding: 10px 12px;
+                margin-bottom: 8px;
             }
+            
+            .table-header-row .table-th {
+                font-size: 0.68rem;
+            }
+
             .table-header-row .table-th:first-child {
-                display: none;
+                display: block; /* Garante que 'Critério' continue visível */
             }
 
             .table-row-item {
-                grid-template-columns: 1fr;
-                padding: 16px;
-                gap: 12px;
+                grid-template-columns: 1.15fr 1.05fr 0.8fr;
+                padding: 8px;
+                gap: 6px;
                 background: rgba(255, 255, 255, 0.4);
-                border: 1px solid rgba(9, 100, 94, 0.06);
+                border: 1px solid rgba(9, 100, 94, 0.05);
             }
 
             .cell-label {
-                padding: 0;
-                font-size: 0.85rem;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                color: rgba(9, 100, 94, 0.6);
-                text-align: center;
-                border-bottom: 1px solid rgba(9, 100, 94, 0.06);
-                padding-bottom: 8px;
+                padding: 4px 6px;
+                font-size: 0.725rem;
+                text-transform: none;
+                letter-spacing: normal;
+                color: var(--deep-green);
+                text-align: left;
+                border-bottom: none;
+                padding-bottom: 0;
             }
 
             .cell-value {
-                padding: 8px 12px;
-                border-radius: 8px;
+                padding: 8px 6px;
+                border-radius: 6px;
                 width: 100%;
-                height: auto;
+                height: 100%;
+                font-size: 0.685rem;
+                gap: 4px;
+            }
+
+            .cell-value span {
+                text-align: center;
+                line-height: 1.3;
+            }
+
+            .cell-value .iconify {
+                width: 12px !important;
+                height: 12px !important;
             }
 
             .cell-sentra {
                 background-color: var(--deep-green);
-                box-shadow: 0 4px 12px rgba(0, 51, 51, 0.1);
+                box-shadow: 0 2px 6px rgba(0, 51, 51, 0.08);
             }
 
             .cell-concorrentes {
-                background: rgba(9, 100, 94, 0.03);
+                background: rgba(9, 100, 94, 0.02);
                 border: 1px dashed rgba(9, 100, 94, 0.1);
             }
         }
@@ -1903,11 +1922,13 @@
             font-size: 0.775rem;
             color: rgba(9, 100, 94, 0.55);
             margin-top: 20px;
-            text-align: left;
+            text-align: center;
             line-height: 1.5;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
+            width: 100%;
         }
 
         /* CTAs da Seção */
@@ -1924,6 +1945,112 @@
         @media (min-width: 640px) {
             .comparativo-ctas {
                 flex-direction: row;
+            }
+        }
+
+        /* Ajustes responsivos para dispositivos móveis (Tabela Comparativa Detalhada + Bento Grid Card 4) */
+        @media (max-width: 640px) {
+            /* 1. Tabela Comparativa Detalhada */
+            .comparison-table-detailed {
+                min-width: 650px; /* Mantém a largura para suportar scroll horizontal confortável */
+            }
+
+            .comparison-table-detailed th,
+            .comparison-table-detailed td {
+                padding: 14px 16px; /* Mais espaçamento interno (breathing room) */
+                font-size: 0.75rem;
+            }
+
+            .comparison-table-detailed th.col-crit-header,
+            .comparison-table-detailed td.col-crit {
+                font-size: 0.8rem;
+                width: 30%;
+                padding-left: 12px;
+            }
+
+            .crit-content-wrapper {
+                gap: 8px;
+            }
+
+            .crit-icon-frame {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+            }
+
+            .crit-icon-frame .iconify {
+                width: 14px;
+                height: 14px;
+            }
+
+            .comparison-table-detailed .col-sentra {
+                width: 35%;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .comparison-table-detailed .col-mercado {
+                width: 35%;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .comparison-table-detailed th.th-sentra-header {
+                padding: 16px 12px;
+            }
+
+            .th-sentra-header .logo-mini {
+                height: 16px;
+                margin-bottom: 4px;
+            }
+
+            .sentra-recommended-badge {
+                font-size: 0.52rem;
+                padding: 2px 8px;
+                top: -10px;
+            }
+
+            .status-badge-table {
+                font-size: 0.75rem;
+                gap: 6px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .status-badge-table .iconify {
+                width: 12px !important;
+                height: 12px !important;
+            }
+
+            .table-disclaimer-note {
+                font-size: 0.7rem;
+                padding: 0 4px;
+            }
+
+            /* 2. Ajustes dos logos flutuantes do Bento Grid no Mobile */
+            .floating-brand-badge {
+                font-size: 0.65rem;
+                padding: 4px 10px;
+            }
+
+            .floating-brand-badge.stone {
+                top: 15%;
+                left: 6%;
+            }
+
+            .floating-brand-badge.cielo {
+                top: 15%;
+                right: 6%;
+            }
+
+            .floating-brand-badge.rede {
+                bottom: 15%;
+                left: 10%;
+            }
+
+            .floating-brand-badge.getnet {
+                bottom: 15%;
+                right: 10%;
             }
         }
     </style>
