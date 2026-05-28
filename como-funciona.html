@@ -3498,6 +3498,253 @@
                 transform: none !important;
             }
         }
+
+        /* ==========================================================================
+           11. COMO FUNCIONA - FAQ ACCORDION STYLES
+           ========================================================================== */
+        .faq-section {
+            position: relative;
+            padding: 120px 0;
+            overflow: hidden;
+            background-color: var(--off-white);
+        }
+
+        .faq-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(9, 100, 94, 0.05) 0%, rgba(9, 100, 94, 0) 70%);
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 1;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .faq-accordion-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-accordion-item {
+            position: relative;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(9, 100, 94, 0.08);
+            border-radius: 20px;
+            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow:
+                0 4px 6px -1px rgba(9, 100, 94, 0.02),
+                0 20px 40px -4px rgba(9, 100, 94, 0.04);
+        }
+
+        .faq-accordion-item:hover {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-color: rgba(9, 100, 94, 0.2);
+            box-shadow:
+                0 12px 24px -2px rgba(9, 100, 94, 0.06),
+                0 32px 64px -8px rgba(9, 100, 94, 0.1);
+        }
+
+        .faq-accordion-item.active {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(9, 100, 94, 0.25);
+            box-shadow:
+                0 16px 32px -4px rgba(9, 100, 94, 0.08),
+                0 0 30px rgba(9, 100, 94, 0.05);
+        }
+
+        .faq-badge {
+            position: absolute;
+            top: -16px;
+            left: 24px;
+            width: 32px;
+            height: 32px;
+            background: var(--solid-white);
+            border: 1px solid rgba(9, 100, 94, 0.12);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 51, 51, 0.06);
+            transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-badge-img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .faq-accordion-item:hover .faq-badge {
+            transform: translateY(-2px);
+            border-color: var(--teal-green);
+            box-shadow: 0 6px 15px rgba(9, 100, 94, 0.12);
+        }
+
+        .faq-accordion-item.active .faq-badge {
+            border-color: var(--vibrant-green);
+            background: var(--solid-white);
+            box-shadow: 0 0 15px rgba(228, 237, 44, 0.3);
+        }
+
+        .faq-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 30px 24px 72px;
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+        }
+
+        .faq-question {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--deep-green);
+            transition: var(--transition-smooth);
+        }
+
+        .faq-accordion-item.active .faq-question {
+            color: var(--teal-green);
+        }
+
+        .faq-arrow-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(9, 100, 94, 0.05);
+            color: var(--teal-green);
+            flex-shrink: 0;
+            margin-left: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-accordion-item:hover .faq-arrow-wrapper {
+            background: rgba(9, 100, 94, 0.1);
+            color: var(--deep-green);
+        }
+
+        .faq-accordion-item.active .faq-arrow-wrapper {
+            background: var(--teal-green);
+            color: var(--vibrant-green);
+            transform: rotate(180deg);
+        }
+
+        .faq-arrow {
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .faq-content {
+            padding: 0 30px 24px 72px;
+        }
+
+        .faq-answer {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            color: rgba(0, 51, 51, 0.75);
+        }
+
+        .faq-header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title-faq {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--deep-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .section-title-faq {
+                font-size: 3.25rem;
+            }
+        }
+
+        .section-desc-faq {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 300;
+            color: var(--teal-green);
+            margin-bottom: 0;
+            text-align: center;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            text-wrap: balance;
+            -webkit-text-wrap: balance;
+        }
+
+        @media (max-width: 640px) {
+            .faq-section {
+                padding: 80px 0;
+            }
+            .faq-header {
+                padding: 20px 20px 20px 60px;
+            }
+            .faq-content {
+                padding: 0 20px 20px 60px;
+            }
+            .faq-question {
+                font-size: 1.05rem;
+            }
+            .faq-badge {
+                left: 16px;
+                top: -14px;
+                width: 28px;
+                height: 28px;
+            }
+            .faq-badge-img {
+                width: 14px;
+                height: 14px;
+            }
+            .faq-arrow-wrapper {
+                width: 28px;
+                height: 28px;
+                margin-left: 12px;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -3892,6 +4139,131 @@
                 </div>
             </div>
         </section>
+
+        <!-- FAQ Section -->
+        <section id="como-funciona-faq" class="faq-section">
+            <div class="faq-glow"></div>
+            
+            <div class="container">
+                <div class="faq-header-content">
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>Dúvidas Frequentes
+                    </div>
+                    <h2 class="section-title-faq">Perguntas Frequentes</h2>
+                    <p class="section-desc-faq">Tire suas dúvidas sobre o funcionamento da antecipação de recebíveis da Sentra.</p>
+                </div>
+                
+                <div class="faq-accordion-list">
+                    <!-- FAQ 1 -->
+                    <div class="faq-accordion-item">
+                        <div class="faq-badge">
+                            <img src="./logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra">
+                        </div>
+                        <div class="faq-header">
+                            <h3 class="faq-question">A antecipação é a mesma coisa que empréstimo?</h3>
+                            <div class="faq-arrow-wrapper">
+                                <span class="iconify faq-arrow" data-icon="lucide:chevron-down" data-width="16"></span>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-content">
+                                <p class="faq-answer">Não. Você está adiantando dinheiro que já é seu. Não vira dívida, não gera parcelas futuras e não compromete seu score de crédito.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-accordion-item">
+                        <div class="faq-badge">
+                            <img src="./logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra">
+                        </div>
+                        <div class="faq-header">
+                            <h3 class="faq-question">Preciso trocar de maquininha?</h3>
+                            <div class="faq-arrow-wrapper">
+                                <span class="iconify faq-arrow" data-icon="lucide:chevron-down" data-width="16"></span>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-content">
+                                <p class="faq-answer">Não. A Sentra funciona com Stone, Cielo, Rede e Getnet.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-accordion-item">
+                        <div class="faq-badge">
+                            <img src="./logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra">
+                        </div>
+                        <div class="faq-header">
+                            <h3 class="faq-question">Quando recebo o dinheiro?</h3>
+                            <div class="faq-arrow-wrapper">
+                                <span class="iconify faq-arrow" data-icon="lucide:chevron-down" data-width="16"></span>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-content">
+                                <p class="faq-answer">Em D+1 — no dia útil seguinte à solicitação.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-accordion-item">
+                        <div class="faq-badge">
+                            <img src="./logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra">
+                        </div>
+                        <div class="faq-header">
+                            <h3 class="faq-question">Posso antecipar só uma parte do saldo?</h3>
+                            <div class="faq-arrow-wrapper">
+                                <span class="iconify faq-arrow" data-icon="lucide:chevron-down" data-width="16"></span>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-content">
+                                <p class="faq-answer">Sim. Você escolhe quanto quer antecipar.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-accordion-item">
+                        <div class="faq-badge">
+                            <img src="./logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra">
+                        </div>
+                        <div class="faq-header">
+                            <h3 class="faq-question">Tem limite de antecipações por mês?</h3>
+                            <div class="faq-arrow-wrapper">
+                                <span class="iconify faq-arrow" data-icon="lucide:chevron-down" data-width="16"></span>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-content">
+                                <p class="faq-answer">Não. Antecipe quantas vezes precisar, desde que tenha saldo disponível.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-accordion-item">
+                        <div class="faq-badge">
+                            <img src="./logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra">
+                        </div>
+                        <div class="faq-header">
+                            <h3 class="faq-question">A antecipação afeta meu score de crédito?</h3>
+                            <div class="faq-arrow-wrapper">
+                                <span class="iconify faq-arrow" data-icon="lucide:chevron-down" data-width="16"></span>
+                            </div>
+                        </div>
+                        <div class="faq-body">
+                            <div class="faq-content">
+                                <p class="faq-answer">Não. Não é registrada como operação de crédito.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer Section -->
@@ -4022,6 +4394,42 @@
                 requestAnimationFrame(raf);
             }
             requestAnimationFrame(raf);
+
+            // ==========================================================================
+            // G. FAQ ACCORDION CLICK ACTIONS
+            // ==========================================================================
+            const faqItems = document.querySelectorAll('.faq-accordion-item');
+            
+            faqItems.forEach(item => {
+                const header = item.querySelector('.faq-header');
+                const body = item.querySelector('.faq-body');
+                
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Collapse any other open accordion items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            const otherBody = otherItem.querySelector('.faq-body');
+                            if (otherBody) {
+                                otherBody.style.maxHeight = '0px';
+                                otherBody.style.opacity = '0';
+                            }
+                        }
+                    });
+                    
+                    if (isActive) {
+                        item.classList.remove('active');
+                        body.style.maxHeight = '0px';
+                        body.style.opacity = '0';
+                    } else {
+                        item.classList.add('active');
+                        body.style.maxHeight = body.scrollHeight + 'px';
+                        body.style.opacity = '1';
+                    }
+                });
+            });
 
             // ==========================================================================
             // C. ACCESS ACCESSIBILITY & PREFERS-REDUCED-MOTION CHECK
@@ -4246,6 +4654,24 @@
                         duration: 0.4
                     }, "-=0.15");
                 }
+            });
+
+            // FAQ Accordions entrance scroll trigger reveal
+            gsap.from(".faq-accordion-item", {
+                opacity: 0,
+                y: 30,
+                stagger: 0.1,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: "#como-funciona-faq",
+                    start: "top 80%"
+                }
+            });
+
+            // Refresh ScrollTrigger positions after page fully loads
+            window.addEventListener('load', () => {
+                ScrollTrigger.refresh();
             });
 
             // Dynamic year logic
