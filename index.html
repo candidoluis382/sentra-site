@@ -2575,6 +2575,29 @@
             }
         }
 
+        /* Adjust carousel arrows on very small mobile viewports to prevent card overlap */
+        @media (max-width: 440px) {
+            .carousel-viewport {
+                height: 430px;
+            }
+            .carousel-btn {
+                top: auto;
+                bottom: 10px;
+                transform: none;
+            }
+            .btn-prev {
+                left: auto;
+                right: calc(50% + 8px);
+            }
+            .btn-next {
+                left: calc(50% + 8px);
+                right: auto;
+            }
+            .carousel-btn:active {
+                transform: scale(0.95);
+            }
+        }
+
         /* Site Footer Centering layout on tablet and mobile */
         @media (max-width: 768px) {
             .footer-col {
