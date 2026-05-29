@@ -29,7 +29,7 @@
            1. DESIGN SYSTEM VARIABLES & RESET (Fiel ao design-system.html e index.html)
            ========================================================================== */
         :root {
-            --off-white: #FEFDED;
+            --off-white: #FAF9F2;
             --deep-green: #003333;
             --teal-green: #09645E;
             --vibrant-green: #E4ED2C;
@@ -115,7 +115,7 @@
             width: 100%;
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
-            background-color: rgba(254, 253, 237, 0.85);
+            background-color: rgba(250, 249, 242, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             transition: var(--transition-smooth);
@@ -123,7 +123,7 @@
 
         nav.scrolled {
             box-shadow: 0 4px 20px rgba(9, 100, 94, 0.05);
-            background-color: rgba(254, 253, 237, 0.95);
+            background-color: rgba(250, 249, 242, 0.95);
             border-bottom: 1px solid rgba(9, 100, 94, 0.15);
         }
 
@@ -326,6 +326,7 @@
             justify-content: flex-start;
             position: relative;
             padding: 140px 0 100px 0;
+            background-color: var(--off-white);
             overflow: hidden;
             box-sizing: border-box;
         }
@@ -420,6 +421,10 @@
             text-shadow: 0 4px 12px rgba(9, 100, 94, 0.1);
         }
 
+        .nowrap {
+            white-space: nowrap;
+        }
+
         .highlight-text-gradient {
             background: linear-gradient(90deg, var(--teal-green) 0%, var(--deep-green) 35%, var(--teal-green) 50%, var(--deep-green) 65%, var(--teal-green) 100%);
             background-size: 200% auto;
@@ -427,6 +432,7 @@
             -webkit-text-fill-color: transparent;
             position: relative;
             display: inline-block;
+            white-space: nowrap;
             animation: textSheen 6s linear infinite;
         }
         .highlight-text-gradient .word {
@@ -909,9 +915,9 @@
             /* Trilho Vertical Laser/Neon */
             .carousel-track-line {
                 position: absolute;
-                top: 45px; /* Alinhado ao centro do primeiro círculo (20px padding + 25px metade do círculo) */
+                top: 45px; /* Alinhado ao centro do primeiro círculo (10px padding + 10px margin + 25px metade do círculo) */
                 bottom: 45px; /* Alinhado ao centro do último círculo */
-                left: 74px; /* Alinhado perfeitamente com os círculos (padding-left 44px + 30px do meio do círculo) */
+                left: 69px; /* Alinhado perfeitamente com os círculos (padding-left 44px + 25px do meio do círculo) */
                 width: 2px;
                 background: rgba(9, 100, 94, 0.12);
                 z-index: 1;
@@ -957,17 +963,31 @@
                 position: relative;
                 z-index: 2;
                 width: 100%;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                padding: 10px 0;
+            }
+
+            .segment-info {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
                 padding: 20px;
                 border-radius: 20px;
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(4px);
-                -webkit-backdrop-filter: blur(4px);
+                background: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
                 border: 1px solid rgba(9, 100, 94, 0.05);
                 transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
                 opacity: 0.55;
+                position: relative;
             }
 
-            .carousel-item.active {
+            .carousel-item.active .segment-info {
                 opacity: 1;
                 background: rgba(255, 255, 255, 0.75);
                 backdrop-filter: blur(12px);
@@ -983,6 +1003,7 @@
                 width: 50px;
                 height: 50px;
                 flex-shrink: 0;
+                margin-top: 10px; /* Alinha verticalmente com o título do card */
             }
 
             .carousel-item.active .segment-circle-icon {
@@ -998,13 +1019,6 @@
                 height: 20px !important;
             }
 
-            .segment-info {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
-                padding-top: 4px;
-            }
-
             .segment-title {
                 font-size: 1.1rem;
             }
@@ -1015,8 +1029,8 @@
             }
 
             .segment-number {
-                top: 14px;
-                right: 18px;
+                top: 24px;
+                right: 20px;
                 font-size: 0.75rem;
             }
 
@@ -1030,6 +1044,27 @@
             .carousel-item.active .active-ring-spinner {
                 transform: scale(1);
             }
+
+            /* Respiros e ajustes finos para telas de 600px para baixo (celulares) */
+            @media (max-width: 600px) {
+                .carousel-track {
+                    padding-left: 32px;
+                    padding-right: 16px;
+                    gap: 28px;
+                }
+                .carousel-track-line {
+                    left: 57px; /* padding-left 32px + 25px (meio do círculo) */
+                    top: 45px;
+                    bottom: 45px;
+                }
+                .segment-info {
+                    padding: 16px 18px;
+                }
+                .segment-number {
+                    top: 18px;
+                    right: 16px;
+                }
+            }
         }
 
 
@@ -1038,9 +1073,9 @@
            ========================================================================== */
         .site-footer {
             background-color: var(--deep-green);
-            color: rgba(254, 253, 237, 0.7);
+            color: rgba(250, 249, 242, 0.7);
             padding: 80px 0 40px 0;
-            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            border-top: 1px solid rgba(250, 249, 242, 0.08);
             position: relative;
             z-index: 10;
         }
@@ -1067,7 +1102,7 @@
         .footer-desc {
             font-size: 0.9rem;
             line-height: 1.6;
-            color: rgba(254, 253, 237, 0.75);
+            color: rgba(250, 249, 242, 0.75);
             max-width: 280px;
         }
 
@@ -1100,7 +1135,7 @@
         }
 
         .footer-links a {
-            color: rgba(254, 253, 237, 0.75);
+            color: rgba(250, 249, 242, 0.75);
             text-decoration: none;
             font-size: 0.875rem;
             font-weight: 500;
@@ -1126,9 +1161,9 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            background-color: rgba(254, 253, 237, 0.05);
+            background-color: rgba(250, 249, 242, 0.05);
             color: var(--off-white);
-            border: 1px solid rgba(254, 253, 237, 0.1);
+            border: 1px solid rgba(250, 249, 242, 0.1);
             transition: var(--transition-smooth);
         }
 
@@ -1152,7 +1187,7 @@
             align-items: center;
             gap: 12px;
             font-size: 0.875rem;
-            color: rgba(254, 253, 237, 0.75);
+            color: rgba(250, 249, 242, 0.75);
         }
 
         .footer-contact-info li .iconify {
@@ -1162,12 +1197,12 @@
 
         .footer-legal {
             margin-top: 16px;
-            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            border-top: 1px solid rgba(250, 249, 242, 0.08);
             padding-top: 20px;
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(254, 253, 237, 0.08);
+            border-top: 1px solid rgba(250, 249, 242, 0.08);
             padding-top: 40px;
             display: flex;
             flex-direction: column;
@@ -1178,13 +1213,13 @@
 
         .footer-copyright {
             font-size: 0.85rem;
-            color: rgba(254, 253, 237, 0.55);
+            color: rgba(250, 249, 242, 0.55);
             line-height: 1.6;
         }
 
         .footer-disclaimer {
             font-size: 0.75rem;
-            color: rgba(254, 253, 237, 0.4);
+            color: rgba(250, 249, 242, 0.4);
             margin-top: 4px;
         }
 
@@ -1253,6 +1288,356 @@
                 font-size: 2.15rem;
             }
         }
+
+        /* ==========================================================================
+           7. CENARIOS SECTION & DIAGNOSTIC STYLING
+           ========================================================================== */
+        #cenarios-section {
+            padding: 100px 0;
+            background-color: var(--off-white);
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 150px, rgba(255, 255, 255, 0.35) calc(100% - 150px), rgba(255, 255, 255, 0) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #cenarios-section .bg-dot-grid {
+            /* Fades out the dot-grid at the top and bottom to avoid harsh cutoffs */
+            mask-image: linear-gradient(to bottom, transparent 0%, black 120px, black calc(100% - 120px), transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 120px, black calc(100% - 120px), transparent 100%);
+            transition: none;
+        }
+
+        @media (max-width: 1023px) {
+            #cenarios-section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #cenarios-section {
+                padding: 60px 0 80px 0; /* Clear breathing space above the footer on mobile */
+            }
+        }
+
+        .cenarios-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 55px; /* Aumentado para dar mais respiro vertical quando empilhado */
+        }
+
+        @media (min-width: 1024px) {
+            .cenarios-layout-grid {
+                grid-template-columns: 7fr 5fr;
+                gap: 60px;
+                align-items: start;
+            }
+        }
+
+        /* Coluna da Direita - Sticky Diagnostic widget */
+        .diagnostic-column {
+            position: relative;
+        }
+
+        @media (min-width: 1024px) {
+            .diagnostic-column {
+                position: sticky;
+                top: 110px; /* Alinhado abaixo do header fixo */
+            }
+        }
+
+        .diagnostic-card {
+            padding: 40px 30px;
+            border-radius: 28px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(9, 100, 94, 0.12);
+            box-shadow: 
+                0 20px 40px -15px rgba(9, 100, 94, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8);
+            transition: var(--transition-smooth);
+        }
+
+        .diagnostic-eyebrow {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--teal-green);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .diagnostic-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.6rem;
+            line-height: 1.25;
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 30px;
+            letter-spacing: -0.015em;
+        }
+
+        /* SVG Stress circular gauge */
+        .gauge-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin-bottom: 24px;
+        }
+
+        .stress-gauge {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg); /* Começa no topo */
+        }
+
+        .gauge-bg {
+            stroke: rgba(9, 100, 94, 0.06);
+        }
+
+        .gauge-fill {
+            stroke: var(--teal-green);
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.6s ease;
+        }
+
+        .gauge-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            transition: color 0.4s ease;
+        }
+
+        /* Stress states & description text */
+        .stress-status-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .stress-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(9, 100, 94, 0.6);
+            letter-spacing: 0.08em;
+        }
+
+        .stress-value {
+            font-family: 'Arimo', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
+        }
+
+        /* Stress level colors */
+        .level-zero { color: rgba(9, 100, 94, 0.4); }
+        .level-low { color: var(--teal-green); text-shadow: 0 0 10px rgba(9, 100, 94, 0.15); }
+        .level-medium { color: #d09010; text-shadow: 0 0 10px rgba(208, 144, 16, 0.15); }
+        .level-high { color: #d63333; text-shadow: 0 0 10px rgba(214, 51, 51, 0.2); }
+
+        /* Dynamic Conclusion Box */
+        .conclusion-box {
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            transition: opacity 0.5s ease, height 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+        }
+
+        .conclusion-box.active {
+            height: 135px;
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px;
+        }
+
+        .conclusion-text {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--teal-green);
+            margin-bottom: 16px;
+            text-shadow: 0 0 8px rgba(9, 100, 94, 0.15);
+            animation: textPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { opacity: 0.95; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        .conclusion-box .cta-btn {
+            box-shadow: 0 8px 20px rgba(0, 51, 51, 0.15);
+        }
+
+        /* Coluna da Direita - Lista de cenários */
+        .checklist-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Cards do Cenário */
+        .cenario-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: clamp(14px, 2.5vw, 20px);
+            padding: clamp(16px, 3vw, 24px) clamp(18px, 4vw, 28px);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(9, 100, 94, 0.05);
+            box-shadow: 0 8px 24px -8px rgba(9, 100, 94, 0.02);
+            cursor: pointer;
+            position: relative;
+            transition: 
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cenario-card:hover {
+            transform: translateX(8px);
+            border-color: rgba(9, 100, 94, 0.15);
+            background: rgba(255, 255, 255, 0.55);
+            box-shadow: 0 12px 30px -10px rgba(9, 100, 94, 0.06);
+        }
+
+        /* Checkbox */
+        .cenario-check-box {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid rgba(9, 100, 94, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            background: var(--solid-white);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
+        }
+
+        .cenario-card:hover .cenario-check-box {
+            border-color: var(--teal-green);
+            transform: scale(1.05);
+        }
+
+        .check-mark {
+            opacity: 0;
+            transform: scale(0.6);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Checked State */
+        .cenario-card.checked {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(9, 100, 94, 0.22);
+            box-shadow: 
+                0 15px 35px -8px rgba(9, 100, 94, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .cenario-card.checked .cenario-check-box {
+            background: var(--deep-green);
+            border-color: var(--deep-green);
+            color: var(--vibrant-green);
+            box-shadow: 0 0 10px rgba(0, 51, 51, 0.15);
+        }
+
+        .cenario-card.checked .check-mark {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .cenario-content {
+            flex-grow: 1;
+        }
+
+        .cenario-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(0, 51, 51, 0.8);
+            font-weight: 500;
+            transition: color 0.4s ease;
+        }
+
+        .cenario-card.checked .cenario-text {
+            color: var(--deep-green);
+            font-weight: 600;
+        }
+
+        /* Mobile specific styling for diagnostic banner */
+        @media (max-width: 1023px) {
+            .diagnostic-card {
+                padding: 30px 20px;
+                border-radius: 24px;
+            }
+            .diagnostic-title {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+            .gauge-wrapper {
+                width: 110px;
+                height: 110px;
+                margin-bottom: 16px;
+            }
+            .gauge-percentage {
+                font-size: 1.5rem;
+            }
+            .conclusion-box.active {
+                height: 125px;
+            }
+            .conclusion-text {
+                font-size: 1.05rem;
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cenario-card {
+                padding: 16px 22px; /* Mais respiro lateral nas perguntas para não colarem na borda */
+                gap: 16px;
+            }
+            .cenario-text {
+                font-size: 0.875rem;
+            }
+            .cenario-check-box {
+                width: 28px;
+                height: 28px;
+            }
+            .cenarios-layout-grid {
+                gap: 48px; /* Aumentado para dar mais respiro vertical quando empilhado em telas menores */
+            }
+            .diagnostic-card {
+                padding: 24px 16px;
+            }
+            .diagnostic-title {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -1304,7 +1689,7 @@
                     </div>
                     
                     <h1 id="hero-title" class="invisible">
-                        A Sentra foi feita para quem <span class="highlight-text-gradient">não pode esperar</span>
+                        A Sentra foi feita <span class="nowrap">para quem</span> <span class="highlight-text-gradient">não pode esperar</span>
                     </h1>
                     
                     <p class="subtitle">
@@ -1413,6 +1798,100 @@
                         <div class="segment-info">
                             <h3 class="segment-title">E-commerce</h3>
                             <p class="segment-description">Negócios digitais que enfrentam prazo longo de recebimento das operadoras.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- cenarios-section -->
+        <section id="cenarios-section">
+            <!-- Background dot grid for aesthetic depth -->
+            <div class="bg-dot-grid"></div>
+            
+            <div class="container">
+                <div class="cenarios-layout-grid">
+                    <!-- Coluna da Esquerda: Lista de Cenários -->
+                    <div class="checklist-column">
+                        <!-- Scenario 1 -->
+                        <div class="cenario-card ds-glass-panel" data-weight="20">
+                            <div class="cenario-check-box">
+                                <span class="iconify check-mark" data-icon="lucide:check" data-width="16"></span>
+                            </div>
+                            <div class="cenario-content">
+                                <p class="cenario-text">Você vende parcelado e sente falta do dinheiro no caixa antes do prazo</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario 2 -->
+                        <div class="cenario-card ds-glass-panel" data-weight="20">
+                            <div class="cenario-check-box">
+                                <span class="iconify check-mark" data-icon="lucide:check" data-width="16"></span>
+                            </div>
+                            <div class="cenario-content">
+                                <p class="cenario-text">Você já perdeu uma oportunidade por falta de capital disponível</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario 3 -->
+                        <div class="cenario-card ds-glass-panel" data-weight="20">
+                            <div class="cenario-check-box">
+                                <span class="iconify check-mark" data-icon="lucide:check" data-width="16"></span>
+                            </div>
+                            <div class="cenario-content">
+                                <p class="cenario-text">Você paga mais caro em empréstimo para cobrir um gap que era do cartão</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario 4 -->
+                        <div class="cenario-card ds-glass-panel" data-weight="20">
+                            <div class="cenario-check-box">
+                                <span class="iconify check-mark" data-icon="lucide:check" data-width="16"></span>
+                            </div>
+                            <div class="cenario-content">
+                                <p class="cenario-text">Você quer crescer, mas o fluxo de caixa trava seus planos</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario 5 -->
+                        <div class="cenario-card ds-glass-panel" data-weight="20">
+                            <div class="cenario-check-box">
+                                <span class="iconify check-mark" data-icon="lucide:check" data-width="16"></span>
+                            </div>
+                            <div class="cenario-content">
+                                <p class="cenario-text">Você quer saber exatamente o que vai pagar antes de confirmar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna da Direita: Diagnóstico (Widget) -->
+                    <div class="diagnostic-column">
+                        <div class="diagnostic-card ds-glass-panel">
+                            <span class="diagnostic-eyebrow">DIAGNÓSTICO FINANCEIRO</span>
+                            <h2 class="diagnostic-title">Você se identifica com algum desses cenários?</h2>
+                            
+                            <!-- SVG Stress Gauge -->
+                            <div class="gauge-wrapper">
+                                <svg class="stress-gauge" viewBox="0 0 120 120">
+                                    <circle class="gauge-bg" cx="60" cy="60" r="50" fill="none" stroke-width="6" />
+                                    <circle class="gauge-fill" cx="60" cy="60" r="50" fill="none" stroke-width="6" stroke-dasharray="314.16" stroke-dashoffset="314.16" />
+                                </svg>
+                                <div class="gauge-percentage font-mono-card">
+                                    <span id="stressPercent">0</span>%
+                                </div>
+                            </div>
+                            
+                            <!-- stress description indicators -->
+                            <div class="stress-status-box">
+                                <span class="stress-label">NÍVEL DE ESTRESSE:</span>
+                                <span id="stressValue" class="stress-value level-zero">SELECIONE OS CENÁRIOS</span>
+                            </div>
+                            
+                            <!-- Conclusion box (hidden initially, reveals with GSAP/CSS) -->
+                            <div class="conclusion-box" id="conclusionBox">
+                                <p class="conclusion-text">Então a Sentra é para você.</p>
+                                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary cta-btn">Falar com Consultor</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1803,6 +2282,30 @@
                     cardListeners.push({ item, onCardMouseMove, onCardMouseLeave });
                 });
 
+                // ScrollTrigger para revelação dos cards no desktop (animações laterais adaptadas para layout invertido)
+                gsap.from(".diagnostic-card", {
+                    scrollTrigger: {
+                        trigger: "#cenarios-section",
+                        start: "top 78%"
+                    },
+                    opacity: 0,
+                    x: 30, // Diagnostic está na direita, vem da direita
+                    duration: 0.85,
+                    ease: "power2.out"
+                });
+
+                gsap.from(".cenario-card", {
+                    scrollTrigger: {
+                        trigger: "#cenarios-section",
+                        start: "top 78%"
+                    },
+                    opacity: 0,
+                    x: -30, // Checklist está na esquerda, vem da esquerda
+                    stagger: 0.12,
+                    duration: 0.85,
+                    ease: "power2.out"
+                });
+
                 return () => {
                     // Limpar propriedades modificadas pelo GSAP ao redimensionar
                     gsap.set(track, { clearProps: "all" });
@@ -1858,12 +2361,152 @@
                     }
                 });
 
+                // ScrollTrigger para revelação dos cards no mobile (revelação vertical livre de overflow horizontal)
+                gsap.from(".diagnostic-card", {
+                    scrollTrigger: {
+                        trigger: "#cenarios-section",
+                        start: "top 78%"
+                    },
+                    opacity: 0,
+                    y: 25,
+                    duration: 0.85,
+                    ease: "power2.out"
+                });
+
+                gsap.from(".cenario-card", {
+                    scrollTrigger: {
+                        trigger: "#cenarios-section",
+                        start: "top 78%"
+                    },
+                    opacity: 0,
+                    y: 25,
+                    stagger: 0.1,
+                    duration: 0.85,
+                    ease: "power2.out"
+                });
+
                 return () => {
                     gsap.set(items, { clearProps: "all" });
                     gsap.set('.carousel-track-line-progress', { clearProps: "all" });
                     items.forEach(item => item.classList.remove('active'));
+                    // Limpar propriedades modificadas por ScrollTrigger no resize
+                    gsap.set([".diagnostic-card", ".cenario-card"], { clearProps: "all" });
                 };
             });
+
+            // ==========================================================================
+            // H. INTERACTIVE SCENARIOS CHECKLIST & DIAGNOSTIC GAUGE LOGIC
+            // ==========================================================================
+            const cenarioCards = document.querySelectorAll('.cenario-card');
+            const stressPercentEl = document.getElementById('stressPercent');
+            const stressValueEl = document.getElementById('stressValue');
+            const conclusionBox = document.getElementById('conclusionBox');
+            const gaugeFill = document.querySelector('.gauge-fill');
+            const maxScore = 100;
+            const dashArray = 314.16; // 2 * PI * r (r=50)
+
+            function updateDiagnostic() {
+                let checkedCount = 0;
+                cenarioCards.forEach(card => {
+                    if (card.classList.contains('checked')) {
+                        checkedCount++;
+                    }
+                });
+
+                // Calcula a porcentagem com base em 20% por card
+                const percentValue = checkedCount * 20;
+
+                // Anima o valor numérico
+                gsap.to(stressPercentEl, {
+                    innerText: percentValue,
+                    duration: 0.6,
+                    snap: { innerText: 1 },
+                    ease: "power2.out"
+                });
+
+                // Calcula e anima a borda do SVG Gauge
+                const offset = dashArray - (dashArray * percentValue) / maxScore;
+                gsap.to(gaugeFill, {
+                    strokeDashoffset: offset,
+                    stroke: percentValue >= 80 ? '#d63333' : (percentValue >= 60 ? '#d09010' : '#09645E'),
+                    duration: 0.7,
+                    ease: "power2.out"
+                });
+
+                // Atualiza o texto do nível de estresse e suas classes de cores
+                stressValueEl.className = 'stress-value'; // limpa classes de risco
+                if (percentValue === 0) {
+                    stressValueEl.textContent = 'SELECIONE OS CENÁRIOS';
+                    stressValueEl.classList.add('level-zero');
+                } else if (percentValue <= 40) {
+                    stressValueEl.textContent = 'RISCO LEVE - Otimização Recomendada';
+                    stressValueEl.classList.add('level-low');
+                } else if (percentValue <= 80) {
+                    stressValueEl.textContent = 'RISCO MODERADO - Fluxo de Caixa Sob Pressão';
+                    stressValueEl.classList.add('level-medium');
+                } else {
+                    stressValueEl.textContent = 'RISCO CRÍTICO - Ação Imediata Necessária';
+                    stressValueEl.classList.add('level-high');
+                }
+
+                // Revela a caixa de conclusão se houver pelo menos 1 item marcado
+                if (checkedCount >= 1) {
+                    if (!conclusionBox.classList.contains('active')) {
+                        conclusionBox.classList.add('active');
+                        // Pequeno pulso animado na entrada com GSAP
+                        gsap.fromTo(conclusionBox, 
+                            { scale: 0.9, opacity: 0 },
+                            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+                        );
+                    }
+                } else {
+                    conclusionBox.classList.remove('active');
+                }
+            }
+
+            cenarioCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('checked');
+                    updateDiagnostic();
+
+                    // Dispara animação rápida de pulso (bounce) no clique com GSAP
+                    if (card.classList.contains('checked')) {
+                        gsap.fromTo(card,
+                            { scale: 0.98 },
+                            { scale: 1, duration: 0.4, ease: "elastic.out(1.2, 0.4)" }
+                        );
+                        
+                        // Cria uma partícula de pulso brilhante (ripple) do checkmark
+                        const checkBox = card.querySelector('.cenario-check-box');
+                        if (checkBox) {
+                            const ripple = document.createElement('div');
+                            ripple.className = 'check-ripple';
+                            checkBox.appendChild(ripple);
+                            
+                            gsap.set(ripple, {
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                border: '2.5px solid var(--vibrant-green)',
+                                borderRadius: '50%',
+                                opacity: 0.8,
+                                scale: 1,
+                                pointerEvents: 'none'
+                            });
+                            
+                            gsap.to(ripple, {
+                                scale: 2.2,
+                                opacity: 0,
+                                duration: 0.6,
+                                ease: "power2.out",
+                                onComplete: () => ripple.remove()
+                            });
+                        }
+                    }
+                });
+            });
+
+
 
             // ==========================================================================
             // G. DYNAMIC YEAR LOGIC
