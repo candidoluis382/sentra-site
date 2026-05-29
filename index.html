@@ -209,6 +209,11 @@
             color: var(--deep-green);
         }
 
+        .nav-links a.active {
+            font-weight: 800;
+            color: var(--deep-green);
+        }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -221,6 +226,10 @@
         }
 
         .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -2651,20 +2660,19 @@
     <!-- Navigation Header -->
     <nav id="navbar">
         <div class="nav-container">
-            <a class="nav-logo" href="#hero">
+            <a class="nav-logo" href="index.html">
                 <img src="./logo-principal.svg" alt="Sentra Securitizadora" class="header-logo-img">
             </a>
             
             <div class="nav-links">
-                <a href="#solucoes">Soluções</a>
+                <a href="index.html" class="active">Início</a>
                 <a href="como-funciona.html">Como Funciona</a>
-                <a href="#tarifas">Tarifas</a>
-                <a href="#sobre">Sobre Nós</a>
+                <a href="vantagens.html">Vantagens</a>
+                <a href="para-quem-e.html">Para Quem É</a>
             </div>
 
             <div class="nav-actions">
-                <a href="#login" class="link-client">Área do Cliente</a>
-                <a href="#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
+                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
             </div>
         </div>
     </nav>
