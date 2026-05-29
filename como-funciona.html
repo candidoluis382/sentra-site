@@ -236,9 +236,15 @@
         }
 
         .nav-actions {
-            display: flex;
+            display: none;
             align-items: center;
             gap: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-actions {
+                display: flex;
+            }
         }
 
         .nav-actions .link-client {
@@ -251,6 +257,99 @@
 
         .nav-actions .link-client:hover {
             color: var(--deep-green);
+        }
+
+        /* Mobile Hamburger & Toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 110;
+            color: var(--deep-green);
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-toggle:active {
+            transform: scale(0.9);
+        }
+
+        @media (max-width: 1023px) {
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
+        /* Mobile Menu Drawer */
+        .nav-menu-mobile {
+            position: fixed;
+            top: 72px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 72px);
+            background-color: rgba(254, 253, 237, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 24px;
+            gap: 32px;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, visibility 0.4s;
+            border-bottom: 1px solid rgba(9, 100, 94, 0.1);
+        }
+
+        .nav-menu-mobile.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-menu-mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .nav-menu-mobile-links a {
+            text-decoration: none;
+            color: rgba(9, 100, 94, 0.85);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(9, 100, 94, 0.05);
+        }
+
+        .nav-menu-mobile-links a:hover,
+        .nav-menu-mobile-links a.active {
+            color: var(--deep-green);
+        }
+
+        .nav-menu-mobile-links a.active {
+            font-weight: 800;
+        }
+
+        .nav-menu-mobile-actions {
+            margin-top: auto;
+            padding-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-menu-mobile-actions .btn-primary {
+            text-align: center;
+            padding: 16px;
+            font-size: 0.9rem;
+            font-weight: 700;
         }
 
         /* ==========================================================================
@@ -3863,6 +3962,23 @@
             <div class="nav-actions">
                 <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
             </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="iconify" data-icon="lucide:menu" data-width="24" data-height="24"></span>
+            </button>
+        </div>
+
+        <!-- Drawer de Menu Mobile -->
+        <div class="nav-menu-mobile" id="navMenuMobile">
+            <div class="nav-menu-mobile-links">
+                <a href="index.html">Início</a>
+                <a href="como-funciona.html" class="active">Como Funciona</a>
+                <a href="vantagens.html">Vantagens</a>
+                <a href="para-quem-e.html">Para Quem É</a>
+            </div>
+            <div class="nav-menu-mobile-actions">
+                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary">Falar com Consultor</a>
+            </div>
         </div>
     </nav>
 
@@ -4485,6 +4601,34 @@
                 requestAnimationFrame(raf);
             }
             requestAnimationFrame(raf);
+
+            // Mobile Menu Toggle
+            const navToggle = document.getElementById('navToggle');
+            const navMenuMobile = document.getElementById('navMenuMobile');
+            const toggleIcon = navToggle.querySelector('.iconify');
+
+            navToggle.addEventListener('click', () => {
+                const isOpen = navMenuMobile.classList.toggle('open');
+                if (isOpen) {
+                    document.body.style.overflow = 'hidden';
+                    if (typeof lenis !== 'undefined') lenis.stop();
+                } else {
+                    document.body.style.overflow = '';
+                    if (typeof lenis !== 'undefined') lenis.start();
+                }
+                toggleIcon.setAttribute('data-icon', isOpen ? 'lucide:x' : 'lucide:menu');
+            });
+
+            // Close mobile menu when clicking a link or the action button
+            const mobileInteractiveElements = navMenuMobile.querySelectorAll('a');
+            mobileInteractiveElements.forEach(el => {
+                el.addEventListener('click', () => {
+                    navMenuMobile.classList.remove('open');
+                    document.body.style.overflow = '';
+                    if (typeof lenis !== 'undefined') lenis.start();
+                    toggleIcon.setAttribute('data-icon', 'lucide:menu');
+                });
+            });
 
             // ==========================================================================
             // G. FAQ ACCORDION CLICK ACTIONS
