@@ -2153,6 +2153,119 @@
         }
 
         /* ==========================================================================
+           9. LEAD CAPTURE MODAL STYLING (PARTE A)
+           ========================================================================== */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 51, 51, 0.5);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-backdrop.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background-color: var(--off-white);
+            border: 1px solid rgba(9, 100, 94, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 
+                0 10px 30px -10px rgba(0, 51, 51, 0.2),
+                0 30px 60px -15px rgba(0, 51, 51, 0.3);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-backdrop.open .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--teal-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            background-color: rgba(9, 100, 94, 0.08);
+            color: var(--deep-green);
+        }
+
+        .modal-header {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .modal-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: var(--teal-green);
+            font-weight: 400;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 480px) {
+            .modal-container {
+                padding: 30px 20px;
+                border-radius: 20px;
+                max-width: calc(100% - 32px);
+            }
+            .modal-title {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ==========================================================================
            6. FINAL CALL TO ACTION SECTION
            ========================================================================== */
         .final-cta-section {
@@ -2787,16 +2900,16 @@
                         </div>
                         
                         <h1 id="hero-title" class="invisible">
-                            Peça hoje. Receba amanhã. Sem banco, sem burocracia.
+                            Libere o dinheiro das suas vendas sem o custo do banco.
                         </h1>
                         
                         <p class="subtitle">
-                            A Sentra adianta o dinheiro das suas vendas no cartão em D+1. Você mantém sua maquininha, escolhe o valor e antecipa.
+                            Antecipe seus recebíveis de cartão com taxas justas e máxima agilidade. Você mantém sua maquininha de preferência e recebe o saldo em D+1 automaticamente.
                         </p>
                         
                         <div class="cta-container">
-                            <a href="#antecipar" class="btn-shine btn-bounce btn-primary">
-                                Quero Antecipar Agora
+                            <a href="#simular" class="btn-shine btn-bounce btn-primary">
+                                Simular Minha Taxa
                             </a>
                             <a href="como-funciona.html" class="btn-bounce btn-secondary">
                                 Ver Como Funciona
@@ -3133,7 +3246,7 @@
                                 
                                 <!-- Final CTA -->
                                 <div class="result-cta-wrapper">
-                                    <a href="#" class="btn-shine btn-bounce btn-vibrant result-cta-btn" style="display: block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
+                                    <a href="#" id="openModalBtn" class="btn-shine btn-bounce btn-vibrant result-cta-btn" style="display: block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
                                         Quero reduzir minhas taxas
                                     </a>
                                 </div>
@@ -3326,8 +3439,8 @@
                 
                 <!-- Final CTA Button -->
                 <div class="cta-wrapper" style="margin-top: 30px;">
-                    <a href="#antecipar" class="btn-shine btn-bounce btn-vibrant" style="display: inline-block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
-                        Quero Antecipar Agora
+                    <a href="#simular" class="btn-shine btn-bounce btn-vibrant" style="display: inline-block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
+                        Simular Minha Taxa
                     </a>
                 </div>
             </div>
@@ -3366,8 +3479,8 @@
                 <h2 class="final-cta-title invisible" id="prontoTitle">Pronto para receber hoje o que você já vendeu?</h2>
                 <p class="final-cta-subtitle invisible" id="prontoSubtitle">Crie sua conta em minutos e faça sua primeira antecipação.</p>
                 <div class="final-cta-actions invisible" id="prontoActions">
-                    <a href="#antecipar" class="btn-shine btn-bounce btn-vibrant">
-                        Quero Antecipar Agora
+                    <a href="#simular" class="btn-shine btn-bounce btn-vibrant">
+                        Simular Minha Taxa
                     </a>
                     <a href="#falar-especialista" class="btn-bounce btn-outline-glass">
                         Falar com um Especialista
@@ -3446,6 +3559,44 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal de Captura de Leads (Parte A) -->
+    <div id="leadModal" class="modal-backdrop">
+        <div class="modal-container">
+            <button id="closeModalBtn" class="modal-close-btn" aria-label="Fechar modal">
+                <span class="iconify" data-icon="lucide:x" data-width="20"></span>
+            </button>
+            
+            <div class="modal-header">
+                <h3 class="modal-title">Falta pouco pra sua antecipação</h3>
+                <p class="modal-subtitle">Informe seus dados para gerar a proposta personalizada.</p>
+            </div>
+            
+            <form id="leadForm" class="modal-form" novalidate>
+                <div class="form-group">
+                    <label class="form-label" for="modalCnpj">CNPJ</label>
+                    <input type="text" id="modalCnpj" class="form-input" placeholder="00.000.000/0000-00" autocomplete="off">
+                    <div id="modalCnpjError" class="error-message" style="display: none;">
+                        <span class="iconify" data-icon="lucide:alert-circle" data-width="14"></span>
+                        <span>CNPJ inválido</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="modalWhatsapp">WhatsApp</label>
+                    <input type="text" id="modalWhatsapp" class="form-input" placeholder="(00) 00000-0000" autocomplete="off">
+                    <div id="modalWhatsappError" class="error-message" style="display: none;">
+                        <span class="iconify" data-icon="lucide:alert-circle" data-width="14"></span>
+                        <span>Número incompleto</span>
+                    </div>
+                </div>
+                
+                <button type="submit" id="modalSubmitBtn" class="btn-shine btn-bounce btn-primary" style="width: 100%; margin-top: 10px; padding: 16px 32px;" disabled>
+                    Avançar
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- External Script Integrations (GSAP, SplitType, Lenis) -->
     <!-- GSAP Core -->
@@ -4170,6 +4321,202 @@
             if (footerYear) {
                 footerYear.textContent = new Date().getFullYear();
             }
+
+            // ==========================================================================
+            // LEAD CAPTURE MODAL LOGIC (PARTE A)
+            // ==========================================================================
+            const openModalBtn = document.getElementById('openModalBtn');
+            const leadModal = document.getElementById('leadModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const leadForm = document.getElementById('leadForm');
+            const modalCnpj = document.getElementById('modalCnpj');
+            const modalWhatsapp = document.getElementById('modalWhatsapp');
+            const modalCnpjError = document.getElementById('modalCnpjError');
+            const modalWhatsappError = document.getElementById('modalWhatsappError');
+            const modalSubmitBtn = document.getElementById('modalSubmitBtn');
+
+            // Expose validarCNPJ globally for Parte B re-use
+            window.validarCNPJ = function(cnpj) {
+                if (!cnpj) return false;
+                const cleanCNPJ = String(cnpj).replace(/\D/g, '');
+                if (cleanCNPJ.length !== 14) return false;
+                if (/^(\d)\1+$/.test(cleanCNPJ)) return false;
+                
+                let tamanho = cleanCNPJ.length - 2;
+                let numeros = cleanCNPJ.substring(0, tamanho);
+                let digitos = cleanCNPJ.substring(tamanho);
+                let soma = 0;
+                let pos = tamanho - 7;
+                for (let i = tamanho; i >= 1; i--) {
+                    soma += parseInt(numeros.charAt(tamanho - i)) * pos--;
+                    if (pos < 2) pos = 9;
+                }
+                let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+                if (resultado !== parseInt(digitos.charAt(0))) return false;
+                
+                tamanho = tamanho + 1;
+                numeros = cleanCNPJ.substring(0, tamanho);
+                soma = 0;
+                pos = tamanho - 7;
+                for (let i = tamanho; i >= 1; i--) {
+                    soma += parseInt(numeros.charAt(tamanho - i)) * pos--;
+                    if (pos < 2) pos = 9;
+                }
+                resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+                if (resultado !== parseInt(digitos.charAt(1))) return false;
+                
+                return true;
+            };
+
+            function checkFormValidity() {
+                const cnpjVal = modalCnpj.value.replace(/\D/g, '');
+                const phoneVal = modalWhatsapp.value.replace(/\D/g, '');
+                
+                const isCnpjVal = window.validarCNPJ(cnpjVal);
+                const isPhoneVal = phoneVal.length === 11;
+                
+                modalSubmitBtn.disabled = !(isCnpjVal && isPhoneVal);
+            }
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                
+                // Reset form values and errors
+                leadForm.reset();
+                modalCnpjError.style.display = 'none';
+                modalCnpj.classList.remove('input-error');
+                modalWhatsappError.style.display = 'none';
+                modalWhatsapp.classList.remove('input-error');
+                modalSubmitBtn.disabled = true;
+
+                leadModal.classList.add('open');
+                
+                // Stop Lenis scroll when modal is open
+                if (typeof lenis !== 'undefined') lenis.stop();
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                leadModal.classList.remove('open');
+                
+                // Restart Lenis scroll when modal is closed
+                if (typeof lenis !== 'undefined') lenis.start();
+                document.body.style.overflow = '';
+            }
+
+            if (openModalBtn) {
+                openModalBtn.addEventListener('click', openModal);
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Close on backdrop click
+            leadModal.addEventListener('click', (e) => {
+                if (e.target === leadModal) {
+                    closeModal();
+                }
+            });
+
+            // Close on ESC key press
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && leadModal.classList.contains('open')) {
+                    closeModal();
+                }
+            });
+
+            // Mask and validation for CNPJ
+            modalCnpj.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 14) {
+                    value = value.substring(0, 14);
+                }
+                
+                let formatted = '';
+                if (value.length > 0) {
+                    formatted += value.substring(0, 2);
+                }
+                if (value.length > 2) {
+                    formatted += '.' + value.substring(2, 5);
+                }
+                if (value.length > 5) {
+                    formatted += '.' + value.substring(5, 8);
+                }
+                if (value.length > 8) {
+                    formatted += '/' + value.substring(8, 12);
+                }
+                if (value.length > 12) {
+                    formatted += '-' + value.substring(12, 14);
+                }
+                
+                e.target.value = formatted;
+                
+                // Clear error message when user is editing
+                modalCnpjError.style.display = 'none';
+                modalCnpj.classList.remove('input-error');
+                
+                checkFormValidity();
+            });
+
+            modalCnpj.addEventListener('blur', () => {
+                const cnpjVal = modalCnpj.value.replace(/\D/g, '');
+                if (cnpjVal.length > 0 && !window.validarCNPJ(cnpjVal)) {
+                    modalCnpjError.style.display = 'flex';
+                    modalCnpj.classList.add('input-error');
+                } else if (cnpjVal.length === 0) {
+                    modalCnpjError.style.display = 'flex';
+                    modalCnpj.classList.add('input-error');
+                }
+            });
+
+            // Mask and validation for WhatsApp
+            modalWhatsapp.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) {
+                    value = value.substring(0, 11);
+                }
+                
+                let formatted = '';
+                if (value.length > 0) {
+                    formatted += '(' + value.substring(0, 2);
+                }
+                if (value.length > 2) {
+                    formatted += ') ' + value.substring(2, 7);
+                }
+                if (value.length > 7) {
+                    formatted += '-' + value.substring(7, 11);
+                }
+                
+                e.target.value = formatted;
+                
+                // Clear error message when user is editing
+                modalWhatsappError.style.display = 'none';
+                modalWhatsapp.classList.remove('input-error');
+                
+                checkFormValidity();
+            });
+
+            modalWhatsapp.addEventListener('blur', () => {
+                const phoneVal = modalWhatsapp.value.replace(/\D/g, '');
+                if (phoneVal.length > 0 && phoneVal.length < 11) {
+                    modalWhatsappError.style.display = 'flex';
+                    modalWhatsapp.classList.add('input-error');
+                } else if (phoneVal.length === 0) {
+                    modalWhatsappError.style.display = 'flex';
+                    modalWhatsapp.classList.add('input-error');
+                }
+            });
+
+            // Form Submit Listener (Avançar)
+            leadForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const cnpjVal = modalCnpj.value.replace(/\D/g, '');
+                const phoneVal = modalWhatsapp.value.replace(/\D/g, '');
+                
+                if (window.validarCNPJ(cnpjVal) && phoneVal.length === 11) {
+                    console.log({ cnpj: modalCnpj.value, whatsapp: modalWhatsapp.value });
+                }
+            });
         });
     </script>
 </body>
