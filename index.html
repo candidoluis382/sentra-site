@@ -2343,16 +2343,45 @@
         }
 
         .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 32px;
+            border-radius: 9999px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
             background-color: #25D366;
             color: #FFFFFF;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
             transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
         }
 
+        .btn-whatsapp svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+
         .btn-whatsapp:hover {
             background-color: #20ba59;
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
             transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .btn-whatsapp {
+                padding: 14px 20px;
+                font-size: 0.875rem;
+                gap: 8px;
+            }
+            .btn-whatsapp svg {
+                width: 18px;
+                height: 18px;
+            }
         }
 
         /* ==========================================================================
@@ -3697,6 +3726,14 @@
                         A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as
                         menores taxas.
                     </p>
+                    <div style="font-size: 11px; color: rgba(250, 249, 242, 0.5); line-height: 1.6; margin-top: 16px; margin-bottom: 12px;">
+                        <strong>SENTRA SECURITIZADORA S/A</strong><br>
+                        CNPJ: 64.068.298/0001-54<br>
+                        Avenida Oswaldo Reis, 3385, Sala 802 B36 — Praia Brava — Itajaí/SC — CEP 88.306-773
+                    </div>
+                    <p style="font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; margin-bottom: 16px; text-align: justify;">
+                        A Sentra Securitizadora S/A não é uma instituição financeira e não realiza operações de financiamento, mútuo ou empréstimo bancário. Nossa atividade comercial consiste estritamente na aquisição e securitização de direitos creditórios (recebíveis mercantis e de cartões de crédito) através da cessão de direitos, conforme as regras do Código Civil Brasileiro. Todas as operações de antecipação estão sujeitas à análise de crédito, checagem de lastro e validação operacional.
+                    </p>
                     <div class="footer-socials">
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram">
@@ -3705,7 +3742,7 @@
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <span class="iconify" data-icon="mdi:linkedin" data-width="20"></span>
                         </a>
-                        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer"
+                        <a href="https://wa.me/5547999299741" target="_blank" rel="noopener noreferrer"
                             aria-label="WhatsApp">
                             <span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span>
                         </a>
@@ -3729,11 +3766,11 @@
                     <ul class="footer-contact-info">
                         <li>
                             <span class="iconify" data-icon="lucide:phone" data-width="16"></span>
-                            <span><strong>WhatsApp:</strong> (11) 99999-9999</span>
+                            <span><strong>WhatsApp:</strong> (47) 99929-9741</span>
                         </li>
                         <li>
                             <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
-                            <span><strong>E-mail:</strong> contato@sentra.com.br</span>
+                            <span><strong>E-mail:</strong> atendimento@sentrasecur.com</span>
                         </li>
                         <li>
                             <span class="iconify" data-icon="lucide:clock" data-width="16"></span>
@@ -3741,8 +3778,8 @@
                         </li>
                     </ul>
                     <ul class="footer-links footer-legal">
-                        <li><a href="index.html#politica-privacidade">Política de Privacidade</a></li>
-                        <li><a href="index.html#termos-uso">Termos de Uso</a></li>
+                        <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos-de-uso.html">Termos de Uso</a></li>
                         <li><a href="index.html#politica-cookies">Política de Cookies</a></li>
                     </ul>
                 </div>
@@ -3753,6 +3790,9 @@
                     <p>&copy; <span id="footerYear">2026</span> Sentra Securitizadora S/A. Todos os direitos reservados.
                     </p>
                     <p class="footer-disclaimer">As simulações são estimativas e podem variar conforme a operação.</p>
+                </div>
+                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250, 249, 242, 0.08); font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <strong>Privacidade e Segurança:</strong> Ao utilizar a nossa calculadora ou enviar seus dados de contato, as suas informações serão tratadas com total sigilo e segurança. A Sentra Securitizadora S/A adota práticas rigorosas de proteção de dados em conformidade com a Lei Geral de Proteção de Dados (LGPD). Os dados coletados possuem a finalidade exclusiva de análise de crédito, simulação de taxas e contato comercial pela nossa equipe.
                 </div>
             </div>
         </div>
@@ -4693,8 +4733,8 @@
                                 <p style="font-family: 'Manrope', sans-serif; font-size: 0.9rem; line-height: 1.45; color: var(--teal-green); margin: 0;">Clique abaixo para gerar seus contratos no WhatsApp.</p>
                             </div>
                             
-                            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn-shine btn-bounce btn-whatsapp" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px 32px; border-radius: 9999px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.885-6.974C16.279 1.909 13.8 .884 11.168.884 5.728.884 1.303 5.309 1.3 10.751c-.001 1.761.462 3.482 1.345 5.016l-.982 3.585 3.684-.966zm13.064-7.263c-.325-.163-1.92-.949-2.218-1.059-.297-.109-.514-.163-.73.163-.217.326-.842 1.06-.103 1.169-.26.297-.57.38-.867.217-.297-.162-1.253-.462-2.386-1.472-.881-.786-1.756-1.756-1.65-2.053-.174-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.174.2-.299.3-.499.099-.2.05-.375-.025-.522-.075-.152-.73-1.758-.999-2.408-.262-.63-.53-.545-.73-.555-.19-.01-.407-.01-.624-.01-.217 0-.57.082-.868.408-.298.326-1.14 1.114-1.14 2.716 0 1.603 1.167 3.152 1.329 3.37.162.217 2.296 3.507 5.56 4.916.777.336 1.383.537 1.854.686.78.249 1.49.214 2.052.13.626-.093 1.92-.786 2.19-1.507.272-.722.272-1.343.19-1.472-.081-.13-.298-.212-.624-.375z"/></svg>
+                            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn-shine btn-bounce btn-whatsapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.885-6.974C16.279 1.909 13.8 .884 11.168.884 5.728.884 1.303 5.309 1.3 10.751c-.001 1.761.462 3.482 1.345 5.016l-.982 3.585 3.684-.966zm13.064-7.263c-.325-.163-1.92-.949-2.218-1.059-.297-.109-.514-.163-.73.163-.217.326-.842 1.06-.103 1.169-.26.297-.57.38-.867.217-.297-.162-1.253-.462-2.386-1.472-.881-.786-1.756-1.756-1.65-2.053-.174-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.174.2-.299.3-.499.099-.2.05-.375-.025-.522-.075-.152-.73-1.758-.999-2.408-.262-.63-.53-.545-.73-.555-.19-.01-.407-.01-.624-.01-.217 0-.57.082-.868.408-.298.326-1.14 1.114-1.14 2.716 0 1.603 1.167 3.152 1.329 3.37.162.217 2.296 3.507 5.56 4.916.777.336 1.383.537 1.854.686.78.249 1.49.214 2.052.13.626-.093 1.92-.786 2.19-1.507.272-.722.272-1.343.19-1.472-.081-.13-.298-.212-.624-.375z"/></svg>
                                 Falar com a Sentra no WhatsApp
                             </a>
                         </div>

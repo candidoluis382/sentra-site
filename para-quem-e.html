@@ -722,11 +722,13 @@
             transition: color 0.4s ease;
         }
 
-        .segment-description {
+        .segment-hook {
             font-family: 'Manrope', sans-serif;
-            line-height: 1.55;
-            color: rgba(9, 100, 94, 0.72);
-            font-weight: 400;
+            transition: color 0.4s ease;
+        }
+
+        .segment-body {
+            font-family: 'Manrope', sans-serif;
             transition: color 0.4s ease;
         }
 
@@ -798,202 +800,140 @@
         /* DESKTOP STYLES (1024px e acima) */
         @media (min-width: 1024px) {
             .para-quem-hero-section {
-                height: 100vh;
-                padding-top: 120px;
+                min-height: 100vh;
+                height: auto;
+                padding-top: 150px;
+                padding-bottom: 100px;
+                display: flex;
+                flex-direction: column;
                 justify-content: center;
             }
 
             .carousel-scroll-wrapper {
                 position: relative;
                 width: 100%;
-                overflow: hidden;
-                margin-top: 50px;
-                padding: 50px 0;
+                max-width: 1280px;
+                margin: 50px auto 0 auto;
+                padding: 20px 24px;
+                box-sizing: border-box;
             }
 
             .carousel-track {
-                display: flex;
-                gap: 120px;
-                padding-left: calc(50vw - 170px); /* Centraliza o card de 340px */
-                padding-right: calc(50vw - 170px);
-                width: max-content;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                padding: 0;
+                width: 100%;
                 position: relative;
                 z-index: 2;
-                will-change: transform;
             }
 
-            /* Trilho Horizontal Laser/Neon */
+            /* Trilho Horizontal desativado */
             .carousel-track-line {
-                position: absolute;
-                top: 80px; /* Alinhado exatamente ao centro do círculo (30px card padding + 50px metade do círculo) */
-                left: calc(50vw - 120px); /* padding (50vw - 170px) + 50px (metade do círculo) */
-                width: calc(100% - (100vw - 240px));
-                height: 3px;
-                background: rgba(9, 100, 94, 0.08);
-                z-index: 1;
-                pointer-events: none;
-                border-radius: 9999px;
-            }
-
-            .carousel-track-line-progress {
-                height: 100%;
-                width: 0%;
-                background: linear-gradient(to right, var(--teal-green), var(--vibrant-green));
-                box-shadow: 
-                    0 0 8px rgba(9, 100, 94, 0.4), 
-                    0 0 16px rgba(228, 237, 44, 0.2);
-                transform-origin: left center;
-                border-radius: 9999px;
-                position: relative;
-            }
-
-            /* Partícula brilhante na ponta do trilho progressivo */
-            .carousel-track-line-progress::after {
-                content: '';
-                position: absolute;
-                right: -6px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 12px;
-                height: 12px;
-                background: var(--vibrant-green);
-                border: 2px solid var(--teal-green);
-                border-radius: 50%;
-                box-shadow: 
-                    0 0 8px var(--vibrant-green), 
-                    0 0 15px var(--vibrant-green);
-                z-index: 3;
+                display: none;
             }
 
             /* Glassmorphism premium card */
             .carousel-item {
-                width: 340px;
-                flex-shrink: 0;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
                 position: relative;
                 z-index: 2;
-                padding: 30px 24px;
+                padding: 40px 30px;
                 border-radius: 24px;
-                background: rgba(255, 255, 255, 0.25);
-                backdrop-filter: blur(4px);
-                -webkit-backdrop-filter: blur(4px);
-                border: 1px solid rgba(9, 100, 94, 0.05);
-                box-shadow: 0 10px 30px -10px rgba(9, 100, 94, 0.02);
-                transition: 
-                    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                    border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                    background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                    filter 0.4s ease, 
-                    opacity 0.4s ease;
-                opacity: 0.35;
-                filter: grayscale(40%);
-                transform: translateY(15px);
-                transform-style: preserve-3d;
-                perspective: 1000px;
-            }
-
-            /* Card Ativo e Destacado */
-            .carousel-item.active {
-                opacity: 1;
-                filter: grayscale(0%);
-                background: rgba(255, 255, 255, 0.7);
+                background: rgba(255, 255, 255, 0.55);
                 backdrop-filter: blur(12px);
                 -webkit-backdrop-filter: blur(12px);
-                border-color: rgba(9, 100, 94, 0.18);
-                box-shadow: 
-                    0 20px 40px -10px rgba(9, 100, 94, 0.08),
-                    inset 0 1px 1px rgba(255, 255, 255, 0.8);
-                transform: scale(1.05) translateY(0);
+                border: 1px solid rgba(9, 100, 94, 0.12);
+                box-shadow: 0 10px 30px -10px rgba(9, 100, 94, 0.04);
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                            border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                            background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                            box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                opacity: 1;
+                filter: none;
+                transform: translateY(0);
             }
 
-            /* Parallax depths for card content on desktop hover */
-            .carousel-item .segment-circle-icon {
-                transform: translateZ(30px);
-                transform-style: preserve-3d;
-            }
-
-            .carousel-item .segment-info {
-                transform: translateZ(15px);
+            .carousel-item:hover {
+                transform: translateY(-8px);
+                background: rgba(255, 255, 255, 0.8);
+                border-color: rgba(9, 100, 94, 0.25);
+                box-shadow: 0 20px 45px -10px rgba(9, 100, 94, 0.1),
+                            inset 0 1px 1px rgba(255, 255, 255, 0.8);
             }
 
             .segment-number {
-                top: 20px;
-                right: 24px;
+                top: 24px;
+                right: 30px;
                 font-size: 0.85rem;
-                transform: translateZ(20px);
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 700;
+                color: rgba(9, 100, 94, 0.25);
+                transition: color 0.3s ease;
             }
 
-            .active-ring-spinner {
-                inset: -6px;
-                width: calc(100% + 12px);
-                height: calc(100% + 12px);
-                transform: scale(0.85);
-            }
-
-            .carousel-item.active .active-ring-spinner {
-                transform: scale(1);
-            }
-
-            .card-shine {
-                border-radius: 24px;
-                background: radial-gradient(circle 200px at var(--shine-x, 50%) var(--shine-y, 50%), rgba(255, 255, 255, 0.45) 0%, transparent 100%);
-                transform: translateZ(25px);
-            }
-
-            .carousel-item:hover .card-shine {
-                opacity: 1;
-            }
-
-            .segment-circle-icon {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 24px;
-            }
-
-            .carousel-item.active .segment-circle-icon {
-                background: var(--deep-green);
-                color: var(--vibrant-green);
-                border-color: var(--deep-green);
-                transform: scale(1.1) rotate(5deg) translateZ(30px);
-                box-shadow: 
-                    0 12px 25px rgba(0, 51, 51, 0.2),
-                    0 0 15px rgba(228, 237, 44, 0.2);
-            }
-
-            /* Ativa halo pulsante */
-            .carousel-item.active .segment-circle-icon::before {
-                opacity: 1;
-                transform: scale(1.25);
-                animation: iconHaloPulse 2s infinite ease-in-out;
-            }
-
-            /* Micro animação de flutuação no ícone ativo */
-            .carousel-item.active .segment-circle-icon .iconify {
-                animation: iconFloatMicro 2.5s infinite ease-in-out;
-            }
-
-            .segment-title {
-                font-size: 1.25rem;
-                margin-bottom: 12px;
-            }
-
-            .carousel-item.active .segment-title {
+            .carousel-item:hover .segment-number {
                 color: var(--teal-green);
             }
 
-            .segment-description {
-                font-size: 0.9rem;
-                max-width: 280px;
+            .segment-circle-icon {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 28px;
+                background: var(--deep-green);
+                color: var(--vibrant-green);
+                border-color: var(--deep-green);
+                box-shadow: 0 10px 20px rgba(0, 51, 51, 0.15);
+                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             }
 
-            /* Animações de capricho */
-            @keyframes iconHaloPulse {
-                0%, 100% { transform: scale(1.15); opacity: 0.6; }
-                50% { transform: scale(1.35); opacity: 0.9; filter: drop-shadow(0 0 4px rgba(228, 237, 44, 0.3)); }
+            .carousel-item:hover .segment-circle-icon {
+                transform: scale(1.08) rotate(5deg);
+                box-shadow: 0 12px 25px rgba(0, 51, 51, 0.22),
+                            0 0 15px rgba(228, 237, 44, 0.2);
+            }
+
+            /* Micro animação de flutuação no ícone ao passar o mouse */
+            .carousel-item:hover .segment-circle-icon .iconify {
+                animation: iconFloatMicro 2s infinite ease-in-out;
+            }
+
+            .segment-title {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: var(--deep-green);
+                margin-bottom: 14px;
+                transition: color 0.3s ease;
+            }
+
+            .carousel-item:hover .segment-title {
+                color: var(--teal-green);
+            }
+
+            .segment-hook {
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: var(--teal-green);
+                line-height: 1.5;
+                margin-bottom: 12px;
+            }
+
+            .segment-body {
+                font-size: 0.875rem;
+                color: rgba(9, 100, 94, 0.75);
+                line-height: 1.6;
+            }
+
+            .active-ring-spinner {
+                display: none !important;
+            }
+
+            .card-shine {
+                display: none !important;
             }
 
             @keyframes iconFloatMicro {
@@ -1136,11 +1076,21 @@
 
             .segment-title {
                 font-size: 1.1rem;
+                margin-bottom: 6px;
             }
 
-            .segment-description {
+            .segment-hook {
+                font-size: 0.925rem;
+                font-weight: 600;
+                color: var(--teal-green);
+                line-height: 1.45;
+                margin-bottom: 8px;
+            }
+
+            .segment-body {
                 font-size: 0.85rem;
-                max-width: 100%;
+                color: rgba(9, 100, 94, 0.72);
+                line-height: 1.5;
             }
 
             .segment-number {
@@ -1821,11 +1771,11 @@
                     </div>
                     
                     <h1 id="hero-title" class="invisible">
-                        A Sentra foi feita <span class="nowrap">para quem</span> <span class="highlight-text-gradient">não pode esperar</span>
+                        Soluções sob medida para o tamanho do seu negócio.
                     </h1>
                     
                     <p class="subtitle">
-                        Se você vende no cartão e precisa de caixa agora, a Sentra é para você.
+                        Atendemos empresas que buscam eficiência financeira, taxas justas e agilidade para transformar vendas em saldo na conta.
                     </p>
                 </div>
             </div>
@@ -1837,7 +1787,7 @@
                     <div class="carousel-track-line">
                         <div class="carousel-track-line-progress"></div>
                     </div>
-                    <!-- Segment 1: Comércio Varejista -->
+                    <!-- Segment 1: Comércio Varejista e Lojistas -->
                     <div class="carousel-item">
                         <div class="card-shine"></div>
                         <span class="segment-number">01</span>
@@ -1848,12 +1798,13 @@
                             <span class="iconify" data-icon="lucide:store" data-width="28"></span>
                         </div>
                         <div class="segment-info">
-                            <h3 class="segment-title">Comércio Varejista</h3>
-                            <p class="segment-description">Lojas que vendem parcelado e precisam de capital para repor estoque sem esperar.</p>
+                            <h3 class="segment-title">Comércio Varejista e Lojistas</h3>
+                            <p class="segment-hook">Ideal para lojas de roupas, calçados, autopeças, materiais de construção e comércios de rua.</p>
+                            <p class="segment-body">Antecipe as vendas da sua loja física para manter o giro do estoque em dia, comprar direto da fábrica e negociar melhores prazos com seus fornecedores.</p>
                         </div>
                     </div>
 
-                    <!-- Segment 2: Prestadores de Serviço -->
+                    <!-- Segment 2: Distribuidoras e Depósitos -->
                     <div class="carousel-item">
                         <div class="card-shine"></div>
                         <span class="segment-number">02</span>
@@ -1861,15 +1812,16 @@
                             <svg class="active-ring-spinner" viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
                             </svg>
-                            <span class="iconify" data-icon="lucide:wrench" data-width="28"></span>
+                            <span class="iconify" data-icon="lucide:truck" data-width="28"></span>
                         </div>
                         <div class="segment-info">
-                            <h3 class="segment-title">Prestadores de Serviço</h3>
-                            <p class="segment-description">Clínicas, salões, academias, oficinas — quem cobra no cartão e quer caixa disponível.</p>
+                            <h3 class="segment-title">Distribuidoras e Depósitos</h3>
+                            <p class="segment-hook">Desenvolvido especialmente para distribuidoras de água, gás, bebidas e alimentos.</p>
+                            <p class="segment-body">Transforme as vendas em cartões das suas entregas e balcão em dinheiro na conta no dia seguinte, garantindo o fôlego necessário para repor o pátio à vista e manter a sua frota rodando.</p>
                         </div>
                     </div>
 
-                    <!-- Segment 3: Restaurantes e Alimentação -->
+                    <!-- Segment 3: Prestadores de Serviços e Clínicas -->
                     <div class="carousel-item">
                         <div class="card-shine"></div>
                         <span class="segment-number">03</span>
@@ -1877,59 +1829,12 @@
                             <svg class="active-ring-spinner" viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
                             </svg>
-                            <span class="iconify" data-icon="lucide:utensils" data-width="28"></span>
+                            <span class="iconify" data-icon="lucide:briefcase" data-width="28"></span>
                         </div>
                         <div class="segment-info">
-                            <h3 class="segment-title">Restaurantes e Alimentação</h3>
-                            <p class="segment-description">Operação acelerada exige caixa constante. Antecipe e mantenha o negócio rodando.</p>
-                        </div>
-                    </div>
-
-                    <!-- Segment 4: Pequenas e Médias Empresas -->
-                    <div class="carousel-item">
-                        <div class="card-shine"></div>
-                        <span class="segment-number">04</span>
-                        <div class="segment-circle-icon">
-                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
-                            </svg>
-                            <span class="iconify" data-icon="lucide:building-2" data-width="28"></span>
-                        </div>
-                        <div class="segment-info">
-                            <h3 class="segment-title">Pequenas e Médias Empresas</h3>
-                            <p class="segment-description">Capital de giro rápido sem comprometer a saúde financeira da empresa.</p>
-                        </div>
-                    </div>
-
-                    <!-- Segment 5: MEI e Autônomos -->
-                    <div class="carousel-item">
-                        <div class="card-shine"></div>
-                        <span class="segment-number">05</span>
-                        <div class="segment-circle-icon">
-                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
-                            </svg>
-                            <span class="iconify" data-icon="lucide:user" data-width="28"></span>
-                        </div>
-                        <div class="segment-info">
-                            <h3 class="segment-title">MEI e Autônomos</h3>
-                            <p class="segment-description">Profissionais com CNPJ MEI que vendem via maquininha e precisam de fluxo entre pagamentos.</p>
-                        </div>
-                    </div>
-
-                    <!-- Segment 6: E-commerce -->
-                    <div class="carousel-item">
-                        <div class="card-shine"></div>
-                        <span class="segment-number">06</span>
-                        <div class="segment-circle-icon">
-                            <svg class="active-ring-spinner" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="4 4" />
-                            </svg>
-                            <span class="iconify" data-icon="lucide:shopping-cart" data-width="28"></span>
-                        </div>
-                        <div class="segment-info">
-                            <h3 class="segment-title">E-commerce</h3>
-                            <p class="segment-description">Negócios digitais que enfrentam prazo longo de recebimento das operadoras.</p>
+                            <h3 class="segment-title">Prestadores de Serviços e Clínicas</h3>
+                            <p class="segment-hook">Perfeito para clínicas médicas e odontológicas, oficinas mecânicas, centros automotivos e serviços de alto valor.</p>
+                            <p class="segment-body">Transforme seus atendimentos parcelados em saldo disponível imediatamente para cobrir seus custos fixos e folha de pagamento com tranquilidade.</p>
                         </div>
                     </div>
                 </div>
@@ -2043,6 +1948,14 @@
                     <p class="footer-desc">
                         A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as menores taxas.
                     </p>
+                    <div style="font-size: 11px; color: rgba(250, 249, 242, 0.5); line-height: 1.6; margin-top: 16px; margin-bottom: 12px;">
+                        <strong>SENTRA SECURITIZADORA S/A</strong><br>
+                        CNPJ: 64.068.298/0001-54<br>
+                        Avenida Oswaldo Reis, 3385, Sala 802 B36 — Praia Brava — Itajaí/SC — CEP 88.306-773
+                    </div>
+                    <p style="font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; margin-bottom: 16px; text-align: justify;">
+                        A Sentra Securitizadora S/A não é uma instituição financeira e não realiza operações de financiamento, mútuo ou empréstimo bancário. Nossa atividade comercial consiste estritamente na aquisição e securitização de direitos creditórios (recebíveis mercantis e de cartões de crédito) através da cessão de direitos, conforme as regras do Código Civil Brasileiro. Todas as operações de antecipação estão sujeitas à análise de crédito, checagem de lastro e validação operacional.
+                    </p>
                     <div class="footer-socials">
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <span class="iconify" data-icon="mdi:instagram" data-width="20"></span>
@@ -2050,7 +1963,7 @@
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <span class="iconify" data-icon="mdi:linkedin" data-width="20"></span>
                         </a>
-                        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <a href="https://wa.me/5547999299741" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                             <span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span>
                         </a>
                     </div>
@@ -2073,11 +1986,11 @@
                     <ul class="footer-contact-info">
                         <li>
                             <span class="iconify" data-icon="lucide:phone" data-width="16"></span>
-                            <span><strong>WhatsApp:</strong> (11) 99999-9999</span>
+                            <span><strong>WhatsApp:</strong> (47) 99929-9741</span>
                         </li>
                         <li>
                             <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
-                            <span><strong>E-mail:</strong> contato@sentra.com.br</span>
+                            <span><strong>E-mail:</strong> atendimento@sentrasecur.com</span>
                         </li>
                         <li>
                             <span class="iconify" data-icon="lucide:clock" data-width="16"></span>
@@ -2085,8 +1998,8 @@
                         </li>
                     </ul>
                     <ul class="footer-links footer-legal">
-                        <li><a href="index.html#politica-privacidade">Política de Privacidade</a></li>
-                        <li><a href="index.html#termos-uso">Termos de Uso</a></li>
+                        <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos-de-uso.html">Termos de Uso</a></li>
                         <li><a href="index.html#politica-cookies">Política de Cookies</a></li>
                     </ul>
                 </div>
@@ -2096,6 +2009,9 @@
                 <div class="footer-copyright">
                     <p>&copy; <span id="footerYear">2026</span> Sentra Securitizadora S/A. Todos os direitos reservados.</p>
                     <p class="footer-disclaimer">As simulações são estimativas e podem variar conforme a operação.</p>
+                </div>
+                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250, 249, 242, 0.08); font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <strong>Privacidade e Segurança:</strong> Ao utilizar a nossa calculadora ou enviar seus dados de contato, as suas informações serão tratadas com total sigilo e segurança. A Sentra Securitizadora S/A adota práticas rigorosas de proteção de dados em conformidade com a Lei Geral de Proteção de Dados (LGPD). Os dados coletados possuem a finalidade exclusiva de análise de crédito, simulação de taxas e contato comercial pela nossa equipe.
                 </div>
             </div>
         </div>
@@ -2254,175 +2170,16 @@
             const track = document.querySelector('.carousel-track');
             const items = gsap.utils.toArray('.carousel-item');
 
-            // 1. DESKTOP LAYOUT (Pinning e Tradução Horizontal)
+            // 1. DESKTOP LAYOUT (Grid estático de 3 colunas, sem carrossel/pinning)
             mm.add("(min-width: 1024px)", () => {
-                // Definir estados iniciais específicos do desktop
-                gsap.set(items, { opacity: 0.35, scale: 0.95 });
-                
-                // Center Focus Ripple effect function
-                function triggerCardActiveEffect(item) {
-                    const iconWrapper = item.querySelector('.segment-circle-icon');
-                    if (!iconWrapper) return;
-
-                    // Create ripple element
-                    const ripple = document.createElement('div');
-                    ripple.className = 'active-ripple';
-                    iconWrapper.appendChild(ripple);
-
-                    // Style ripple
-                    gsap.set(ripple, {
-                        position: 'absolute',
-                        inset: 0,
-                        borderRadius: '50%',
-                        border: '2px solid var(--vibrant-green)',
-                        opacity: 0.8,
-                        scale: 1,
-                        pointerEvents: 'none',
-                        zIndex: 0
-                    });
-
-                    // Animate ripple
-                    gsap.to(ripple, {
-                        scale: 1.8,
-                        opacity: 0,
-                        duration: 0.8,
-                        ease: "power2.out",
-                        onComplete: () => {
-                            ripple.remove();
-                        }
-                    });
-                }
-
-                // Timeline do scroll-driven horizontal
-                const horizontalTl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: '.para-quem-hero-section',
-                        start: 'top top',
-                        end: () => `+=${track.scrollWidth - window.innerWidth}`,
-                        scrub: 1.2,
-                        pin: true,
-                        pinSpacing: true,
-                        invalidateOnRefresh: true,
-                        onUpdate: (self) => {
-                            // Encontrar o item mais próximo do centro do viewport
-                            const viewportCenter = window.innerWidth / 2;
-                            let closestItem = null;
-                            let minDistance = Infinity;
-
-                            items.forEach((item) => {
-                                const rect = item.getBoundingClientRect();
-                                const itemCenter = rect.left + rect.width / 2;
-                                const distance = Math.abs(itemCenter - viewportCenter);
-
-                                if (distance < minDistance) {
-                                    minDistance = distance;
-                                    closestItem = item;
-                                }
-                            });
-
-                            items.forEach((item) => {
-                                // Adiciona classe active apenas se estiver bem perto do centro (margem confortável)
-                                if (item === closestItem && minDistance < 220) {
-                                    if (!item.classList.contains('active')) {
-                                        item.classList.add('active');
-                                        triggerCardActiveEffect(item);
-                                    }
-                                } else {
-                                    item.classList.remove('active');
-                                }
-                            });
-                        }
-                    }
-                });
-
-                // Traduz o track horizontalmente
-                horizontalTl.to(track, {
-                    x: () => -(track.scrollWidth - window.innerWidth),
-                    ease: "none",
-                    duration: 1
-                });
-
-                // Preenche o trilho horizontal de progresso
-                horizontalTl.to('.carousel-track-line-progress', {
-                    width: '100%',
-                    ease: "none",
-                    duration: 1
-                }, 0);
-
-                // O primeiro item já inicia destacado e ativo
-                items[0].classList.add('active');
-
                 // Animação de entrada stagger única no carregamento (executa uma vez)
                 gsap.from(items, {
                     opacity: 0,
                     y: 25,
-                    stagger: 0.08,
+                    stagger: 0.1,
                     duration: 0.8,
                     ease: "power3.out",
-                    delay: 0.5,
-                    onComplete: () => {
-                        // Limpa os estilos inline para que a classe CSS .active e suas transições funcionem perfeitamente
-                        gsap.set(items, { clearProps: "opacity,transform" });
-                    }
-                });
-
-                // Efeito 3D Tilt e Shine nos cards (Desktop)
-                const cardListeners = [];
-                items.forEach(item => {
-                    const onCardMouseMove = (e) => {
-                        const rect = item.getBoundingClientRect();
-                        const cardX = e.clientX - rect.left;
-                        const cardY = e.clientY - rect.top;
-                        
-                        const xPercent = (cardX / rect.width) - 0.5;
-                        const yPercent = (cardY / rect.height) - 0.5;
-                        
-                        item.style.setProperty('--shine-x', `${(cardX / rect.width) * 100}%`);
-                        item.style.setProperty('--shine-y', `${(cardY / rect.height) * 100}%`);
-                        
-                        // Rotaciona até 24 graus para efeito bem sensível
-                        const rotateY = xPercent * 24;
-                        const rotateX = -yPercent * 24;
-                        
-                        const isCardActive = item.classList.contains('active');
-                        const targetScale = isCardActive ? 1.07 : 1.02;
-                        const targetY = isCardActive ? 0 : 15;
-                        
-                        gsap.to(item, {
-                            rotateX: rotateX,
-                            rotateY: rotateY,
-                            scale: targetScale,
-                            y: targetY,
-                            duration: 0.4,
-                            ease: "power2.out",
-                            overwrite: "auto"
-                        });
-                    };
-
-                    const onCardMouseLeave = () => {
-                        const isCardActive = item.classList.contains('active');
-                        const targetScale = isCardActive ? 1.05 : 1;
-                        const targetY = isCardActive ? 0 : 15;
-                        
-                        gsap.to(item, {
-                            rotateX: 0,
-                            rotateY: 0,
-                            scale: targetScale,
-                            y: targetY,
-                            duration: 0.7,
-                            ease: "power3.out",
-                            overwrite: "auto",
-                            onComplete: () => {
-                                // Devolve o controle 100% ao CSS após a animação
-                                gsap.set(item, { clearProps: "rotateX,rotateY,scale,y" });
-                            }
-                        });
-                    };
-
-                    item.addEventListener('mousemove', onCardMouseMove);
-                    item.addEventListener('mouseleave', onCardMouseLeave);
-                    
-                    cardListeners.push({ item, onCardMouseMove, onCardMouseLeave });
+                    delay: 0.5
                 });
 
                 // ScrollTrigger para revelação dos cards no desktop (animações laterais adaptadas para layout invertido)
@@ -2455,12 +2212,7 @@
                     gsap.set(items, { clearProps: "all" });
                     gsap.set('.carousel-track-line-progress', { clearProps: "all" });
                     items.forEach(item => item.classList.remove('active'));
-                    
-                    // Remover listeners de 3D tilt
-                    cardListeners.forEach(({ item, onCardMouseMove, onCardMouseLeave }) => {
-                        item.removeEventListener('mousemove', onCardMouseMove);
-                        item.removeEventListener('mouseleave', onCardMouseLeave);
-                    });
+                    gsap.set([".diagnostic-card", ".cenario-card"], { clearProps: "all" });
                 };
             });
 
