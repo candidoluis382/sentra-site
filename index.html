@@ -3836,6 +3836,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            if (isMobile) {
+                gsap.config({ force3D: true });
+            }
+            const D = (v) => isMobile ? v * 0.6 : v;
+            const Y = (v) => isMobile ? v * 0.5 : v;
+            const S = (v) => isMobile ? v * 0.5 : v;
+
             // ==========================================================================
             // A. SCROLL DETECTOR FOR NAVIGATION HEADER
             // ==========================================================================
@@ -3856,7 +3864,8 @@
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 gestureOrientation: 'vertical',
                 normalizeWheel: true,
-                smoothWheel: true
+                lerp: isMobile ? 0.15 : 0.1,
+                smoothWheel: !isMobile
             });
 
             function raf(time) {
@@ -3904,54 +3913,54 @@
 
             if (prefersReducedMotion) {
                 // Simplified reveals when reduced motion is preferred
-                gsap.from(".eyebrow", { opacity: 0, duration: 0.6 });
-                gsap.from("#hero-title", { opacity: 0, duration: 0.6 });
-                gsap.from(".subtitle", { opacity: 0, duration: 0.6 });
-                gsap.from(".cta-container", { opacity: 0, duration: 0.6 });
-                gsap.from(".seals-container", { opacity: 0, duration: 0.6 });
-                gsap.from("#maquininhaWrapper", { opacity: 0, duration: 0.6 });
+                gsap.from(".eyebrow", { opacity: 0, duration: D(0.6) });
+                gsap.from("#hero-title", { opacity: 0, duration: D(0.6) });
+                gsap.from(".subtitle", { opacity: 0, duration: D(0.6) });
+                gsap.from(".cta-container", { opacity: 0, duration: D(0.6) });
+                gsap.from(".seals-container", { opacity: 0, duration: D(0.6) });
+                gsap.from("#maquininhaWrapper", { opacity: 0, duration: D(0.6) });
                 return; // bypass custom animations & tilts
             }
 
             // ==========================================================================
             // D. SPLIT TYPE WORD SPLITTING FOR H1 STAGGER
             // ==========================================================================
-            const splitTitle = new SplitType(titleEl, { types: 'words' });
+            const splitTitle = new SplitType(titleEl, { types: isMobile ? 'words' : 'chars,words' });
 
             // ==========================================================================
             // E. SNAPPY entrance animation sequence (total execution <1.4s)
             // ==========================================================================
             const tl = gsap.timeline({
-                defaults: { ease: "power3.out", duration: 0.8 }
+                defaults: { ease: "power3.out", duration: D(0.8) }
             });
 
             // Set precise initial coordinate layouts
-            gsap.set(".eyebrow", { opacity: 0, y: 12 });
+            gsap.set(".eyebrow", { opacity: 0, y: Y(12) });
             gsap.set(".subtitle", { opacity: 0 });
             gsap.set(".btn-primary", { opacity: 0, scale: 0.94 });
             gsap.set(".btn-secondary", { opacity: 0, scale: 0.94 });
-            gsap.set(".seal-item", { opacity: 0, y: 8 });
+            gsap.set(".seal-item", { opacity: 0, y: Y(8) });
 
             // Maquininha wrapper starts with a soft landing slide-up and scale-up (no 3D rotation)
             gsap.set("#maquininhaWrapper", {
                 opacity: 0,
-                y: 35,
+                y: Y(35),
                 scale: 0.96
             });
 
             // Entrance orchestrations
-            tl.to(".eyebrow", { opacity: 1, y: 0, duration: 0.5 })
-                .from(splitTitle.words, { opacity: 0, y: 18, stagger: 0.04, duration: 0.65 }, "-=0.4")
-                .to(".subtitle", { opacity: 1, duration: 0.55 }, "-=0.45")
-                .to(".btn-primary", { opacity: 1, scale: 1, duration: 0.45 }, "-=0.45")
-                .to(".btn-secondary", { opacity: 1, scale: 1, duration: 0.45 }, "-=0.4")
-                .to(".seal-item", { opacity: 1, y: 0, stagger: 0.04, duration: 0.45 }, "-=0.4")
+            tl.to(".eyebrow", { opacity: 1, y: Y(0), duration: D(0.5) })
+                .from(splitTitle.words, { opacity: 0, y: Y(18), stagger: S(0.04), duration: D(0.65) }, "-=0.4")
+                .to(".subtitle", { opacity: 1, duration: D(0.55) }, "-=0.45")
+                .to(".btn-primary", { opacity: 1, scale: 1, duration: D(0.45) }, "-=0.45")
+                .to(".btn-secondary", { opacity: 1, scale: 1, duration: D(0.45) }, "-=0.4")
+                .to(".seal-item", { opacity: 1, y: Y(0), stagger: S(0.04), duration: D(0.45) }, "-=0.4")
                 // Terminal landing animation in parallel
                 .to("#maquininhaWrapper", {
                     opacity: 1,
-                    y: 0,
+                    y: Y(0),
                     scale: 1,
-                    duration: 1.0,
+                    duration: D(1.0),
                     ease: "back.out(1.15)"
                 }, "0.15");
 
@@ -3969,8 +3978,8 @@
                         if (entry.isIntersecting) {
                             featureCards.forEach(card => card.classList.remove('invisible'));
                             gsap.fromTo(featureCards,
-                                { opacity: 0, y: 30 },
-                                { opacity: 1, y: 0, stagger: 0.12, duration: 0.8, ease: "power3.out" }
+                                { opacity: 0, y: Y(30) },
+                                { opacity: 1, y: Y(0), stagger: S(0.12), duration: D(0.8), ease: "power3.out" }
                             );
                             observer.unobserve(entry.target);
                         }
@@ -4013,13 +4022,13 @@
                             ctaWrapperDark.classList.remove('invisible');
 
                             const waitingTl = gsap.timeline({
-                                defaults: { ease: "power3.out", duration: 0.8 }
+                                defaults: { ease: "power3.out", duration: D(0.8) }
                             });
 
-                            waitingTl.fromTo(waitingTitle, { opacity: 0, y: 25 }, { opacity: 1, y: 0 })
-                                .fromTo(phonesContainer, { opacity: 0, scale: 0.94, y: 35 }, { opacity: 1, scale: 1, y: 0, duration: 1 }, "-=0.5")
-                                .fromTo(waitingText, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.6")
-                                .fromTo(highlightItems, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.12 }, "-=0.5")
+                            waitingTl.fromTo(waitingTitle, { opacity: 0, y: Y(25) }, { opacity: 1, y: Y(0) })
+                                .fromTo(phonesContainer, { opacity: 0, scale: 0.94, y: Y(35) }, { opacity: 1, scale: 1, y: Y(0), duration: D(1) }, "-=0.5")
+                                .fromTo(waitingText, { opacity: 0, y: Y(15) }, { opacity: 1, y: Y(0) }, "-=0.6")
+                                .fromTo(highlightItems, { opacity: 0, y: Y(20) }, { opacity: 1, y: Y(0), stagger: S(0.12) }, "-=0.5")
                                 .fromTo(ctaWrapperDark, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1 }, "-=0.4");
 
                             observer.unobserve(entry.target);
@@ -4032,8 +4041,8 @@
 
                 // Autonomous continuous floating parallax on the phones and ambient glow
                 gsap.to(phonesImg, {
-                    y: -12,
-                    duration: 4.5,
+                    y: Y(-12),
+                    duration: D(4.5),
                     repeat: -1,
                     yoyo: true,
                     ease: "sine.inOut"
@@ -4041,7 +4050,7 @@
 
                 gsap.fromTo(phonesGlow,
                     { scale: 0.95, opacity: 0.7 },
-                    { scale: 1.1, opacity: 1.0, duration: 4.5, repeat: -1, yoyo: true, ease: "sine.inOut" }
+                    { scale: 1.1, opacity: 1.0, duration: D(4.5), repeat: -1, yoyo: true, ease: "sine.inOut" }
                 );
             }
 
@@ -4220,11 +4229,11 @@
                 resultActiveContent.style.display = 'flex';
 
                 if (prefersReducedMotion) {
-                    gsap.set(resultActiveContent, { opacity: 1, y: 0 });
+                    gsap.set(resultActiveContent, { opacity: 1, y: Y(0) });
                 } else {
                     gsap.fromTo(resultActiveContent,
-                        { opacity: 0, y: 15 },
-                        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+                        { opacity: 0, y: Y(15) },
+                        { opacity: 1, y: Y(0), duration: D(0.5), ease: "power2.out" }
                     );
                 }
             });
@@ -4264,17 +4273,17 @@
                             processCards.forEach(card => card.classList.remove('invisible'));
 
                             const processTl = gsap.timeline({
-                                defaults: { ease: "power3.out", duration: 0.8 }
+                                defaults: { ease: "power3.out", duration: D(0.8) }
                             });
 
                             // Animate container box first, then stagger elements inside
-                            processTl.fromTo(processBox, { opacity: 0, y: 40, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 1.0 })
-                                .fromTo(processEyebrow, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.65")
-                                .fromTo(processTitle, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, "-=0.6")
-                                .fromTo(processDesc, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.6")
-                                .fromTo(timelineItems, { opacity: 0, x: -15 }, { opacity: 1, x: 0, stagger: 0.15 }, "-=0.5")
-                                .fromTo(processLinkWrapper, { opacity: 0, y: 10 }, { opacity: 1, y: 0 }, "-=0.4")
-                                .fromTo(processCards, { opacity: 0, scale: 0.94, y: 25 }, { opacity: 1, scale: 1, y: 0, stagger: 0.12, duration: 0.9 }, "-=0.8");
+                            processTl.fromTo(processBox, { opacity: 0, y: Y(40), scale: 0.97 }, { opacity: 1, y: Y(0), scale: 1, duration: D(1.0) })
+                                .fromTo(processEyebrow, { opacity: 0, y: Y(15) }, { opacity: 1, y: Y(0) }, "-=0.65")
+                                .fromTo(processTitle, { opacity: 0, y: Y(20) }, { opacity: 1, y: Y(0) }, "-=0.6")
+                                .fromTo(processDesc, { opacity: 0, y: Y(15) }, { opacity: 1, y: Y(0) }, "-=0.6")
+                                .fromTo(timelineItems, { opacity: 0, x: -15 }, { opacity: 1, x: 0, stagger: S(0.15) }, "-=0.5")
+                                .fromTo(processLinkWrapper, { opacity: 0, y: Y(10) }, { opacity: 1, y: Y(0) }, "-=0.4")
+                                .fromTo(processCards, { opacity: 0, scale: 0.94, y: Y(25) }, { opacity: 1, scale: 1, y: Y(0), stagger: S(0.12), duration: D(0.9) }, "-=0.8");
 
                             observer.unobserve(entry.target);
                         }
@@ -4370,7 +4379,7 @@
                             opacity: opacityVal,
                             filter: `blur(${blurVal}px)`,
                             zIndex: zIndex,
-                            duration: 0.65,
+                            duration: D(0.65),
                             ease: "power2.out"
                         });
                     }
@@ -4433,13 +4442,13 @@
                             prontoActions.classList.remove('invisible');
 
                             const prontoTl = gsap.timeline({
-                                defaults: { ease: "power3.out", duration: 0.8 }
+                                defaults: { ease: "power3.out", duration: D(0.8) }
                             });
 
                             prontoTl.fromTo(prontoLogo, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, ease: "back.out(1.7)" })
-                                .fromTo(prontoTitle, { opacity: 0, y: 25 }, { opacity: 1, y: 0 }, "-=0.6")
-                                .fromTo(prontoSubtitle, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, "-=0.6")
-                                .fromTo(prontoActions, { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, "-=0.5");
+                                .fromTo(prontoTitle, { opacity: 0, y: Y(25) }, { opacity: 1, y: Y(0) }, "-=0.6")
+                                .fromTo(prontoSubtitle, { opacity: 0, y: Y(20) }, { opacity: 1, y: Y(0) }, "-=0.6")
+                                .fromTo(prontoActions, { opacity: 0, y: Y(15) }, { opacity: 1, y: Y(0) }, "-=0.5");
 
                             observer.unobserve(entry.target);
                         }
@@ -4452,8 +4461,8 @@
 
                 // Mouse tracking spotlight glow
                 const prontoGlow = prontoSection.querySelector('.cta-glow');
-                const glowX = gsap.quickTo(prontoGlow, "left", { duration: 0.8, ease: "power3.out" });
-                const glowY = gsap.quickTo(prontoGlow, "top", { duration: 0.8, ease: "power3.out" });
+                const glowX = gsap.quickTo(prontoGlow, "left", { duration: D(0.8), ease: "power3.out" });
+                const glowY = gsap.quickTo(prontoGlow, "top", { duration: D(0.8), ease: "power3.out" });
 
                 prontoSection.addEventListener('mousemove', (e) => {
                     const rect = prontoSection.getBoundingClientRect();
