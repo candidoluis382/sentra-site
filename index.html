@@ -14,10 +14,10 @@
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Sentra - Antecipação de Recebíveis | Peça Hoje, Receba Amanhã">
     <meta property="og:description" content="Adiante suas vendas de cartão em D+1 sem complicação.">
-    <meta property="og:image" content="./maquininha.webp">
+    <meta property="og:image" content="./mockup-3d-celular.webp">
 
     <!-- Preload da Maquininha -->
-    <link rel="preload" href="./maquininha.webp" as="image">
+    <link rel="preload" href="./mockup-3d-celular.webp" as="image">
 
     <!-- Google Fonts: Arimo (Titles) & Manrope (Body/Details) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -703,12 +703,12 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            height: 380px;
+            height: 480px;
         }
 
         @media (min-width: 1024px) {
             .visual-col {
-                height: 520px;
+                height: 620px;
                 justify-content: flex-end;
             }
         }
@@ -716,20 +716,20 @@
         .maquininha-container {
             position: relative;
             width: 100%;
-            max-width: 290px;
-            aspect-ratio: 0.82;
+            max-width: 340px;
+            aspect-ratio: 0.667;
             z-index: 10;
         }
 
         @media (min-width: 640px) {
             .maquininha-container {
-                max-width: 350px;
+                max-width: 410px;
             }
         }
 
         @media (min-width: 1024px) {
             .maquininha-container {
-                max-width: 390px;
+                max-width: 460px;
             }
         }
 
@@ -3151,31 +3151,13 @@
                     <!-- Right Side: Loop Image & Ambience Visuals -->
                     <div class="visual-col">
                         <div class="maquininha-container" id="maquininhaContainer">
-                            <!-- Aurora / Halo Background -->
-                            <div class="maquininha-halo" id="maquininhaHalo"></div>
-
-                            <!-- Ambience Shadow Container & Element -->
-                            <div class="maquininha-shadow-container" id="maquininhaShadowContainer">
-                                <div class="maquininha-shadow" id="maquininhaShadow"></div>
-                            </div>
-
                             <!-- Wrapper for Mouse Parallax -->
                             <div class="maquininha-wrapper" id="maquininhaWrapper">
                                 <!-- Float Wrapper for autonomous levitation -->
                                 <div class="maquininha-float-wrapper" id="maquininhaFloatWrapper">
-                                    <img src="./maquininha.webp"
-                                        alt="Maquininha de cartão Sentra em 3D de alta definição" class="maquininha-img"
+                                    <img src="./mockup-3d-celular.webp"
+                                        alt="Mockup 3D Celular Sentra" class="maquininha-img"
                                         id="maquininhaImg">
-
-                                    <!-- Screen Overlay -->
-                                    <div class="maquininha-screen" id="maquininhaScreen">
-                                        <div class="screen-glow" id="screenGlow"></div>
-                                        <div class="nfc-waves" id="nfcWaves">
-                                            <div class="nfc-wave" id="nfcWave1"></div>
-                                            <div class="nfc-wave" id="nfcWave2"></div>
-                                            <div class="nfc-wave" id="nfcWave3"></div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3450,7 +3432,7 @@
                                     <a href="#" id="openModalBtn"
                                         class="btn-shine btn-bounce btn-vibrant result-cta-btn"
                                         style="display: block; padding: 15px 32px; text-decoration: none; font-weight: 700;">
-                                        Quero reduzir minhas taxas
+                                        Validar Taxas no WhatsApp
                                     </a>
                                 </div>
                             </div>
@@ -3807,8 +3789,8 @@
 
             <div id="modalBody">
                 <div class="modal-header">
-                    <h3 class="modal-title">Falta pouco pra sua antecipação</h3>
-                    <p class="modal-subtitle">Informe seus dados para gerar a proposta personalizada.</p>
+                    <h3 class="modal-title">Reduza seus custos operacionais hoje mesmo</h3>
+                    <p class="modal-subtitle">Clique no botão abaixo para inserir seu CNPJ via WhatsApp e validar as taxas simuladas com nossa equipe técnica.</p>
                 </div>
 
                 <form id="leadForm" class="modal-form" novalidate>
@@ -3925,10 +3907,6 @@
                 gsap.from(".cta-container", { opacity: 0, duration: 0.6 });
                 gsap.from(".seals-container", { opacity: 0, duration: 0.6 });
                 gsap.from("#maquininhaWrapper", { opacity: 0, duration: 0.6 });
-
-                // Hide halo, screen glow, and waves in reduced motion
-                gsap.set("#maquininhaHalo", { display: "none" });
-                gsap.set("#maquininhaScreen", { display: "none" });
                 return; // bypass custom animations & tilts
             }
 
@@ -3957,10 +3935,6 @@
                 y: 35,
                 scale: 0.96
             });
-            gsap.set("#maquininhaShadowContainer", {
-                opacity: 0,
-                scale: 0.8
-            });
 
             // Entrance orchestrations
             tl.to(".eyebrow", { opacity: 1, y: 0, duration: 0.5 })
@@ -3976,75 +3950,7 @@
                     scale: 1,
                     duration: 1.0,
                     ease: "back.out(1.15)"
-                }, "0.15")
-                .to("#maquininhaShadowContainer", {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 1.0
                 }, "0.15");
-
-            // ==========================================================================
-            // F. AMBIENT CONTINUOUS ANIMATIONS (GSAP loop triggers)
-            // ==========================================================================
-
-            // 2. NFC concentric waves propagation pulses (with immediateRender: false to avoid static borders)
-            gsap.fromTo("#nfcWave1",
-                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out" }
-            );
-            gsap.fromTo("#nfcWave2",
-                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out", delay: 0.83, immediateRender: false }
-            );
-            gsap.fromTo("#nfcWave3",
-                { scale: 0, opacity: 0.65, transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, duration: 2.5, repeat: -1, ease: "sine.out", delay: 1.66, immediateRender: false }
-            );
-
-            // 3. Screen pulsating glowing overlay
-            gsap.fromTo("#screenGlow",
-                { opacity: 0.15 },
-                { opacity: 0.45, duration: 2.2, repeat: -1, yoyo: true, ease: "sine.inOut" }
-            );
-
-            // 4. Background Halo/Aurora rotation and scaling pulses
-            gsap.to("#maquininhaHalo", {
-                rotation: 360,
-                duration: 35,
-                repeat: -1,
-                ease: "none"
-            });
-            // 2. NFC concentric waves propagation pulses (using box-shadow to prevent outline ghosts)
-            gsap.fromTo("#nfcWave1",
-                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out" }
-            );
-            gsap.fromTo("#nfcWave2",
-                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out", delay: 0.83, immediateRender: false }
-            );
-            gsap.fromTo("#nfcWave3",
-                { scale: 0, opacity: 0.65, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0.65)", transformOrigin: "center center" },
-                { scale: 2.5, opacity: 0, boxShadow: "0 0 0 1.5px rgba(228, 237, 44, 0)", duration: 2.5, repeat: -1, ease: "sine.out", delay: 1.66, immediateRender: false }
-            );
-
-            // 3. Screen pulsating glowing overlay
-            gsap.fromTo("#screenGlow",
-                { opacity: 0.15 },
-                { opacity: 0.45, duration: 2.2, repeat: -1, yoyo: true, ease: "sine.inOut" }
-            );
-
-            // 4. Background Halo/Aurora rotation and scaling pulses
-            gsap.to("#maquininhaHalo", {
-                rotation: 360,
-                duration: 35,
-                repeat: -1,
-                ease: "none"
-            });
-            gsap.fromTo("#maquininhaHalo",
-                { scale: 0.95 },
-                { scale: 1.1, duration: 7, repeat: -1, yoyo: true, ease: "sine.inOut" }
-            );
 
             // ==========================================================================
             // G. SCROLL REVEAL ANIMATIONS FOR FEATURES GRID
