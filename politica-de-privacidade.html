@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade — Sentra Securitizadora</title>
+    
+    <!-- Meta Tags para SEO -->
+    <meta name="description" content="Política de Privacidade e Proteção de Dados da Sentra Securitizadora S/A. Saiba como seus dados são tratados em conformidade com a LGPD.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google Fonts: Arimo (Titles) & Manrope (Body/Details) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Iconify CDN -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <style>
+        /* ==========================================================================
+           1. DESIGN SYSTEM VARIABLES & RESET
+           ========================================================================== */
+        :root {
+            --off-white: #FAF9F2;
+            --deep-green: #003333;
+            --teal-green: #09645E;
+            --vibrant-green: #E4ED2C;
+            --solid-white: #FFFFFF;
+            --footer-bg: #003333;
+            --border-color: rgba(9, 100, 94, 0.1);
+            --border-hover: rgba(9, 100, 94, 0.2);
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            /* Standardized Backgrounds */
+            --body-bg-gradient: radial-gradient(circle at 50% 0%, #ffffff 0%, var(--off-white) 100%);
+            --glow-top-bg: rgba(9, 100, 94, 0.08);
+            --glow-bottom-bg: rgba(228, 237, 44, 0.04);
+            --bg-grid-image: 
+                linear-gradient(to right, rgba(9, 100, 94, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(9, 100, 94, 0.04) 1px, transparent 1px);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--off-white);
+            background-image: var(--body-bg-gradient);
+            color: var(--teal-green);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, .font-arimo {
+            font-family: 'Arimo', sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Ambient Glows */
+        .glow-container {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .glow-top {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background-color: var(--glow-top-bg);
+            border-radius: 50%;
+            filter: blur(120px);
+        }
+
+        .glow-bottom {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background-color: var(--glow-bottom-bg);
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            background-size: 40px 40px;
+            background-image: var(--bg-grid-image);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        ::selection {
+            background-color: rgba(9, 100, 94, 0.15);
+            color: var(--deep-green);
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION HEADER
+           ========================================================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(254, 253, 237, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(9, 100, 94, 0.05);
+            background-color: rgba(254, 253, 237, 0.95);
+            border-bottom: 1px solid rgba(9, 100, 94, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--deep-green);
+            cursor: pointer;
+        }
+
+        .header-logo-img {
+            height: 34px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .nav-logo:hover .header-logo-img {
+            transform: scale(1.03);
+            opacity: 0.95;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 28px;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(9, 100, 94, 0.85);
+            font-size: 0.85rem;
+            font-weight: 600;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-green);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: var(--teal-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: none;
+            align-items: center;
+            gap: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-actions {
+                display: flex;
+            }
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 110;
+            color: var(--deep-green);
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-toggle:active {
+            transform: scale(0.9);
+        }
+
+        @media (max-width: 1023px) {
+            .nav-toggle {
+                display: flex;
+            }
+        }
+
+        .nav-menu-mobile {
+            position: fixed;
+            top: 72px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 72px);
+            background-color: rgba(254, 253, 237, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 24px;
+            gap: 32px;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, visibility 0.4s;
+            border-bottom: 1px solid rgba(9, 100, 94, 0.1);
+        }
+
+        .nav-menu-mobile.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-menu-mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .nav-menu-mobile-links a {
+            text-decoration: none;
+            color: rgba(9, 100, 94, 0.85);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(9, 100, 94, 0.05);
+        }
+
+        .nav-menu-mobile-links a:hover {
+            color: var(--deep-green);
+        }
+
+        .nav-menu-mobile-actions {
+            margin-top: auto;
+            padding-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Buttons Styling */
+        .btn-bounce {
+            transition: var(--transition-bounce);
+        }
+
+        .btn-bounce:active {
+            transform: scale(0.96) !important;
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.25),
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .btn-shine:hover::after {
+            left: 150%;
+            transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 32px;
+            background-color: var(--deep-green);
+            color: var(--off-white);
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 51, 51, 0.12);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--teal-green);
+            box-shadow: 0 8px 24px rgba(9, 100, 94, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           3. LEGAL PAGE CONTENT STYLES
+           ========================================================================== */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .legal-hero-section {
+            width: 100%;
+            padding: 140px 0 40px 0;
+            background-color: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legal-content-section {
+            padding: 20px 0 100px 0;
+            background-color: var(--off-white);
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+            z-index: 10;
+            position: relative;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--teal-green);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-back:hover {
+            color: var(--deep-green);
+            transform: translateX(-4px);
+        }
+
+        .legal-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--deep-green);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .legal-intro {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--teal-green);
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .legal-block {
+            margin-bottom: 36px;
+            text-align: left;
+        }
+
+        .legal-block-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            margin-bottom: 12px;
+        }
+
+        .legal-block-text {
+            font-size: 0.95rem;
+            color: rgba(0, 51, 51, 0.8);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* ==========================================================================
+           4. SITE FOOTER
+           ========================================================================== */
+        .site-footer {
+            background-color: var(--footer-bg);
+            color: rgba(250, 249, 242, 0.7);
+            padding: 80px 0 40px 0;
+            border-top: 1px solid rgba(250, 249, 242, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1.2fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            height: 38px;
+            width: auto;
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        .footer-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(250, 249, 242, 0.75);
+            max-width: 280px;
+        }
+
+        .footer-title {
+            font-family: 'Arimo', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--off-white);
+            font-weight: 700;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background-color: var(--teal-green);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(250, 249, 242, 0.75);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--vibrant-green);
+            transform: translateX(4px);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: rgba(250, 249, 242, 0.05);
+            color: var(--off-white);
+            border: 1px solid rgba(250, 249, 242, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--vibrant-green);
+            color: var(--deep-green);
+            border-color: var(--vibrant-green);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .footer-contact-info {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.875rem;
+            color: rgba(250, 249, 242, 0.75);
+        }
+
+        .footer-contact-info li .iconify {
+            color: var(--teal-green);
+            flex-shrink: 0;
+        }
+
+        .footer-legal {
+            margin-top: 16px;
+            border-top: 1px solid rgba(250, 249, 242, 0.08);
+            padding-top: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(250, 249, 242, 0.08);
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: rgba(250, 249, 242, 0.55);
+            line-height: 1.6;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: rgba(250, 249, 242, 0.4);
+            margin-top: 4px;
+        }
+
+        /* Responsive Breakpoints & Refinements */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 48px;
+            }
+            .footer-col-identity {
+                grid-column: span 2;
+                max-width: 500px;
+            }
+            .legal-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
+            }
+            .nav-container {
+                padding: 0 16px;
+            }
+            .header-logo-img {
+                height: 26px;
+            }
+            .nav-actions {
+                gap: 12px;
+            }
+            .nav-actions .btn-primary {
+                padding: 8px 14px !important;
+                font-size: 0.7rem !important;
+            }
+            .site-footer {
+                padding: 60px 0 30px 0;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
+            .footer-col-identity {
+                grid-column: span 1;
+            }
+            .footer-bottom {
+                padding-top: 30px;
+            }
+            .legal-hero-section {
+                padding: 120px 0 30px 0;
+            }
+            .legal-title {
+                font-size: 1.75rem;
+            }
+            .legal-intro {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Ambient Glow Blobs -->
+    <div class="glow-container">
+        <div class="glow-top"></div>
+        <div class="glow-bottom"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a class="nav-logo" href="index.html">
+                <img src="./logo-principal.svg" alt="Sentra Securitizadora" class="header-logo-img">
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="como-funciona.html">Como Funciona</a>
+                <a href="vantagens.html">Vantagens</a>
+                <a href="para-quem-e.html">Para Quem É</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
+            </div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="iconify" data-icon="lucide:menu" data-width="24" data-height="24"></span>
+            </button>
+        </div>
+
+        <!-- Drawer de Menu Mobile -->
+        <div class="nav-menu-mobile" id="navMenuMobile">
+            <div class="nav-menu-mobile-links">
+                <a href="index.html">Início</a>
+                <a href="como-funciona.html">Como Funciona</a>
+                <a href="vantagens.html">Vantagens</a>
+                <a href="para-quem-e.html">Para Quem É</a>
+            </div>
+            <div class="nav-menu-mobile-actions">
+                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary">Falar com Consultor</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        <section class="legal-hero-section">
+            <!-- Background pattern grid lines -->
+            <div class="bg-grid"></div>
+            
+            <div class="legal-container">
+                <a href="index.html" class="btn-back">
+                    <span class="iconify" data-icon="lucide:arrow-left" data-width="16"></span>
+                    Voltar ao site
+                </a>
+                <h1 class="legal-title">POLÍTICA DE PRIVACIDADE E PROTEÇÃO DE DADOS (LGPD)</h1>
+                <p class="legal-intro">
+                    A Sentra Securitizadora S/A tem o compromisso de proteger a privacidade e a segurança dos dados dos nossos usuários, em total conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/18).
+                </p>
+            </div>
+        </section>
+
+        <section class="legal-content-section">
+            <div class="legal-container">
+                <div class="legal-block">
+                    <h2 class="legal-block-title">1. Coleta de Dados e Finalidade</h2>
+                    <p class="legal-block-text">
+                        Coletamos informações voluntariamente fornecidas por você através dos nossos formulários, incluindo: CNPJ, número de telefone celular (WhatsApp), e-mail e os valores médios de vendas informados na simulação. A coleta desses dados tem como finalidades exclusivas: realizar estudos preliminares de viabilidade de crédito e taxas; permitir que nossa equipe comercial entre em contato para apresentar propostas personalizadas de antecipação de recebíveis.
+                    </p>
+                </div>
+
+                <div class="legal-block">
+                    <h2 class="legal-block-title">2. Consentimento e Comunicação por WhatsApp/E-mail</h2>
+                    <p class="legal-block-text">
+                        Ao preencher seus dados e clicar em avançar, você fornece seu consentimento livre e expresso para que a equipe da Sentra Securitizadora S/A entre em contato com sua empresa através do WhatsApp, ligação telefônica ou e-mail para dar andamento ao atendimento comercial solicitado.
+                    </p>
+                </div>
+
+                <div class="legal-block">
+                    <h2 class="legal-block-title">3. Confidencialidade e Não Compartilhamento</h2>
+                    <p class="legal-block-text">
+                        A Sentra Securitizadora S/A garante que não comercializa, não aluga e não compartilha a sua base de dados de CNPJ ou contatos com terceiros. Seus dados permanecem seguros e confidenciais em nossa estrutura digital de atendimento.
+                    </p>
+                </div>
+
+                <div class="legal-block">
+                    <h2 class="legal-block-title">4. Uso de Cookies</h2>
+                    <p class="legal-block-text">
+                        Este site utiliza cookies (pequenos arquivos de texto gravados no seu navegador) estritamente para melhorar a velocidade de navegação e otimizar campanhas de marketing digital institucionais. Você pode desativar os cookies nas configurações do seu navegador a qualquer momento.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Coluna 1 — Identidade -->
+                <div class="footer-col footer-col-identity">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="./logo+tag.svg" alt="Sentra Securitizadora" class="footer-logo">
+                    </a>
+                    <p class="footer-desc">
+                        A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as menores taxas.
+                    </p>
+                    <div style="font-size: 11px; color: rgba(250, 249, 242, 0.5); line-height: 1.6; margin-top: 16px; margin-bottom: 12px;">
+                        <strong>SENTRA SECURITIZADORA S/A</strong><br>
+                        CNPJ: 64.068.298/0001-54<br>
+                        Avenida Oswaldo Reis, 3385, Sala 802 B36 — Praia Brava — Itajaí/SC — CEP 88.306-773
+                    </div>
+                    <p style="font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; margin-bottom: 16px; text-align: justify;">
+                        A Sentra Securitizadora S/A não é uma instituição financeira e não realiza operações de financiamento, mútuo ou empréstimo bancário. Nossa atividade comercial consiste estritamente na aquisição e securitização de direitos creditórios (recebíveis mercantis e de cartões de crédito) através da cessão de direitos, conforme as regras do Código Civil Brasileiro. Todas as operações de antecipação estão sujeitas à análise de crédito, checagem de lastro e validação operacional.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <span class="iconify" data-icon="mdi:instagram" data-width="20"></span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <span class="iconify" data-icon="mdi:linkedin" data-width="20"></span>
+                        </a>
+                        <a href="https://wa.me/5547999299741" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 — Navegação -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Navegação</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="como-funciona.html">Como Funciona</a></li>
+                        <li><a href="vantagens.html">Vantagens</a></li>
+                        <li><a href="para-quem-e.html">Para Quem É</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 — Contato e Legal -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Contato e Legal</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <span class="iconify" data-icon="lucide:phone" data-width="16"></span>
+                            <span><strong>WhatsApp:</strong> (47) 99929-9741</span>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
+                            <span><strong>E-mail:</strong> atendimento@sentrasecur.com</span>
+                        </li>
+                        <li>
+                            <span class="iconify" data-icon="lucide:clock" data-width="16"></span>
+                            <span>Seg–Sex 9h–18h</span>
+                        </li>
+                    </ul>
+                    <ul class="footer-links footer-legal">
+                        <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="footerYear">2026</span> Sentra Securitizadora S/A. Todos os direitos reservados.</p>
+                    <p class="footer-disclaimer">As simulações são estimativas e podem variar conforme a operation.</p>
+                </div>
+                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250, 249, 242, 0.08); font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <strong>Privacidade e Segurança:</strong> Ao utilizar a nossa calculadora ou enviar seus dados de contato, as suas informações serão tratadas com total sigilo e segurança. A Sentra Securitizadora S/A adota práticas rigorosas de proteção de dados em conformidade com a Lei Geral de Proteção de Dados (LGPD). Os dados coletados possuem a finalidade exclusiva de análise de crédito, simulação de taxas e contato comercial pela nossa equipe.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External Script Integrations (GSAP, Lenis) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // A. SCROLL DETECTOR FOR NAVIGATION HEADER
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // B. LENIS SMOOTH MOMENTUM SCROLL INITIALIZATION
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                gestureOrientation: 'vertical',
+                normalizeWheel: true,
+                smoothWheel: true
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+            // Mobile Menu Toggle
+            const navToggle = document.getElementById('navToggle');
+            const navMenuMobile = document.getElementById('navMenuMobile');
+            const toggleIcon = navToggle.querySelector('.iconify');
+
+            navToggle.addEventListener('click', () => {
+                const isOpen = navMenuMobile.classList.toggle('open');
+                if (isOpen) {
+                    document.body.style.overflow = 'hidden';
+                    if (typeof lenis !== 'undefined') lenis.stop();
+                } else {
+                    document.body.style.overflow = '';
+                    if (typeof lenis !== 'undefined') lenis.start();
+                }
+                toggleIcon.setAttribute('data-icon', isOpen ? 'lucide:x' : 'lucide:menu');
+            });
+
+            // Close mobile menu when clicking a link
+            const mobileInteractiveElements = navMenuMobile.querySelectorAll('a');
+            mobileInteractiveElements.forEach(el => {
+                el.addEventListener('click', () => {
+                    navMenuMobile.classList.remove('open');
+                    document.body.style.overflow = '';
+                    if (typeof lenis !== 'undefined') lenis.start();
+                    toggleIcon.setAttribute('data-icon', 'lucide:menu');
+                });
+            });
+
+            // G. DYNAMIC YEAR LOGIC
+            const footerYear = document.getElementById('footerYear');
+            if (footerYear) {
+                footerYear.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
