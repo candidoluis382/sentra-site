@@ -2047,12 +2047,13 @@
             // ==========================================================================
             // B. LENIS SMOOTH MOMENTUM SCROLL INITIALIZATION
             // ==========================================================================
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 gestureOrientation: 'vertical',
                 normalizeWheel: true,
-                smoothWheel: true
+                smoothWheel: !isMobile
             });
 
             function raf(time) {
@@ -2117,28 +2118,30 @@
             // ==========================================================================
             // C2. MOUSE SPOTLIGHT FOLLOWER & BG DOT-GRID TRACKING
             // ==========================================================================
-            const heroSection = document.getElementById('para-quem-hero');
-            const cursorGlow = document.createElement('div');
-            cursorGlow.className = 'mouse-glow';
-            heroSection.appendChild(cursorGlow);
+            if (!isMobile) {
+                const heroSection = document.getElementById('para-quem-hero');
+                const cursorGlow = document.createElement('div');
+                cursorGlow.className = 'mouse-glow';
+                heroSection.appendChild(cursorGlow);
 
-            heroSection.addEventListener('mousemove', (e) => {
-                const rect = heroSection.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+                heroSection.addEventListener('mousemove', (e) => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
 
-                // Atualiza variáveis CSS para a máscara do grid de pontos
-                heroSection.style.setProperty('--mouse-x', `${x}px`);
-                heroSection.style.setProperty('--mouse-y', `${y}px`);
+                    // Atualiza variáveis CSS para a máscara do grid de pontos
+                    heroSection.style.setProperty('--mouse-x', `${x}px`);
+                    heroSection.style.setProperty('--mouse-y', `${y}px`);
 
-                // Move suavemente o spotlight radial com lag físico
-                gsap.to(cursorGlow, {
-                    x: x,
-                    y: y,
-                    duration: 0.5,
-                    ease: "power2.out"
+                    // Move suavemente o spotlight radial com lag físico
+                    gsap.to(cursorGlow, {
+                        x: x,
+                        y: y,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
                 });
-            });
+            }
 
             // ==========================================================================
             // D. SPLIT TYPE WORD SPLITTING FOR H1 STAGGER

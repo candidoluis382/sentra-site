@@ -4500,12 +4500,13 @@
             // ==========================================================================
             // B. LENIS SMOOTH MOMENTUM SCROLL INITIALIZATION
             // ==========================================================================
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 gestureOrientation: 'vertical',
                 normalizeWheel: true,
-                smoothWheel: true
+                smoothWheel: !isMobile
             });
 
             function raf(time) {
@@ -4694,8 +4695,8 @@
                 });
 
                 // Reset positions before animation
-                gsap.set(card, { opacity: 0, x: isOdd ? -40 : 40 });
-                gsap.set(mockup, { opacity: 0, x: isOdd ? 40 : -40 });
+                gsap.set(card, { opacity: 0, x: isMobile ? 0 : (isOdd ? -40 : 40) });
+                gsap.set(mockup, { opacity: 0, x: isMobile ? 0 : (isOdd ? 40 : -40) });
 
                 rowTl.to(card, {
                     opacity: 1,

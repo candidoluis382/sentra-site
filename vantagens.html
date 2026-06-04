@@ -2159,6 +2159,45 @@
                 right: 10%;
             }
         }
+
+        /* Custom Mobile Performance Optimizations */
+        @media (max-width: 768px) {
+            .floating-brand-badge.stone,
+            .floating-brand-badge.cielo,
+            .floating-brand-badge.rede,
+            .floating-brand-badge.getnet {
+                animation-duration: 10s !important;
+            }
+            .glow-blob-1,
+            .glow-blob-2 {
+                animation-duration: 35s !important;
+            }
+        }
+
+        @media (hover: none) {
+            .bento-card:hover {
+                transform: none !important;
+                background-color: rgba(255, 255, 255, 0.4) !important;
+                border-color: rgba(9, 100, 94, 0.04) !important;
+                box-shadow: 0 4px 6px -1px rgba(9, 100, 94, 0.02), 0 20px 40px -4px rgba(9, 100, 94, 0.04) !important;
+            }
+            .comparison-card:hover {
+                transform: rotateX(6deg) translateY(0) !important;
+                background-color: rgba(255, 255, 255, 0.4) !important;
+                border-color: rgba(9, 100, 94, 0.04) !important;
+                box-shadow: 0 4px 6px -1px rgba(9, 100, 94, 0.02), 0 20px 40px -4px rgba(9, 100, 94, 0.04) !important;
+            }
+            .table-row-item:hover {
+                background: rgba(255, 255, 255, 0.3) !important;
+                border-color: transparent !important;
+            }
+            .comparison-table-detailed tbody tr:hover td {
+                background-color: transparent !important;
+            }
+            .comparison-table-detailed tbody tr:hover td.col-sentra {
+                background-color: rgba(9, 100, 94, 0.03) !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -2842,12 +2881,13 @@
             // ==========================================================================
             // B. LENIS SMOOTH MOMENTUM SCROLL INITIALIZATION
             // ==========================================================================
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 gestureOrientation: 'vertical',
                 normalizeWheel: true,
-                smoothWheel: true
+                smoothWheel: !isMobile
             });
 
             function raf(time) {

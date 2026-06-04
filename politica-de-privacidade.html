@@ -865,12 +865,13 @@
             });
 
             // B. LENIS SMOOTH MOMENTUM SCROLL INITIALIZATION
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 gestureOrientation: 'vertical',
                 normalizeWheel: true,
-                smoothWheel: true
+                smoothWheel: !isMobile
             });
 
             function raf(time) {
