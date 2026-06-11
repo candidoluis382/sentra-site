@@ -155,7 +155,7 @@
         }
 
         .header-logo-img {
-            height: 34px;
+            height: 30px;
             width: auto;
             display: block;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
@@ -1137,7 +1137,7 @@
                 padding: 0 16px;
             }
             .header-logo-img {
-                height: 26px;
+                height: 22px;
             }
             .nav-actions {
                 gap: 12px;
@@ -1218,38 +1218,49 @@
 
         @media (min-width: 1024px) {
             .bento-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         .bento-card {
-            background: rgba(255, 255, 255, 0.65);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(250, 249, 242, 0.6) 100%);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(9, 100, 94, 0.08);
-            border-radius: 24px;
-            padding: 36px;
+            border-radius: 28px;
+            padding: 32px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            box-shadow: 
-                0 4px 6px -1px rgba(9, 100, 94, 0.02),
-                0 20px 40px -4px rgba(9, 100, 94, 0.04);
+            justify-content: space-between;
+            min-height: 520px;
             position: relative;
             overflow: hidden;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px -10px rgba(9, 100, 94, 0.03), 0 1px 3px rgba(9, 100, 94, 0.01);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 100% 100%, rgba(228, 237, 44, 0.15) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
         }
 
         .bento-card:hover {
-            transform: translateY(-6px);
-            background-color: rgba(255, 255, 255, 0.85);
-            border-color: rgba(9, 100, 94, 0.22);
-            box-shadow:
-                0 12px 24px -2px rgba(9, 100, 94, 0.06),
-                0 32px 64px -8px rgba(9, 100, 94, 0.1);
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(254, 253, 237, 0.8) 100%);
+            border-color: rgba(9, 100, 94, 0.25);
+            box-shadow: 0 20px 40px -15px rgba(9, 100, 94, 0.08), 0 0 25px rgba(228, 237, 44, 0.15);
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
         }
 
         @media (min-width: 1024px) {
@@ -1328,6 +1339,235 @@
             width: 100%;
             position: relative;
             z-index: 2;
+        }
+
+        /* New Premium Bento Visual Mockups styling */
+        .bento-visual-container {
+            margin-top: auto;
+            width: 100%;
+            height: 130px;
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(9, 100, 94, 0.06);
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+            transition: border-color 0.4s ease, background-color 0.4s ease;
+            box-shadow: inset 0 2px 4px rgba(9, 100, 94, 0.02);
+        }
+
+        .bento-card:hover .bento-visual-container {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(9, 100, 94, 0.15);
+        }
+
+        /* Visual 1: Taxa Estável */
+        .visual-rate-comparison {
+            display: flex;
+            width: 100%;
+            gap: 16px;
+            height: 100%;
+            align-items: flex-end;
+            padding-bottom: 4px;
+        }
+        .visual-rate-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 6px;
+            height: 100%;
+        }
+        .rate-fill-sentra {
+            width: 100%;
+            height: 45px;
+            background: linear-gradient(to top, var(--teal-green), #0b5550);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--vibrant-green);
+            font-size: 0.85rem;
+            font-weight: 800;
+            box-shadow: 0 4px 10px rgba(9, 100, 94, 0.15);
+        }
+        .rate-fill-mercado {
+            width: 100%;
+            height: 75px;
+            background: linear-gradient(to top, rgba(9, 100, 94, 0.15), rgba(9, 100, 94, 0.25));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(9, 100, 94, 0.75);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .rate-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(9, 100, 94, 0.55);
+            white-space: nowrap;
+        }
+
+        /* Visual 2: Bandeiras */
+        .visual-brands-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: 100%;
+            gap: 8px;
+        }
+        .visual-brand-card {
+            background: white;
+            border: 1px solid rgba(9, 100, 94, 0.05);
+            border-radius: 12px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--deep-green);
+            box-shadow: 0 4px 12px rgba(9, 100, 94, 0.02);
+            transition: transform 0.3s ease;
+        }
+        .bento-card:hover .visual-brand-card {
+            transform: translateY(-2px);
+        }
+        .visual-brand-card .iconify {
+            color: var(--teal-green);
+        }
+        .visual-brand-card.has-check {
+            position: relative;
+        }
+        .visual-brand-badge-check {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #27C93F;
+            color: white;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6px;
+            box-shadow: 0 2px 4px rgba(39, 201, 63, 0.2);
+        }
+
+        /* Visual 3: Dinheiro Livre */
+        .visual-cash-comparison {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+        .visual-cash-row {
+            background: white;
+            border: 1px solid rgba(9, 100, 94, 0.05);
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(9, 100, 94, 0.01);
+        }
+        .visual-cash-lbl {
+            font-size: 0.725rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--deep-green);
+        }
+        .visual-cash-status {
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 99px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        .visual-cash-status.unlocked {
+            background: rgba(39, 201, 63, 0.1);
+            color: #27C93F;
+        }
+        .visual-cash-status.locked {
+            background: rgba(235, 87, 87, 0.1);
+            color: #EB5757;
+        }
+
+        /* Visual 4: Chat Humano */
+        .visual-chat-simulator {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .visual-chat-msg {
+            background: white;
+            border: 1px solid rgba(9, 100, 94, 0.05);
+            border-radius: 14px;
+            border-top-left-radius: 2px;
+            padding: 8px 12px;
+            font-size: 0.725rem;
+            line-height: 1.4;
+            color: var(--deep-green);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(9, 100, 94, 0.015);
+            max-width: 85%;
+        }
+        .visual-chat-sender {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--teal-green);
+            color: white;
+            font-size: 0.55rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(9, 100, 94, 0.1);
+        }
+        .visual-chat-body {
+            font-weight: 500;
+        }
+        .visual-chat-dots {
+            display: flex;
+            gap: 3px;
+            padding: 4px 6px;
+            background: rgba(9, 100, 94, 0.05);
+            border-radius: 8px;
+            align-self: flex-start;
+            margin-left: 28px;
+        }
+        .visual-chat-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--teal-green);
+            border-radius: 50%;
+            animation: chatPulse 1.4s infinite ease-in-out;
+        }
+        .visual-chat-dot:nth-child(2) { animation-delay: 0.2s; }
+        .visual-chat-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes chatPulse {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.4); opacity: 1; }
         }
 
         /* Widgets Específicos */
@@ -1948,6 +2188,7 @@
 
         .th-sentra-header .logo-mini {
             height: 20px;
+            width: auto;
             margin: 0 auto 6px auto;
             display: block;
         }
@@ -2212,7 +2453,7 @@
     <nav id="navbar">
         <div class="nav-container">
             <a class="nav-logo" href="index.html">
-                <img src="img/logo-principal.svg" alt="Sentra Securitizadora" class="header-logo-img" width="1080" height="255" loading="lazy" decoding="async">
+                <img src="logo_sentra_fintech_2.webp" alt="Sentra Securitizadora" class="header-logo-img" width="1080" height="255" loading="lazy" decoding="async">
             </a>
             
             <div class="nav-links">
@@ -2380,185 +2621,128 @@
                 </div>
                 
                 <div class="bento-grid">
-                    <!-- Card 1: Taxa Dinâmica (Slider) -->
-                    <div class="bento-card span-2" id="card-taxa">
+                    <!-- Card 1 -->
+                    <div class="bento-card">
                         <div class="bento-card-header">
-                            <span class="bento-card-tag">Simulação</span>
+                            <span class="bento-card-tag">Estabilidade</span>
                             <div class="bento-card-icon">
-                                <span class="iconify" data-icon="lucide:percent" data-width="20"></span>
+                                <span class="iconify" data-icon="lucide:trending-up" data-width="20"></span>
                             </div>
                         </div>
-                        <div class="bento-card-info">
-                            <h3 class="bento-card-title">Taxa a partir de 2,10% ao mês</h3>
-                            <p class="bento-card-text">Taxas personalizadas por cliente. Quanto maior seu faturamento, menor a taxa.</p>
+                        <div class="bento-card-info" style="margin-top: 16px;">
+                            <h3 class="bento-card-title">Taxas Estáveis Sem Pegadinhas de Faturamento</h3>
+                            <p class="bento-card-text">Os anúncios de maquininha prometem taxas baixas, mas escondem que elas só valem se você atingir metas altíssimas de vendas. Se o seu movimento cai em um mês, a taxa da sua maquininha — tanto no crédito à vista quanto no parcelado — sobe automaticamente na próxima fatura. Na Sentra, você tem estabilidade e transparência: a taxa combinada é mantida para a sua empresa crescer com previsibilidade, sem surpresas e sem sustos no fim do mês.</p>
                         </div>
-                        <div class="bento-card-widget">
-                            <div class="bento-slider-widget">
-                                <div class="slider-widget-header">
-                                    <span>Seu faturamento mensal</span>
-                                    <span class="slider-widget-val" id="sliderFaturamentoText">R$ 150.000</span>
+                        <div class="bento-visual-container">
+                            <!-- Visual 1: Taxa Estável -->
+                            <div class="visual-rate-comparison">
+                                <div class="visual-rate-bar">
+                                    <div class="rate-fill-sentra">2,10%</div>
+                                    <span class="rate-label">Na Sentra (Fixa)</span>
                                 </div>
-                                <div class="slider-widget-bar-wrapper">
-                                    <input type="range" min="50000" max="500000" step="10000" value="150000" class="slider-widget-input" id="bentoSliderInput">
-                                </div>
-                                <div class="slider-widget-result">
-                                    <span class="slider-result-lbl">Taxa estimada</span>
-                                    <span class="slider-result-val" id="sliderTaxaResult">2,85% a.m.</span>
+                                <div class="visual-rate-bar">
+                                    <div class="rate-fill-mercado">Até 4,5%</div>
+                                    <span class="rate-label">Mercado (Sobe)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 2: Recebimento em D+1 -->
-                    <div class="bento-card span-1" id="card-recebimento">
+                    <!-- Card 2 -->
+                    <div class="bento-card">
                         <div class="bento-card-header">
-                            <span class="bento-card-tag">Agilidade</span>
+                            <span class="bento-card-tag">Bandeiras</span>
                             <div class="bento-card-icon">
-                                <span class="iconify" data-icon="lucide:zap" data-width="20"></span>
+                                <span class="iconify" data-icon="lucide:credit-card" data-width="20"></span>
                             </div>
                         </div>
-                        <div class="bento-card-info">
-                            <h3 class="bento-card-title">Recebimento em D+1</h3>
-                            <p class="bento-card-text">Peça hoje, receba amanhã no dia útil. Sem esperar 30, 60 ou 90 dias.</p>
+                        <div class="bento-card-info" style="margin-top: 16px;">
+                            <h3 class="bento-card-title">Sem Surpresas com Bandeiras Diferentes</h3>
+                            <p class="bento-card-text">Evite a armadilha das taxas flutuantes. A maioria das empresas de maquininha cobra barato apenas quando seu cliente paga com Visa ou Mastercard, mas dobra o custo de antecipação se ele usar Elo, Amex ou cartões regionais. Na Sentra, analisamos suas vendas de forma global para oferecer taxas competitivas em todas as bandeiras, sem custos ocultos no extrato.</p>
                         </div>
-                        <div class="bento-card-widget">
-                            <div class="calendar-widget">
-                                <div class="calendar-sheet">
-                                    <div class="calendar-header-red"></div>
-                                    <div class="calendar-body-content">
-                                        <span class="calendar-day-lbl" id="calendarNextDay">29</span>
-                                        <span class="calendar-month-lbl" id="calendarMonth">MAIO</span>
-                                        <div class="calendar-check-badge">
-                                            <span class="iconify" data-icon="lucide:check" data-width="10"></span>
-                                            D+1 Pago
-                                        </div>
+                        <div class="bento-visual-container">
+                            <!-- Visual 2: Bandeiras -->
+                            <div class="visual-brands-grid">
+                                <div class="visual-brand-card has-check">
+                                    <span class="iconify" data-icon="lucide:credit-card" data-width="18"></span>
+                                    <span>VISA</span>
+                                    <div class="visual-brand-badge-check"><span class="iconify" data-icon="lucide:check" data-width="6"></span></div>
+                                </div>
+                                <div class="visual-brand-card has-check">
+                                    <span class="iconify" data-icon="lucide:credit-card" data-width="18"></span>
+                                    <span>MASTER</span>
+                                    <div class="visual-brand-badge-check"><span class="iconify" data-icon="lucide:check" data-width="6"></span></div>
+                                </div>
+                                <div class="visual-brand-card has-check">
+                                    <span class="iconify" data-icon="lucide:credit-card" data-width="18"></span>
+                                    <span>ELO</span>
+                                    <div class="visual-brand-badge-check"><span class="iconify" data-icon="lucide:check" data-width="6"></span></div>
+                                </div>
+                                <div class="visual-brand-card has-check">
+                                    <span class="iconify" data-icon="lucide:credit-card" data-width="18"></span>
+                                    <span>AMEX</span>
+                                    <div class="visual-brand-badge-check"><span class="iconify" data-icon="lucide:check" data-width="6"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bento-card">
+                        <div class="bento-card-header">
+                            <span class="bento-card-tag">Autonomia</span>
+                            <div class="bento-card-icon">
+                                <span class="iconify" data-icon="lucide:unlock" data-width="20"></span>
+                            </div>
+                        </div>
+                        <div class="bento-card-info" style="margin-top: 16px;">
+                            <h3 class="bento-card-title">Seu Dinheiro Livre de Amarras</h3>
+                            <p class="bento-card-text">Os bancos e as empresas de maquininha costumam confiscar e travar toda a sua receita futura de cartões caso você solicite uma antecipação automática ou um empréstimo. Na Sentra, o controle é seu. Você pode optar pelo modelo sob demanda e antecipar apenas as vendas ou os dias que desejar, mantendo o restante do seu faturamento livre para o seu negócio respirar.</p>
+                        </div>
+                        <div class="bento-visual-container">
+                            <!-- Visual 3: Dinheiro Livre -->
+                            <div class="visual-cash-comparison">
+                                <div class="visual-cash-row">
+                                    <div class="visual-cash-lbl">
+                                        <span class="iconify" data-icon="lucide:unlock" data-width="14"></span>
+                                        <span>Sentra: Saldo Livre</span>
                                     </div>
+                                    <span class="visual-cash-status unlocked">Disponível</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Sem IOF e sem taxa de contratação -->
-                    <div class="bento-card span-1" id="card-iof">
-                        <div class="bento-card-header">
-                            <span class="bento-card-tag">Transparência</span>
-                            <div class="bento-card-icon">
-                                <span class="iconify" data-icon="lucide:shield-check" data-width="20"></span>
-                            </div>
-                        </div>
-                        <div class="bento-card-info">
-                            <h3 class="bento-card-title">Sem IOF e sem taxa de contratação</h3>
-                            <p class="bento-card-text">O que você vê na simulação é exatamente o que você recebe. Zero surpresas.</p>
-                        </div>
-                        <div class="bento-card-widget">
-                            <div class="receipt-widget">
-                                <div class="receipt-row-item">
-                                    <span class="receipt-lbl-text">Valor Solicitado</span>
-                                    <span class="receipt-val-text">R$ 50.000,00</span>
-                                </div>
-                                <div class="receipt-row-item">
-                                    <span class="receipt-lbl-text">IOF de Contratação</span>
-                                    <span class="receipt-val-text free">Isento</span>
-                                </div>
-                                <div class="receipt-row-item" style="border-top: 1px dashed rgba(9, 100, 94, 0.1); padding-top: 8px;">
-                                    <span class="receipt-lbl-text" style="font-weight: 700;">Valor Líquido</span>
-                                    <span class="receipt-val-text" style="color: var(--teal-green); font-weight: 700;">R$ 50.000,00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Funciona com sua maquininha atual -->
-                    <div class="bento-card span-2" id="card-maquininhas">
-                        <div class="bento-card-header">
-                            <span class="bento-card-tag">Compatibilidade</span>
-                            <div class="bento-card-icon">
-                                <span class="iconify" data-icon="lucide:smartphone" data-width="20"></span>
-                            </div>
-                        </div>
-                        <div class="bento-card-info">
-                            <h3 class="bento-card-title">Funciona com sua maquininha atual</h3>
-                            <p class="bento-card-text">Stone, Cielo, Rede, Getnet — sem precisar trocar nada na sua operação.</p>
-                        </div>
-                        <div class="bento-card-widget">
-                            <div class="maquininhas-widget">
-                                <div class="floating-brand-badge stone">
-                                    <span class="brand-logo-dot stone-dot"></span>
-                                    Stone
-                                </div>
-                                <div class="floating-brand-badge cielo">
-                                    <span class="brand-logo-dot cielo-dot"></span>
-                                    Cielo
-                                </div>
-                                <div class="floating-brand-badge rede">
-                                    <span class="brand-logo-dot rede-dot"></span>
-                                    Rede
-                                </div>
-                                <div class="floating-brand-badge getnet">
-                                    <span class="brand-logo-dot getnet-dot"></span>
-                                    Getnet
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 5: Antecipação pontual ou recorrente -->
-                    <div class="bento-card span-2" id="card-flexibilidade">
-                        <div class="bento-card-header">
-                            <span class="bento-card-tag">Flexibilidade</span>
-                            <div class="bento-card-icon">
-                                <span class="iconify" data-icon="lucide:calendar-range" data-width="20"></span>
-                            </div>
-                        </div>
-                        <div class="bento-card-info">
-                            <h3 class="bento-card-title">Antecipação pontual ou recorrente</h3>
-                            <p class="bento-card-text">Antecipe quando precisar ou configure para antecipar automaticamente todo mês.</p>
-                        </div>
-                        <div class="bento-card-widget">
-                            <div class="toggle-widget-container">
-                                <div class="toggle-widget-switch">
-                                    <button class="toggle-widget-btn active" id="togglePontualBtn">Pontual</button>
-                                    <button class="toggle-widget-btn" id="toggleRecorrenteBtn">Recorrente</button>
-                                </div>
-                                <div class="toggle-widget-content-box">
-                                    <div class="toggle-icon-frame" id="toggleIconFrame">
-                                        <span class="iconify" data-icon="lucide:check-square" data-width="20"></span>
+                                <div class="visual-cash-row">
+                                    <div class="visual-cash-lbl">
+                                        <span class="iconify" data-icon="lucide:lock" data-width="14"></span>
+                                        <span>Mercado: Saldo Preso</span>
                                     </div>
-                                    <div class="toggle-info-pane">
-                                        <span class="toggle-info-title" id="toggleInfoTitle">Antecipe sob demanda</span>
-                                        <span class="toggle-info-desc" id="toggleInfoDesc">Escolha exatamente quais recebíveis e quando deseja antecipar, sem compromisso de recorrência.</span>
-                                    </div>
+                                    <span class="visual-cash-status locked">Bloqueado</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 6: Suporte especializado e humano -->
-                    <div class="bento-card span-1" id="card-suporte">
+                    <!-- Card 4 -->
+                    <div class="bento-card">
                         <div class="bento-card-header">
                             <span class="bento-card-tag">Atendimento</span>
                             <div class="bento-card-icon">
-                                <span class="iconify" data-icon="lucide:users" data-width="20"></span>
+                                <span class="iconify" data-icon="lucide:headphones" data-width="20"></span>
                             </div>
                         </div>
-                        <div class="bento-card-info">
-                            <h3 class="bento-card-title">Suporte especializado e humano</h3>
-                            <p class="bento-card-text">Atendimento dedicado — não é chatbot, são pessoas que entendem do seu negócio.</p>
+                        <div class="bento-card-info" style="margin-top: 16px;">
+                            <h3 class="bento-card-title">Negociação Direta e Sem Robôs</h3>
+                            <p class="bento-card-text">As grandes marcas de maquininha tratam o seu negócio apenas como um número em um aplicativo. Quando você precisa liberar um saldo urgente ou negociar taxas para fechar uma grande venda, fica preso em menus automáticos e conversas com robôs. Na Sentra, você tem um canal direto, humano e ágil para liberar o seu caixa exatamente quando precisa.</p>
                         </div>
-                        <div class="bento-card-widget">
-                            <div class="chat-widget-container">
-                                <div class="chat-widget-header">
-                                    <div class="chat-avatar">
-                                        <span>S</span>
-                                        <span class="avatar-status-dot"></span>
-                                    </div>
-                                    <div class="chat-user-info">
-                                        <span class="chat-user-name">Luísa (Sentra)</span>
-                                        <span class="chat-user-status">Online agora</span>
-                                    </div>
+                        <div class="bento-visual-container">
+                            <!-- Visual 4: Chat Humano -->
+                            <div class="visual-chat-simulator">
+                                <div class="visual-chat-msg">
+                                    <div class="visual-chat-sender">S</div>
+                                    <div class="visual-chat-body">Seu saldo foi liberado na conta. Deseja algo mais?</div>
                                 </div>
-                                <div class="chat-message-bubble" id="chatMessageBubble">
-                                    Olá! Como posso ajudar na antecipação da sua empresa hoje?
+                                <div class="visual-chat-dots">
+                                    <div class="visual-chat-dot"></div>
+                                    <div class="visual-chat-dot"></div>
+                                    <div class="visual-chat-dot"></div>
                                 </div>
                             </div>
                         </div>

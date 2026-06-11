@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Como Funciona - Sentra</title>
-    
+
     <!-- Meta Tags para SEO -->
-    <meta name="description" content="Entenda em 4 passos simples como funciona a antecipação de recebíveis com a Sentra. Tudo digital, tudo rápido. Veja como o dinheiro das suas vendas chega à sua conta.">
-    <meta name="keywords" content="antecipação de recebíveis, como funciona antecipação, sentra securitizadora, taxas baixas, antecipar vendas">
+    <meta name="description"
+        content="Entenda em 4 passos simples como funciona a antecipação de recebíveis com a Sentra. Tudo digital, tudo rápido. Veja como o dinheiro das suas vendas chega à sua conta.">
+    <meta name="keywords"
+        content="antecipação de recebíveis, como funciona antecipação, sentra securitizadora, taxas baixas, antecipar vendas">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Como Funciona - Sentra | Antecipação de Recebíveis">
-    <meta property="og:description" content="Entenda em 4 passos simples como funciona a antecipação de recebíveis com a Sentra.">
+    <meta property="og:description"
+        content="Entenda em 4 passos simples como funciona a antecipação de recebíveis com a Sentra.">
     <meta property="og:image" content="img/maquininha.webp">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -20,10 +24,12 @@
 
     <!-- Preload da Maquininha -->
     <link rel="preload" href="img/maquininha.webp" as="image">
-    
+
     <!-- Google Fonts: Arimo (Titles) & Manrope (Body/Details) -->
-    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <!-- Iconify CDN -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js" defer></script>
 
@@ -47,15 +53,15 @@
             --body-bg-gradient: radial-gradient(circle at 50% 0%, #ffffff 0%, var(--off-white) 100%);
             --glow-top-bg: rgba(9, 100, 94, 0.08);
             --glow-bottom-bg: rgba(228, 237, 44, 0.04);
-            --bg-grid-image: 
+            --bg-grid-image:
                 linear-gradient(to right, rgba(9, 100, 94, 0.04) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(9, 100, 94, 0.04) 1px, transparent 1px);
-            --bg-grid-dark-image: 
+            --bg-grid-dark-image:
                 linear-gradient(to right, rgba(254, 253, 237, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(254, 253, 237, 0.02) 1px, transparent 1px);
             --process-bg-gradient: radial-gradient(circle at 50% 100%, #ffffff 0%, var(--off-white) 100%);
             --cta-glow-bg: radial-gradient(circle, rgba(9, 100, 94, 0.2) 0%, transparent 70%);
-            --cta-grid-image: 
+            --cta-grid-image:
                 linear-gradient(to right, rgba(254, 253, 237, 0.015) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(254, 253, 237, 0.015) 1px, transparent 1px);
             --faq-glow-image: radial-gradient(circle, rgba(9, 100, 94, 0.05) 0%, rgba(9, 100, 94, 0) 70%);
@@ -80,7 +86,11 @@
             flex-direction: column;
         }
 
-        h1, h2, h3, h4, .font-arimo {
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-arimo {
             font-family: 'Arimo', sans-serif;
         }
 
@@ -92,7 +102,7 @@
             pointer-events: none;
             overflow: hidden;
         }
-        
+
         .glow-top {
             position: absolute;
             top: 0;
@@ -175,7 +185,7 @@
         }
 
         .header-logo-img {
-            height: 34px;
+            height: 30px;
             width: auto;
             display: block;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
@@ -396,7 +406,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-width: 0; /* Prevent grid item from stretching due to wide children */
+            min-width: 0;
+            /* Prevent grid item from stretching due to wide children */
         }
 
         .eyebrow {
@@ -432,8 +443,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+            }
         }
 
         h1 {
@@ -516,12 +536,10 @@
             left: -100%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(
-                to right,
-                transparent,
-                rgba(255, 255, 255, 0.25),
-                transparent
-            );
+            background: linear-gradient(to right,
+                    transparent,
+                    rgba(255, 255, 255, 0.25),
+                    transparent);
             transform: skewX(-25deg);
             transition: 0.5s;
             pointer-events: none;
@@ -659,6 +677,7 @@
                 0% {
                     transform: translate3d(0, 0, 0);
                 }
+
                 100% {
                     transform: translate3d(-50%, 0, 0);
                 }
@@ -846,10 +865,10 @@
             box-shadow:
                 0 4px 6px -1px rgba(9, 100, 94, 0.02),
                 0 20px 40px -4px rgba(9, 100, 94, 0.04);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
@@ -873,8 +892,8 @@
             justify-content: center;
             color: var(--teal-green);
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        color 0.3s ease,
-                        background-color 0.3s ease;
+                color 0.3s ease,
+                background-color 0.3s ease;
         }
 
         .feature-card:hover .card-icon-wrapper {
@@ -1027,8 +1046,8 @@
             align-items: center;
             gap: 16px;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.3s ease,
-                        background-color 0.3s ease;
+                border-color 0.3s ease,
+                background-color 0.3s ease;
         }
 
         .highlight-item:hover {
@@ -1047,8 +1066,8 @@
             justify-content: center;
             color: var(--vibrant-green);
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        background-color 0.3s ease,
-                        color 0.3s ease;
+                background-color 0.3s ease,
+                color 0.3s ease;
         }
 
         .highlight-item:hover .highlight-icon-wrapper {
@@ -1138,7 +1157,8 @@
 
         @media (min-width: 768px) {
             .calculator-grid {
-                grid-template-columns: 1.1fr 0.9fr; /* ~55% and ~45% */
+                grid-template-columns: 1.1fr 0.9fr;
+                /* ~55% and ~45% */
             }
         }
 
@@ -1159,7 +1179,7 @@
             border: 1px solid rgba(9, 100, 94, 0.08);
             border-radius: 24px;
             padding: 36px;
-            box-shadow: 
+            box-shadow:
                 0 4px 20px -2px rgba(9, 100, 94, 0.02),
                 0 20px 40px -10px rgba(9, 100, 94, 0.04);
         }
@@ -1194,7 +1214,8 @@
             gap: 4px;
         }
 
-        .form-input, .form-select {
+        .form-input,
+        .form-select {
             font-family: 'Manrope', sans-serif;
             font-size: 0.95rem;
             font-weight: 500;
@@ -1209,18 +1230,21 @@
             box-sizing: border-box;
         }
 
-        .form-input:focus, .form-select:focus {
+        .form-input:focus,
+        .form-select:focus {
             border-color: var(--teal-green);
             box-shadow: 0 0 0 3px rgba(9, 100, 94, 0.08);
         }
 
         /* Error state */
-        .form-input.input-error, .form-select.input-error {
+        .form-input.input-error,
+        .form-select.input-error {
             border-color: #d32f2f;
             background-color: rgba(211, 47, 47, 0.02);
         }
 
-        .form-input.input-error:focus, .form-select.input-error:focus {
+        .form-input.input-error:focus,
+        .form-select.input-error:focus {
             box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
         }
 
@@ -1255,7 +1279,7 @@
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            box-shadow: 
+            box-shadow:
                 0 10px 30px -10px rgba(0, 51, 51, 0.2),
                 0 30px 60px -15px rgba(0, 51, 51, 0.3);
             z-index: 10;
@@ -1264,7 +1288,8 @@
         @media (min-width: 768px) {
             .calculator-result-card {
                 position: sticky;
-                top: 100px; /* offset for nav header */
+                top: 100px;
+                /* offset for nav header */
             }
         }
 
@@ -1321,7 +1346,8 @@
 
         /* Active Results State */
         .result-active-content {
-            display: none; /* revealed via script */
+            display: none;
+            /* revealed via script */
             flex-direction: column;
             flex-grow: 1;
             text-align: left;
@@ -1434,7 +1460,7 @@
             padding: 40px 24px;
             position: relative;
             overflow: hidden;
-            box-shadow: 
+            box-shadow:
                 0 4px 20px -2px rgba(9, 100, 94, 0.03),
                 0 30px 60px -10px rgba(9, 100, 94, 0.06);
             z-index: 10;
@@ -1632,14 +1658,14 @@
             mask-image: radial-gradient(white, black);
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
-            
+
             aspect-ratio: 1.15;
             border: 1px solid rgba(9, 100, 94, 0.1);
             background-color: rgba(255, 255, 255, 0.4);
             cursor: pointer;
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.5s ease,
-                        box-shadow 0.5s ease;
+                border-color 0.5s ease,
+                box-shadow 0.5s ease;
         }
 
         /* Animated gradient border glow on hover */
@@ -1663,9 +1689,17 @@
         }
 
         @keyframes borderShimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Light sweep / shimmer across the card */
@@ -1676,12 +1710,10 @@
             left: -100%;
             width: 60%;
             height: 100%;
-            background: linear-gradient(
-                105deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.15) 50%,
-                transparent 70%
-            );
+            background: linear-gradient(105deg,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.15) 50%,
+                    transparent 70%);
             z-index: 4;
             pointer-events: none;
             transition: none;
@@ -1690,8 +1722,8 @@
         .process-card:hover {
             transform: translateY(-10px) scale(1.02);
             border-color: rgba(9, 100, 94, 0.35);
-            box-shadow: 
-                0 12px 28px -4px rgba(9, 100, 94, 0.1), 
+            box-shadow:
+                0 12px 28px -4px rgba(9, 100, 94, 0.1),
                 0 24px 56px -8px rgba(9, 100, 94, 0.14),
                 0 0 0 1px rgba(9, 100, 94, 0.05);
         }
@@ -1711,14 +1743,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: inherit; /* Inherit border-radius to prevent corner leaks */
+            border-radius: inherit;
+            /* Inherit border-radius to prevent corner leaks */
             opacity: 0.7;
             mix-blend-mode: luminosity;
             filter: saturate(0.3) brightness(0.95);
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-                        opacity 0.6s ease,
-                        filter 0.6s ease,
-                        mix-blend-mode 0s;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.6s ease,
+                filter 0.6s ease,
+                mix-blend-mode 0s;
         }
 
         .process-card:hover .card-bg-img {
@@ -1771,9 +1804,9 @@
             color: var(--vibrant-green);
             z-index: 7;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        background 0.4s ease,
-                        border-color 0.4s ease,
-                        box-shadow 0.4s ease;
+                background 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
         }
 
         .process-card:hover .card-icon-pill {
@@ -1791,7 +1824,8 @@
             width: 100%;
             padding: 20px 24px;
             background: linear-gradient(to top, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0) 100%);
-            border-bottom-left-radius: inherit; /* Inherit bottom corner radius */
+            border-bottom-left-radius: inherit;
+            /* Inherit bottom corner radius */
             border-bottom-right-radius: inherit;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -1835,7 +1869,8 @@
         }
 
         /* Focused outline styling matching DS components */
-        a:focus-visible, button:focus-visible {
+        a:focus-visible,
+        button:focus-visible {
             outline: 2px solid var(--teal-green);
             outline-offset: 4px;
         }
@@ -1915,11 +1950,11 @@
             justify-content: center;
             text-align: center;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.6s ease,
-                        filter 0.6s ease,
-                        border-color 0.6s ease,
-                        background-color 0.6s ease,
-                        box-shadow 0.6s ease;
+                opacity 0.6s ease,
+                filter 0.6s ease,
+                border-color 0.6s ease,
+                background-color 0.6s ease,
+                box-shadow 0.6s ease;
             cursor: pointer;
             box-sizing: border-box;
             user-select: none;
@@ -1944,7 +1979,7 @@
             height: 100%;
             background-size: 20px 20px;
             background-image: linear-gradient(to right, rgba(9, 100, 94, 0.02) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(9, 100, 94, 0.02) 1px, transparent 1px);
+                linear-gradient(to bottom, rgba(9, 100, 94, 0.02) 1px, transparent 1px);
             pointer-events: none;
             z-index: 1;
         }
@@ -2021,7 +2056,7 @@
             transform: translateX(0) scale(1.05);
             opacity: 1;
             z-index: 20;
-            box-shadow: 
+            box-shadow:
                 0 15px 35px -10px rgba(0, 0, 0, 0.5),
                 0 0 25px rgba(228, 237, 44, 0.08);
             border-color: rgba(228, 237, 44, 0.35);
@@ -2030,7 +2065,7 @@
 
         .carousel-card.pos-active .card-grid {
             background-image: linear-gradient(to right, rgba(254, 253, 237, 0.02) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(254, 253, 237, 0.02) 1px, transparent 1px);
+                linear-gradient(to bottom, rgba(254, 253, 237, 0.02) 1px, transparent 1px);
         }
 
         .carousel-card.pos-active .card-glow {
@@ -2081,6 +2116,7 @@
             .carousel-card.pos-prev {
                 transform: translateX(-180px) scale(0.85);
             }
+
             .carousel-card.pos-next {
                 transform: translateX(180px) scale(0.85);
             }
@@ -2091,16 +2127,19 @@
             .carousel-viewport {
                 height: 340px;
             }
+
             .carousel-card {
                 width: 280px;
                 height: 270px;
                 padding: 30px 24px;
             }
+
             .carousel-card.pos-prev {
                 transform: translateX(-90px) scale(0.75);
                 opacity: 0.15;
                 filter: blur(2px);
             }
+
             .carousel-card.pos-next {
                 transform: translateX(90px) scale(0.75);
                 opacity: 0.15;
@@ -2151,6 +2190,7 @@
             .btn-prev {
                 left: 120px;
             }
+
             .btn-next {
                 right: 120px;
             }
@@ -2278,10 +2318,12 @@
             .final-cta-section {
                 padding: 80px 20px;
             }
+
             .final-cta-subtitle {
                 font-size: 1.05rem;
                 margin-bottom: 36px;
             }
+
             .final-cta-actions {
                 flex-direction: column;
                 width: 100%;
@@ -2289,6 +2331,7 @@
                 margin: 0 auto;
                 gap: 12px;
             }
+
             .final-cta-actions a {
                 width: 100%;
                 text-align: center;
@@ -2456,6 +2499,7 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 48px;
             }
+
             .footer-col-identity {
                 grid-column: span 2;
                 max-width: 500px;
@@ -2472,14 +2516,17 @@
             .site-footer {
                 padding: 60px 0 30px 0;
             }
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
                 margin-bottom: 40px;
             }
+
             .footer-col-identity {
                 grid-column: span 1;
             }
+
             .footer-bottom {
                 padding-top: 30px;
             }
@@ -2488,7 +2535,7 @@
         /* ==========================================================================
            8. COMPREHENSIVE RESPONSIVE STYLING REFIT
            ========================================================================== */
-        
+
         /* General container padding for mobile breathing room */
         @media (max-width: 640px) {
             .container {
@@ -2501,7 +2548,13 @@
             h1 {
                 font-size: 2.15rem;
             }
-            .waiting-title, .calculator-title, .process-title, .audience-title, .final-cta-title, .section-title-faq {
+
+            .waiting-title,
+            .calculator-title,
+            .process-title,
+            .audience-title,
+            .final-cta-title,
+            .section-title-faq {
                 font-size: 1.85rem;
             }
         }
@@ -2511,15 +2564,20 @@
             .nav-container {
                 padding: 0 16px;
             }
+
             .header-logo-img {
-                height: 26px;
+                height: 22px;
             }
+
             .nav-actions {
                 gap: 12px;
             }
+
             .nav-actions .link-client {
-                display: none; /* Hide link to client in nav on small mobile to save space */
+                display: none;
+                /* Hide link to client in nav on small mobile to save space */
             }
+
             .nav-actions .btn-primary {
                 padding: 8px 14px !important;
                 font-size: 0.7rem !important;
@@ -2528,28 +2586,33 @@
 
         /* Centering texts on Tablet and Mobile viewports */
         @media (max-width: 1023px) {
+
             /* Hero section alignment */
             .content-col {
                 align-items: center;
                 text-align: center;
             }
+
             .eyebrow {
                 margin-left: auto;
                 margin-right: auto;
             }
+
             .subtitle {
                 margin-left: auto;
                 margin-right: auto;
                 text-align: center;
             }
+
             .cta-container {
                 justify-content: center;
                 width: 100%;
             }
+
             .seals-wrapper {
                 justify-content: center;
             }
-            
+
             /* Feature Cards centering */
             .feature-card {
                 align-items: center;
@@ -2562,30 +2625,37 @@
                 text-align: center;
                 align-items: center;
             }
+
             .process-eyebrow {
                 margin-left: auto;
                 margin-right: auto;
             }
+
             .process-timeline {
                 padding-left: 0;
                 align-items: center;
                 text-align: center;
             }
+
             .process-timeline::before {
-                display: none; /* hide vertical connecting timeline bar */
+                display: none;
+                /* hide vertical connecting timeline bar */
             }
+
             .timeline-item {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 padding-top: 36px;
             }
+
             .timeline-dot {
                 position: absolute;
                 left: 50%;
                 top: 0;
                 transform: translateX(-50%);
             }
+
             .process-link-wrapper {
                 margin-left: auto;
                 margin-right: auto;
@@ -2597,6 +2667,7 @@
             .cta-container {
                 align-items: center;
             }
+
             .cta-container a {
                 width: 100%;
                 max-width: 320px;
@@ -2610,14 +2681,17 @@
                 padding: 24px 16px;
                 border-radius: 16px;
             }
+
             .calculator-result-card {
                 padding: 24px 16px;
                 border-radius: 20px;
                 min-height: auto;
             }
+
             .highlight-value {
                 font-size: 2rem;
             }
+
             .impact-box {
                 padding: 16px;
             }
@@ -2628,22 +2702,28 @@
             .grid-2x2 {
                 gap: 12px;
             }
+
             .process-card {
                 border-radius: 16px;
                 aspect-ratio: 1.1;
             }
+
             .process-card::before {
                 border-radius: 17px;
             }
+
             .card-title {
                 font-size: 0.75rem;
             }
+
             .card-footer-glass {
                 padding: 10px 12px;
             }
+
             .process-card:hover .card-footer-glass {
                 padding-bottom: 10px;
             }
+
             .card-tag {
                 top: 10px;
                 right: 10px;
@@ -2651,12 +2731,14 @@
                 font-size: 0.5rem;
                 line-height: 1;
             }
+
             .card-icon-pill {
                 top: 10px;
                 left: 10px;
                 width: 28px;
                 height: 28px;
             }
+
             .card-icon-pill .iconify {
                 width: 14px !important;
                 height: 14px !important;
@@ -2666,23 +2748,28 @@
             .features-grid {
                 gap: 12px;
             }
+
             .feature-card {
                 padding: 24px 18px;
                 border-radius: 16px;
                 gap: 12px;
             }
+
             .card-icon-wrapper {
                 width: 36px;
                 height: 36px;
                 border-radius: 8px;
             }
+
             .card-icon-wrapper .iconify {
                 width: 16px !important;
                 height: 16px !important;
             }
+
             .card-number {
                 font-size: 1.85rem;
             }
+
             .card-label {
                 font-size: 0.75rem;
             }
@@ -2694,9 +2781,11 @@
                 width: 40px;
                 height: 40px;
             }
+
             .btn-prev {
                 left: 10px;
             }
+
             .btn-next {
                 right: 10px;
             }
@@ -2707,19 +2796,23 @@
             .carousel-viewport {
                 height: 430px;
             }
+
             .carousel-btn {
                 top: auto;
                 bottom: 10px;
                 transform: none;
             }
+
             .btn-prev {
                 left: auto;
                 right: calc(50% + 8px);
             }
+
             .btn-next {
                 left: calc(50% + 8px);
                 right: auto;
             }
+
             .carousel-btn:active {
                 transform: scale(0.95);
             }
@@ -2749,7 +2842,7 @@
             pointer-events: none;
             z-index: 2;
         }
-        
+
         .como-funciona-hero-content {
             max-width: 860px;
             margin: 0 auto;
@@ -2760,11 +2853,11 @@
             justify-content: center;
             z-index: 10;
         }
-        
+
         .como-funciona-hero-content h1 {
             margin-bottom: 24px;
         }
-        
+
         .como-funciona-hero-content .subtitle {
             max-width: 620px;
             margin: 0 auto;
@@ -2790,10 +2883,12 @@
             pointer-events: none;
             z-index: 1;
         }
+
         .steps-glow.glow-1 {
             top: 10%;
             left: -150px;
         }
+
         .steps-glow.glow-2 {
             bottom: 10%;
             right: -150px;
@@ -2976,27 +3071,9 @@
         .mockup-card {
             width: 100%;
             max-width: 440px;
-            background: var(--deep-green);
-            border-radius: 20px;
-            box-shadow:
-                0 20px 40px -10px rgba(0, 51, 51, 0.25),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            overflow: hidden;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: rotateY(-10deg) rotateX(8deg);
-            transform-style: preserve-3d;
-        }
-
-        .step-row.even .mockup-card {
-            transform: rotateY(10deg) rotateX(8deg);
-        }
-
-        .step-row.active .mockup-card {
-            transform: rotateY(0) rotateX(0);
-            box-shadow:
-                0 30px 60px -15px rgba(0, 51, 51, 0.4),
-                0 0 40px rgba(9, 100, 94, 0.2);
+            height: auto;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Mockup Header Navigation simulation */
@@ -3021,9 +3098,17 @@
             border-radius: 50%;
         }
 
-        .mockup-dots .dot-red { background: #FF5F56; }
-        .mockup-dots .dot-yellow { background: #FFBD2E; }
-        .mockup-dots .dot-green { background: #27C93F; }
+        .mockup-dots .dot-red {
+            background: #FF5F56;
+        }
+
+        .mockup-dots .dot-yellow {
+            background: #FFBD2E;
+        }
+
+        .mockup-dots .dot-green {
+            background: #27C93F;
+        }
 
         .mockup-tab {
             background: rgba(255, 255, 255, 0.05);
@@ -3085,8 +3170,15 @@
         }
 
         @keyframes cursor-blink {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .mockup-feedback-box {
@@ -3225,8 +3317,15 @@
         }
 
         @keyframes ring-pulse {
-            0% { transform: scale(0.9); opacity: 1; }
-            100% { transform: scale(1.4); opacity: 0; }
+            0% {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
         }
 
         .node-satellite {
@@ -3244,9 +3343,9 @@
             font-size: 0.65rem;
             font-weight: 800;
             color: var(--solid-white);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: var(--transition-smooth);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .brand-logo-text {
@@ -3266,7 +3365,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             opacity: 0;
             transform: scale(0);
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -3363,7 +3462,7 @@
             border: 3px solid var(--teal-green);
             position: absolute;
             transform: translateX(-50%);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             pointer-events: none;
         }
 
@@ -3519,8 +3618,13 @@
         }
 
         @keyframes success-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .success-title {
@@ -3577,41 +3681,49 @@
             .steps-section {
                 padding: 80px 0;
             }
+
             .timeline-line {
                 left: 16px;
                 transform: none;
             }
+
             .timeline-dot-wrapper {
                 left: 16px;
                 top: 30px;
                 transform: translate(-50%, -50%);
             }
+
             .step-row {
                 grid-template-columns: 1fr;
                 gap: 32px;
                 margin-bottom: 80px;
                 padding-left: 48px;
             }
+
             .step-row.odd .step-content-col,
             .step-row.even .step-content-col {
                 grid-column: 1;
                 justify-content: flex-start;
                 order: 1;
             }
+
             .step-row.odd .step-visual-col,
             .step-row.even .step-visual-col {
                 grid-column: 1;
                 justify-content: flex-start;
                 order: 2;
             }
+
             .step-card-wrapper {
                 max-width: 100%;
                 padding: 30px 24px;
             }
+
             .mockup-card {
                 max-width: 100%;
                 transform: none !important;
             }
+
             .step-row.even .mockup-card {
                 transform: none !important;
             }
@@ -3658,9 +3770,9 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(9, 100, 94, 0.08);
             border-radius: 20px;
-            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow:
                 0 4px 6px -1px rgba(9, 100, 94, 0.02),
                 0 20px 40px -4px rgba(9, 100, 94, 0.04);
@@ -3696,10 +3808,10 @@
             justify-content: center;
             z-index: 10;
             box-shadow: 0 4px 10px rgba(0, 51, 51, 0.06);
-            transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .faq-badge-img {
@@ -3838,25 +3950,31 @@
             .faq-section {
                 padding: 80px 0;
             }
+
             .faq-header {
                 padding: 20px 20px 20px 60px;
             }
+
             .faq-content {
                 padding: 0 20px 20px 60px;
             }
+
             .faq-question {
                 font-size: 1.05rem;
             }
+
             .faq-badge {
                 left: 16px;
                 top: -14px;
                 width: 28px;
                 height: 28px;
             }
+
             .faq-badge-img {
                 width: 14px;
                 height: 14px;
             }
+
             .faq-arrow-wrapper {
                 width: 28px;
                 height: 28px;
@@ -3869,37 +3987,47 @@
             .container {
                 padding: 0 16px !important;
             }
+
             .timeline-line {
                 left: 12px;
             }
+
             .timeline-dot-wrapper {
                 left: 12px;
             }
+
             .step-row {
                 padding-left: 28px;
                 gap: 24px;
                 margin-bottom: 60px;
             }
+
             .step-card-wrapper {
                 padding: 24px 16px;
                 border-radius: 16px;
             }
+
             .step-title {
                 font-size: 1.45rem;
                 margin-bottom: 12px;
             }
+
             .step-text {
                 font-size: 0.925rem;
             }
+
             .mockup-body {
                 padding: 16px;
             }
+
             .faq-header {
                 padding: 18px 16px 18px 48px;
             }
+
             .faq-content {
                 padding: 0 16px 18px 48px;
             }
+
             .faq-badge {
                 left: 12px;
                 top: -12px;
@@ -3907,6 +4035,7 @@
                 height: 24px;
                 border-radius: 6px;
             }
+
             .faq-badge-img {
                 width: 12px;
                 height: 12px;
@@ -3914,6 +4043,7 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- Ambient Glow Blobs -->
@@ -3926,9 +4056,10 @@
     <nav id="navbar">
         <div class="nav-container">
             <a class="nav-logo" href="index.html">
-                <img src="img/logo-principal.svg" alt="Sentra Securitizadora" class="header-logo-img" width="1080" height="255" loading="lazy" decoding="async">
+                <img src="logo_sentra_fintech_2.webp" alt="Sentra Securitizadora" class="header-logo-img" width="1080"
+                    height="255" loading="lazy" decoding="async">
             </a>
-            
+
             <div class="nav-links">
                 <a href="index.html">Início</a>
                 <a href="como-funciona.html" class="active">Como Funciona</a>
@@ -3937,7 +4068,8 @@
             </div>
 
             <div class="nav-actions">
-                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
+                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary"
+                    style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
             </div>
 
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -3966,18 +4098,18 @@
             <!-- Background pattern grid lines -->
             <div class="bg-grid"></div>
             <div class="hero-fade-overlay"></div>
-            
+
             <div class="container">
                 <div class="como-funciona-hero-content">
                     <div class="eyebrow">
                         <span class="eyebrow-dot"></span>
                         Como Funciona
                     </div>
-                    
+
                     <h1 id="hero-title" class="invisible">
-                        Em 4 passos, o dinheiro que você vendeu chega à sua conta
+                        Em 4 passos, a venda da sua empresa vira dinheiro na conta.
                     </h1>
-                    
+
                     <p class="subtitle">
                         Tudo digital, tudo rápido. Veja como funciona a antecipação na Sentra.
                     </p>
@@ -3989,7 +4121,7 @@
         <section id="como-funciona-steps" class="steps-section">
             <div class="steps-glow glow-1"></div>
             <div class="steps-glow glow-2"></div>
-            
+
             <div class="container">
                 <div class="timeline-container">
                     <!-- Central Vertical Progress Line -->
@@ -4003,45 +4135,14 @@
                             <div class="step-card-wrapper">
                                 <div class="step-badge">Passo 01</div>
                                 <h2 class="step-title">Simule sua Economia</h2>
-                                <p class="step-text">Descubra na nossa <a href="index.html#calculadora">Calculadora</a> o quanto sua empresa está perdendo para as taxas tradicionais. Basta inserir o valor de uma venda recente para ver sua economia real na hora.</p>
+                                <p class="step-text">Descubra na nossa <a href="index.html#calculadora">Calculadora</a>
+                                    o quanto sua empresa está perdendo para as taxas tradicionais. Basta inserir o valor
+                                    de uma venda recente para ver sua economia real na hora.</p>
                             </div>
                         </div>
                         <div class="step-col step-visual-col">
                             <div class="step-mockup-wrapper">
-                                <div class="mockup-card mockup-signup">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span class="dot dot-red"></span>
-                                            <span class="dot dot-yellow"></span>
-                                            <span class="dot dot-green"></span>
-                                        </div>
-                                        <div class="mockup-tab">app.sentra.com.br/cadastro</div>
-                                    </div>
-                                    <div class="mockup-body">
-                                        <div class="mockup-form-group">
-                                            <label class="mockup-label">CNPJ ou CPF MEI da Empresa</label>
-                                            <div class="mockup-input-wrapper">
-                                                <span class="mockup-input-text" id="mockup-cnpj-text"></span>
-                                                <span class="mockup-input-cursor"></span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="mockup-feedback-box" id="signup-feedback">
-                                            <div class="feedback-icon-wrapper">
-                                                <span class="iconify" data-icon="lucide:check" data-width="12"></span>
-                                            </div>
-                                            <div class="feedback-content">
-                                                <div class="feedback-company">Sentra Tech Ltda</div>
-                                                <div class="feedback-status">Empresa Ativa • Recebíveis Disponíveis</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <button class="mockup-btn" id="signup-btn">
-                                            <span>Criar Minha Conta</span>
-                                            <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
-                                        </button>
-                                    </div>
-                                </div>
+                                <img src="img/asset_passo_1.webp" alt="Resultado da calculadora Sentra mostrando economia real" class="mockup-card" width="1080" height="764" loading="lazy" decoding="async">
                             </div>
                         </div>
                         <div class="timeline-dot-wrapper">
@@ -4053,81 +4154,15 @@
                     <div class="step-row even" id="step-2">
                         <div class="step-col step-visual-col">
                             <div class="step-mockup-wrapper">
-                                <div class="mockup-card mockup-connect">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span class="dot dot-red"></span>
-                                            <span class="dot dot-yellow"></span>
-                                            <span class="dot dot-green"></span>
-                                        </div>
-                                        <div class="mockup-tab">Conectar Maquininhas</div>
-                                    </div>
-                                    <div class="mockup-body mockup-connect-body">
-                                        <div class="connect-grid-wrapper">
-                                            <!-- Center Node (Sentra) -->
-                                            <div class="node node-sentra">
-                                                <img src="img/logo-simbolo-sentra.svg" alt="Sentra" class="sentra-node-logo" width="625" height="527" loading="lazy" decoding="async">
-                                                <div class="pulse-ring"></div>
-                                            </div>
-                                            
-                                            <!-- Connection Lines -->
-                                            <svg class="connect-lines" viewBox="0 0 300 200">
-                                                <path id="line-stone" d="M 60,40 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
-                                                <path id="line-cielo" d="M 240,40 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
-                                                <path id="line-rede" d="M 60,160 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
-                                                <path id="line-getnet" d="M 240,160 L 150,100" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
-                                            </svg>
-
-                                            <!-- Stone Node -->
-                                            <div class="node node-satellite node-stone" style="top: 7.5%; left: 11.67%;">
-                                                <div class="brand-logo-circle" style="background: #1f9e38;">
-                                                    <span class="brand-logo-text">Stone</span>
-                                                </div>
-                                                <div class="connect-badge connect-badge-stone">
-                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Cielo Node -->
-                                            <div class="node node-satellite node-cielo" style="top: 7.5%; right: 11.67%;">
-                                                <div class="brand-logo-circle" style="background: #0066cc;">
-                                                    <span class="brand-logo-text">Cielo</span>
-                                                </div>
-                                                <div class="connect-badge connect-badge-cielo">
-                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Rede Node -->
-                                            <div class="node node-satellite node-rede" style="bottom: 7.5%; left: 11.67%;">
-                                                <div class="brand-logo-circle" style="background: #e65c00;">
-                                                    <span class="brand-logo-text">Rede</span>
-                                                </div>
-                                                <div class="connect-badge connect-badge-rede">
-                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
-                                                </div>
-                                            </div>
-
-                                            <!-- Getnet Node -->
-                                            <div class="node node-satellite node-getnet" style="bottom: 7.5%; right: 11.67%;">
-                                                <div class="brand-logo-circle" style="background: #cc0000;">
-                                                    <span class="brand-logo-text">Getnet</span>
-                                                </div>
-                                                <div class="connect-badge connect-badge-getnet">
-                                                    <span class="iconify" data-icon="lucide:check" data-width="10"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="connection-status-text" id="connection-status-label">Autorização Pendente...</div>
-                                    </div>
-                                </div>
+                                <img src="img/asset_passo_2.webp" alt="Conversa WhatsApp enviando Contrato Social para a Sentra" class="mockup-card" width="1080" height="764" loading="lazy" decoding="async">
                             </div>
                         </div>
                         <div class="step-col step-content-col">
                             <div class="step-card-wrapper">
                                 <div class="step-badge">Passo 02</div>
                                 <h2 class="step-title">Valide seus Dados via WhatsApp</h2>
-                                <p class="step-text">Se o resultado for vantajoso para você, insira seu CNPJ e WhatsApp. O site direcionará você para o nosso atendimento, onde coletaremos seu Contrato Social para gerar os documentos com total segurança.</p>
+                                <p class="step-text">Se o resultado for vantajoso para você, insira seu CNPJ e WhatsApp.
+                                    O site direcionará você para o nosso atendimento.</p>
                             </div>
                         </div>
                         <div class="timeline-dot-wrapper">
@@ -4141,53 +4176,14 @@
                             <div class="step-card-wrapper">
                                 <div class="step-badge">Passo 03</div>
                                 <h2 class="step-title">Assinatura Digital Sem Papelada</h2>
-                                <p class="step-text">Enviaremos os contratos de adesão e Opt-in diretamente no seu e-mail ou WhatsApp. Você assina digitalmente em menos de 1 minuto, com total validade jurídica e sem precisar imprimir nada.</p>
+                                <p class="step-text">Enviaremos os contratos de adesão e Opt-in diretamente no seu
+                                    e-mail ou WhatsApp. Você assina digitalmente em menos de 1 minuto, com total
+                                    validade jurídica e sem precisar imprimir nada.</p>
                             </div>
                         </div>
                         <div class="step-col step-visual-col">
                             <div class="step-mockup-wrapper">
-                                <div class="mockup-card mockup-balance">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span class="dot dot-red"></span>
-                                            <span class="dot dot-yellow"></span>
-                                            <span class="dot dot-green"></span>
-                                        </div>
-                                        <div class="mockup-tab">Consultar Saldo</div>
-                                    </div>
-                                    <div class="mockup-body">
-                                        <div class="mockup-balance-header">
-                                            <div class="mockup-balance-lbl">Saldo Total para Antecipar</div>
-                                            <div class="mockup-balance-val">R$ 48.500,00</div>
-                                        </div>
-                                        
-                                        <div class="mockup-slider-container">
-                                            <div class="mockup-slider-info">
-                                                <span class="slider-info-lbl">Valor Selecionado</span>
-                                                <span class="slider-info-val" id="slider-val-text">R$ 0,00</span>
-                                            </div>
-                                            
-                                            <div class="mockup-slider-track-wrapper">
-                                                <div class="mockup-slider-track">
-                                                    <div class="mockup-slider-fill" id="slider-track-fill" style="width: 0%;"></div>
-                                                </div>
-                                                <div class="mockup-slider-thumb" id="slider-thumb-handle" style="left: 0%;"></div>
-                                            </div>
-                                            
-                                            <div class="mockup-slider-labels">
-                                                <span>R$ 0</span>
-                                                <span>R$ 48.500</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="mockup-balance-footer">
-                                            <div class="balance-footer-row">
-                                                <span class="footer-lbl">Saldo Restante</span>
-                                                <span class="footer-val" id="balance-rest-text">R$ 48.500,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <img src="img/asset_passo_3.webp" alt="Assinatura digital de contrato com validação jurídica" class="mockup-card" width="1080" height="764" loading="lazy" decoding="async">
                             </div>
                         </div>
                         <div class="timeline-dot-wrapper">
@@ -4199,61 +4195,16 @@
                     <div class="step-row even" id="step-4">
                         <div class="step-col step-visual-col">
                             <div class="step-mockup-wrapper">
-                                <div class="mockup-card mockup-simulate">
-                                    <div class="mockup-header">
-                                        <div class="mockup-dots">
-                                            <span class="dot dot-red"></span>
-                                            <span class="dot dot-yellow"></span>
-                                            <span class="dot dot-green"></span>
-                                        </div>
-                                        <div class="mockup-tab">Resumo da Simulação</div>
-                                    </div>
-                                    <div class="mockup-body">
-                                        <div class="simulation-list">
-                                            <div class="sim-row">
-                                                <span class="sim-lbl">Valor Bruto</span>
-                                                <span class="sim-val val-white" id="sim-bruto-val">R$ 35.000,00</span>
-                                            </div>
-                                            
-                                            <div class="sim-row">
-                                                <span class="sim-lbl">Taxa Aplicada</span>
-                                                <span class="sim-val val-green">1,65% a.m.</span>
-                                            </div>
-
-                                            <div class="sim-row">
-                                                <span class="sim-lbl">Tarifa Sentra</span>
-                                                <span class="sim-val val-red" id="sim-tarifa-val">- R$ 577,50</span>
-                                            </div>
-                                            
-                                            <div class="sim-divider"></div>
-                                            
-                                            <div class="sim-row sim-total-row">
-                                                <span class="sim-lbl">Valor Líquido</span>
-                                                <span class="sim-val val-total" id="sim-liquido-val">R$ 34.422,50</span>
-                                            </div>
-
-                                            <div class="sim-row sim-date-row">
-                                                <span class="sim-lbl">Previsão de Crédito</span>
-                                                <span class="sim-val val-date">
-                                                    <span class="iconify" data-icon="lucide:calendar-check" data-width="14"></span>
-                                                    Amanhã (D+1)
-                                                </span>
-                                            </div>
-                                        </div>
-                                        
-                                        <button class="mockup-btn confirm-btn" id="simulate-btn">
-                                            <span>Confirmar e Receber</span>
-                                            <span class="iconify" data-icon="lucide:check-circle" data-width="14"></span>
-                                        </button>
-                                    </div>
-                                </div>
+                                <img src="img/asset_passo_4.webp" alt="Conversa WhatsApp solicitando antecipação de R$ 20.000" class="mockup-card" width="1080" height="764" loading="lazy" decoding="async">
                             </div>
                         </div>
                         <div class="step-col step-content-col">
                             <div class="step-card-wrapper">
                                 <div class="step-badge">Passo 04</div>
                                 <h2 class="step-title">Escolha Como Receber</h2>
-                                <p class="step-text">Com tudo pronto, você escolhe o modelo ideal para o seu caixa: Antecipação Diária Automática (dinheiro na conta todo dia às 09:15) ou Antecipação Pontual (solicite o saldo apenas quando precisar).</p>
+                                <p class="step-text">Com tudo pronto, você escolhe o modelo ideal para o seu caixa:
+                                    Antecipação Diária Automática (dinheiro na conta no dia seguinte) ou Antecipação
+                                    Pontual (solicite o saldo apenas quando precisar).</p>
                             </div>
                         </div>
                         <div class="timeline-dot-wrapper">
@@ -4269,21 +4220,23 @@
         <!-- FAQ Section -->
         <section id="como-funciona-faq" class="faq-section">
             <div class="faq-glow"></div>
-            
+
             <div class="container">
                 <div class="faq-header-content">
                     <div class="eyebrow">
                         <span class="eyebrow-dot"></span>Dúvidas Frequentes
                     </div>
                     <h2 class="section-title-faq">Perguntas Frequentes</h2>
-                    <p class="section-desc-faq">Tire suas dúvidas sobre o funcionamento da antecipação de recebíveis da Sentra.</p>
+                    <p class="section-desc-faq">Tire suas dúvidas sobre o funcionamento da antecipação de recebíveis da
+                        Sentra.</p>
                 </div>
-                
+
                 <div class="faq-accordion-list">
                     <!-- FAQ 1 -->
                     <div class="faq-accordion-item">
                         <div class="faq-badge">
-                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625" height="527" loading="lazy" decoding="async">
+                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625"
+                                height="527" loading="lazy" decoding="async">
                         </div>
                         <div class="faq-header">
                             <h3 class="faq-question">A antecipação é a mesma coisa que empréstimo?</h3>
@@ -4293,7 +4246,8 @@
                         </div>
                         <div class="faq-body">
                             <div class="faq-content">
-                                <p class="faq-answer">Não. Você está adiantando dinheiro que já é seu. Não vira dívida, não gera parcelas futuras e não compromete seu score de crédito.</p>
+                                <p class="faq-answer">Não. Você está adiantando dinheiro que já é seu. Não vira dívida,
+                                    não gera parcelas futuras e não compromete seu score de crédito.</p>
                             </div>
                         </div>
                     </div>
@@ -4301,7 +4255,8 @@
                     <!-- FAQ 2 -->
                     <div class="faq-accordion-item">
                         <div class="faq-badge">
-                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625" height="527" loading="lazy" decoding="async">
+                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625"
+                                height="527" loading="lazy" decoding="async">
                         </div>
                         <div class="faq-header">
                             <h3 class="faq-question">Preciso trocar de maquininha?</h3>
@@ -4319,7 +4274,8 @@
                     <!-- FAQ 3 -->
                     <div class="faq-accordion-item">
                         <div class="faq-badge">
-                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625" height="527" loading="lazy" decoding="async">
+                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625"
+                                height="527" loading="lazy" decoding="async">
                         </div>
                         <div class="faq-header">
                             <h3 class="faq-question">Quando recebo o dinheiro?</h3>
@@ -4337,7 +4293,8 @@
                     <!-- FAQ 4 -->
                     <div class="faq-accordion-item">
                         <div class="faq-badge">
-                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625" height="527" loading="lazy" decoding="async">
+                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625"
+                                height="527" loading="lazy" decoding="async">
                         </div>
                         <div class="faq-header">
                             <h3 class="faq-question">Posso antecipar só uma parte do saldo?</h3>
@@ -4355,7 +4312,8 @@
                     <!-- FAQ 5 -->
                     <div class="faq-accordion-item">
                         <div class="faq-badge">
-                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625" height="527" loading="lazy" decoding="async">
+                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625"
+                                height="527" loading="lazy" decoding="async">
                         </div>
                         <div class="faq-header">
                             <h3 class="faq-question">Tem limite de antecipações por mês?</h3>
@@ -4365,7 +4323,8 @@
                         </div>
                         <div class="faq-body">
                             <div class="faq-content">
-                                <p class="faq-answer">Não. Antecipe quantas vezes precisar, desde que tenha saldo disponível.</p>
+                                <p class="faq-answer">Não. Antecipe quantas vezes precisar, desde que tenha saldo
+                                    disponível.</p>
                             </div>
                         </div>
                     </div>
@@ -4373,7 +4332,8 @@
                     <!-- FAQ 6 -->
                     <div class="faq-accordion-item">
                         <div class="faq-badge">
-                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625" height="527" loading="lazy" decoding="async">
+                            <img src="img/logo-simbolo-sentra.svg" class="faq-badge-img" alt="Sentra" width="625"
+                                height="527" loading="lazy" decoding="async">
                         </div>
                         <div class="faq-header">
                             <h3 class="faq-question">A antecipação afeta meu score de crédito?</h3>
@@ -4399,27 +4359,37 @@
                 <!-- Coluna 1 — Identidade -->
                 <div class="footer-col footer-col-identity">
                     <a href="index.html" class="footer-logo-link">
-                        <img src="img/logo-tag.svg" alt="Sentra Securitizadora" class="footer-logo" width="1080" height="283" loading="lazy" decoding="async">
+                        <img src="img/logo-tag.svg" alt="Sentra Securitizadora" class="footer-logo" width="1080"
+                            height="283" loading="lazy" decoding="async">
                     </a>
                     <p class="footer-desc">
-                        A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as menores taxas.
+                        A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as
+                        menores taxas.
                     </p>
-                    <div style="font-size: 11px; color: rgba(250, 249, 242, 0.5); line-height: 1.6; margin-top: 16px; margin-bottom: 12px;">
+                    <div
+                        style="font-size: 11px; color: rgba(250, 249, 242, 0.5); line-height: 1.6; margin-top: 16px; margin-bottom: 12px;">
                         <strong>SENTRA SECURITIZADORA S/A</strong><br>
                         CNPJ: 64.068.298/0001-54<br>
                         Avenida Oswaldo Reis, 3385, Sala 802 B36 — Praia Brava — Itajaí/SC — CEP 88.306-773
                     </div>
-                    <p style="font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; margin-bottom: 16px; text-align: justify;">
-                        A Sentra Securitizadora S/A não é uma instituição financeira e não realiza operações de financiamento, mútuo ou empréstimo bancário. Nossa atividade comercial consiste estritamente na aquisição e securitização de direitos creditórios (recebíveis mercantis e de cartões de crédito) através da cessão de direitos, conforme as regras do Código Civil Brasileiro. Todas as operações de antecipação estão sujeitas à análise de crédito, checagem de lastro e validação operacional.
+                    <p
+                        style="font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; margin-bottom: 16px; text-align: justify;">
+                        A Sentra Securitizadora S/A não é uma instituição financeira e não realiza operações de
+                        financiamento, mútuo ou empréstimo bancário. Nossa atividade comercial consiste estritamente na
+                        aquisição e securitização de direitos creditórios (recebíveis mercantis e de cartões de crédito)
+                        através da cessão de direitos, conforme as regras do Código Civil Brasileiro. Todas as operações
+                        de antecipação estão sujeitas à análise de crédito, checagem de lastro e validação operacional.
                     </p>
                     <div class="footer-socials">
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram">
                             <span class="iconify" data-icon="mdi:instagram" data-width="20"></span>
                         </a>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <span class="iconify" data-icon="mdi:linkedin" data-width="20"></span>
                         </a>
-                        <a href="https://wa.me/5547999299741" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <a href="https://wa.me/5547999299741" target="_blank" rel="noopener noreferrer"
+                            aria-label="WhatsApp">
                             <span class="iconify" data-icon="mdi:whatsapp" data-width="20"></span>
                         </a>
                     </div>
@@ -4463,11 +4433,17 @@
 
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; <span id="footerYear">2026</span> Sentra Securitizadora S/A. Todos os direitos reservados.</p>
+                    <p>&copy; <span id="footerYear">2026</span> Sentra Securitizadora S/A. Todos os direitos reservados.
+                    </p>
                     <p class="footer-disclaimer">As simulações são estimativas e podem variar conforme a operação.</p>
                 </div>
-                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250, 249, 242, 0.08); font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    <strong>Privacidade e Segurança:</strong> Ao utilizar a nossa calculadora ou enviar seus dados de contato, as suas informações serão tratadas com total sigilo e segurança. A Sentra Securitizadora S/A adota práticas rigorosas de proteção de dados em conformidade com a Lei Geral de Proteção de Dados (LGPD). Os dados coletados possuem a finalidade exclusiva de análise de crédito, simulação de taxas e contato comercial pela nossa equipe.
+                <div
+                    style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250, 249, 242, 0.08); font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <strong>Privacidade e Segurança:</strong> Ao utilizar a nossa calculadora ou enviar seus dados de
+                    contato, as suas informações serão tratadas com total sigilo e segurança. A Sentra Securitizadora
+                    S/A adota práticas rigorosas de proteção de dados em conformidade com a Lei Geral de Proteção de
+                    Dados (LGPD). Os dados coletados possuem a finalidade exclusiva de análise de crédito, simulação de
+                    taxas e contato comercial pela nossa equipe.
                 </div>
             </div>
         </div>
@@ -4547,14 +4523,14 @@
             // G. FAQ ACCORDION CLICK ACTIONS
             // ==========================================================================
             const faqItems = document.querySelectorAll('.faq-accordion-item');
-            
+
             faqItems.forEach(item => {
                 const header = item.querySelector('.faq-header');
                 const body = item.querySelector('.faq-body');
-                
+
                 header.addEventListener('click', () => {
                     const isActive = item.classList.contains('active');
-                    
+
                     // Collapse any other open accordion items
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item && otherItem.classList.contains('active')) {
@@ -4566,7 +4542,7 @@
                             }
                         }
                     });
-                    
+
                     if (isActive) {
                         item.classList.remove('active');
                         body.style.maxHeight = '0px';
@@ -4583,7 +4559,7 @@
             // C. ACCESS ACCESSIBILITY & PREFERS-REDUCED-MOTION CHECK
             // ==========================================================================
             const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            
+
             // Unhide title container for processing
             const titleEl = document.getElementById('hero-title');
             titleEl.classList.remove('invisible');
@@ -4593,7 +4569,7 @@
                 gsap.from(".eyebrow", { opacity: 0, duration: 0.6 });
                 gsap.from("#hero-title", { opacity: 0, duration: 0.6 });
                 gsap.from(".subtitle", { opacity: 0, duration: 0.6 });
-                
+
                 // Show steps and timeline immediately without transitions
                 document.querySelectorAll(".step-row").forEach(row => {
                     row.classList.add("active");
@@ -4603,32 +4579,32 @@
                 });
                 const progressLine = document.querySelector(".timeline-line-progress");
                 if (progressLine) progressLine.style.height = "100%";
-                
+
                 // Initialize static mockup content
                 const signupText = document.getElementById("mockup-cnpj-text");
                 if (signupText) signupText.textContent = "45.678.901/0001-23";
-                
+
                 const signupFeedback = document.getElementById("signup-feedback");
                 if (signupFeedback) signupFeedback.classList.add("active");
-                
+
                 document.querySelectorAll(".connect-badge").forEach(b => b.classList.add("connected"));
-                
+
                 const connLabel = document.getElementById("connection-status-label");
                 if (connLabel) {
                     connLabel.textContent = "Conexão Estabelecida!";
                     connLabel.classList.add("connected");
                 }
-                
+
                 document.querySelectorAll(".connect-lines path").forEach(p => {
                     p.setAttribute("stroke", "rgba(228, 237, 44, 0.6)");
                     p.setAttribute("stroke-width", "3");
                 });
-                
+
                 const sliderFill = document.getElementById("slider-track-fill");
                 const sliderThumb = document.getElementById("slider-thumb-handle");
                 const sliderVal = document.getElementById("slider-val-text");
                 const balanceRest = document.getElementById("balance-rest-text");
-                
+
                 if (sliderFill) sliderFill.style.width = "72.16%";
                 if (sliderThumb) sliderThumb.style.left = "72.16%";
                 if (sliderVal) sliderVal.textContent = "R$ 35.000,00";
@@ -4657,13 +4633,13 @@
 
             // Entrance orchestrations
             tl.to(".eyebrow", { opacity: 1, y: 0, duration: 0.5 })
-              .from(splitTitle.words, { opacity: 0, y: 18, stagger: 0.04, duration: 0.65 }, "-=0.4")
-              .to(".subtitle", { opacity: 1, y: 0, duration: 0.55 }, "-=0.45");
+                .from(splitTitle.words, { opacity: 0, y: 18, stagger: 0.04, duration: 0.65 }, "-=0.4")
+                .to(".subtitle", { opacity: 1, y: 0, duration: 0.55 }, "-=0.45");
 
             // ==========================================================================
             // F. TIMELINE & CARD ANIMATIONS USING SCROLLTRIGGER
             // ==========================================================================
-            
+
             // Draw central timeline progress line
             gsap.to(".timeline-line-progress", {
                 height: "100%",
@@ -4681,7 +4657,7 @@
                 const isOdd = row.classList.contains("odd");
                 const card = row.querySelector(".step-card-wrapper");
                 const mockup = row.querySelector(".mockup-card");
-                
+
                 const rowTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: row,
@@ -4690,7 +4666,7 @@
                         onEnter: () => row.classList.add("active"),
                         onLeaveBack: () => row.classList.remove("active"),
                         onEnterBack: () => row.classList.add("active"),
-                        onLeave: () => {}
+                        onLeave: () => { }
                     }
                 });
 
@@ -4704,19 +4680,19 @@
                     duration: 0.7,
                     ease: "power2.out"
                 })
-                .to(mockup, {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.7,
-                    ease: "power2.out"
-                }, "-=0.55");
+                    .to(mockup, {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.7,
+                        ease: "power2.out"
+                    }, "-=0.55");
 
                 // Micro-animations inside mockups
                 if (row.id === "step-1") {
                     const textTarget = document.getElementById("mockup-cnpj-text");
                     const feedback = document.getElementById("signup-feedback");
                     const cnpjStr = "45.678.901/0001-23";
-                    
+
                     rowTl.to({}, {
                         duration: 1.0,
                         onStart: () => {
@@ -4734,7 +4710,7 @@
                             }, 50);
                         }
                     }, "-=0.1");
-                } 
+                }
                 else if (row.id === "step-2") {
                     rowTl.to(".connect-badge", {
                         opacity: 1,
@@ -4751,36 +4727,36 @@
                             }
                         }
                     }, "-=0.1")
-                    .to(".connect-lines path", {
-                        stroke: "rgba(228, 237, 44, 0.6)",
-                        strokeWidth: 3,
-                        stagger: 0.08,
-                        duration: 0.4
-                    }, "-=0.2");
-                } 
+                        .to(".connect-lines path", {
+                            stroke: "rgba(228, 237, 44, 0.6)",
+                            strokeWidth: 3,
+                            stagger: 0.08,
+                            duration: 0.4
+                        }, "-=0.2");
+                }
                 else if (row.id === "step-3") {
                     const fill = document.getElementById("slider-track-fill");
                     const thumb = document.getElementById("slider-thumb-handle");
                     const valText = document.getElementById("slider-val-text");
                     const restText = document.getElementById("balance-rest-text");
-                    
+
                     rowTl.to({ val: 0 }, {
                         val: 35000,
                         duration: 1.2,
                         ease: "power2.out",
-                        onUpdate: function() {
+                        onUpdate: function () {
                             const progress = this.targets()[0].val / 48500;
                             if (fill) fill.style.width = `${progress * 100}%`;
                             if (thumb) thumb.style.left = `${progress * 100}%`;
-                            
+
                             const currentVal = Math.round(this.targets()[0].val);
                             if (valText) valText.textContent = `R$ ${currentVal.toLocaleString('pt-BR')},00`;
-                            
+
                             const rest = 48500 - currentVal;
                             if (restText) restText.textContent = `R$ ${rest.toLocaleString('pt-BR')},00`;
                         }
                     }, "-=0.2");
-                } 
+                }
                 else if (row.id === "step-4") {
                     rowTl.from(".sim-row", {
                         opacity: 0,
@@ -4789,18 +4765,18 @@
                         duration: 0.4,
                         ease: "power1.out"
                     }, "-=0.2");
-                } 
+                }
                 else if (row.id === "step-5") {
                     rowTl.from(".success-icon-circle", {
                         scale: 0,
                         duration: 0.5,
                         ease: "back.out(1.5)"
                     }, "-=0.2")
-                    .from(".success-receipt-card", {
-                        opacity: 0,
-                        y: 10,
-                        duration: 0.4
-                    }, "-=0.15");
+                        .from(".success-receipt-card", {
+                            opacity: 0,
+                            y: 10,
+                            duration: 0.4
+                        }, "-=0.15");
                 }
             });
 
@@ -4830,4 +4806,5 @@
         });
     </script>
 </body>
+
 </html>

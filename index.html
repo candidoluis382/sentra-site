@@ -183,7 +183,7 @@
         }
 
         .header-logo-img {
-            height: 34px;
+            height: 30px;
             width: auto;
             display: block;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
@@ -863,7 +863,7 @@
 
         @media (min-width: 1024px) {
             .features-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -2381,6 +2381,7 @@
                 font-size: 0.875rem;
                 gap: 8px;
             }
+
             .btn-whatsapp svg {
                 width: 18px;
                 height: 18px;
@@ -2756,7 +2757,7 @@
             }
 
             .header-logo-img {
-                height: 26px;
+                height: 22px;
             }
 
             .nav-actions {
@@ -3022,7 +3023,8 @@
     <nav id="navbar">
         <div class="nav-container">
             <a class="nav-logo" href="index.html">
-                <img src="img/logo-principal.svg" alt="Sentra Securitizadora" class="header-logo-img" width="1080" height="255" loading="lazy" decoding="async">
+                <img src="logo_sentra_fintech_2.webp" alt="Sentra Securitizadora" class="header-logo-img" width="1080"
+                    height="255" loading="lazy" decoding="async">
             </a>
 
             <div class="nav-links">
@@ -3079,7 +3081,7 @@
 
                         <p class="subtitle">
                             Antecipe seus recebíveis de cartão com taxas justas e máxima agilidade. Você mantém sua
-                            maquininha de preferência e recebe o saldo em D+1 automaticamente.
+                            maquininha de preferência e recebe o saldo em D+1 automaticamente, ou quando precisar.
                         </p>
 
                         <div class="cta-container">
@@ -3098,17 +3100,11 @@
                                 <div class="seal-item">
                                     <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
                                         style="stroke-width: 3;"></span>
-                                    <span>Recebimento em D+1</span>
-                                </div>
-                                <div class="seal-item">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
-                                        style="stroke-width: 3;"></span>
-                                    <span>Taxa a partir de 2,10% a.m.</span>
-                                </div>
-                                <div class="seal-item">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
-                                        style="stroke-width: 3;"></span>
-                                    <span>Sem IOF</span>
+                                    <div>
+                                        <span>Recebimento em D+1</span><br>
+                                        <span style="color: var(--teal-green); font-weight: 700; font-size: 0.7rem;">ou
+                                            quando precisar</span>
+                                    </div>
                                 </div>
                                 <div class="seal-item">
                                     <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
@@ -3125,17 +3121,11 @@
                                 <div class="seal-item seal-duplicate">
                                     <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
                                         style="stroke-width: 3;"></span>
-                                    <span>Recebimento em D+1</span>
-                                </div>
-                                <div class="seal-item seal-duplicate">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
-                                        style="stroke-width: 3;"></span>
-                                    <span>Taxa a partir de 2,10% a.m.</span>
-                                </div>
-                                <div class="seal-item seal-duplicate">
-                                    <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
-                                        style="stroke-width: 3;"></span>
-                                    <span>Sem IOF</span>
+                                    <div>
+                                        <span>Recebimento em D+1</span><br>
+                                        <span style="color: var(--teal-green); font-weight: 700; font-size: 0.7rem;">ou
+                                            quando precisar</span>
+                                    </div>
                                 </div>
                                 <div class="seal-item seal-duplicate">
                                     <span class="iconify seal-icon" data-icon="lucide:check" data-width="16"
@@ -3158,9 +3148,9 @@
                             <div class="maquininha-wrapper" id="maquininhaWrapper">
                                 <!-- Float Wrapper for autonomous levitation -->
                                 <div class="maquininha-float-wrapper" id="maquininhaFloatWrapper">
-                                    <img src="img/mockup-3d-celular.webp"
-                                         alt="Mockup 3D Celular Sentra" class="maquininha-img"
-                                         id="maquininhaImg" width="1024" height="1536" fetchpriority="high" loading="eager">
+                                    <img src="img/mockup-3d-celular.webp" alt="Mockup 3D Celular Sentra"
+                                        class="maquininha-img" id="maquininhaImg" width="1024" height="1536"
+                                        fetchpriority="high" loading="eager">
                                 </div>
                             </div>
                         </div>
@@ -3179,8 +3169,9 @@
                         <div class="card-icon-wrapper">
                             <span class="iconify" data-icon="lucide:percent" data-width="20"></span>
                         </div>
-                        <div class="card-number">2,10%</div>
-                        <div class="card-label">Taxa ao mês a partir de</div>
+                        <div class="card-label"
+                            style="font-size: 1.4rem; font-weight: 700; color: var(--deep-green); line-height: 1.3; margin-top: 8px;">
+                            Simule a sua taxa</div>
                     </div>
 
                     <!-- Card 2 -->
@@ -3188,27 +3179,21 @@
                         <div class="card-icon-wrapper">
                             <span class="iconify" data-icon="lucide:calendar-check" data-width="20"></span>
                         </div>
-                        <div class="card-number">D+1</div>
-                        <div class="card-label">Receba no dia útil seguinte</div>
+                        <div class="card-number" style="font-size: 2.2rem; line-height: 1.1; margin-bottom: 4px;">D+1
+                        </div>
+                        <div class="card-label">Receba no dia útil seguinte <br><span
+                                style="font-size: 0.85em; opacity: 0.8; font-weight: 500;">ou quando precisar</span>
+                        </div>
                     </div>
 
                     <!-- Card 3 -->
                     <div class="feature-card invisible">
                         <div class="card-icon-wrapper">
-                            <span class="iconify" data-icon="lucide:badge-percent" data-width="20"></span>
-                        </div>
-                        <div class="card-number">R$ 0</div>
-                        <div class="card-label">Zero IOF. Zero taxa de contratação.</div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="feature-card invisible">
-                        <div class="card-icon-wrapper">
                             <span class="iconify" data-icon="lucide:credit-card" data-width="20"></span>
                         </div>
-                        <div class="card-number">4</div>
-                        <div class="card-label">Maquininhas compatíveis: <br><strong>Stone · Cielo · Rede ·
-                                Getnet</strong></div>
+                        <div class="card-label"
+                            style="font-size: 1.1rem; font-weight: 600; color: var(--deep-green); line-height: 1.4; margin-top: 8px;">
+                            Compatível com quase todas as maquinas do mercado. Consulte se é compatível com a sua.</div>
                     </div>
                 </div>
             </div>
@@ -3222,7 +3207,7 @@
             <div class="container">
                 <!-- Title Top -->
                 <h2 class="waiting-title invisible" id="waitingTitle">
-                    Você já vendeu. O dinheiro é seu. <span class="text-vibrant">Por que esperar?</span>
+                    Venda feita. O dinheiro é da sua empresa. Por que esperar?
                 </h2>
 
                 <!-- Visual Mid (Phones) -->
@@ -3236,8 +3221,10 @@
                 <!-- Text, Highlights Grid and CTA Bottom -->
                 <div class="waiting-content-bottom">
                     <p class="waiting-text invisible" id="waitingText">
-                        Quando você vende parcelado no cartão, as parcelas caem na sua conta ao longo de 30, 60 ou 90
-                        dias. Com a Sentra, você antecipa esse valor hoje e recebe tudo no próximo dia útil — pagando
+                        Quando sua empresa vende parcelado no cartão, as parcelas caem na sua conta ao longo de 30, 60
+                        ou 90
+                        dias. Com a Sentra, sua empresa antecipa esse valor hoje e recebe tudo no próximo dia útil —
+                        pagando
                         apenas uma taxa justa.
                     </p>
 
@@ -3288,8 +3275,9 @@
 
             <div class="container">
                 <div class="calculator-header">
-                    <h2 class="calculator-title">Veja quanto você está deixando na mesa todo mês</h2>
-                    <p class="calculator-subtitle">Insira o faturamento e os dados de uma venda recente. Nossa
+                    <h2 class="calculator-title">Veja quanto a sua empresa está deixando na mesa todo mês</h2>
+                    <p class="calculator-subtitle">Insira o faturamento e os dados de uma <strong
+                            style="font-size: 1.15em;">venda recente</strong>. Nossa
                         calculadora mostra sua economia real em segundos.</p>
                 </div>
 
@@ -3397,8 +3385,8 @@
                                 <div class="placeholder-icon-wrapper">
                                     <span class="iconify" data-icon="lucide:calculator" data-width="32"></span>
                                 </div>
-                                <p class="placeholder-text">Preencha os dados ao lado e veja sua economia real em
-                                    segundos.</p>
+                                <p class="placeholder-text">Preencha os dados ao lado e veja o quanto a sua empresa pode
+                                    estar deixando de economizar.</p>
                             </div>
 
                             <!-- State 2: Active results (After calculation) -->
@@ -3459,7 +3447,7 @@
                                 <span class="eyebrow-dot"></span>Como Funciona
                             </div>
                             <h2 class="process-title invisible" id="processTitle">
-                                Em 3 passos simples, o dinheiro está na sua conta
+                                Em 4 passos simples, o dinheiro está na sua conta
                             </h2>
                             <p class="process-desc invisible" id="processDesc">
                                 Com a Sentra, você antecipa os recebíveis da sua maquininha de forma rápida, segura e
@@ -3471,24 +3459,33 @@
                                 <!-- Step 1 -->
                                 <div class="timeline-item invisible">
                                     <div class="timeline-dot"></div>
-                                    <div class="timeline-title">Passo 01 · Crie sua conta Sentra</div>
-                                    <p class="timeline-text">Cadastro digital, menos de 5 minutos. Sem papelada.</p>
+                                    <div class="timeline-title">Passo 01 · Simule sua Economia</div>
+                                    <p class="timeline-text">Descubra na nossa Calculadora o quanto sua empresa está
+                                        perdendo para as taxas tradicionais.</p>
                                 </div>
 
                                 <!-- Step 2 -->
                                 <div class="timeline-item invisible">
                                     <div class="timeline-dot"></div>
-                                    <div class="timeline-title">Passo 02 · Conecte a maquininha que você já usa</div>
-                                    <p class="timeline-text">Stone, Cielo, Rede ou Getnet — sem precisar trocar nada.
-                                    </p>
+                                    <div class="timeline-title">Passo 02 · Valide seus Dados via WhatsApp</div>
+                                    <p class="timeline-text">Insira seu CNPJ e WhatsApp. Nossa equipe coletará os
+                                        documentos necessários com total segurança.</p>
                                 </div>
 
                                 <!-- Step 3 -->
                                 <div class="timeline-item invisible">
                                     <div class="timeline-dot"></div>
-                                    <div class="timeline-title">Passo 03 · Antecipe e receba em D+1</div>
-                                    <p class="timeline-text">Escolha o valor, confirme, e o dinheiro cai no próximo dia
-                                        útil.</p>
+                                    <div class="timeline-title">Passo 03 · Assinatura Digital Sem Papelada</div>
+                                    <p class="timeline-text">Assine os contratos digitalmente em menos de 1 minuto, com
+                                        total validade jurídica.</p>
+                                </div>
+
+                                <!-- Step 4 -->
+                                <div class="timeline-item invisible">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-title">Passo 04 · Escolha Como Receber</div>
+                                    <p class="timeline-text">Antecipação Diária Automática ou Antecipação Pontual — você
+                                        escolhe o modelo ideal para o seu caixa.</p>
                                 </div>
                             </div>
 
@@ -3506,7 +3503,8 @@
                         <div class="grid-2x2" id="grid2x2">
                             <!-- Card 1 -->
                             <div class="process-card invisible">
-                                <img src="img/feature_signup.png" alt="Cadastro Digital" class="card-bg-img" width="1024" height="1024" loading="lazy" decoding="async">
+                                <img src="img/feature_signup.png" alt="Cadastro Digital" class="card-bg-img"
+                                    width="1024" height="1024" loading="lazy" decoding="async">
                                 <div class="card-icon-pill">
                                     <span class="iconify" data-icon="lucide:user-plus" data-width="18"></span>
                                 </div>
@@ -3520,7 +3518,8 @@
 
                             <!-- Card 2 -->
                             <div class="process-card invisible">
-                                <img src="img/feature_connect.png" alt="Conexão de Maquininhas" class="card-bg-img" width="1024" height="1024" loading="lazy" decoding="async">
+                                <img src="img/feature_connect.png" alt="Conexão de Maquininhas" class="card-bg-img"
+                                    width="1024" height="1024" loading="lazy" decoding="async">
                                 <div class="card-icon-pill">
                                     <span class="iconify" data-icon="lucide:credit-card" data-width="18"></span>
                                 </div>
@@ -3534,7 +3533,8 @@
 
                             <!-- Card 3 -->
                             <div class="process-card invisible">
-                                <img src="img/feature_dashboard.png" alt="Painel Sentra" class="card-bg-img" width="1024" height="1024" loading="lazy" decoding="async">
+                                <img src="img/feature_dashboard.png" alt="Painel Sentra" class="card-bg-img"
+                                    width="1024" height="1024" loading="lazy" decoding="async">
                                 <div class="card-icon-pill">
                                     <span class="iconify" data-icon="lucide:bar-chart-3" data-width="18"></span>
                                 </div>
@@ -3548,7 +3548,8 @@
 
                             <!-- Card 4 -->
                             <div class="process-card invisible">
-                                <img src="img/feature_payment.png" alt="Recebimento D+1" class="card-bg-img" width="1024" height="1024" loading="lazy" decoding="async">
+                                <img src="img/feature_payment.png" alt="Recebimento D+1" class="card-bg-img"
+                                    width="1024" height="1024" loading="lazy" decoding="async">
                                 <div class="card-icon-pill">
                                     <span class="iconify" data-icon="lucide:zap" data-width="18"></span>
                                 </div>
@@ -3682,7 +3683,8 @@
                         </defs>
                     </svg>
                 </div>
-                <h2 class="final-cta-title invisible" id="prontoTitle">Pronto para receber hoje o que você já vendeu?
+                <h2 class="final-cta-title invisible" id="prontoTitle">Pronto para receber hoje o que a sua empresa já
+                    vendeu?
                 </h2>
                 <p class="final-cta-subtitle invisible" id="prontoSubtitle">Crie sua conta em minutos e faça sua
                     primeira antecipação.</p>
@@ -3705,19 +3707,26 @@
                 <!-- Coluna 1 — Identidade -->
                 <div class="footer-col footer-col-identity">
                     <a href="index.html" class="footer-logo-link">
-                        <img src="img/logo-tag.svg" alt="Sentra Securitizadora" class="footer-logo" width="1080" height="283" loading="lazy" decoding="async">
+                        <img src="img/logo-tag.svg" alt="Sentra Securitizadora" class="footer-logo" width="1080"
+                            height="283" loading="lazy" decoding="async">
                     </a>
                     <p class="footer-desc">
                         A Sentra securitiza e antecipa seus recebíveis de cartões com transparência, agilidade e as
                         menores taxas.
                     </p>
-                    <div style="font-size: 11px; color: rgba(250, 249, 242, 0.5); line-height: 1.6; margin-top: 16px; margin-bottom: 12px;">
+                    <div
+                        style="font-size: 11px; color: rgba(250, 249, 242, 0.5); line-height: 1.6; margin-top: 16px; margin-bottom: 12px;">
                         <strong>SENTRA SECURITIZADORA S/A</strong><br>
                         CNPJ: 64.068.298/0001-54<br>
                         Avenida Oswaldo Reis, 3385, Sala 802 B36 — Praia Brava — Itajaí/SC — CEP 88.306-773
                     </div>
-                    <p style="font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; margin-bottom: 16px; text-align: justify;">
-                        A Sentra Securitizadora S/A não é uma instituição financeira e não realiza operações de financiamento, mútuo ou empréstimo bancário. Nossa atividade comercial consiste estritamente na aquisição e securitização de direitos creditórios (recebíveis mercantis e de cartões de crédito) através da cessão de direitos, conforme as regras do Código Civil Brasileiro. Todas as operações de antecipação estão sujeitas à análise de crédito, checagem de lastro e validação operacional.
+                    <p
+                        style="font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; margin-bottom: 16px; text-align: justify;">
+                        A Sentra Securitizadora S/A não é uma instituição financeira e não realiza operações de
+                        financiamento, mútuo ou empréstimo bancário. Nossa atividade comercial consiste estritamente na
+                        aquisição e securitização de direitos creditórios (recebíveis mercantis e de cartões de crédito)
+                        através da cessão de direitos, conforme as regras do Código Civil Brasileiro. Todas as operações
+                        de antecipação estão sujeitas à análise de crédito, checagem de lastro e validação operacional.
                     </p>
                     <div class="footer-socials">
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
@@ -3776,8 +3785,13 @@
                     </p>
                     <p class="footer-disclaimer">As simulações são estimativas e podem variar conforme a operação.</p>
                 </div>
-                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250, 249, 242, 0.08); font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    <strong>Privacidade e Segurança:</strong> Ao utilizar a nossa calculadora ou enviar seus dados de contato, as suas informações serão tratadas com total sigilo e segurança. A Sentra Securitizadora S/A adota práticas rigorosas de proteção de dados em conformidade com a Lei Geral de Proteção de Dados (LGPD). Os dados coletados possuem a finalidade exclusiva de análise de crédito, simulação de taxas e contato comercial pela nossa equipe.
+                <div
+                    style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(250, 249, 242, 0.08); font-size: 11px; color: rgba(250, 249, 242, 0.45); line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <strong>Privacidade e Segurança:</strong> Ao utilizar a nossa calculadora ou enviar seus dados de
+                    contato, as suas informações serão tratadas com total sigilo e segurança. A Sentra Securitizadora
+                    S/A adota práticas rigorosas de proteção de dados em conformidade com a Lei Geral de Proteção de
+                    Dados (LGPD). Os dados coletados possuem a finalidade exclusiva de análise de crédito, simulação de
+                    taxas e contato comercial pela nossa equipe.
                 </div>
             </div>
         </div>
@@ -3793,7 +3807,8 @@
             <div id="modalBody">
                 <div class="modal-header">
                     <h3 class="modal-title">Reduza seus custos operacionais hoje mesmo</h3>
-                    <p class="modal-subtitle">Clique no botão abaixo para inserir seu CNPJ via WhatsApp e validar as taxas simuladas com nossa equipe técnica.</p>
+                    <p class="modal-subtitle">Clique no botão abaixo para inserir seu CNPJ via WhatsApp e validar as
+                        taxas simuladas com nossa equipe técnica.</p>
                 </div>
 
                 <form id="leadForm" class="modal-form" novalidate>
