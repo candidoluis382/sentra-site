@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="scroll-smooth" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -456,12 +456,11 @@
         }
 
         .vantagens-hero-section {
-            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 160px 0 100px 0;
+            padding: 160px 0 50px 0;
             overflow: hidden;
         }
 
@@ -487,32 +486,12 @@
             text-align: center;
         }
 
-        @media (min-width: 1024px) {
-            .vantagens-hero-content {
-                grid-template-columns: 0.85fr 1.15fr;
-                gap: 60px;
-                text-align: left;
-            }
-        }
-
         .text-col {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             width: 100%;
-        }
-
-        @media (min-width: 1024px) {
-            .text-col {
-                align-items: flex-start;
-                text-align: left;
-            }
-            .text-col .eyebrow,
-            .text-col .subtitle {
-                margin-left: 0;
-                margin-right: 0;
-            }
         }
 
         .eyebrow {
@@ -2452,19 +2431,19 @@
     <!-- Navigation Header -->
     <nav id="navbar">
         <div class="nav-container">
-            <a class="nav-logo" href="index.html">
-                <img src="logo_sentra_fintech_2.webp" alt="Sentra Securitizadora" class="header-logo-img" width="1080" height="255" loading="lazy" decoding="async">
+            <a class="nav-logo" href="/">
+                <img src="img/logo_sentra_fintech_2.webp" alt="Sentra Securitizadora" class="header-logo-img" width="1080" height="255" loading="lazy" decoding="async">
             </a>
             
             <div class="nav-links">
-                <a href="index.html">Início</a>
-                <a href="como-funciona.html">Como Funciona</a>
-                <a href="vantagens.html" class="active">Vantagens</a>
-                <a href="para-quem-e.html">Para Quem É</a>
+                <a href="/">Início</a>
+                <a href="/como-funciona">Como Funciona</a>
+                <a href="/vantagens" class="active">Vantagens</a>
+                <a href="/para-quem-e">Para Quem É</a>
             </div>
 
             <div class="nav-actions">
-                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
+                <a href="/#falar-consultor" class="btn-shine btn-bounce btn-primary" style="padding: 10px 20px; font-size: 0.75rem;">Falar com Consultor</a>
             </div>
 
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -2475,13 +2454,13 @@
         <!-- Drawer de Menu Mobile -->
         <div class="nav-menu-mobile" id="navMenuMobile">
             <div class="nav-menu-mobile-links">
-                <a href="index.html">Início</a>
-                <a href="como-funciona.html">Como Funciona</a>
-                <a href="vantagens.html" class="active">Vantagens</a>
-                <a href="para-quem-e.html">Para Quem É</a>
+                <a href="/">Início</a>
+                <a href="/como-funciona">Como Funciona</a>
+                <a href="/vantagens" class="active">Vantagens</a>
+                <a href="/para-quem-e">Para Quem É</a>
             </div>
             <div class="nav-menu-mobile-actions">
-                <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary">Falar com Consultor</a>
+                <a href="/#falar-consultor" class="btn-shine btn-bounce btn-primary">Falar com Consultor</a>
             </div>
         </div>
     </nav>
@@ -2512,101 +2491,6 @@
                         <p class="subtitle">
                             Menor taxa, maior agilidade, zero burocracia. Compare e veja a diferença.
                         </p>
-
-                        <div class="cta-container">
-                            <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary">Quero Antecipar Agora</a>
-                            <a href="#comparisonMockup" class="btn-bounce btn-secondary">Conheça as Vantagens</a>
-                        </div>
-                    </div>
-
-                    <!-- Mockup de Comparação -->
-                    <div class="mockup-container" id="comparisonMockup">
-                        <div class="mockup-card comparison-card">
-                            <div class="mockup-header">
-                                <div class="mockup-dots">
-                                    <span class="dot dot-red"></span>
-                                    <span class="dot dot-yellow"></span>
-                                    <span class="dot dot-green"></span>
-                                </div>
-                                <div class="mockup-tab">
-                                    <span class="iconify" data-icon="lucide:arrow-left-right" data-width="12" style="vertical-align: middle; margin-right: 4px; color: var(--teal-green);"></span>
-                                    comparativo_sentra_vs_bancos.xlsx
-                                </div>
-                            </div>
-                            <div class="mockup-body">
-                                <div class="comparison-table">
-                                    <!-- Table Headings -->
-                                    <div class="table-header-row">
-                                        <div class="table-th text-left">Critério</div>
-                                        <div class="table-th th-sentra">Na Sentra</div>
-                                        <div class="table-th th-concorrentes">Bancos & Concorrentes</div>
-                                    </div>
-                                    <!-- Table Rows -->
-                                    <div class="table-rows">
-                                        <!-- Taxa -->
-                                        <div class="table-row-item">
-                                            <div class="cell-label">Taxa Mensal</div>
-                                            <div class="cell-value cell-sentra">
-                                                <span>A partir de <strong>2,10% a.m.</strong></span>
-                                                <span class="iconify check-icon" data-icon="lucide:check-circle-2" data-width="16"></span>
-                                            </div>
-                                            <div class="cell-value cell-concorrentes">
-                                                <span>Taxas mais altas</span>
-                                                <span class="iconify cross-icon" data-icon="lucide:x-circle" data-width="16"></span>
-                                            </div>
-                                        </div>
-                                        <!-- Recebimento -->
-                                        <div class="table-row-item">
-                                            <div class="cell-label">Recebimento</div>
-                                            <div class="cell-value cell-sentra">
-                                                <span>Dinheiro em <strong>D+1</strong></span>
-                                                <span class="iconify check-icon" data-icon="lucide:check-circle-2" data-width="16"></span>
-                                            </div>
-                                            <div class="cell-value cell-concorrentes">
-                                                <span>Vários dias / burocrático</span>
-                                                <span class="iconify cross-icon" data-icon="lucide:x-circle" data-width="16"></span>
-                                            </div>
-                                        </div>
-                                        <!-- IOF -->
-                                        <div class="table-row-item">
-                                            <div class="cell-label">Imposto (IOF)</div>
-                                            <div class="cell-value cell-sentra">
-                                                <span><strong>Sem IOF</strong></span>
-                                                <span class="iconify check-icon" data-icon="lucide:check-circle-2" data-width="16"></span>
-                                            </div>
-                                            <div class="cell-value cell-concorrentes">
-                                                <span>Com incidência de IOF</span>
-                                                <span class="iconify cross-icon" data-icon="lucide:x-circle" data-width="16"></span>
-                                            </div>
-                                        </div>
-                                        <!-- Maquininha -->
-                                        <div class="table-row-item">
-                                            <div class="cell-label">Maquininha</div>
-                                            <div class="cell-value cell-sentra">
-                                                <span><strong>Sem trocar</strong> de maquininha</span>
-                                                <span class="iconify check-icon" data-icon="lucide:check-circle-2" data-width="16"></span>
-                                            </div>
-                                            <div class="cell-value cell-concorrentes">
-                                                <span>Exige troca de maquininha</span>
-                                                <span class="iconify cross-icon" data-icon="lucide:x-circle" data-width="16"></span>
-                                            </div>
-                                        </div>
-                                        <!-- Abertura de Conta -->
-                                        <div class="table-row-item">
-                                            <div class="cell-label">Abertura de Conta</div>
-                                            <div class="cell-value cell-sentra">
-                                                <span><strong>Sem abertura</strong> de conta</span>
-                                                <span class="iconify check-icon" data-icon="lucide:check-circle-2" data-width="16"></span>
-                                            </div>
-                                            <div class="cell-value cell-concorrentes">
-                                                <span>Exige abertura de conta</span>
-                                                <span class="iconify cross-icon" data-icon="lucide:x-circle" data-width="16"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -2882,7 +2766,7 @@
                                 <td class="col-sentra">
                                     <div class="status-badge-table sentra-status">
                                         <span class="iconify" data-icon="lucide:check-circle-2" data-width="16"></span>
-                                        <span>Stone/Cielo/Rede/Getnet</span>
+                                        <span>Stone/Cielo/Rede/Getnet entre outras</span>
                                     </div>
                                 </td>
                                 <td class="col-mercado">
@@ -2948,8 +2832,8 @@
                 </div>
 
                 <div class="comparativo-ctas">
-                    <a href="index.html#falar-consultor" class="btn-shine btn-bounce btn-primary">Quero Economizar Agora</a>
-                    <a href="index.html#falar-consultor" class="btn-bounce btn-secondary">Falar com um Consultor</a>
+                    <a href="/#falar-consultor" class="btn-shine btn-bounce btn-primary">Quero Economizar Agora</a>
+                    <a href="/#falar-consultor" class="btn-bounce btn-secondary">Falar com um Consultor</a>
                 </div>
             </div>
         </section>
@@ -2963,7 +2847,7 @@
             <div class="footer-grid">
                 <!-- Coluna 1 — Identidade -->
                 <div class="footer-col footer-col-identity">
-                    <a href="index.html" class="footer-logo-link">
+                    <a href="/" class="footer-logo-link">
                         <img src="img/logo-tag.svg" alt="Sentra Securitizadora" class="footer-logo" width="1080" height="283" loading="lazy" decoding="async">
                     </a>
                     <p class="footer-desc">
@@ -2994,10 +2878,10 @@
                 <div class="footer-col">
                     <h3 class="footer-title">Navegação</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="como-funciona.html">Como Funciona</a></li>
-                        <li><a href="vantagens.html">Vantagens</a></li>
-                        <li><a href="para-quem-e.html">Para Quem É</a></li>
+                        <li><a href="/">Início</a></li>
+                        <li><a href="/como-funciona">Como Funciona</a></li>
+                        <li><a href="/vantagens">Vantagens</a></li>
+                        <li><a href="/para-quem-e">Para Quem É</a></li>
                     </ul>
                 </div>
 
@@ -3019,9 +2903,9 @@
                         </li>
                     </ul>
                     <ul class="footer-links footer-legal">
-                        <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
-                        <li><a href="termos-de-uso.html">Termos de Uso</a></li>
-                        <li><a href="index.html#politica-cookies">Política de Cookies</a></li>
+                        <li><a href="/politica-de-privacidade">Política de Privacidade</a></li>
+                        <li><a href="/termos-de-uso">Termos de Uso</a></li>
+                        <li><a href="/#politica-cookies">Política de Cookies</a></li>
                     </ul>
                 </div>
             </div>
